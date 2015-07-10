@@ -19,8 +19,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-
+Route::get('pergunta', 'PerguntaController@InicializaPergunta');
 Route::get('disciplina','DisciplinaController@showDisciplina');
 
 Route::get('capitulo','CapituloController@showCapitulo');
