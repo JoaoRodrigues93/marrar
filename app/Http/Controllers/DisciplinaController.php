@@ -1,4 +1,6 @@
 <?php namespace App\Http\Controllers;
+
+
 /**
  * Created by PhpStorm.
  * User: Yola
@@ -10,8 +12,11 @@
 class DisciplinaController extends Controller  {
 
     public function showDisciplina(){
+
+
         return view('disciplina');
     }
+
 
 
 
