@@ -6,43 +6,17 @@
 @section('body')
 
     <div class="container">
-        <div class="jumbotron">
             <h2 class="text-center">Tema</h2>
             <form role="form" method="post">
 
+                <div class="jumbotron">
                 <div class="form-group">
-                    <label>Introduza o nome do tema:</label>
+                    <label for="sel3">Escolha a disciplina:</label>
+                    <select class="form-control" id="sel3">
+                        <option>Matematica</option>
+                        <option>Portugues</option>
+                        <option>Ingles</option>
 
-                     <input type="text" name="tema" class="form-control" placeholder="Introduza o tema">
-                </div>
-
-                <div class="form-group">
-                    <label>Numero de questoes:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
 
                     </select>
                 </div>
@@ -56,16 +30,22 @@
 
                     </select>
                 </div>
+
+           </div>
+
                 <div class="form-group">
-                    <label for="sel3">Escolha a disciplina:</label>
-                    <select class="form-control" id="sel3">
-                        <option>Matematica</option>
-                        <option>Portugues</option>
-                        <option>Ingles</option>
+                    <label>Introduza o nome do tema:</label>
 
-
-                    </select>
+                     <input type="text" name="tema" class="form-control" placeholder="Introduza o tema">
                 </div>
+
+                <div class="form-group">
+                    <label id="sef1">Numero de questoes:</label>
+
+                    <input type="number" name="tema" class="form-control" placeholder="10">
+                </div>
+
+
 
                 <div class="form-group">
                     <label for="comment">Conteudo</label>
@@ -77,6 +57,6 @@
 
 
             </form>
-        </div>
     </div>
+
 @stop
