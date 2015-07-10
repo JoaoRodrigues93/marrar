@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-
+use App\Disciplina;
 /**
  * Created by PhpStorm.
  * User: Xavier Ngomana
@@ -17,8 +17,8 @@ class PerguntaController extends Controller {
     }
 
 public function InicializaPergunta(){
-
-    return view('pergunta');
+    $disciplinas = Disciplina::lists('nome', 'id');
+    return view('pergunta')->with('disciplinas',$disciplinas);
 }
 
 

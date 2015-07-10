@@ -7,29 +7,25 @@
 
 @section('body')
 <h3 class="text-center"> Registo de perguntas</h3>
-   <form method="post">
-
-       <div class="form-group">
-      <div class="jumbotron">
-       <div  class="col-lg-12">
-
-           <div class="col-lg-3">
+<div class="container">
+   <form method="post" role="form">
 
 
            <label >Selecione a disciplina</label>
-               <select id="disciplina"></select>
-           </div>
-            <div class="col-lg-4">
+
+
+              {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas')) !!}
+
+
            <label >Selecione o capitulo</label>
-           <select id="capitulo"></select>
-           </div>
-            <div class="col-lg-5">
+
+
+           <select  id="capitulo"></select>
+
            <label >Selecione o tema</label>
            <select id="tema"> </select>
 
-            </div>
-        </div>
-      </div>
+
 
            <div  align="center">
 
@@ -67,7 +63,7 @@
     <input class="btn-success" type="submit" value="Submeter pergunta">
 
     </div>
-       </div>
-    </form>
 
+    </form>
+</div>
 @stop
