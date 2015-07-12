@@ -8,62 +8,54 @@
 @section('body')
 <h3 class="text-center"> Registo de perguntas</h3>
 <div class="container">
-   <form method="post" role="form">
+   {!! Form::open( array('url'=> 'pergunta')) !!}
+       <div class="jumbotron">
 
+           <div class="form-group">
 
-           <label >Selecione a disciplina</label>
-
-
-              {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas')) !!}
-
-
-           <label >Selecione o capitulo</label>
-
-
-           <select  id="capitulo"></select>
-
-           <label >Selecione o tema</label>
-           <select id="tema"> </select>
-
-
-
-           <div  align="center">
-
-           <div class="col-lg-12">
-               <textarea id="pergunta" placeholder="introduza a pergunta" class="container" required></textarea>
-
+               {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary'])  !!}
+               {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas'), ['class' => 'form-control']) !!}
+               {!! Form::label('capitulo','Selecione o capitulo',['class'=>'text-primary'])  !!}
+               {!! Form::select('capitulos', $capitulos , Input::old('capitulos'),['class' => 'form-control'] ) !!}
+               {!! Form::label('tema','Selecione o tema',['class'=>'text-primary'])  !!}
+               {!! Form::select('tema', $tema , Input::old('tema'),['class' => 'form-control']) !!}
            </div>
-               <div class="col-lg-12">
-                   <textarea id="resposta_certa" placeholder="introduza a resposta certa" class="container" required></textarea>
+       </div>
+           <div class="form-group">
 
-               </div>
-                    <div class="col-lg-12">
-                       <textarea id="resposta1"  placeholder="Introduza a 1ª resposta errada" class="container" required></textarea>
+               {!! Form::label('questao','Pergunta',['class'=>'text-primary'])  !!}
+               {!! Form::textarea('questao','',['class'=>'form-control', 'placeholder'=>'Introduza a pergunta aqui','rows'=>'2'])  !!}
+               {!! Form::label('correcto','Resposta correcta',['class'=>'text-primary'])  !!}
+               {!! Form::textarea('opcaoCorrecta','',['class'=>'form-control', 'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2'])  !!}
+               {!! Form::label('erradas','Respostas erradas',['class'=>'text-primary'])  !!}
+               {!! Form::textarea('opcao1','',['class'=>'form-control', 'placeholder'=>'Introduza a 1ª resposta errada aqui','rows'=>'2'])  !!}
+               {!! Form::textarea('opcao2','',['class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2'])  !!}
+               {!! Form::textarea('opcao3','',['class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2'])  !!}
+               {!! Form::textarea('opcao4','',['class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2'])  !!}
 
-                   </div>
-                    <div class="col-lg-12">
-
-                           <textarea id="resposta2"  placeholder="Introduza a 2ª resposta errada" class="container" required></textarea>
-
-                       </div>
-                    <div class="col-lg-12">
-                               <textarea id="resposta3"  placeholder="Introduza a 3ª resposta errada" class="container" required></textarea>
-
-                    </div>
-               <div class="col-lg-12">
-                    <textarea id="resposta4"  placeholder="Introduza a 4ª resposta errada" class="container" required></textarea>
-               </div>
-
-
-
-           </div>
-
+            </div>
     <div class="center-block" align="center">
 
-    <input class="btn-success" type="submit" value="Submeter pergunta">
-
+    <input class="btn-primary" type="submit" value="Submeter pergunta">
     </div>
+    {!! Form::close() !!}
 
-    </form>
+    <script>
+        function alteraResposta(respostaEscolhida,idEscolhido){
+            deSeleciona();
+            document.getElementById('respostaEscolhida').setAttribute('value',respostaEscolhida);
+            document.getElementById(idEscolhido).setAttribute('class','resposta');
+        }
+
+        function deSeleciona(){
+            for (i=1;i<=5;i++)
+                document.getElementById('resp'+i).setAttribute('class','');
+        }
+    </script>
+
+
 </div>
+
+
+
 @stop

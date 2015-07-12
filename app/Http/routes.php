@@ -25,3 +25,5 @@ Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::get('capitulo','CapituloController@showCapitulo');
 
 Route::get('tema','TemaController@showTema');
+
+Route::post('pergunta','PerguntaController@registaPerguntas');
