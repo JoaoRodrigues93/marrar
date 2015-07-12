@@ -1,5 +1,10 @@
 <?php namespace App\Http\Controllers;
+use App\Capitulo;
 use App\Disciplina;
+use App\Pergunta;
+use App\Tema;
+use Illuminate\Http\Request;
+
 /**
  * Created by PhpStorm.
  * User: Xavier Ngomana
@@ -39,11 +44,6 @@ $pergunta = $tema->perguntas()->save($pergunta);
 
 
 }
-
-
-
-
-
 
 
     /*motor de peruntas começa aqui
