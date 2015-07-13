@@ -36,7 +36,7 @@ class WelcomeController extends Controller {
 	public function index()
 	{
 
-        $disciplina = new Disciplina;
+       /* $disciplina = new Disciplina;
         $disciplina ->nome = 'Matemática';
         $disciplina->save();
 
@@ -62,11 +62,11 @@ class WelcomeController extends Controller {
         $pergunta->opcao5 ='0';
         $pergunta->opcaoCorrecta ='0';
         $pergunta ->tema_id = $tema->id;
-        $pergunta->save();
+        $pergunta->save();*/
 
 
 
-        return "<h2>Dados foram inseridos com sucesso</h2>";
+        return "<h2>Ainda por editar</h2>";
 	}
 
 }
