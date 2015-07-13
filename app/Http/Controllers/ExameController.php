@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-class ExameController extends Controller {
+class ExameController extends Controller
+{
 
-    public function show(){
+    public function show()
+    {
         return View('exame');
     }
 

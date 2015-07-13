@@ -7,7 +7,14 @@
 
     <div class="container">
             <h2 class="text-center">Tema</h2>
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
+            </div>
+
+        @endif
         {!! Form::open( array('url'=> 'tema')) !!}
+        <a href="{{URL::to('tema_list')}}"  class="">Clique aqui para ver a lista dos temas</a>
 
                 <div class="jumbotron">
                 <div class="form-group">
