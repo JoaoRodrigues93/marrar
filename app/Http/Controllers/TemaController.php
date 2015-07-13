@@ -4,6 +4,7 @@ use App\Capitulo;
 use App\Disciplina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Created by PhpStorm.
@@ -31,6 +32,7 @@ public function inicializaTema(){
             $tema->conteudo=$request->input('conteudo');
             $capitulos = Capitulo::find($request -> input('capitulos'));
             $tema = $capitulos->temas()->save($tema);
+            Session::flash('message','Dados gravados com sucesso');
             return Redirect::to('tema');
 
 

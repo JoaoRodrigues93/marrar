@@ -19,18 +19,26 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-Route::get('pergunta', 'PerguntaController@InicializaPergunta');
+
 Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
+Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
+Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplina');
+Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
+Route::post('editar-disciplina','DisciplinaController@editar');
+
+
 
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');
+
 
 Route::get('tema','TemaController@inicializaTema');
 
 Route::post('tema','TemaController@createTema');
 
-Route::post('pergunta','PerguntaController@registaPerguntas');
+
+Route::get('pergunta', 'PerguntaController@InicializaPergunta');
 
 Route::post('registar-pergunta','PerguntaController@registaPerguntas');
 

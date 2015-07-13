@@ -3,6 +3,7 @@ use App\Capitulo;
 use App\Disciplina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 
 /**
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Redirect;
        $capitulo->nome=$request->input('nome');
             $disciplinas=Disciplina::find($request->input('disciplinas'));
             $capitulo=$disciplinas->capitulos()->save($capitulo);
+            Session::flash('message','Dados gravados com sucesso');
             return Redirect::to('capitulo');
         }
 
