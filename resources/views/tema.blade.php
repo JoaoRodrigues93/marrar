@@ -7,56 +7,48 @@
 
     <div class="container">
             <h2 class="text-center">Tema</h2>
-            <form role="form" method="post">
+        {!! Form::open( array('url'=> 'tema')) !!}
 
                 <div class="jumbotron">
                 <div class="form-group">
-                    <label for="sel3">Escolha a disciplina:</label>
-                    <select class="form-control" id="sel3">
-                        <option>Matematica</option>
-                        <option>Portugues</option>
-                        <option>Ingles</option>
+                    {!! Form::label('disciplinas','Escolha a disciplina:',['class'=>'text-primary'])  !!}
+                    {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas'),['class'=>'form-control']) !!}
 
 
-                    </select>
                 </div>
                 <div class="form-group">
-                    <label>Escolha o capitulo:</label>
-                    <select class="form-control" id="sel1">
-                        <option>trigonometria</option>
-                        <option>Algebra</option>
-                        <option>Limites</option>
-
-
-                    </select>
+                    {!! Form::label('capitulo','Escolhe o capitulo:',['class'=>'text-primary'])  !!}
+                    {!! Form::select('capitulos', $capitulos , Input::old('capitulos'),['class' => 'form-control'] ) !!}
                 </div>
 
            </div>
 
                 <div class="form-group">
-                    <label>Introduza o nome do tema:</label>
+                    {!! Form::label('nome','Introduza o nome do tema',['class'=>'text-primary'])  !!}
+                    {!! Form::textarea('nome','',['class'=>'form-control', 'placeholder'=>'Introduza o nome do tema','rows'=>'1'])  !!}
 
-                     <input type="text" name="tema" class="form-control" placeholder="Introduza o tema">
                 </div>
 
                 <div class="form-group">
-                    <label id="sef1">Numero de questoes:</label>
+                    {!! Form::label('questoes','Numero de questoes:',['class'=>'text-primary'])  !!}
+                    {!! Form::textarea('questoes','',['class'=>'form-control', 'placeholder'=>'10','rows'=>'1'])  !!}
 
-                    <input type="number" name="tema" class="form-control" placeholder="10">
+                    {{--<input type="number" name="tema" class="form-control" placeholder="10">--}}
                 </div>
 
 
 
                 <div class="form-group">
-                    <label for="comment">Conteudo</label>
-                    <textarea class="form-control" rows="20" id="comment"></textarea>
+                    {!! Form::label('conteudo','Conteudo',['class'=>'text-primary'])  !!}
+                    {!! Form::textarea('conteudo','',['class'=>'form-control','rows'=>'20'])  !!}
+
 
                 </div>
 
                 <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
 
 
-            </form>
+        {!! Form::close() !!}
     </div>
 
 @stop

@@ -21,10 +21,16 @@ Route::controllers([
 ]);
 Route::get('pergunta', 'PerguntaController@InicializaPergunta');
 Route::get('disciplina','DisciplinaController@showDisciplina');
+Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
 
-Route::get('capitulo','CapituloController@showCapitulo');
+Route::get('capitulo','CapituloController@inicializaCapitulo');
+Route::post('capitulo','CapituloController@createCapitulo');
 
-Route::get('tema','TemaController@showTema');
+Route::get('tema','TemaController@inicializaTema');
+
+Route::post('tema','TemaController@createTema');
+
+Route::post('pergunta','PerguntaController@registaPerguntas');
 
 Route::post('registar-pergunta','PerguntaController@registaPerguntas');
 

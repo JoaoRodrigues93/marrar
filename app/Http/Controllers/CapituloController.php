@@ -1,4 +1,10 @@
 <?php namespace App\Http\Controllers;
+use App\Capitulo;
+use App\Disciplina;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+
 /**
  * Created by PhpStorm.
  * User: Yola
@@ -11,4 +17,22 @@
         public function showCapitulo(){
         return view("capitulo");
     }
+
+        public function inicializaCapitulo(){
+            $disciplinas = Disciplina::lists('nome', 'id');
+            return view('capitulo')->with(array('disciplinas'=>$disciplinas));
+        }
+
+        public function createCapitulo(Request $request){
+    $capitulo=new Capitulo();
+       $capitulo->nome=$request->input('nome');
+            $disciplinas=Disciplina::find($request->input('disciplinas'));
+            $capitulo=$disciplinas->capitulos()->save($capitulo);
+            return Redirect::to('capitulo');
+        }
+
+
+
+
     }
+
