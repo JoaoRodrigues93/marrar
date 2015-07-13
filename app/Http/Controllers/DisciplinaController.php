@@ -4,7 +4,7 @@ use App\Disciplina;
 use App\Http\Requests\CreateDisciplinaRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 
@@ -52,7 +52,7 @@ public function editarDisiciplina($id){
 public function editar(Request $request){
     $id=$request->input('id');
     $disciplinas=Disciplina::find($id);
-    $disciplinas->nome=Input::get('nome');
+    $disciplinas->nome=$request->Input('nome');
     $disciplinas->save();
     Session::flash('message','Dados alterados com sucesso');
     return Redirect('disciplina_list');

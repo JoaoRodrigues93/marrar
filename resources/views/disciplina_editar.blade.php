@@ -13,6 +13,7 @@
             <div class="form-group">
                 {!! Form::label('nome','Introduza a disciplina:',['class'=>'text-primary']) !!}
                 {!! Form::textarea('nome',$disciplinas->nome,['class'=>'form-control', 'placeholder'=>'Introduza a disciplina','rows'=>'1'])  !!}
+                {!! Form::hidden('id',$disciplinas->id,['class'=>'form-control'])  !!}
 
 
             </div>
