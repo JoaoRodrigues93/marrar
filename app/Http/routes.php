@@ -34,3 +34,5 @@ Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+
+Route::get('teste','TesteController@inicializaTeste');
