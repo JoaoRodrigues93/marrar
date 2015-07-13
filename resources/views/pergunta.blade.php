@@ -8,8 +8,16 @@
 @section('body')
 <h3 class="text-center"> Registo de perguntas</h3>
 <div class="container">
-   {!! Form::open( array('url'=> 'pergunta')) !!}
-       <div class="jumbotron">
+
+    @if(session('message'))
+    <div class="alert alert-success">
+    {{Session::get('message')}}
+    </div>
+
+    @endif
+    {!! Form::open( array('url'=> 'registar-pergunta')) !!}
+        <a href="{{URL::to('perguntaview')}}"  class="">Clique aqui para ver a lista de perguntas</a>
+        <div class="jumbotron">
 
            <div class="form-group">
 
@@ -36,22 +44,20 @@
             </div>
     <div class="center-block" align="center">
 
-    <input class="btn-primary" type="submit" value="Submeter pergunta">
+        {!!Form::submit('Submeter pergunta',['class'=>'btn-primary']) !!}
+
+    </div>
+
+
+    <div class="bottom-right">
+
+
+
+
     </div>
     {!! Form::close() !!}
 
-    <script>
-        function alteraResposta(respostaEscolhida,idEscolhido){
-            deSeleciona();
-            document.getElementById('respostaEscolhida').setAttribute('value',respostaEscolhida);
-            document.getElementById(idEscolhido).setAttribute('class','resposta');
-        }
 
-        function deSeleciona(){
-            for (i=1;i<=5;i++)
-                document.getElementById('resp'+i).setAttribute('class','');
-        }
-    </script>
 
 
 </div>
