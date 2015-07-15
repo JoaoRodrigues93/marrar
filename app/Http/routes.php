@@ -60,7 +60,7 @@ Route::get('exame','ExameController@show');
 
 
 
-//metodos onde se chamam as perguntas
+//metodos onde se chamam as perguntas---
 Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
