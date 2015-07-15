@@ -94,16 +94,53 @@ Session::flash('message','Dados gravados com sucesso');
     aqui se encontraram os metodos que serão chamados para devoler as perguntas
     tanto para o exame, como para testes assim como para exercicios
     */
-    public function buscarExame($disciplina){
+    public function buscarExame(){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
+
+        $disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
+
+
+        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('disciplinas.nome','=',$disciplina)
+            ->select('perguntas.*')
+            ->get();
+        return $perguntas;
+
     }
 
-    public function buscarTeste($disciplina, $capitulo){
+    public function buscarTeste(){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
+        $disciplina='matematica';//esses dois atributos devem ser parametros
+        $capitulo='trigonometria';
+
+        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('disciplinas.nome','=',$disciplina)
+            ->where('capitulos.nome','=',$capitulo)
+            ->select('perguntas.*')
+            ->get();
+        return $perguntas;
     }
 
-    public function buscarExercicios($disciplina, $capitulo, $tema){
+    public function buscarExercicios(){
        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
+        $disciplina='matematica';//esses dois atributos devem ser parametros
+        $capitulo='trigonometria';
+        $tema='cossenos';
+
+        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('disciplinas.nome','=',$disciplina)
+            ->where('capitulos.nome','=',$capitulo)
+            ->where('temas.nome','=',$tema)
+            ->select('perguntas.*')
+            ->get();
+        return $perguntas;
+
     }
 
 }

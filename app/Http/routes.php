@@ -52,3 +52,10 @@ Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 
 Route::get('exame','ExameController@show');
+
+
+
+
+Route::get('buscar-teste','PerguntaController@buscarTeste');
+Route::get('buscar-exame','PerguntaController@buscarExame');
+Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
