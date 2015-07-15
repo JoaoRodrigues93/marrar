@@ -1,11 +1,17 @@
 <?php namespace App\Http\Controllers;
 
-class ExameController extends Controller
-{
+use App\Disciplina;
+use App\Http\Controllers\PerguntaController;
 
-    public function show()
-    {
-        return View('exame');
+class ExameController extends Controller {
+
+    public function show(){
+        $examesJSON=null;
+
+
+        $perguntas = PerguntaController::buscarExame("História");
+
+        return View('exame')->with(array("perguntas"=>$perguntas));
     }
 
 }
