@@ -20,6 +20,8 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+
+
 Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
 Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
@@ -56,3 +58,6 @@ Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 
 Route::get('exame','ExameController@show');
+
+Route::get('exercicio','ExercicioController@showJogo');
+Route::post('exercicio','ExercicioController@doPergunta');
