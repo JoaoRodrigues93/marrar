@@ -31,12 +31,18 @@ Route::post('editar-disciplina','DisciplinaController@editar');
 
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');
-
+Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');
+Route::get('/capitulo_list/editar/{id}','CapituloController@editarCapitulo');
+Route::get('/capitulo_list/remover/{id}','CapituloController@deleteCapitulo');
+Route::post('editar-capitulo','CapituloController@editar');
 
 Route::get('tema','TemaController@inicializaTema');
 
 Route::post('tema','TemaController@createTema');
-
+Route::get('tema_list','TemaController@inicializaTema_list');
+Route::get('/tema_list/editar/{id}','TemaController@editarTema');
+Route::get('/tema_list/remover/{id}','TemaController@deleteTema');
+Route::post('editar-tema','TemaController@editar');
 
 Route::get('pergunta', 'PerguntaController@InicializaPergunta');
 
@@ -54,13 +60,10 @@ Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergun
 Route::get('exame','ExameController@show');
 
 
-
-
-
-
-
-
 //metodos onde se chamam as perguntas----
 Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
+
+Route::get('exercicio','ExercicioController@showJogo');
+Route::post('exercicio','ExercicioController@doPergunta');

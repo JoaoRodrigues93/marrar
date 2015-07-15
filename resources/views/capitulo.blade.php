@@ -8,7 +8,14 @@
     <div class="container">
         <div class="jumbotron">
             <h2 class="text-center">Capitulo</h2>
+            @if(session('message'))
+                <div class="alert alert-success">
+                    {{Session::get('message')}}
+                </div>
+
+            @endif
             {!! Form::open( array('url'=> 'capitulo')) !!}
+            <a href="{{URL::to('capitulo_list')}}"  class="">Clique aqui para ver a lista dos capitulos</a>
 
                 <div class="form-group">
                     {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
