@@ -23,7 +23,6 @@ class CreatePerguntasTable extends Migration {
             $table->string('opcao5');
             $table->integer('tema_id')->unsigned();
             $table->string('opcaoCorrecta');
-
 			$table->timestamps();
 		});
 	}

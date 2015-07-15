@@ -1,4 +1,6 @@
 <?php namespace App\Http\Controllers;
+use App\Pergunta;
+
 /**
  * Created by PhpStorm.
  * User: Xavier Ngomana
@@ -6,15 +8,14 @@
  * Time: 11:59 AM
  */
 
-class TesteController extends Controller
-{
+class TesteController extends Controller{
 
-    public function inicializaTeste()
-    {
+public function inicializaTeste(){
 
-        return view('teste');
+    $perguntas=Pergunta::simplePaginate(1);
 
-    }
+    return view('teste')->with('perguntas',$perguntas);
+}
 
 
 }
