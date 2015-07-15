@@ -94,10 +94,11 @@ Session::flash('message','Dados gravados com sucesso');
     aqui se encontraram os metodos que serão chamados para devoler as perguntas
     tanto para o exame, como para testes assim como para exercicios
     */
-    public function buscarExame(){
+    public static function buscarExame($disciplina){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
 
-        $disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
+
+        //$disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
 
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
@@ -110,7 +111,7 @@ Session::flash('message','Dados gravados com sucesso');
 
     }
 
-    public function buscarTeste(){
+    public static function buscarTeste(){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
         $disciplina='matematica';//esses dois atributos devem ser parametros
         $capitulo='trigonometria';
@@ -125,7 +126,7 @@ Session::flash('message','Dados gravados com sucesso');
         return $perguntas;
     }
 
-    public function buscarExercicios(){
+    public static function buscarExercicios(){
        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
         $disciplina='matematica';//esses dois atributos devem ser parametros
         $capitulo='trigonometria';

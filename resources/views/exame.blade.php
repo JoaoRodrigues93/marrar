@@ -3,8 +3,11 @@
     Marrar: Exame
 @stop
 @section('body')
+
 <script>
     function escolheOpcao(id){
+        alert("{{$text}}");
+
         deSeleciona();
         document.getElementById(id).setAttribute('class','bg-success');
     }
@@ -12,8 +15,9 @@
         for (i=1;i<=5;i++)
             document.getElementById('opcao'+i).setAttribute('class','');
     }
-
 </script>
+
+
     <br>
     <br>
     <div class="container well">
