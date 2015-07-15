@@ -100,6 +100,12 @@ Session::flash('message','Dados gravados com sucesso');
 
         //$disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
 
+        $opcao1='';
+        $opcao2='';
+        $opcao3='';
+        $opcao4='';
+        $opcao5='';
+
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
@@ -107,6 +113,7 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('disciplinas.nome','=',$disciplina)
             ->select('perguntas.*')
             ->get();
+
         return $perguntas;
 
     }
@@ -142,6 +149,20 @@ Session::flash('message','Dados gravados com sucesso');
             ->get();
         return $perguntas;
 
+    }
+
+    private function randomize($perguntas){
+        $opcao1='';
+        $opcao2='';
+        $opcao3='';
+        $opcao4='';
+        $opcao5='';
+
+        $opcao1= rand ( 1 ,5 );
+        do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
+        do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
+        do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
+        do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
     }
 
 }
