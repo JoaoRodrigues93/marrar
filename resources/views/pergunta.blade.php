@@ -16,7 +16,7 @@
 
     @endif
     {!! Form::open( array('url'=> 'registar-pergunta')) !!}
-        <a href="{{URL::to('perguntaview')}}"  class="">Clique aqui para ver a lista de perguntas</a>
+        <a href="{{URL::to('perguntaview')}}"  class="text-right">Clique aqui para ver a lista de perguntas</a>
         <div class="jumbotron">
            <div class="form-group">
 
