@@ -6581,4 +6581,8 @@ button.close {
     display: none !important;
   }
 }
+
+#show{
+    display: none;
+}
 /*# sourceMappingURL=bootstrap.css.map */

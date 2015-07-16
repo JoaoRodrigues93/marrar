@@ -8,7 +8,7 @@
 
 
         <script>
-            function check(){
+            function check() {
 
                 return confirm('Tem certeza que pretente remover esse tema?');
             }
@@ -22,6 +22,7 @@
         @endif
 
         <h3 class="text-center">Lista de Temas</h3>
+
         <div class="jumbotron">
 
 
@@ -30,11 +31,11 @@
                 <thead class="text-capitalize">
                 <tr>
 
-                    <th> </th>
-                    <th>Nome </th>
+                    <th></th>
+                    <th>Nome</th>
                     <th>Numero de Questoes</th>
 
-                    <th> Acção </th>
+                    <th> Acção</th>
 
                 </tr>
 
@@ -52,15 +53,13 @@
                         <td>{{$tema->numero_questoes}}</td>
 
 
-                        <td> <a href="{{URL::to('/tema_list/editar/'.$tema->id)}}">Editar</a> | <a onclick="return check()" href="{{URL::to('/tema_list/remover/'.$tema->id)}}">Remover</a></td>
+                        <td><a href="{{URL::to('/tema_list/editar/'.$tema->id)}}">Editar</a> | <a
+                                    onclick="return check()"
+                                    href="{{URL::to('/tema_list/remover/'.$tema->id)}}">Remover</a></td>
                     </tr>
 
                 @endforeach
                 </tbody>
-
-
-
-
 
 
             </table>

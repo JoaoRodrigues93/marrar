@@ -8,6 +8,7 @@
     </title>
     @section('links')
         <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
+        <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.js')}} "></script>
     @show
