@@ -8,12 +8,12 @@ class ExameController extends Controller
 
     public function show()
     {
-        $examesJSON = "{\"perguntas\": [ ";
+        $examesJSON = "[ ";
         $perguntas = PerguntaController::buscarExame("História");
         $results = 'Nao passou';
         $nrPerguntas =0;
 
-        foreach ($perguntas as $pergunta) {
+        /*foreach ($perguntas as $pergunta) {
              if (strlen($examesJSON) < 20) {
                  $examesJSON .= "{\"questao\":\"$pergunta->questao\"," .
                      "\"opcao1\":\"$pergunta->opcao1\" " .
@@ -35,9 +35,9 @@ class ExameController extends Controller
 
         }
 
-        $examesJSON.=" ] }";
+        $examesJSON.=" ]";*/
 
-            return View('exame')->with(array("examesJSON" => $examesJSON,"nrPerguntas"=>$nrPerguntas));
+            return View('exame')->with(array("perguntas" => $perguntas,"nrPerguntas"=>$nrPerguntas));
         }
 
 }
