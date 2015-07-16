@@ -152,6 +152,7 @@ Session::flash('message','Dados gravados com sucesso');
     }
 
     private function randomize($perguntas){
+
         $opcao1='';
         $opcao2='';
         $opcao3='';
@@ -163,6 +164,31 @@ Session::flash('message','Dados gravados com sucesso');
         do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
         do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
         do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
+
+        setOpcao($perguntas,$opcao1);
+        setOpcao($perguntas,$opcao2);
+        setOpcao($perguntas,$opcao3);
+        setOpcao($perguntas,$opcao4);
+        setOpcao($perguntas,$opcao5);
+
+
+        $perguntas->opcao1=$opcao1;
+        $perguntas->opcao2=$opcao2;
+        $perguntas->opcao3=$opcao3;
+        $perguntas->opcao4=$opcao4;
+        $perguntas->opcao5=$opcao5;
+
+        return $perguntas;
+    }
+
+    private function setOpcao($perguntas,$opcao){
+        switch($opcao){
+            case(1):$opcao=$perguntas->opcao1;break;
+            case(2):$opcao=$perguntas->opcao2;break;
+            case(3):$opcao=$perguntas->opcao3;break;
+            case(4):$opcao=$perguntas->opcao4;break;
+            case(5):$opcao=$perguntas->opcao5;break;
+        }
     }
 
 }
