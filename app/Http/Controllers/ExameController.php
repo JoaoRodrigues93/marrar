@@ -9,7 +9,7 @@ class ExameController extends Controller
     public static function showExame($disciplina)
     {
 
-        $perguntas = PerguntaController::buscarExame("História");
+        $perguntas = PerguntaController::buscarExame("matematica");
 
 
             return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplina));

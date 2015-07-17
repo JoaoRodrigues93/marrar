@@ -94,17 +94,12 @@ Session::flash('message','Dados gravados com sucesso');
     aqui se encontraram os metodos que serão chamados para devoler as perguntas
     tanto para o exame, como para testes assim como para exercicios
     */
-    public static function buscarExame($disciplina){
+    public function buscarExame($disciplina){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
 
 
         //$disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
 
-        $opcao1='';
-        $opcao2='';
-        $opcao3='';
-        $opcao4='';
-        $opcao5='';
 
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
@@ -114,11 +109,11 @@ Session::flash('message','Dados gravados com sucesso');
             ->select('perguntas.*')
             ->get();
 
-        return $perguntas;
+        return $this->randomize($perguntas);
 
     }
 
-    public static function buscarTeste(){
+    public function buscarTeste($disciplina,$capitulo){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
         $disciplina='matematica';//esses dois atributos devem ser parametros
         $capitulo='trigonometria';
@@ -133,7 +128,7 @@ Session::flash('message','Dados gravados com sucesso');
         return $perguntas;
     }
 
-    public static function buscarExercicios(){
+    public function buscarExercicios($disciplina,$capitulo,$tema){
        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
         $disciplina='matematica';//esses dois atributos devem ser parametros
         $capitulo='trigonometria';
@@ -159,24 +154,29 @@ Session::flash('message','Dados gravados com sucesso');
         $opcao4='';
         $opcao5='';
 
-        $opcao1= rand ( 1 ,5 );
-        do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
-        do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
-        do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
-        do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
+        foreach ($perguntas as &$pergunta) {
+            //$value = $value * 2;
+            $opcao1= rand ( 1 ,5 );
+            do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
+            do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
+            do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
+            do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
 
-        setOpcao($perguntas,$opcao1);
-        setOpcao($perguntas,$opcao2);
-        setOpcao($perguntas,$opcao3);
-        setOpcao($perguntas,$opcao4);
-        setOpcao($perguntas,$opcao5);
+            $this->setOpcao($pergunta,$opcao1);
+            $this->setOpcao($pergunta,$opcao2);
+            $this->setOpcao($pergunta,$opcao3);
+            $this->setOpcao($pergunta,$opcao4);
+            $this->setOpcao($pergunta,$opcao5);
 
 
-        $perguntas->opcao1=$opcao1;
-        $perguntas->opcao2=$opcao2;
-        $perguntas->opcao3=$opcao3;
-        $perguntas->opcao4=$opcao4;
-        $perguntas->opcao5=$opcao5;
+            $pergunta->opcao1=$opcao1;
+            $pergunta->opcao2=$opcao2;
+            $pergunta->opcao3=$opcao3;
+            $pergunta->opcao4=$opcao4;
+            $pergunta->opcao5=$opcao5;
+        }
+
+
 
         return $perguntas;
     }
