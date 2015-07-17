@@ -149,13 +149,14 @@ Session::flash('message','Dados gravados com sucesso');
 
     private function randomize($perguntas){
 
-        $opcao1=5;
-        $opcao2=4;
-        $opcao3=3;
-        $opcao4=2;
-        $opcao5=1;
+
 
         foreach ($perguntas as $pergunta) {
+            //$opcao1=5;
+            //$opcao2=4;
+            //$opcao3=3;
+            //$opcao4=2;
+            //$opcao5=1;
 
             $opcao1= rand ( 1 ,5 );
 
@@ -163,28 +164,23 @@ Session::flash('message','Dados gravados com sucesso');
             while($opcao1==$opcao2){
                 $opcao2=rand(1,5);
             }
+
             $opcao3=rand(1,5);
-           while(($opcao3 = $opcao2)){
+            while(($opcao3 == $opcao2) or ($opcao3==$opcao1)){
                 $opcao3=rand(1,5);
             }
 
             $opcao4=rand(1,5);
-            //while($opcao1==$opcao2){
-            //    $opcao2=rand(1,5);
-           // }
+            while(($opcao4==$opcao1)or($opcao4==$opcao2)or($opcao4==$opcao3)){
+                $opcao4=rand(1,5);
+            }
 
             $opcao5=rand(1,5);
-            //while($opcao1==$opcao2){
-            //    $opcao2=rand(1,5);
-            //}
+            while(($opcao5==$opcao1)or($opcao5==$opcao2)or($opcao5==$opcao3)or($opcao5==$opcao4)){
+                $opcao5=rand(1,5);
+            }
 
 
-
-           /* do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
-            do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
-            do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
-            do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
-*/
             $opcao1=$this->setOpcao($pergunta,$opcao1);
             $opcao2=$this->setOpcao($pergunta,$opcao2);
             $opcao3=$this->setOpcao($pergunta,$opcao3);
