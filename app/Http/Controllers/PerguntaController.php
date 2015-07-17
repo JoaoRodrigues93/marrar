@@ -110,6 +110,7 @@ Session::flash('message','Dados gravados com sucesso');
             ->get();
 
         return $this->randomize($perguntas);
+        //return $perguntas;
 
     }
 
@@ -148,25 +149,47 @@ Session::flash('message','Dados gravados com sucesso');
 
     private function randomize($perguntas){
 
-        $opcao1='';
-        $opcao2='';
-        $opcao3='';
-        $opcao4='';
-        $opcao5='';
+        $opcao1=5;
+        $opcao2=4;
+        $opcao3=3;
+        $opcao4=2;
+        $opcao5=1;
 
-        foreach ($perguntas as &$pergunta) {
-            //$value = $value * 2;
+        foreach ($perguntas as $pergunta) {
+
             $opcao1= rand ( 1 ,5 );
-            do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
+
+            $opcao2=rand(1,5);
+            while($opcao1==$opcao2){
+                $opcao2=rand(1,5);
+            }
+            $opcao3=rand(1,5);
+           while(($opcao3 = $opcao2)){
+                $opcao3=rand(1,5);
+            }
+
+            $opcao4=rand(1,5);
+            //while($opcao1==$opcao2){
+            //    $opcao2=rand(1,5);
+           // }
+
+            $opcao5=rand(1,5);
+            //while($opcao1==$opcao2){
+            //    $opcao2=rand(1,5);
+            //}
+
+
+
+           /* do{$opcao2= rand ( 1 ,5 );}while($opcao1==$opcao2);
             do{$opcao3= rand ( 1 ,5 );}while(($opcao3==$opcao1)||($opcao3==$opcao2));
             do{$opcao4= rand ( 1 ,5 );}while(($opcao4==$opcao1)||($opcao4==$opcao2)||($opcao4==$opcao3));
             do{$opcao5= rand ( 1 ,5 );}while(($opcao5==$opcao1)||($opcao5||$opcao2)||($opcao5==$opcao3)||($opcao5==$opcao4));
-
-            $this->setOpcao($pergunta,$opcao1);
-            $this->setOpcao($pergunta,$opcao2);
-            $this->setOpcao($pergunta,$opcao3);
-            $this->setOpcao($pergunta,$opcao4);
-            $this->setOpcao($pergunta,$opcao5);
+*/
+            $opcao1=$this->setOpcao($pergunta,$opcao1);
+            $opcao2=$this->setOpcao($pergunta,$opcao2);
+            $opcao3=$this->setOpcao($pergunta,$opcao3);
+            $opcao4=$this->setOpcao($pergunta,$opcao4);
+            $opcao5=$this->setOpcao($pergunta,$opcao5);
 
 
             $pergunta->opcao1=$opcao1;
@@ -189,6 +212,7 @@ Session::flash('message','Dados gravados com sucesso');
             case(4):$opcao=$perguntas->opcao4;break;
             case(5):$opcao=$perguntas->opcao5;break;
         }
+        return $opcao;
     }
 
 }

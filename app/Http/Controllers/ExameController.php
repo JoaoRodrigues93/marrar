@@ -6,16 +6,16 @@ use App\Http\Controllers\PerguntaController;
 class ExameController extends Controller
 {
 
-    public static function showExame($disciplina)
+    public function showExame($disciplina)
     {
-
-        $perguntas = PerguntaController::buscarExame("matematica");
+        $perguntaController = new PerguntaController();
+        $perguntas = $perguntaController->buscarExame($disciplina);
 
 
             return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplina));
         }
 
     public function show(){
-        return $this->showExame("História");
+        return $this->showExame("Matematica");
     }
 }
