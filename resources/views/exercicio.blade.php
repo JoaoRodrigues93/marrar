@@ -8,14 +8,20 @@
 
     <script>
         function alteraResposta(respostaEscolhida, idEscolhido) {
+            var botao=document.getElementById("hide");
+            botao.setAttribute("class","btn btn-success btn-lg active");
             deSeleciona();
             document.getElementById('respostaEscolhida').setAttribute('value', respostaEscolhida);
             document.getElementById(idEscolhido).setAttribute('class', 'bg-success');
+
         }
 
         function deSeleciona() {
             for (i = 1; i <= 5; i++)
                 document.getElementById('opcao' + i).setAttribute('class', '');
+
+
+
         }
     </script>
 
@@ -106,29 +112,37 @@
                         var resposta = document.getElementById("respostaCerta");
                         var respostaEscolhida = document.getElementById("respostaEscolhida");
                         if(resposta.value == respostaEscolhida.value){
-                            content.setAttribute("class","alert alert-success");
-                            content.innerHTML="<strong>Certo</strong> parabens a resposta está certa";
+                            content.setAttribute("class","col-md-6 alert alert-success");
+                            content.innerHTML="<strong>Certo</strong> Parabens a resposta está certa";
                         }
                         else{
-                            content.setAttribute("class","alert alert-danger")
-                            content.innerHTML="<strong>Errado</strong> parabens a resposta está certa";
+                            content.setAttribute("class","col-md-6 alert alert-danger")
+                            content.innerHTML="<strong>Errado</strong> A resposta correcta é "+resposta.value;
                         }
+                        document.getElementById("example1").disabled=true;
+                        document.getElementById("example2").disabled=true;
+                        document.getElementById("example3").disabled=true;
+                        document.getElementById("example4").disabled=true;
+                        document.getElementById("example5").disabled=true;
                     }
 
-
-
                 </script>
+                <div class="container">
+                    <div class="row">
+<div class="col-md-6" id="content">
+</div>
+                    <div class="col-md-3"></div>
+                <div class="col-md-3">
 
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8">
-
-                    {!!Form::button('Confirmar',['class'=>'btn btn-success btn-md','id'=>'hide','value'=>'Hide',"onclick"=>"esconder()"]) !!}
-                    {!!Form::button('Proximo',['class'=>'btn btn-primary btn-md','id'=>'show','value'=>'Show'])!!}
-
-
+                    {!!Form::button('Confirmar',['class'=>'btn btn-success btn-lg disabled','id'=>'hide','value'=>'Hide',"onclick"=>"esconder()"]) !!}
+                    {!!Form::button('  Proximo ',['class'=>'btn btn-primary btn-lg','id'=>'show','value'=>'Show'])!!}
                 </div>
-                <div>
-                <div  id="content">
-                </div>
+
+
+
+
+</div>
+
                 </div>
                 <div class="row"></div>
                 <div class="row">
@@ -143,7 +157,7 @@
                 {!!Form::close()!!}
             </div>
 
-
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
 
         </div>
     </div>
