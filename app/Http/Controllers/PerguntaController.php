@@ -126,7 +126,7 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('capitulos.nome','=',$capitulo)
             ->select('perguntas.*')
             ->get();
-        return $perguntas;
+        return $this->randomize($perguntas);
     }
 
     public function buscarExercicios($disciplina,$capitulo,$tema){
@@ -143,21 +143,11 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('temas.nome','=',$tema)
             ->select('perguntas.*')
             ->get();
-        return $perguntas;
-
+        return $this->randomize($perguntas);
     }
 
     private function randomize($perguntas){
-
-
-
         foreach ($perguntas as $pergunta) {
-            //$opcao1=5;
-            //$opcao2=4;
-            //$opcao3=3;
-            //$opcao4=2;
-            //$opcao5=1;
-
             $opcao1= rand ( 1 ,5 );
 
             $opcao2=rand(1,5);
@@ -194,9 +184,6 @@ Session::flash('message','Dados gravados com sucesso');
             $pergunta->opcao4=$opcao4;
             $pergunta->opcao5=$opcao5;
         }
-
-
-
         return $perguntas;
     }
 
