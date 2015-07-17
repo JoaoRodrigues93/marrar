@@ -3,15 +3,19 @@
 use App\Disciplina;
 use App\Http\Controllers\PerguntaController;
 
-class ExameController extends Controller {
+class ExameController extends Controller
+{
 
-    public function show(){
-        $examesJSON=null;
-
+    public static function showExame($disciplina)
+    {
 
         $perguntas = PerguntaController::buscarExame("História");
 
-        return View('exame')->with(array("perguntas"=>$perguntas));
-    }
 
+            return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplina));
+        }
+
+    public function show(){
+        return $this->showExame("História");
+    }
 }

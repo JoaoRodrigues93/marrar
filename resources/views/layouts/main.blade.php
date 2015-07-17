@@ -8,8 +8,8 @@
     </title>
     @section('links')
         <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
-        <link href="{{URL::asset('js/bootstrap.js')}} " rel="script" >
-        <link href="{{URL::asset('css/style.js')}} " rel="stylesheet" >
+        <link href="{{URL::asset('js/bootstrap.js')}} " rel="script">
+        <link href="{{URL::asset('css/style.js')}} " rel="stylesheet">
 
     @show
 
@@ -21,7 +21,7 @@
 @section('header')
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="navbar-header" >
+            <div class="navbar-header">
 
                 <a class="navbar-brand" href="#">Marrar</a>
 

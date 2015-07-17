@@ -8,7 +8,7 @@
 
 
         <script>
-            function check(){
+            function check() {
 
                 return confirm('Tem certeza que pretente remover esse capitulo?');
             }
@@ -22,6 +22,7 @@
         @endif
 
         <h3 class="text-center">Lista de Capitulos</h3>
+
         <div class="jumbotron">
 
 
@@ -30,9 +31,9 @@
                 <thead class="text-capitalize">
                 <tr>
 
-                    <th> </th>
-                    <th>Nome </th>
-                    <th> Acção </th>
+                    <th></th>
+                    <th>Nome</th>
+                    <th> Acção</th>
 
                 </tr>
 
@@ -49,15 +50,13 @@
                         <td> {{$capitulo->nome}}</td>
 
 
-                        <td> <a href="{{URL::to('/capitulo_list/editar/'.$capitulo->id)}}">Editar</a> | <a onclick="return check()" href="{{URL::to('/capitulo_list/remover/'.$capitulo->id)}}">Remover</a></td>
+                        <td><a href="{{URL::to('/capitulo_list/editar/'.$capitulo->id)}}">Editar</a> | <a
+                                    onclick="return check()"
+                                    href="{{URL::to('/capitulo_list/remover/'.$capitulo->id)}}">Remover</a></td>
                     </tr>
 
                 @endforeach
                 </tbody>
-
-
-
-
 
 
             </table>

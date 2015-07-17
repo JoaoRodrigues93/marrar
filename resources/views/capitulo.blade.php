@@ -15,22 +15,22 @@
 
             @endif
             {!! Form::open( array('url'=> 'capitulo')) !!}
-            <a href="{{URL::to('capitulo_list')}}"  class="">Clique aqui para ver a lista dos capitulos</a>
+            <a href="{{URL::to('capitulo_list')}}" class="">Clique aqui para ver a lista dos capitulos</a>
 
-                <div class="form-group">
-                    {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
-                    {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas'),['class'=>'form-control']) !!}
-                </div>
+            <div class="form-group">
+                {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
+                {!! Form::select('disciplinas', $disciplinas , null,['class'=>'form-control']) !!}
+            </div>
 
-                <div class="form-group">
-                    {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                    {!! Form::textarea('nome','',['class'=>'form-control', 'placeholder'=>'Introduza o capitulo','rows'=>'1'])  !!}
+            <div class="form-group">
+                {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
+                {!! Form::textarea('nome','',['class'=>'form-control','rows'=>'1']) !!}
 
-                </div>
+            </div>
 
-                <div>  <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
-                </div>
-
+            <div>
+                <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
+            </div>
 
 
             {!! Form::close() !!}

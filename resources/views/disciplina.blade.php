@@ -14,11 +14,12 @@
 
             @endif
             {!! Form::open( array('url'=> 'gravar-disciplina')) !!}
-            <a href="{{URL::to('disciplina_list')}}"  class="">Clique aqui para ver a lista de disciplinas</a>
+            <a href="{{URL::to('disciplina_list')}}" class="">Clique aqui para ver a lista de disciplinas</a>
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza a disciplina:',['class'=>'text-primary']) !!}
-                {!! Form::textarea('nome','',['class'=>'form-control', 'placeholder'=>'Introduza a disciplina','rows'=>'1'])  !!}
+                {!! Form::textarea('nome','',['class'=>'form-control', 'placeholder'=>'Introduza a
+                disciplina','rows'=>'1']) !!}
 
 
             </div>

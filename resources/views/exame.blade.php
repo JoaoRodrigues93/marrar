@@ -5,96 +5,121 @@
 @section('body')
 
 <script>
-    function escolheOpcao(id){
-        alert("{{$text}}");
+    function escolheOpcao(id,nr){
+        deSeleciona(nr);
+        document.getElementById('opcao'+id).setAttribute('class','bg-success');
+        var btn = document.getElementById('nav'+nr);
+        btn.style.color ="#fff";
+        btn.style.backgroundColor="#5cb85c";
+        btn.style.borderColor="#4cae4c";
 
-        deSeleciona();
-        document.getElementById(id).setAttribute('class','bg-success');
     }
-    function deSeleciona(){
+    function deSeleciona(nr){
         for (i=1;i<=5;i++)
-            document.getElementById('opcao'+i).setAttribute('class','');
+            document.getElementById('opcao'+i+''+nr).setAttribute('class','');
     }
 </script>
-
 
     <br>
     <br>
     <div class="container well">
         <div class="exame-title">
-            <h2 class="text-danger">Exame | Matemática</h2>
+            <h2 class="text-danger">Exame | {{$disciplina}}</h2>
         </div>
         <div class="exame-time">
-                <h4 class="text-right">25:12</h4>
+                <h4 id="timer" onload="startTime()" class="text-right text-danger"></h4>
         </div>
+        {!!Form::open(array('url' => 'exame')) !!}
+       <div class="tab-content">
 
-        <div class="exame-question">
-         {!!Form::open(array('url' => 'exame')) !!}
-         <h2>Qual a raiz da seguinte equação linear x+2=0: </h2>
-            <div class="container question-options">
-                <div id="opcao1">
-                <p>
-                {!!Form::radio('resposta','a',false,['id'=>'resposta1','onclick'=>"escolheOpcao('opcao1')"]) !!}
-                {!!Form::label('resposta1','-2') !!}
-                </div>
-                <div id="opcao2">
-                <p>
-                {!!Form::radio('resposta','b',false,['id'=>'resposta2', 'onclick'=>"escolheOpcao('opcao2')"]) !!}
-                {!!Form::label('resposta2','2') !!}
-                </div>
-                <div id="opcao3">
-                <p>
-                {!!Form::radio('resposta','c',false,['id'=>'resposta3','onclick'=>"escolheOpcao('opcao3')"]) !!}
-                {!!Form::label('resposta3','1') !!}
-                </div>
-                <div id="opcao4">
-                <p>
-                {!!Form::radio('resposta','d',false,['id'=>'resposta4','onclick'=>"escolheOpcao('opcao4')"]) !!}
-                {!!Form::label('resposta4','-1') !!}
-                </div>
-                <div id="opcao5">
-                <p>
-                {!!Form::radio('resposta','e',false,['id'=>'resposta5','onclick'=>"escolheOpcao('opcao5')"]) !!}
-                {!!Form::label('resposta5','Nenhuma das opções') !!}
-                </p>
+         <?php
+            $i=0;
+            foreach($perguntas as $pergunta) {
+            $i++;
+            ?>
+             <div id="pergunta{{$i}}" class="tab-pane fade <?php if($i==1) echo "in active"; ?>">
+            <h2>{{$pergunta->questao}}</h2>
+             <div class="container">
+                <div id="opcao1{{$i}}" class="">
+                <p class="text-left">
+                 <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}" onclick="escolheOpcao('1{{$i}}','{{$i}}')"/>
+                 <label for="resposta1{{$i}}">{{$pergunta->opcao1}}</label>
                 </div>
 
+                <div id="opcao2{{$i}}" >
+                    <p class="text-left">
+                        <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}" onclick="escolheOpcao('2{{$i}}','{{$i}}')" />
+                        <label for="resposta2{{$i}}">{{$pergunta->opcao2}}</label>
+                </div>
+
+                <div id="opcao3{{$i}}">
+                    <p class="text-left">
+                        <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}" onclick="escolheOpcao('3{{$i}}','{{$i}}')" />
+                        <label for="resposta3{{$i}}">{{$pergunta->opcao3}}</label>
+                </div>
+
+                <div id="opcao4{{$i}}">
+                    <p class="text-left">
+                        <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}" onclick="escolheOpcao('4{{$i}}','{{$i}}')" />
+                        <label for="resposta4{{$i}}">{{$pergunta->opcao4}}</label>
+                </div>
+
+                <div id="opcao5{{$i}}">
+                    <p class="text-left">
+                        <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}" onclick="escolheOpcao('5{{$i}}','{{$i}}')" />
+                        <label for="resposta5{{$i}}">{{$pergunta->opcao5}}</label>
+                    </p>
+                </div>
+                 </div>
             </div>
-
-            <div class="question-list">
-                <ul class="pagination">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li>
-                    <li><a href="#">11</a></li>
-                    <li><a href="#">12</a></li>
-                    <li><a href="#">13</a></li>
-                    <li><a href="#">14</a></li>
-                    <li><a href="#">15</a></li>
-                    <li><a href="#">16</a></li>
-                    <li><a href="#">17</a></li>
-                    <li><a href="#">18</a></li>
-                    <li><a href="#">19</a></li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#">21</a></li>
-                    <li><a href="#">22</a></li>
-                    <li><a href="#">23</a></li>
-                    <li><a href="#">24</a></li>
-                    <li><a href="#">25</a></li>
+            <?php } ?>
+            </div>
+                <ul class="nav nav-pills">
+                    <?php for($j=1; $j<=$i; $j++) {
+                    ?>
+                            <li id="nav{{$j}}"  class="<?php if($j==1) echo "active"; ?>" ><a  data-toggle="pill" href="#pergunta{{$j}}">{{$j}}</a></li>
+                    <?php }?>
                 </ul>
-            </div>
           <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-sm-offset-9 col-md-offset-10 col-xs-offset-8">
          {!!Form::submit('Entregar',['class'=>'btn btn-primary']) !!}
-
-          </div>
-            {!!Form::close()!!}
         </div>
+        {!!Form::close()!!}
     </div>
+    <script>
+        function startTimer(duration, display) {
+            var start = Date.now(),
+                    diff,
+                    minutes,
+                    seconds;
+            function timer() {
+                // get the number of seconds that have elapsed since
+                // startTimer() was called
+                diff = duration - (((Date.now() - start) / 1000) | 0);
+
+                // does the same job as parseInt truncates the float
+                minutes = (diff / 60) | 0;
+                seconds = (diff % 60) | 0;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (diff <= 0) {
+                    // add one second so that the count down starts at the full duration
+                    // example 05:00 not 04:59
+                    start = Date.now() + 1000;
+                }
+            };
+            // we don't want to wait a full second before the timer starts
+            timer();
+            setInterval(timer, 1000);
+        }
+
+        window.onload = function () {
+            var fiveMinutes = 60 * 60,
+                    display = document.querySelector('#timer');
+            startTimer(fiveMinutes, display);
+        };
+    </script>
 @stop

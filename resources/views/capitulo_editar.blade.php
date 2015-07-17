@@ -17,14 +17,15 @@
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::textarea('nome',$capitulos->nome,['class'=>'form-control', 'placeholder'=>'Introduza o capitulo','rows'=>'1'])  !!}
-                {!! Form::hidden('id',$capitulos->id,['class'=>'form-control'])  !!}
+                {!! Form::textarea('nome',$capitulos->nome,['class'=>'form-control', 'placeholder'=>'Introduza o
+                capitulo','rows'=>'1']) !!}
+                {!! Form::hidden('id',$capitulos->id,['class'=>'form-control']) !!}
 
             </div>
 
-            <div>  <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
+            <div>
+                <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
             </div>
-
 
 
             {!! Form::close() !!}
