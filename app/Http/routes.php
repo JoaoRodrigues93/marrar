@@ -67,3 +67,5 @@ Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
 Route::get('exercicio','ExercicioController@showJogo');
 Route::post('exercicio','ExercicioController@doPergunta');
+
+Route::get('teste-validacao','TesteController@validaTeste');
