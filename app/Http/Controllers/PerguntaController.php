@@ -97,11 +97,6 @@ Session::flash('message','Dados gravados com sucesso');
     public function buscarExame($disciplina){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
 
-
-        //$disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
-
-
-
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
@@ -110,8 +105,6 @@ Session::flash('message','Dados gravados com sucesso');
             ->get();
 
         return $this->randomize($perguntas);
-        //return $perguntas;
-
     }
 
     public function buscarTeste($disciplina,$capitulo){
