@@ -90,6 +90,8 @@ Session::flash('message','Dados gravados com sucesso');
     }
 
 
+
+
     /*motor de peruntas começa aqui
     aqui se encontraram os metodos que serão chamados para devoler as perguntas
     tanto para o exame, como para testes assim como para exercicios
@@ -190,7 +192,6 @@ Session::flash('message','Dados gravados com sucesso');
         }
         return $opcao;
     }
-
 }
 
 

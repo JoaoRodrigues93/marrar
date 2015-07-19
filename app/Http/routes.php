@@ -58,6 +58,15 @@ Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 
 Route::get('exame','ExameController@show');
+Route::get('registar',function(){
+    return View::make('registar');
+});
+Route::get('login',function(){
+    return View::make('login');
+});
+Route::get('perfil',function(){
+    return View::make('perfil');
+});
 
 
 //metodos onde se chamam as perguntas----
