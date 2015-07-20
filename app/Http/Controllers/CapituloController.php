@@ -62,12 +62,38 @@ class CapituloController extends Controller
         $id = $request->input('id');
         $disciplinas = Disciplina::find($request->input('disciplinas'));
         $capitulos = Capitulo::find($id);
-        $capitulos-> nome = $request->input('nome');
+        $capitulos->nome = $request->input('nome');
         $capitulos = $disciplinas->capitulos()->save($capitulos);
         Session::flash('message', 'Dados alterados com sucesso');
         return Redirect('capitulo_list');
     }
+
+
+public function buscarCapituloDisciplina($id){
+
+    $capitulos=Capitulo::where('disciplina_id',$id)->get();
+
+
+    $capituloJson = "{\"capitulos\":[ ";
+
+    foreach ($capitulos as $capitulo) {
+        if (strlen($capituloJson) < 20) {
+            $capituloJson .= "{\"nome\":\"$capitulo->nome\"," .
+                "\"id\":\"$capitulo->id\"}";
+
+        } else if(strlen($capituloJson)>20) {
+            $capituloJson .= ",{\"nome\":\"$capitulo->nome\"," .
+                "\"id\":\"$capitulo->id\"}";
+        }
+
+
+    }
+
+    $capituloJson.=" ]}";
+
+    return $capituloJson;
+
 }
 
 
-
+}

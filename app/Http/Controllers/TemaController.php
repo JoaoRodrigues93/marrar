@@ -71,4 +71,32 @@ class TemaController extends Controller
 
 
   }
+
+    public function buscarTemaCapitulo($id){
+
+        $temas=Tema::where('capitulo_id',$id)->get();
+
+
+        $temaJson = "{\"temas\":[ ";
+
+        foreach ($temas as $tema) {
+            if (strlen($temaJson) < 20) {
+                $temaJson .= "{\"nome\":\"$tema->nome\"," .
+                    "\"id\":\"$tema->id\"}";
+
+            } else if(strlen($temaJson)>20) {
+                $temaJson .= ",{\"nome\":\"$tema->nome\"," .
+                    "\"id\":\"$tema->id\"}";
+            }
+
+
+        }
+
+        $temaJson.=" ]}";
+
+        return $temaJson;
+
+    }
+
+
 }

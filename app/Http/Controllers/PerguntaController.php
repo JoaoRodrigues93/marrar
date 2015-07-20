@@ -20,9 +20,7 @@ class PerguntaController extends Controller {
 
 public function InicializaPergunta(){
     $disciplinas = Disciplina::lists('nome', 'id');
-    $capitulos = Capitulo::lists('nome', 'id');
-    $tema = Tema::lists('nome','id');
-    return view('pergunta')->with(array('disciplinas'=>$disciplinas,'capitulos'=>$capitulos,'tema'=>$tema));
+    return view('pergunta')->with(array('disciplinas'=>$disciplinas));
 }
 
     public function InicializaPerguntaView(){
@@ -199,5 +197,3 @@ Session::flash('message','Dados gravados com sucesso');
     }
 
 }
-
-

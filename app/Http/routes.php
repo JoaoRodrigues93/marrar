@@ -69,3 +69,12 @@ Route::get('exercicio','ExercicioController@showJogo');
 Route::post('exercicio','ExercicioController@doPergunta');
 
 Route::get('teste-validacao','TesteController@validaTeste');
+
+Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
+Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
+
+Route::get('capituloHome',function(){
+
+    return view('capituloHome');
+
+});
