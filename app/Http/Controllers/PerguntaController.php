@@ -20,9 +20,7 @@ class PerguntaController extends Controller {
 
 public function InicializaPergunta(){
     $disciplinas = Disciplina::lists('nome', 'id');
-    $capitulos = Capitulo::lists('nome', 'id');
-    $tema = Tema::lists('nome','id');
-    return view('pergunta')->with(array('disciplinas'=>$disciplinas,'capitulos'=>$capitulos,'tema'=>$tema));
+    return view('pergunta')->with(array('disciplinas'=>$disciplinas));
 }
 
     public function InicializaPerguntaView(){
@@ -90,17 +88,14 @@ Session::flash('message','Dados gravados com sucesso');
     }
 
 
+
+
     /*motor de peruntas começa aqui
     aqui se encontraram os metodos que serão chamados para devoler as perguntas
     tanto para o exame, como para testes assim como para exercicios
     */
     public function buscarExame($disciplina){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
-
-
-        //$disciplina='matematica';//a disciplina deverá ser recebida como parametro e nao estaticamente como esta
-
-
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
@@ -110,8 +105,6 @@ Session::flash('message','Dados gravados com sucesso');
             ->get();
 
         return $this->randomize($perguntas);
-        //return $perguntas;
-
     }
 
     public function buscarTeste($disciplina,$capitulo){
@@ -197,7 +190,4 @@ Session::flash('message','Dados gravados com sucesso');
         }
         return $opcao;
     }
-
 }
-
-

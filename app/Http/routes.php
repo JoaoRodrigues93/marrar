@@ -58,6 +58,15 @@ Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 
 Route::get('exame','ExameController@show');
+Route::get('registar',function(){
+    return View::make('registar');
+});
+Route::get('login',function(){
+    return View::make('login');
+});
+Route::get('perfil',function(){
+    return View::make('perfil');
+});
 
 
 //metodos onde se chamam as perguntas----
@@ -69,3 +78,12 @@ Route::get('exercicio','ExercicioController@showJogo');
 Route::post('exercicio','ExercicioController@doPergunta');
 
 Route::get('teste-validacao','TesteController@validaTeste');
+
+Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
+Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
+
+Route::get('capituloHome',function(){
+
+    return view('capituloHome');
+
+});
