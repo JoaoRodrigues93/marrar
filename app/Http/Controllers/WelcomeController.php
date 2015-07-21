@@ -36,36 +36,6 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-
-        /* $disciplina = new Disciplina;
-         $disciplina ->nome = 'Matemática';
-         $disciplina->save();
-
-         $capitulo = new Capitulo;
-         $capitulo ->nome = 'Trigonometria';
-         $capitulo ->disciplina_id =$disciplina->id;
-         $capitulo ->save();
-
-
-        $tema = new Tema;
-         $tema -> nome = 'Cossenos';
-         $tema -> conteudo = 'A função foi inicialmente desenvolvida por.';
-         $tema -> numero_questoes = 15;
-         $tema -> capitulo_id = $capitulo->id;
-         $tema->save();
-
-         $pergunta = new Pergunta;
-         $pergunta->questao = 'Cos(90) é:';
-         $pergunta->opcao1 ='1';
-         $pergunta->opcao2 ='0.5';
-         $pergunta->opcao3 ='0.3';
-         $pergunta->opcao4 ='0.75';
-         $pergunta->opcao5 ='0';
-         $pergunta->opcaoCorrecta ='0';
-         $pergunta ->tema_id = $tema->id;
-         $pergunta->save();*/
-
-
         return view('initial');
     }
 
