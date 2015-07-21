@@ -1,0 +1,185 @@
+html, body{
+    background: #808080;
+}
+
+body{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+header{
+    background: #2C97DE;
+    height: 8em;
+}
+
+.logo{
+    padding: 0;
+}
+
+div.logo img{
+    margin: 2em 0 0 2em;
+    cursor: pointer;
+}
+
+header div button{
+    background: #FAFAFA;
+    color: #2C97DE;
+    padding: 0 1em;
+    height: 2em;
+    display: table;
+    border: 1px solid #FAFAFA;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1.2em;
+    text-transform: lowercase;
+    letter-spacing: .045em;
+    line-height: 2em;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 3em;
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.3);
+    float: right;
+    margin: 2em 2em 0 0;
+    width: 6em;
+}
+
+.entreVamosMarrar{
+    background-image: url("../img/vamosmarrar.jpg");
+     /*position:relative;
+    display:inline-block;
+    overflow:hidden;*/
+    margin: 0;
+    padding: 0;
+    height: 35em;
+   /* position:absolute;
+    display:table;*/
+
+
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+/*.entreVamosMarrar img{
+
+    margin: 0;
+    padding: 0;
+    display: block;
+    max-width: 100%;
+}*/
+
+.entreVamosMarrar h1{
+   /* position: absolute;
+    display:table-cell;
+    vertical-align:middle;*/
+    margin: 0;
+    position: relative;
+    top: 45%;
+    font-size: 4.1em;
+    padding-left: 1.6em;
+    transform: translateY(-45%);
+}
+
+div.podeAprender{
+    background: #FAFAFA;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+div.podeAprender  p{
+    text-decoration: none;
+    margin: 0;
+
+    padding: 0;
+    text-align: justify;
+}
+
+div.podeAprender  h1{
+    /*padding: 0;*/
+    margin: 0 0 .5em 3em;
+
+}
+div.podeAprender h1, div.comoFunciona h1, div.queDizem h1{
+    color: #353740;
+}
+div.podeAprender div img{
+    padding-left: 9%;
+}
+
+div.podeAprender .podeAprenderDesc{
+    width: 96%;
+    padding-left: 17%;
+}
+
+div.comoFunciona{
+    background: #EEEEEE;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+div.comoFunciona img{
+    width: 6em;
+    height: 6em;
+
+}
+
+div.comoFunciona .comoFuncionaTitulo div h1{
+    font-size: 1.9em;
+    /*text-transform: lowercase;*/
+    letter-spacing: .045em;
+    line-height: 2em;
+    text-decoration: none;
+    font-weight: 500;
+    color: #FF530D;
+    padding: 0;
+    margin: 0;
+}
+
+div.queDizem{
+    background: #FAFAFA;
+    text-align: center;
+    padding-bottom: 1em;
+    position: relative;
+
+}
+
+div.queDizem div.row:nth-child(3){
+
+    /*display: inline;*/
+}
+
+div.queDizem p{
+    padding-top: .5em;
+    width: 20em;
+    font-style: italic;
+    padding-right: 0;
+    margin-right: 0;
+    margin-left: 7%;
+}
+
+div.queDizem .col-lg-4 h4{
+    text-align: end;
+    padding-top: 0;
+    margin-top: 0;
+    margin-right: 4em;
+    font-size: 1.2em;
+}
+footer{
+    background: #2C97DE;
+    height: 8.875em;
+}
+
+footer ul{
+    list-style: none;
+
+
+}
+
+footer ul li{
+  display: inline;
+    top: 50%
+}
+
+
+

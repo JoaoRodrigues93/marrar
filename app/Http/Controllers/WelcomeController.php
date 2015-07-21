@@ -66,7 +66,7 @@ class WelcomeController extends Controller
          $pergunta->save();*/
 
 
-        return "<h2>Ainda por editar</h2>";
+        return view('initial');
     }
 
 }
