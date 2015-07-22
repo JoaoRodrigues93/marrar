@@ -48,12 +48,25 @@ header div button{
      /*position:relative;
     display:inline-block;
     overflow:hidden;*/
+
     margin: 0;
     padding: 0;
     height: 35em;
    /* position:absolute;
     display:table;*/
 
+
+
+}
+
+.entreVamosMarrarOpc{
+    background: black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .4;
+    position: relative;
 
 }
 
@@ -69,16 +82,16 @@ a:hover{
     max-width: 100%;
 }*/
 
-.entreVamosMarrar h1{
-   /* position: absolute;
-    display:table-cell;
-    vertical-align:middle;*/
+.entreVamosMarrar h1 {
+    /* position: absolute;
+     display:table-cell;
+     vertical-align:middle;*/
     margin: 0;
     position: relative;
-    top: 45%;
+    top: -55%;
     font-size: 4.1em;
     padding-left: 1.6em;
-    transform: translateY(-45%);
+    /*transform: translateY(45%);*/
 }
 
 div.podeAprender{
@@ -115,7 +128,7 @@ div.podeAprender .podeAprenderDesc{
 div.comoFunciona{
     background: #EEEEEE;
     text-align: center;
-    padding-bottom: 1em;
+    padding-bottom: 1.7em;
 }
 
 div.comoFunciona img{
@@ -136,17 +149,19 @@ div.comoFunciona .comoFuncionaTitulo div h1{
     margin: 0;
 }
 
+div.comoFunciona > div:nth-child(4) p{
+    width: 90%;
+    text-decoration: none;
+    white-space: normal;
+    margin: 0 0 0 5%;
+}
+
 div.queDizem{
     background: #FAFAFA;
     text-align: center;
     padding-bottom: 1em;
     position: relative;
 
-}
-
-div.queDizem div.row:nth-child(3){
-
-    /*display: inline;*/
 }
 
 div.queDizem p{
@@ -168,18 +183,68 @@ div.queDizem .col-lg-4 h4{
 footer{
     background: #2C97DE;
     height: 8.875em;
+
 }
 
-footer ul{
-    list-style: none;
-
-
+footer div.row{
+    padding-top: 5%;
 }
 
 footer ul li{
-  display: inline;
-    top: 50%
+   margin: 0;
+    padding: 0 .8em 0 0;
+    list-style: none;
+    float: left;
+
 }
 
+footer a{
+    color: #353740;  /*color: #353740;*/
+    display: block;
+    width: auto;
+    height: 20px;
+    font-size: 1.1em;
+    /*letter-spacing: .045em;*/
+    white-space: nowrap;
 
+}
 
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a{
+    background-image: url("../img/icons/facebook.png") ;
+}
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a{
+    background-image: url("../img/icons/twitter.png") ;
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a{
+    background-image: url("../img/icons/google-plus.png") ;
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a{
+    width: 20px;
+    /*background: #0000C2;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    opacity: .7;
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a:hover,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a:hover,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a:hover {
+   opacity: 1;
+}
+
+footer a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+body > div > footer > div > div.col-lg-8 > nav{
+  float: right;
+    margin: 0 3em 0 0;
+
+}

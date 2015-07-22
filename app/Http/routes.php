@@ -87,3 +87,5 @@ Route::get('capituloHome',function(){
     return view('capituloHome');
 
 });
+
+Route::get('editar_inicial', 'WelcomeController@editar_inicial');

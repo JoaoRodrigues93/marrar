@@ -26,8 +26,12 @@
     </header>
 
     <div class="entreVamosMarrar">
-        <h1><a>entre.</a> vamos marrar</h1>
+
         <!--<img src="{{URL::asset('img/vamosmarrar.jpg')}}">-->
+        <div class="entreVamosMarrarOpc">
+
+        </div>
+        <h1><a>entre.</a> vamos marrar</h1>
     </div>
 
     <div class="podeAprender">
@@ -131,23 +135,23 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <p>Nulla vitae elit libero, a pharetra augue.
+                <p>&ldquo;Nulla vitae elit libero, a pharetra augue.
                     Vestibulum id ligula porta felis euismod
-                    semper. Duis mollis, est non commodo
+                    semper. Duis mollis, est non commodo&rdquo;
                 </p>
             </div>
 
             <div class="col-lg-4">
-                <p>Nulla vitae elit libero, a pharetra augue.
+                <p>&ldquo;Nulla vitae elit libero, a pharetra augue.
                     Vestibulum id ligula porta felis euismod
-                    semper. Duis mollis, est non commodo
+                    semper. Duis mollis, est non commodo&rdquo;
                 </p>
             </div>
 
             <div class="col-lg-4">
-                <p>Nulla vitae elit libero, a pharetra augue.
+                <p>&ldquo;Nulla vitae elit libero, a pharetra augue.
                     Vestibulum id ligula porta felis euismod
-                    semper. Duis mollis, est non commodo
+                    semper. Duis mollis, est non commodo&rdquo;
                 </p>
             </div>
 
@@ -171,21 +175,27 @@
     <footer>
 
         <div class="row">
+
             <div class="col-lg-4">
-                <ul>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Google+</li>
-                </ul>
+                <nav >
+                    <ul>
+                        <li><a target="_blank" href="http://www.facebook.com"></a></li>
+                        <li><a target="_blank" href="http://www.twitter.com"></a></li>
+                        <li><a target="_blank" href="http://www.plus.google.com"></a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="col-lg-4">
-                <ul>
-                    <li><a>Sobre Nós</a></li>
-                    <li><a>Blog</a></li>
-                    <li><a>Escolas</a></li>
-                    <li><a>Cidades</a></li>
-                    <li><a>Parceiros</a></li>
-                </ul>
+
+            <div class="col-lg-8">
+                <nav >
+                    <ul>
+                        <li><a href="about.php">Sobre N&oacute;s</a></li>
+                        <li><a href="http://www.blog.com">Blog</a></li>
+                        <li><a href="escolas.php">Escolas</a></li>
+                        <li><a href="provincias.php">Provicias</a></li>
+                        <li><a href="parceiros.php">Parceiros</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
 

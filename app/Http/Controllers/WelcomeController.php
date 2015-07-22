@@ -69,4 +69,8 @@ class WelcomeController extends Controller
         return view('initial');
     }
 
+    public  function editar_inicial() {
+          return view('editar_inicial');
+    }
+
 }
