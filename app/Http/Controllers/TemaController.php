@@ -24,13 +24,14 @@ class TemaController extends Controller
     {
 
         $disciplinas = Disciplina::lists('nome', 'id');
-        $capitulos = Capitulo::lists('nome', 'id');
-        return view('tema')->with(array('disciplinas' => $disciplinas, 'capitulos' => $capitulos));
+        return view('tema')->with(array('disciplinas' => $disciplinas));
     }
 
     public function inicializaTema_list(){
+        $temas=new Tema();
+        $capitulos=$temas->capitulo();
         $tema=Tema::all();
-        return view('tema_list')->with('temas',$tema);
+        return view('tema_list')->with(array('temas'=>$tema,'capitulos'=>$capitulos));
     }
 
     public function createTema(Request $request)
@@ -52,17 +53,20 @@ class TemaController extends Controller
         return Redirect('tema_list');
     }
     public function editarTema($id){
-        $tema=Tema::find($id);
+        $t=new Tema();
+        $tema=$t->find($id);
+      $capitulo=$tema->capitulo->nome;
+       $disciplina=$tema->capitulo->disciplina->nome;
         $disciplinas=Disciplina::lists('nome','id');
-        $capitulos=Capitulo::lists('nome','id');
-        return view('tema_editar')->with(array('tema'=>$tema,'capitulos'=>$capitulos,'disciplinas'=>$disciplinas));
+        return view('tema_editar')->with(array('tema'=>$tema,'disciplinas'=>$disciplinas,'capitulo'=>$capitulo,'disciplina'=>$disciplina));
+
     }
 
   public function editar(Request $request){
       $id=$request->input('id');
       $tema=Tema::find($id);
       $tema->nome=$request->input('nome');
-      $tema->numero_questoes=$request->input('numero_questoes');
+      $tema->numero_questoes=$request->input('questoes');
       $tema->conteudo=$request->input('conteudo');
       $capitulos=Capitulo::find($request->input('capitulos'));
       $tema=$capitulos->temas()->save($tema);

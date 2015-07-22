@@ -6,7 +6,7 @@
 @section('body')
     <div class="container">
 
-
+{{--script Para aparecer a mensagem de para confirmar--}}
         <script>
             function check() {
 
@@ -48,6 +48,7 @@
 
                         <th scope="row">{{$capitulo->id}}</th>
                         <td> {{$capitulo->nome}}</td>
+
 
 
                         <td><a href="{{URL::to('/capitulo_list/editar/'.$capitulo->id)}}">Editar</a> | <a

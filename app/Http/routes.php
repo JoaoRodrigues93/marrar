@@ -31,6 +31,7 @@ Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('exame','ExameController@show');
+
 Route::get('registar',function(){
     return View::make('registar');
 });
@@ -41,19 +42,29 @@ Route::get('perfil',function(){
     return View::make('perfil');
 });
 
+Route::get('inicio',function(){
+    return view('inicio');
+});
 
 //metodos onde se chamam as perguntas----
 Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 Route::get('exercicio','ExercicioController@showJogo');
+
+//Route::get('exercicio','ExercicioController@showJogo');
+Route::get('exercicio','ExercicioController@show');
+Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::post('exercicio','ExercicioController@doPergunta');
+Route::get('proximo','ExercicioController@respostaProximo');
 Route::get('teste-validacao','TesteController@validaTeste');
 Route::post('exame','ExameController@corrigeExame');
 Route::get('teste-validacao','TesteController@validaTeste');
 
 Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
+
+Route::get('tema_list/editar/capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 
 Route::get('capituloHome',function(){
 

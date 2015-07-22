@@ -18,8 +18,7 @@
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza a disciplina:',['class'=>'text-primary']) !!}
-                {!! Form::textarea('nome','',['class'=>'form-control', 'placeholder'=>'Introduza a
-                disciplina','rows'=>'1']) !!}
+                {!! Form::text('nome','',['class'=>'form-control','rows'=>'1']) !!}
 
 
             </div>
