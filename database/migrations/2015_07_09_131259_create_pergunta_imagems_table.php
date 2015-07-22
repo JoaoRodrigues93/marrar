@@ -29,7 +29,8 @@ class CreatePerguntaImagemsTable extends Migration {
             $table->string('img5');
             $table->string('imgCorrecta');
             $table->integer('tema_id')->unsigned();
-            //$table->foreign('tema_id')->references('id')->on('tema');
+            $table->softDeletes();
+            $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
             $table->timestamps();
 		});
 	}

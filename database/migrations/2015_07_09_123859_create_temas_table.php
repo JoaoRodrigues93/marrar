@@ -19,6 +19,8 @@ class CreateTemasTable extends Migration {
             $table->string('nome')->unique();
             $table->smallInteger('numero_questoes');
             $table->integer('capitulo_id')->unsigned();
+            $table->softDeletes();
+            $table->foreign('capitulo_id')->references('id')->on('capitulos')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
