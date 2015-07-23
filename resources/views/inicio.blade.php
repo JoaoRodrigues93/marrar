@@ -62,7 +62,7 @@
                     <a class="page-scroll" href="#contact">Contacto</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#contact"><button class="btn btn-primary btn-sm">Entrar</button></a>
+                    <a class="page-scroll" href="login"><button class="btn btn-primary btn-sm">Entrar</button></a>
                 </li>
             </ul>
         </div>
@@ -143,7 +143,7 @@
     <div class="container text-center">
         <div class="call-to-action">
             {{-- <h2>Free Download at Start Bootstrap!</h2>--}}
-            <a href="#" class="btn btn-default btn-xl wow tada">Comece Agora!</a>
+            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada">Comece Agora!</a>
         </div>
     </div>
 </aside>
