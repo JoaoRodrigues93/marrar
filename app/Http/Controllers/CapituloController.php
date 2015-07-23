@@ -21,10 +21,11 @@ class CapituloController extends Controller
         return view("capitulo");
     }
 
-    public function inicializaCapitulo()
+    public static function inicializaCapitulo()
     {
         $disciplinas = Disciplina::lists('nome', 'id');
-        return view('capitulo')->with(array('disciplinas' => $disciplinas));
+        return view('capitulo')->with(array('disciplinas'=>$disciplinas));
+
     }
 
     public function createCapitulo(Request $request)
@@ -40,7 +41,7 @@ class CapituloController extends Controller
     public function inicializaCapitulo_list()
     {
         $capitulos = Capitulo::all();
-        return view('capitulo_list')->with('capitulos', $capitulos);
+        return view('capitulo_list')->with(array('capitulos'=> $capitulos));
     }
 
     public function deleteCapitulo($id)
@@ -52,10 +53,15 @@ class CapituloController extends Controller
 
     public function editarCapitulo($id)
     {
-        $capitulo = Capitulo::find($id);
-        $disciplina = Disciplina::lists('nome', 'id');
-        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplina));
+        $cap=new Capitulo();
+        $capitulo=$cap->find($id);
+        $disciplina= $capitulo->disciplina->nome;
+      $disciplinas=Disciplina::lists('nome','id');
+
+       // echo $capitulo;
+        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplina' => $disciplina,'disciplinas' => $disciplinas));
     }
+
 
     public function editar(Request $request)
     {

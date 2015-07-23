@@ -12,13 +12,12 @@
 
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas'),['class'=>'form-control']) !!}
+                {!! Form::select('disciplinas',array('default'=> $disciplina)+$disciplinas,null,['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::textarea('nome',$capitulos->nome,['class'=>'form-control', 'placeholder'=>'Introduza o
-                capitulo','rows'=>'1']) !!}
+                {!! Form::text('nome',$capitulos->nome,['class'=>'form-control', 'rows'=>'1']) !!}
                 {!! Form::hidden('id',$capitulos->id,['class'=>'form-control']) !!}
 
             </div>

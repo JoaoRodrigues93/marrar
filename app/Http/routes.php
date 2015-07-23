@@ -31,6 +31,7 @@ Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('exame','ExameController@show');
+
 Route::get('registar',function(){
     return View::make('registar');
 });
@@ -41,6 +42,9 @@ Route::get('perfil',function(){
     return View::make('perfil');
 });
 
+Route::get('inicio',function(){
+    return view('inicio');
+});
 
 //metodos onde se chamam as perguntas----
 Route::get('buscar-teste','PerguntaController@buscarTeste');
@@ -55,6 +59,8 @@ Route::get('teste-validacao','TesteController@validaTeste');
 Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
 
+Route::get('tema_list/editar/capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
+
 Route::get('capituloHome',function(){
 
     return view('capituloHome');
@@ -64,3 +70,5 @@ Route::get('capituloHome',function(){
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login/registar','LoginController@registar');
 Route::post('login/entrar','LoginController@entrar');
+
+Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");

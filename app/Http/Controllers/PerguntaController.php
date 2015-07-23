@@ -124,9 +124,9 @@ Session::flash('message','Dados gravados com sucesso');
 
     public function buscarExercicios($disciplina,$capitulo,$tema){
        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
-        $disciplina='matematica';//esses dois atributos devem ser parametros
-        $capitulo='trigonometria';
-        $tema='cossenos';
+       // $disciplina='matematica';//esses dois atributos devem ser parametros
+       // $capitulo='trigonometria';
+     //   $tema='cossenos';
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
