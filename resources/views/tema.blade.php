@@ -39,8 +39,7 @@
         <div class="form-group">
             {!! Form::label('questoes','Numero de questoes:',['class'=>'text-primary']) !!}
             {!! Form::text('questoes','',['class'=>'form-control','type'=>'number', 'placeholder'=>'10','rows'=>'1']) !!}
-            <input>
-
+          
             {{--<input type="number" name="tema" class="form-control" placeholder="10">--}}
         </div>
 

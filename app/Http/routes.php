@@ -71,6 +71,10 @@ Route::get('perfil',function(){
     return View::make('perfil');
 });
 
+Route::get('inicio',function(){
+    return View::make('inicio');
+});
+
 
 //metodos onde se chamam as perguntas----
 Route::get('buscar-teste','PerguntaController@buscarTeste');
