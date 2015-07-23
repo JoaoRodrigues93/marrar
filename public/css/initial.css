@@ -1,59 +1,18 @@
-html, body{
-    background: #808080;
-}
-
-body{
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-header{
-    background: #2C97DE;
-    height: 8em;
-}
-
-.logo{
-    padding: 0;
-}
-
-div.logo img{
-    margin: 2em 0 0 2em;
-    cursor: pointer;
-}
-
-header div button{
-    background: #FAFAFA;
-    color: #2C97DE;
-    padding: 0 1em;
-    height: 2em;
-    display: table;
-    border: 1px solid #FAFAFA;
-    font-family: Helvetica, sans-serif;
-    font-weight: 100;
-    font-size: 1.2em;
-    text-transform: lowercase;
-    letter-spacing: .045em;
-    line-height: 2em;
-    text-decoration: none;
-    white-space: nowrap;
-    border-radius: 3em;
-    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.3);
-    float: right;
-    margin: 2em 2em 0 0;
-    width: 6em;
-}
 
 .entreVamosMarrar{
     background-image: url("../img/vamosmarrar.jpg");
-     /*position:relative;
-    display:inline-block;
-    overflow:hidden;*/
+    /*position:relative;
+   display:inline-block;
+   overflow:hidden;*/
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-position: center center;
 
     margin: 0;
     padding: 0;
     height: 35em;
-   /* position:absolute;
-    display:table;*/
+    /* position:absolute;
+     display:table;*/
 
 
 
@@ -65,7 +24,7 @@ header div button{
     padding: 0;
     width: 100%;
     height: 100%;
-    opacity: .4;
+    opacity: .6;
     position: relative;
 
 }
@@ -92,7 +51,28 @@ a:hover{
     font-size: 4.1em;
     padding-left: 1.6em;
     /*transform: translateY(45%);*/
+    color: #ffffff;
+    white-space: nowrap;
+    letter-spacing: 3px;
 }
+
+div.entreVamosMarrar > h1 > a{
+    cursor: pointer;
+}
+
+/*a.btnEntre{
+    background: #2C97DE;
+    color: #FAFAFA;
+    border-radius: 3em;
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    font-size: 51px;
+
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}*/
 
 div.podeAprender{
     background: #FAFAFA;
@@ -179,72 +159,4 @@ div.queDizem .col-lg-4 h4{
     margin-top: 0;
     margin-right: 4em;
     font-size: 1.2em;
-}
-footer{
-    background: #2C97DE;
-    height: 8.875em;
-
-}
-
-footer div.row{
-    padding-top: 5%;
-}
-
-footer ul li{
-   margin: 0;
-    padding: 0 .8em 0 0;
-    list-style: none;
-    float: left;
-
-}
-
-footer a{
-    color: #353740;  /*color: #353740;*/
-    display: block;
-    width: auto;
-    height: 20px;
-    font-size: 1.1em;
-    /*letter-spacing: .045em;*/
-    white-space: nowrap;
-
-}
-
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a{
-    background-image: url("../img/icons/facebook.png") ;
-}
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a{
-    background-image: url("../img/icons/twitter.png") ;
-}
-
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a{
-    background-image: url("../img/icons/google-plus.png") ;
-}
-
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a,
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a,
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a{
-    width: 20px;
-    /*background: #0000C2;*/
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    cursor: pointer;
-    opacity: .7;
-}
-
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a:hover,
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a:hover,
-footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a:hover {
-   opacity: 1;
-}
-
-footer a:hover{
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-body > div > footer > div > div.col-lg-8 > nav{
-  float: right;
-    margin: 0 3em 0 0;
-
 }
