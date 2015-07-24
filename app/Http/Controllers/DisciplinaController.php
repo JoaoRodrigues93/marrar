@@ -80,5 +80,8 @@ class DisciplinaController extends Controller
 
         ]);
     }
-
+ public function showDisciplinaHome(){
+     $disciplinas=Disciplina::all();
+     return view("disciplinaHome")->with('disciplinas',$disciplinas);
+ }
 }

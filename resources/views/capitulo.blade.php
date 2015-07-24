@@ -19,12 +19,12 @@
 
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', $disciplinas , null,['class'=>'form-control']) !!}
+                {!! Form::select('disciplinas', array('default'=>'Escolha a disciplina')+$disciplinas , null,['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::textarea('nome','',['class'=>'form-control','rows'=>'1']) !!}
+                {!! Form::text('nome','',['class'=>'form-control','rows'=>'1']) !!}
 
             </div>
 

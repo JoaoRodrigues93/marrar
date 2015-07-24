@@ -10,6 +10,7 @@
         <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
         <link href="{{URL::asset('js/bootstrap.js')}} " rel="script">
         <link href="{{URL::asset('css/style.js')}} " rel="stylesheet">
+        <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
 
     @show
 
