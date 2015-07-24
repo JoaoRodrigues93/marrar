@@ -36,14 +36,14 @@ class TemaController extends Controller
 
     public function createTema(Request $request)
     {
-        /*$tema = new Tema();
+        $tema = new Tema();
         $tema->nome = $request->input('nome');
         $tema->numero_questoes = $request->input('questoes');
         $tema->conteudo = $request->input('conteudo');
         $capitulos = Capitulo::find($request->input('capitulos'));
         $tema = $capitulos->temas()->save($tema);
         Session::flash('message', 'Dados gravados com sucesso');
-        return Redirect::to('tema');*/
+        return Redirect::to('tema');
 
     }
 
