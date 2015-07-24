@@ -82,6 +82,7 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('disciplinaHome','DisciplinaController@showDisciplinaHome');
 
+Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 
 
 Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
@@ -90,3 +91,10 @@ Route::post('login','Auth\AuthController@post');
 
 Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
+
+Route::get('editar_inicial', 'WelcomeController@editar_inicial');
+
+Route::get('aestudar', 'TemaController@aestudar');
+
+
+
