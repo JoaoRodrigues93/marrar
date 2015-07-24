@@ -1,6 +1,20 @@
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
 Route::get('/', 'WelcomeController@index');
+
 Route::get('home', 'HomeController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -11,6 +25,9 @@ Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
 Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplina');
 Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
 Route::post('editar-disciplina','DisciplinaController@editar');
+
+
+
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');
 Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');
@@ -43,30 +60,31 @@ Route::get('perfil',function(){
 });
 
 Route::get('inicio',function(){
-    return view('inicio');
+    return View::make('inicio');
 });
 
 //metodos onde se chamam as perguntas----
 Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
+
 Route::get('exercicio','ExercicioController@showJogo');
 Route::post('exercicio','ExercicioController@doPergunta');
-Route::get('teste-validacao','TesteController@validaTeste');
-Route::post('exame','ExameController@corrigeExame');
+
 Route::get('teste-validacao','TesteController@validaTeste');
 
 Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
 
-Route::get('tema_list/editar/capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
+Route::get('capituloHome','CapituloController@showAll');
 
-Route::get('capituloHome',function(){
+Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
-    return view('capituloHome');
+Route::get('disciplinaHome','DisciplinaController@showDisciplinaHome');
 
-});
 
+
+Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login/registar','LoginController@registar');
 Route::post('login/entrar','LoginController@entrar');

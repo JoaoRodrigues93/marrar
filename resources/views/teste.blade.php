@@ -13,7 +13,7 @@
         <div class="col-lg-10 col-md-10 col-sm-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
 
             <div>
-                <h2 class="text-danger left" > Teste | Trigonometria | Matematica</h2>
+                <h2 class="text-danger left" > Teste |  {{$disciplina}} |{{$capitulo}}</h2>
                 <hr>
 
             </div>

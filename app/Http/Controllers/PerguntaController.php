@@ -109,8 +109,6 @@ Session::flash('message','Dados gravados com sucesso');
 
     public function buscarTeste($disciplina,$capitulo){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
-        $disciplina='matematica';//esses dois atributos devem ser parametros
-        $capitulo='trigonometria';
 
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')

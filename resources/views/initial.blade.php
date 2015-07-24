@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <title>Marrar</title>
     <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('js/bootstrap.js')}} " rel="script">
+    {{--<script src="{{URL::asset('js/bootstrap.js')}} "></script>--}}
     <link href="{{URL::asset('css/style.js')}} " rel="stylesheet">
     <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
+    <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
+    <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
+    <script src="{{URL::asset('js/main.js')}}"></script>
+
+
 </head>
 <body>
 
-<div class="container">
 
-    <header>
+<header>
 
-        <div class="row">
-            <div class="col-lg-6 logo">
-                <a><img src="{{URL::asset('img/logo.png')}}"></a>
+    {{--<nav class="navbar-fixed-top">--}}
+        {{--<div class="row">--}}
+            {{--<div class="navbar-header">--}}
+                {{--<a class="navbar-brand"><img src="{{URL::asset('img/logoshadow.png')}}"></a>--}}
+            {{--</div>--}}
+            {{--<div class="nav navbar-nav navbar-right">--}}
+                {{--<button class="btn btn-default">Entrar</button>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</nav>--}}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top headerNav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img class="logo img-responsive" src="{{URL::asset('img/logoshadow.png')}}"></a>
             </div>
-            <div class="col-lg-6">
-                <button>Entrar</button>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button class="btn btn-default">Entrar</button></li>
+                </ul>
             </div>
         </div>
+    </nav>
+</header>
 
-    </header>
-
+<div class="container">
     <div class="entreVamosMarrar">
 
         <!--<img src="{{URL::asset('img/vamosmarrar.jpg')}}">-->
         <div class="entreVamosMarrarOpc">
 
         </div>
-        <h1><a>entre.</a> vamos marrar</h1>
+        <h1><a>entre!</a> vamosmarrar</h1>
     </div>
 
     <div class="podeAprender">
@@ -171,36 +190,36 @@
         </div>
 
     </div>
+</div>
+<footer>
 
-    <footer>
+    <div class="row">
 
-        <div class="row">
-
-            <div class="col-lg-4">
-                <nav >
-                    <ul>
-                        <li><a target="_blank" href="http://www.facebook.com"></a></li>
-                        <li><a target="_blank" href="http://www.twitter.com"></a></li>
-                        <li><a target="_blank" href="http://www.plus.google.com"></a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div class="col-lg-8">
-                <nav >
-                    <ul>
-                        <li><a href="about.php">Sobre N&oacute;s</a></li>
-                        <li><a href="http://www.blog.com">Blog</a></li>
-                        <li><a href="escolas.php">Escolas</a></li>
-                        <li><a href="provincias.php">Provicias</a></li>
-                        <li><a href="parceiros.php">Parceiros</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <div class="col-lg-4">
+            <nav>
+                <ul>
+                    <li><a target="_blank" href="http://www.facebook.com"></a></li>
+                    <li><a target="_blank" href="http://www.twitter.com"></a></li>
+                    <li><a target="_blank" href="http://www.plus.google.com"></a></li>
+                </ul>
+            </nav>
         </div>
 
-    </footer>
+        <div class="col-lg-8">
+            <nav>
+                <ul>
+                    <li><a href="about.php">Sobre N&oacute;s</a></li>
+                    <li><a href="http://www.blog.com">Blog</a></li>
+                    <li><a href="escolas.php">Escolas</a></li>
+                    <li><a href="provincias.php">Provicias</a></li>
+                    <li><a href="parceiros.php">Parceiros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-</div>
+</footer>
+
+
 </body>
 </html>
