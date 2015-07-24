@@ -10,8 +10,10 @@
        {{ Form::open(array('url'=>'editar_inicial'))}}
         {{Form::label('titulo incial')}}
         {{Form::text('titulo-incial','',['placeholder'=>'titulo incial','class'=>'form-control'])}}
+
         {{Form::label('Titulo pode aprender')}}
         {{Form::text('Titulo-pode-aprender','',['placeholder'=>'titulo incial','class'=>'form-control'])}}
+
         {{Form::label('Descrinção')}}
         {{Form::label('Titulo como funciona')}}
         {{Form::label('Titulo Materia Teórico')}}
