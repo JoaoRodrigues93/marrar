@@ -19,9 +19,12 @@
         var header, content;
 
         header = "<img alt='Facebook' src='{{URL::asset('img/facebook.png')}}'/>  <img alt='Google+' src='{{URL::asset('img/google.png')}}'/>";
-        content =" <input type='text' name='login-username' id='login-username' class='form-control' placeholder='username' />"+
+        content =" <form method='post' url='login' > <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token() }}\" />"
+        +"<input type='hidden' name='opLogin' id='opLogin' value='1' />  "+
+        "<input type='email' name='login-email' id='login-email' class='form-control' placeholder='e-mail' />"+
                 " <input type='password' name='login-password' id='login-password' class='form-control' placeholder='password' />" +
-        "<button type='submit' class='btn btn-success form-control'>entrar</button>" +
+        "<button type='submit' class='btn btn-success form-control'>entrar</button> " +
+        "</form>" +
         "<p><a href='#'>Registar</a> <a href='#'>Esqueceu Senha</a></p>";
         login.setAttribute("data-content",content);
     });
@@ -56,6 +59,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" url="login">
+                    <input type='hidden' name='opRegisto' id='opRegisto' value='1' />
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="text" id="nome" name="nome" class="form-control" placeholder="nome"/>
                     <input type="text" id="apelido" name="apelido" class="form-control" placeholder="apelido"/>
