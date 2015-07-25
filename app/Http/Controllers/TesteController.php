@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
+use App\Capitulo;
 use App\Pergunta;
+use App\Tema;
+
 session_start();
 /**
  * Created by PhpStorm.
@@ -12,13 +15,19 @@ class TesteController extends Controller{
 
 public function inicializaTeste(){
 
+    $disciplina="matematica";
+    $capitulo ="Trigonometria";
 
-    $perguntas=Pergunta::all();
+    $perguntaController = new PerguntaController();
+
+    $perguntas = $perguntaController->buscarTeste($disciplina,$capitulo);
+
     $_SESSION['perguntas']=$perguntas;
 
-    return view('teste')->with(array('perguntas'=>$perguntas));
+    return view('teste')->with(array('perguntas'=>$perguntas,'capitulo'=>$capitulo,'disciplina'=>$disciplina));
 }
 
+   //Devolve um json com todas as perguntas
     public function validaTeste(){
 
        $testeJson = "{\"perguntas\":[ ";

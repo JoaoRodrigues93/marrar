@@ -2,6 +2,7 @@
 
 use App\Capitulo;
 use App\Disciplina;
+use App\Tema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -21,11 +22,10 @@ class CapituloController extends Controller
         return view("capitulo");
     }
 
-    public static function inicializaCapitulo()
+    public function inicializaCapitulo()
     {
         $disciplinas = Disciplina::lists('nome', 'id');
-        return view('capitulo')->with(array('disciplinas'=>$disciplinas));
-
+        return view('capitulo')->with(array('disciplinas' => $disciplinas));
     }
 
     public function createCapitulo(Request $request)
@@ -41,7 +41,7 @@ class CapituloController extends Controller
     public function inicializaCapitulo_list()
     {
         $capitulos = Capitulo::all();
-        return view('capitulo_list')->with(array('capitulos'=> $capitulos));
+        return view('capitulo_list')->with('capitulos', $capitulos);
     }
 
     public function deleteCapitulo($id)
@@ -53,15 +53,10 @@ class CapituloController extends Controller
 
     public function editarCapitulo($id)
     {
-        $cap=new Capitulo();
-        $capitulo=$cap->find($id);
-        $disciplina= $capitulo->disciplina->nome;
-      $disciplinas=Disciplina::lists('nome','id');
-
-       // echo $capitulo;
-        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplina' => $disciplina,'disciplinas' => $disciplinas));
+        $capitulo = Capitulo::find($id);
+        $disciplina = Disciplina::lists('nome', 'id');
+        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplina));
     }
-
 
     public function editar(Request $request)
     {
@@ -101,5 +96,100 @@ public function buscarCapituloDisciplina($id){
 
 }
 
+    //Devolve a lista de todos os capitulos e todos os temas
+public function showAll(){
+
+
+    return view('capituloHome');
+}
+
+
+    //Devolve objecto json com todos capitulos e temas
+public  function capituloTemaJason() {
+
+    $capitulos=Capitulo::all();
+
+    $testeJson = "{\"data\":[ ";
+    $j=0;
+    $nrcapitulos=$capitulos->count();
+
+    foreach ($capitulos as $capitulo) {
+
+        $temas=Tema::where('capitulo_id',$capitulo->id)->get();
+
+        $tem="[";
+        $i=0;
+        $j++;
+
+        $nrcapitulos--;
+        foreach($temas as $tema){
+            $i++;
+            $tem.="\"$tema->nome\"";
+
+            if($temas->count()-$i!==0){
+                $tem.=",";
+            }
+        }
+
+        $tem.="]";
+
+
+        if (strlen($testeJson) < 20) {
+            $testeJson .= "{\"nome\":\"$capitulo->nome\"," .
+                "\"id\":\"$capitulo->id\"" .
+                ",\"tema\":$tem" .
+                ",\"image\":\"okcomputer.png\"" .
+                ",\"url\":\"#\"";
+
+            if($j==1){
+                $testeJson .=",\"first\": true";
+
+                if($nrcapitulos==0){
+
+                    $testeJson .=",\"last\": true ";
+                }
+
+            }
+
+            if($j%4==0){
+                $testeJson .=",\"last\": true ";
+                $j=0;
+            }
+            $testeJson .="}";}
+
+
+        else if(strlen($testeJson)>20) {
+            $testeJson .= ",{\"nome\":\"$capitulo->nome\"," .
+                "\"id\":\"$capitulo->id\"" .
+                ",\"tema\": $tem" .
+                ",\"image\":\"kida.png\"" .
+                ",\"url\":\"#\"";
+
+            if($j==1){
+                $testeJson .=",\"first\": true ";
+                if($nrcapitulos==0){
+
+                    $testeJson .=",\"last\": true ";
+                }
+
+            }
+
+            if($j%4==0){
+                $testeJson .=",\"last\": true ";
+                $j=0;
+            }
+            $testeJson .="}";
+        }
+    }
+
+
+
+    $testeJson.=" ]}";
+
+
+
+    return $testeJson;
+
+}
 
 }
