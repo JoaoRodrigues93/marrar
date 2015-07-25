@@ -46,7 +46,7 @@
 
         <div class="form-group">
             {!! Form::label('conteudo','Conteudo',['class'=>'text-primary']) !!}
-            {!! Form::textarea('conteudo','',['class'=>'form-control','rows'=>'20', 'name'=>'resumoteorico', 'id'=>'resumoteorico']) !!}
+            {!! Form::textarea('conteudo','',['class'=>'form-control','rows'=>'20']) !!}
 
 
         </div>
@@ -62,7 +62,10 @@
        //para comecar o select box com vazio
        // document.getElementById('disciplinas').selectedIndex=-1;
 
-       CKEDITOR.replace('resumoteorico');
+       CKEDITOR.replace('conteudo');
+
+
+       /**/
 
 
         //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos

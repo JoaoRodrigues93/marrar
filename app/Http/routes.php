@@ -96,3 +96,5 @@ Route::get('capituloHome',function(){
 });
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
+
+Route::get('aestudar', 'TemaController@aestudar');
