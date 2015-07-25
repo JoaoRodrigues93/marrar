@@ -24,6 +24,7 @@
             {!!Form::open(array('url'=>'registar'))!!}
 
             <div class="col-lg-4">
+
                 <img src="{{URL::asset('img/pessoa.png')}}">
             </div>
 
@@ -36,12 +37,13 @@
                 <h1>Nome Completo</h1>
             </div>
 
-            <p></p><div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
                 #username
-            </div></p>
+            </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+                <p>Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                <br/>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
@@ -95,9 +97,13 @@
                 {!!Form::label('sexo','Sexo')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::text('sexo','',['placeholder'=>'Sexo','class'=>'form-control'])!!}
-            </div>
 
+                <select name="sexo" form="registar">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                </select>
+
+            </div>
 
             {!!Form::close()!!}
         </div>
