@@ -1,39 +1,68 @@
 <?php namespace App\Http\Controllers\Auth;
 
+use App\Estudante;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
 
-    use AuthenticatesAndRegistersUsers;
-
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\Guard $auth
-     * @param  \Illuminate\Contracts\Auth\Registrar $registrar
-     * @return void
-     */
-    public function __construct(Guard $auth, Registrar $registrar)
+    public function post(Request $request)
     {
-        $this->auth = $auth;
-        $this->registrar = $registrar;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        if ($request->has('opLogin')) {
+            return $this->login($request);
+        } elseif ($request->has('opRegisto')) {
+
+            return $this->registar($request);
+        }
+
     }
 
+    public function login(Request $request)
+    {
+        $email = $request->input('login-email');
+        $password = $request->input('login-password');
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // Authentication passed...
+            return redirect()->intended('/');
+        }
+
+    }
+
+    public function registar(Request $request)
+    {
+        $nome = $request->input('nome');
+        $apelido = $request->input('apelido');
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $password = Hash::make($password);
+        $estudante = new Estudante();
+
+        $estudante->nome = $nome;
+        $estudante->apelido = $apelido;
+        $estudante->username = $username;
+        $estudante->email = $email;
+        $estudante->password = $password;
+        $estudante->save();
+
+        return "<h1>$estudante->nome foste registado com sucesso!</h1>" .
+        "<h2>Clique <a href='/login'>Aqui</a> para voltar</h2>";
+    }
+
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+        // $user->token;
+    }
 }

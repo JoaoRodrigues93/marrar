@@ -17,6 +17,8 @@ class CreateCapitulosTable extends Migration {
 			$table->increments('id');
             $table->string('nome')->unique();
             $table->integer('disciplina_id')->unsigned();
+            $table->softDeletes();
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

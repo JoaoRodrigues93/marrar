@@ -8,4 +8,8 @@ class Pergunta extends Model {
         return $this->belongsTo('App\Tema');
     }
 
+    public function examescolectivos(){
+        return $this->belongsToMany('App\ExameColectivo');
+    }
+
 }
