@@ -68,8 +68,9 @@ Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
-Route::get('exercicio','ExercicioController@showJogo');
-Route::post('exercicio','ExercicioController@doPergunta');
+Route::get('exercicio','ExercicioController@show');
+Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
+Route::get('proximo','ExercicioController@respostaProximo');
 
 Route::get('teste-validacao','TesteController@validaTeste');
 
