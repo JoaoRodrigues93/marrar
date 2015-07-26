@@ -21,12 +21,13 @@
 
                         <div class="col-md-3 portfolio-item">
 
-                            <a href="#">
+                            <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
                                 <img class="img-responsive"  src="{{URL::asset('img/book.png')}} "  alt={{$disciplina->nome}}>
+                                <h3>
+                                    {{$disciplina->nome}}
+                                </h3>
                             </a>
-                            <h3>
-                                <a href="capituloHome" >{{$disciplina->nome}}</a>
-                            </h3>
+
 
 
 

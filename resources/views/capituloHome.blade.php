@@ -27,7 +27,11 @@
 
 </head>
 <body>
+<div align="center">
+<h2>{{$disciplina->nome}}</h2>
+    {!! Form::hidden('id',$disciplina->id,['id'=>'disciplina_id']) !!}
 
+</div>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -82,7 +86,7 @@
 
                 }
 
-                xmlhttp.open("GET", "capitulo-validacao", true);
+             xmlhttp.open("GET", "capitulo-validacao", true);
 
                 xmlhttp.send();
 

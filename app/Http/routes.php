@@ -76,11 +76,12 @@ Route::get('teste-validacao','TesteController@validaTeste');
 Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
 
-Route::get('capituloHome','CapituloController@showAll');
+
+Route::get('capituloHome','CapituloController@showHome');
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
-Route::get('disciplinaHome','DisciplinaController@showDisciplinaHome');
+Route::get('disciplinaHome/{id}','CapituloController@showCapituloHome');
 
 Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 
