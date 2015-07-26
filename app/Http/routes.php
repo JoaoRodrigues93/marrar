@@ -95,7 +95,9 @@ Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
-Route::get('aestudar', 'TemaController@aestudar');
+Route::get('aestudar', function(){
+    return View::make('a_estudar');
+});
 
 Route::get('inicioAlt', function(){
     return View::make('initialAlt');

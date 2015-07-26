@@ -130,10 +130,5 @@ class TemaController extends Controller
 
     }
 
-    public function aestudar()
-    {
-        return view('a_estudar');
-    }
-
 
 }
