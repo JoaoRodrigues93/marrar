@@ -6,26 +6,19 @@ body{
     overflow-x: hidden;
 }
 
-header{
-    background-image: url("../img/vamosmarrar.jpg");
-    height: 40em;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 header nav{
-    /*background: #2C97DE;*/
-    height: 5em;
     transition: all 1.6s;
     margin: 0;
     padding: 0;
 }
 
 nav.navbar-inverse{
-    background: transparent;
+    background: #2C97DE;
     border: none;
+    height: 5em;
     border-radius: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 header nav div button.btn{
@@ -50,11 +43,11 @@ header nav div button.btn{
 
 footer{
     background: #2C97DE;
-    height: 8em;
+    height: 8.875em;
 }
 
 footer div.row{
-    padding-top: 3.5%;
+    padding-top: 4.5%;
 }
 
 footer ul li{
