@@ -25,7 +25,7 @@
                 " <input type='password' name='login-password' id='login-password' class='form-control' placeholder='password' />" +
         "<button type='submit' class='btn btn-success form-control'>entrar</button> " +
         "</form>" +
-        "<p><a href='#'>Registar</a> <a href='#'>Esqueceu Senha</a></p>";
+        "<p><a href='#'>Registar</a></p> <p><a href='#'>Esqueceu Senha</a></p>";
         login.setAttribute("data-content",content);
     });
 </script>
@@ -37,8 +37,9 @@
     <br>
     <p>
         <a class="btn btn-success" id="login" href="#" data-html=true
-           title="<img alt='Facebook'
-           src='{{URL::asset('img/facebook.png')}}'/>  <img alt='Google+' src='{{URL::asset('img/google.png')}}'/>"
+           title="<div class='col-lg-6 col-md-6 col-sm-6' id='login-facebook'><a  href='login/facebook'><img width='24' height='24' alt='Facebook'
+           src='{{URL::asset('img/facebook.png')}}'/>Facebook</a></div> <div class='col-lg-6 col-md-6 col-sm-6' id='login-google'>  <a  href='login/google'>
+           <img width='24' height='24'   alt='Google+' src='{{URL::asset('img/google.png')}}'/>Google+<a> </div>"
            data-placement="bottom" data-toggle="popover" data-content="Content">Entrar</a>
     </p>
     <p>

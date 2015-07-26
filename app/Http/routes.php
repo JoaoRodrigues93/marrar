@@ -96,5 +96,8 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'TemaController@aestudar');
 
+Route::get('welcome',function (){
+    return View('welcome');
+});
 
 
