@@ -63,6 +63,7 @@ class ExercicioController extends Controller{
         $perguntas = $_SESSION['perguntas'];
         $pergunta = $perguntas[$perguntaActual];
         return "$pergunta->opcaoCorrecta";
+
     }
 
 
