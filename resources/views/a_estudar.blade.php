@@ -1,79 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>A Estudar | Matematica</title>
-    <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('js/bootstrap.js')}} " rel="script">
-    <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('css/aestudar.css')}}" rel="stylesheet">
-    <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
-    <script src="{{URL::asset('js/main.js')}}"></script>
-</head>
-<body>
+@extends('layouts.main_a_marrar')
 
-<header>
-    <nav class="navbar navbar-inverse navbar-fixed-top headerNav">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img class="img-responsive" src="{{URL::asset('img/logoshadow.png')}}"></a>
+@section('title')
+    Marrar | A estudar
+@stop
+
+@section('conteudo')
+
+    <div class="container">
+        <div class="col-lg-6 texto">
+            <div class="text-justify row">
+                <h1>Cossenos</h1>
             </div>
-            {{--<div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><button class="btn btn-default">Entrar</button></li>
-                </ul>
-            </div>--}}
-        </div>
-    </nav>
-</header>
 
-<div class="conteudo">
+            <div class="row">
 
-    <div class="row"></div>
-    <div class="row">
-        <div>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed vehicula augue vitae elit molestie, pretium suscipit
+                    magna feugiat. Duis metus quam, iaculis quis sodales vitae,
+                    dignissim vel urna. Quisque placerat sed justo in vulputate.
+                    Morbi quis mi dignissim lorem auctor varius. Fusce et tellus
+                    ac ipsum sollicitudin ullamcorper. Praesent volutpat viverra
+                    consectetur. Suspendisse molestie sodales elit id semper.
+                    In in orci leo.
 
-        </div>
+                    Maecenas porta nisi sed turpis tincidunt mollis.
+                    Sed quis eros tellus. In sed semper nisl, ac mattis mi.
+                    Donec sit amet suscipit libero. Suspendisse laoreet viverra
+                    diam, eu consectetur odio efficitur vitae. Praesent tincidunt
+                    scelerisque diam a consequat. Cras non erat eu mi pulvinar
+                    hendrerit id at tortor. Nulla fringilla rhoncus fringilla.
+                    Sed consequat dignissim justo, at semper diam pellentesque
+                    sit amet. Aenean ac mattis neque, vel suscipit ipsum.
+                    Maecenas in semper quam. Donec id interdum purus.
+                    Integer a ornare sapien. Donec augue lectus, molestie
+                    ut dui eu, elementum condimentum augue. Cras gravida
+                    purus et justo scelerisque tincidunt. Integer quis neque
+                    scelerisque, ornare justo vehicula, sagittis nisi.
 
-        <div>
-
-        </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-
-
-</div>
-
-
-<footer>
-
-    <div class="row">
-
-        <div class="col-lg-4">
-            <nav>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed vehicula augue vitae elit molestie, pretium suscipit
+                    magna feugiat. Duis metus quam, iaculis quis sodales vitae,
+                    dignissim vel urna. Quisque placerat sed justo in vulputate.
+                    Morbi quis mi dignissim lorem auctor varius. Fusce et tellus
+                    ac ipsum sollicitudin ullamcorper. Praesent volutpat viverra
+                    consectetur. Suspendisse molestie sodales elit id semper.
+                    In in orci leo.
+                </p>
+            </div>
+            <div class="row">
                 <ul>
-                    <li><a target="_blank" href="http://www.facebook.com"></a></li>
-                    <li><a target="_blank" href="http://www.twitter.com"></a></li>
-                    <li><a target="_blank" href="http://www.plus.google.com"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
                 </ul>
-            </nav>
+            </div>
         </div>
 
-        <div class="col-lg-8">
-            <nav>
-                <ul>
-                    <li><a href="about.php">Sobre N&oacute;s</a></li>
-                    <li><a href="http://www.blog.com">Blog</a></li>
-                    <li><a href="escolas.php">Escolas</a></li>
-                    <li><a href="provincias.php">Provicias</a></li>
-                    <li><a href="parceiros.php">Parceiros</a></li>
-                </ul>
-            </nav>
+        <div class="col-lg-6 exercicio">
+            <div class="container">
+
+                <button type="button" class="btn btn-success">Confirmar</button>
+
+            </div>
         </div>
     </div>
 
-</footer>
-</body>
-</html>
+@stop

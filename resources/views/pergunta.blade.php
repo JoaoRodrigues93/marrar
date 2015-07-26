@@ -135,7 +135,6 @@
 
 
             var capituloSelecionado = capitulos.options[capitulos.selectedIndex].value;
-            alert(capituloSelecionado);
 
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari

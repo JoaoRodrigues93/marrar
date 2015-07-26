@@ -68,19 +68,21 @@ Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
-Route::get('exercicio','ExercicioController@showJogo');
-Route::post('exercicio','ExercicioController@doPergunta');
+Route::get('exercicio','ExercicioController@show');
+Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
+Route::get('proximo','ExercicioController@respostaProximo');
 
 Route::get('teste-validacao','TesteController@validaTeste');
 
 Route::get('capitulo-combobox/{id}','CapituloController@buscarCapituloDisciplina');
 Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
 
-Route::get('capituloHome','CapituloController@showAll');
+
+Route::get('capituloHome','CapituloController@showHome');
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
-Route::get('disciplinaHome','DisciplinaController@showDisciplinaHome');
+Route::get('disciplinaHome/{id}','CapituloController@showCapituloHome');
 
 Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 
@@ -96,5 +98,11 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'TemaController@aestudar');
 
+Route::get('inicioAlt', function(){
+    return View::make('initialAlt');
+});
 
+Route::get('welcome',function (){
+    return View('welcome');
+});
 

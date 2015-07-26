@@ -199,6 +199,7 @@ return [
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Socialite' => 'Laravel\Socialite\Facades\Socialite',
+
 	],
 
 ];

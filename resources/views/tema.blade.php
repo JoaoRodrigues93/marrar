@@ -19,13 +19,13 @@
         <div class="jumbotron">
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina:',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', array('default'=>'Escolha a disciplina')+$disciplinas , null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
+                {!! Form::select('disciplinas', $disciplinas , null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
 
 
             </div>
             <div class="form-group">
                 {!! Form::label('capitulos','Escolhe o capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::select('capitulos',array('default'=>'Escolha o capitulo')+[],null,['class' => 'form-control','id'=>'capitulos'] ) !!}
+                {!! Form::select('capitulos',[],null,['class' => 'form-control','id'=>'capitulos'] ) !!}
             </div>
 
         </div>
@@ -60,7 +60,7 @@
     <script>
 
        //para comecar o select box com vazio
-       // document.getElementById('disciplinas').selectedIndex=-1;
+       document.getElementById('disciplinas').selectedIndex=-1;
 
        CKEDITOR.replace('conteudo');
 

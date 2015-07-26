@@ -26,8 +26,8 @@ public function InicializaPergunta(){
     public function InicializaPerguntaView(){
 
         $perguntas=Pergunta::all();
-
-        return view('perguntaview')->with('perguntas',$perguntas);
+        $disciplinas = Disciplina::lists('nome', 'id');
+        return view('perguntaview')->with(array('disciplinas'=>$disciplinas,'perguntas'=>$perguntas));
     }
 
 public function registaPerguntas(Request $request){

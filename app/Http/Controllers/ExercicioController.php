@@ -11,9 +11,9 @@ session_start();
 
 class ExercicioController extends Controller{
 
-    public function showJogo () {
+  /*  public function showJogo () {
         $tema = Tema::find(3);
-        $perguntas=$tema->perguntas();
+        $perguntas=$tema->perguntas();*/
 
         /*$perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
@@ -22,12 +22,12 @@ class ExercicioController extends Controller{
             ->select('perguntas.*')
             ->get();*/
 
-     $nrPerguntas=$perguntas->count();
+   /*  $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
         $_SESSION['perguntas'] = $perguntas;
         return view('exercicio')->with(array('caminho'=>$tema->nome,'pergunta'=>$pergunta,"perguntas"=>$perguntas,'nrPerguntas'=>$nrPerguntas));
 
-    }
+    }*/
 
   /*  public function doPergunta (Request $request){
         $respostaCerta =$request-> input('respostaCerta');
@@ -63,6 +63,7 @@ class ExercicioController extends Controller{
         $perguntas = $_SESSION['perguntas'];
         $pergunta = $perguntas[$perguntaActual];
         return "$pergunta->opcaoCorrecta";
+
     }
 
 

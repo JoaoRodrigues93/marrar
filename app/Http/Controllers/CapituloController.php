@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
+session_start();
 
 /**
  * Created by PhpStorm.
@@ -97,17 +98,27 @@ public function buscarCapituloDisciplina($id){
 }
 
     //Devolve a lista de todos os capitulos e todos os temas
-public function showAll(){
 
+public function showCapituloHome($id){
 
-    return view('capituloHome');
+    $disciplina=Disciplina::find($id);
+    $_SESSION['disciplina']=$disciplina;
+    return redirect('capituloHome');
+
+}
+
+public function showHome(){
+
+    $disciplina=$_SESSION['disciplina'];
+    return view('capituloHome')->with(array('disciplina'=>$disciplina));
 }
 
 
     //Devolve objecto json com todos capitulos e temas
 public  function capituloTemaJason() {
 
-    $capitulos=Capitulo::all();
+    $id_disciplina=$_SESSION['disciplina']->id;
+    $capitulos=Capitulo::where('disciplina_id',$id_disciplina)->get();
 
     $testeJson = "{\"data\":[ ";
     $j=0;
@@ -177,6 +188,12 @@ public  function capituloTemaJason() {
             if($j%4==0){
                 $testeJson .=",\"last\": true ";
                 $j=0;
+            }
+            else{
+
+                if($nrcapitulos==0){
+                    $testeJson .=",\"last\": true ";
+                }
             }
             $testeJson .="}";
         }
