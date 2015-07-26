@@ -23,61 +23,87 @@
 
             {!!Form::open(array('url'=>'registar'))!!}
 
+            <div class="col-lg-4">
+
+                <img src="{{URL::asset('img/pessoa.png')}}">
+            </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('nome','Nome completo:')!!}
+                <style>
+                    h1 {
+                        color: #2c97de;
+                    }
+                </style>
+                <h1>Nome Completo</h1>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
+                #username
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
+                <p>Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                <br/>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
+                {!!Form::label('nome','Nome completo')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::text('nome-completo','',['placeholder'=>'Ultimo Nome','class'=>'form-control'])!!}
+                {!!Form::text('nome-completo','',['placeholder'=>'Nome Completo','class'=>'form-control'])!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('nome-utilizador','Nome completo:')!!}
+                {!!Form::label('nome-utilizador','Nome do Utilizador')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::text('nome-do-utilizador','',['placeholder'=>'Ultimo Nome','class'=>'form-control'])!!}
+                {!!Form::text('nome-do-utilizador','',['placeholder'=>'Username','class'=>'form-control'])!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('data-nascimento','Data de nascimento:')!!}
+                {!!Form::label('data-nascimento','Data de Nascimento')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
                 {!!Form::input('date', 'date', null, ['class' => 'form-control', 'placeholder' => 'Date'])!!}
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('telefone','Telefone:')!!}
+                {!!Form::label('telefone','Telefone')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
                 {!!Form::text('telefone','',['placeholder'=>'8xxxxxxxx','class'=>'form-control'])!!}
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('email','Email:')!!}
+                {!!Form::label('email','Email')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
                 {!!Form::email('email','',['placeholder'=>'Email','class'=>'form-control'])!!}
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('provincia','Província:')!!}
+                {!!Form::label('cidade','Cidade')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::text('provincia','',['placeholder'=>'Província','class'=>'form-control'])!!}
+                {!!Form::text('cidade','',['placeholder'=>'Cidade','class'=>'form-control'])!!}
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('escola','Escola:')!!}
+                {!!Form::label('escola','Escola')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
                 {!!Form::text('escola','',['placeholder'=>'Escola','class'=>'form-control'])!!}
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::label('sexo','Sexo:')!!}
+                {!!Form::label('sexo','Sexo')!!}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-1-12">
-                {!!Form::text('sexo','',['placeholder'=>'Sexo','class'=>'form-control'])!!}
-            </div>
 
+                <select name="sexo" form="registar">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                </select>
+
+            </div>
 
             {!!Form::close()!!}
         </div>
