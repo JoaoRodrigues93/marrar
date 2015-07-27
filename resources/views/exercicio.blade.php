@@ -204,8 +204,6 @@
 
 
                                 //compara a resposta escolhida com a resposta certa
-                                alert(respostaEscolhida.value);
-                                alert(resposta);
 
                                 if (resposta == respostaEscolhida.value) {
                                     // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
