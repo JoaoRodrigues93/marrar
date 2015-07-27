@@ -4,25 +4,17 @@
     <meta charset="UTF-8">
     <title>Marrar</title>
     <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('css/style.js')}} " rel="stylesheet">
-    <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
-    <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
-    <script src="{{URL::asset('js/main.js')}}"></script>
-
+    {{--<script src="{{URL::asset('js/bootstrap.js')}} "></script>
+    <link href="{{URL::asset('css/style.js')}} " rel="stylesheet">--}}
+    <link href="{{URL::asset('css/initialAlt.css')}} " rel="stylesheet">
+    <link href="{{URL::asset('css/mainAlt.css')}} " rel="stylesheet">
 
 </head>
 <body>
 
 <header>
 
-    <div class="entreVamosMarrarOpc"></div>
-
-    <div class="container sloganContainer">
-        <h1 class="slogan"><a>entre!</a> vamosmarrar</h1>
-    </div>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top headerNav">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"><img class="logo" src="{{URL::asset('img/logo/logo61.png')}}"></a>
@@ -39,6 +31,14 @@
 
 
 </header>
+
+<div class="container imgmarrar">
+    <div class="entreVamosMarrarOpc"></div>
+
+    <div class="container sloganContainer">
+        <h1 class="slogan"><a>entre!</a> vamosmarrar</h1>
+    </div>
+</div>
 
 <div class="mainPodeAprender">
     <div class="podeAprender container">

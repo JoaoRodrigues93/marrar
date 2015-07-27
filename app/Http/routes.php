@@ -96,5 +96,9 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'TemaController@aestudar');
 
+Route::get('inicioAlt', function(){
+    return View::make('initialAlt');
+});
+
 
 

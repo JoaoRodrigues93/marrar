@@ -705,7 +705,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
@@ -849,16 +849,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.8",
+            "version": "v2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "2f77e4f4bc16a7984ab6f30409bdd05c55f9159c"
+                "reference": "feea1b456fc93930b4afe8c264142b74509bd943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/2f77e4f4bc16a7984ab6f30409bdd05c55f9159c",
-                "reference": "2f77e4f4bc16a7984ab6f30409bdd05c55f9159c",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/feea1b456fc93930b4afe8c264142b74509bd943",
+                "reference": "feea1b456fc93930b4afe8c264142b74509bd943",
                 "shasum": ""
             },
             "require": {
@@ -899,7 +899,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-07-09 23:55:17"
+            "time": "2015-07-23 13:53:32"
         },
         {
             "name": "league/flysystem",
