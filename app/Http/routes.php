@@ -100,5 +100,7 @@ Route::get('inicioAlt', function(){
     return View::make('initialAlt');
 });
 
-
+Route::get('welcome',function (){
+    return View('welcome');
+});
 
