@@ -50,7 +50,7 @@
                     <li id="exames" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Exames<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Normal</a></li>
+                            <li><a href="examenormal">Normal</a></li>
                             <li><a href="#">Colectivo</a></li>
                         </ul>
                     </li>
@@ -78,7 +78,7 @@
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
             @yield('body')
         </div>
-        <div class="jumbotron col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <h2>Ranking</h2>
         </div>
     </div>
