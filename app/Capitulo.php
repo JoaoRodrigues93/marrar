@@ -12,4 +12,8 @@ class Capitulo extends Model {
         return $this ->hasMany('App\Tema');
     }
 
+    public function  testes (){
+        $this->hasMany('App\Teste');
+    }
+
 }

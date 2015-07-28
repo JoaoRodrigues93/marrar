@@ -22,6 +22,8 @@ class CreateTestesTable extends Migration {
             $table->smallInteger('nrPerguntas')->unsigned();
             $table->integer('estudante_id')->unsigned();
             $table->foreign('estudante_id')->references('id')->on('estudantes')->onDelete('cascade');
+            $table->integer('capitulo_id')->unsigned();
+            $table->foreign('capitulo_id')->references('id')->on('capitulos')->onDelete('cascade');
             $table->softDeletes();
 			$table->timestamps();
 		});
