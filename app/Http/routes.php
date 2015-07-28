@@ -97,7 +97,7 @@ Route::get('inicioAlt', function(){
 });
 
 Route::get('welcome',function (){
-    return View('welcome');
+    return View('inicio');
 });
 
 Route::post('/','Auth\AuthController@post');

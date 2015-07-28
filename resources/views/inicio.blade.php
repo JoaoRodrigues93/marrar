@@ -46,7 +46,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll text-lowercase" href="#page-top">marrar</a>
+            <a class="navbar-brand page-scroll" href="#page-top">marrar
+                {{--<h2 class="text-lowercase" style="font-family:'Cooper Black'; color: #ffffff;">marrar</h2>--}}
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,9 +60,9 @@
                 <li>
                     <a class="page-scroll" href="#services">Como Funciona</a>
                 </li>
-                <li>
+                {{--<li>
                     <a class="page-scroll" href="#contact">Contacto</a>
-                </li>
+                </li>--}}
                 <li>
                     <a class="page-scroll" href="login"><button class="btn btn-primary btn-sm">Entrar</button></a>
                 </li>
@@ -74,8 +76,8 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1>marrar</h1>
-            <h2>A todo lugar e a todo momento. Estude de forma divertida e prepare o seu futuro!</h2>
+            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0); font-family:'Cooper Black'; color: #ffffff; font-size: 6em">marrar</h2>
+            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0);  color: #ffffff;">A todo lugar e a todo momento. Estude de forma divertida e prepare o seu futuro!</h2>
             <a href="#services" class="btn btn-primary btn-xl page-scroll">Como Funciona</a>
         </div>
     </div>
@@ -150,7 +152,7 @@
 
 
 
-<section id="contact">
+{{--<section id="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -168,7 +170,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
 
 <!-- jQuery -->
 <script src="start/js/jquery.js"></script>
