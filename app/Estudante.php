@@ -27,6 +27,14 @@ class Estudante extends Model implements AuthenticatableContract, CanResetPasswo
         return $this->belongsToMany('App\ExameColectivos')->withTimestamps();
     }
 
+    public function testemunhos (){
+        return $this->hasMany('App\Testemunho');
+    }
+
+    public function dados (){
+        return $this->hasMany('App\Dado');
+    }
+
 
     protected $hidden = ['password', 'remember_token'];
 }

@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset=utf-8 />
-    <title>Lista de capitulos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="expander/css/style.css">
-    <style type="text/css">
-
-    </style>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="expander/js/mustache.js"></script>
-    <script src="expander/js/jquery.app-folders.js"></script>
-    <script src="expander/js/quantize.js"></script>
-    <script src="expander/js/color-thief.js"></script>
+@extends('layouts.maincontent')
+@section('title')
+    Lista de capitulos
+@stop
+@section('links')
+@@parent
+<link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
+@stop
+@section('body')
+<div align="center">
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <script type="text/javascript">
-
         (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -24,11 +17,7 @@
         })();
 
     </script>
-
-</head>
-<body>
-<div align="center">
-<h2>{{$disciplina->nome}}</h2>
+    <h2 class="text-primary" >{{$disciplina->nome}}</h2>
     {!! Form::hidden('id',$disciplina->id,['id'=>'disciplina_id']) !!}
 
 </div>
@@ -143,7 +132,8 @@
       @{{/data}}
     </script>
 </div>
-
-
-</body>
-</html>
+<script src="expander/js/mustache.js"></script>
+<script src="expander/js/jquery.app-folders.js"></script>
+<script src="expander/js/quantize.js"></script>
+<script src="expander/js/color-thief.js"></script>
+@stop

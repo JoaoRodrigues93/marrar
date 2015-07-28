@@ -14,11 +14,6 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
 Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
 Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
@@ -49,9 +44,6 @@ Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('exame','ExameController@show');
 
-Route::get('registar',function(){
-    return View::make('registar');
-});
 Route::get('login',function(){
     return View::make('login');
 });
@@ -108,3 +100,5 @@ Route::get('welcome',function (){
     return View('welcome');
 });
 
+Route::post('/','Auth\AuthController@post');
+Route::get('auth/logout','Auth\AuthController@logout');

@@ -28,7 +28,7 @@ nav.navbar-inverse{
     border-radius: 0;
 }
 
-header nav div button.btn{
+#login {
     margin: 1.5em 5em 0 0;
     background: #FAFAFA;
     color: #2C97DE;

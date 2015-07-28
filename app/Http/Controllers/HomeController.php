@@ -1,4 +1,9 @@
 <?php namespace App\Http\Controllers;
+session_start();
+
+use App\Disciplina;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -31,7 +36,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $estudante = Auth::user();
+        $disciplinas = Disciplina::all();
+        $dado = $estudante->dados()->first();
+        $idActual = $dado->id_ultima_disciplina;
+        $disciplinaActual=null;
+        $disciplinasNovas=[];
+        $i=0;
+
+        foreach ($disciplinas as $disciplina){
+            if($idActual == $disciplina->id)
+                $disciplinaActual = $disciplina;
+            else {
+                $disciplinasNovas[$i] = $disciplina;
+                $i++;
+               }
+        }
+
+        $_SESSION ['disciplinas'] = $disciplinasNovas;
+        $_SESSION ['disciplinaActual'] = $disciplinaActual;
+        $_SESSION ['estudante'] = $estudante;
+
+        if ($dado)
+            return redirect("disciplinaHome/$dado->id_ultima_disciplina");
+        else
+            return view('home');
     }
 
 }

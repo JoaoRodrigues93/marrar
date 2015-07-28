@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Capitulo;
+use App\Dado;
 use App\Disciplina;
 use App\Tema;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
@@ -101,8 +103,41 @@ public function buscarCapituloDisciplina($id){
 
 public function showCapituloHome($id){
 
-    $disciplina=Disciplina::find($id);
-    $_SESSION['disciplina']=$disciplina;
+    $disciplina1=Disciplina::find($id);
+    $disciplinas = Disciplina::all();
+    $user = Auth::user();
+    $dado = $user->dados()->first();
+    $disciplinasNovas=[];
+    $idActual=$id;
+    $_SESSION['disciplinaActual'] = $disciplina1;
+    $i=0;
+    if($dado){
+        $dado->id_ultima_disciplina = $id;
+        $dado->save();
+    }
+    else
+    {
+        $dado = new Dado();
+        $dado->id_ultima_disciplina=$id;
+        $dado->estudante_id = $user->id;
+        $dado->save();
+    }
+
+    foreach ($disciplinas as $disciplina){
+        if($idActual == $disciplina->id)
+            $disciplinaActual = $disciplina;
+        else {
+            $disciplinasNovas[$i] = $disciplina;
+            $i++;
+        }
+    }
+
+
+
+    $_SESSION ['disciplinas'] = $disciplinasNovas;
+    $_SESSION ['disciplinaActual'] = $disciplinaActual;
+    $_SESSION ['estudante'] = $user;
+    $_SESSION['disciplina']=$disciplina1;
     return redirect('capituloHome');
 
 }
