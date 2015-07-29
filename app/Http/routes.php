@@ -42,8 +42,7 @@ Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('examenormal','ExameController@show');
-Route::post('examenormal','ExameController@corrigeExame');
+Route::get('exame','ExameController@show');
 
 Route::get('login',function(){
     return View::make('login');
@@ -51,6 +50,10 @@ Route::get('login',function(){
 Route::get('perfil',function(){
     return View::make('perfil');
 });
+
+Route::get('/perfil/{id}', 'PerfilController@buscarPerfil');
+Route::post('registar-perfil','PerfilController@CriarPerfil');
+Route::post('editar-perfil','PerfilController@EditarPerfil');
 
 Route::get('inicio',function(){
     return View::make('inicio');
