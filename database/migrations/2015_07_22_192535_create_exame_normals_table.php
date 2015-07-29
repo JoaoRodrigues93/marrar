@@ -15,7 +15,7 @@ class CreateExameNormalsTable extends Migration {
 		Schema::create('exame_normals', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->dateTime('dataRealização');
+            $table->dateTime('dataRealizacao');
             $table->integer('duracao')->unsigned();
             $table->decimal('nota',2,2);
             $table->smallInteger('respostasCertas')->unsigned();

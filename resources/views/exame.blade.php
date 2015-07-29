@@ -9,7 +9,7 @@
 
         function escolheOpcao(id, nr, respota) {
             deSeleciona(nr);
-            document.getElementById('opcao' + id).setAttribute('class', 'bg-success');
+            document.getElementById('opcao' + id).setAttribute('class', 'alert alert-info text-uppercase');
             var btn = document.getElementById('nav' + nr);
             var respostaEscolhida = document.getElementById("resposta" + nr);
             respostaEscolhida.value = respota;
@@ -26,7 +26,7 @@
     </script>
     <div class="well">
         <div class="exame-title">
-            <h2 class="text-success"><strong>Exame | {{$disciplina}}</strong></h2>
+            <h2 class="text-primary"><strong>Exame | {{$disciplina}}</strong></h2>
         </div>
         <div class="exame-time">
             <h4 id="timer" class="text-right text-danger"></h4>
@@ -43,7 +43,7 @@
             <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
                 <h2>{{$pergunta->questao}}</h2>
 
-                <div class="container">
+                <div>
                     <div id="opcao1{{$i}}" class="">
                         <p class="text-left">
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"

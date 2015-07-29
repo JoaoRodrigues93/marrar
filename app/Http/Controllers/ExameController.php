@@ -4,6 +4,7 @@ use App\Disciplina;
 use App\ExameNormal;
 use App\Http\Controllers\PerguntaController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 
 session_start();
@@ -58,6 +59,8 @@ class ExameController extends Controller
 
             $nrPerguntaActual++;
         }
+
+        $nrPerguntaActual--;
         /*
         $table->dateTime('dataRealização');
         $table->integer('duracao')->unsigned();
@@ -76,11 +79,11 @@ class ExameController extends Controller
         $examenormal->respostasCertas = $nrRepostasCertas;
         $examenormal->respostasErradas = $nrRepostasErradas;
         $examenormal->nrPerguntas = $nrPerguntaActual;
-        $examenormal->dataRealizacao = new Date();
+        $examenormal->dataRealizacao = date_create();
         $examenormal->estudante_id = $estudante->id;
 
         $examenormal->save();
-        return $relatorio.$pergunta->questao;
+        return View('exameResultado',['examenormal'=>$examenormal]);
     }
 
 }
