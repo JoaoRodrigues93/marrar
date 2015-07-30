@@ -16,7 +16,7 @@ class CreateTestesTable extends Migration {
 		{
 			$table->increments('id');
             $table->dateTime('dataRealizacao');
-            $table->decimal('nota',2,2);
+            $table->decimal('nota',4,2);
             $table->smallInteger('respostasCertas')->unsigned();
             $table->smallInteger('respostasErradas')->unsigned();
             $table->smallInteger('nrPerguntas')->unsigned();

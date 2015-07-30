@@ -24,7 +24,7 @@ class Estudante extends Model implements AuthenticatableContract, CanResetPasswo
 
     public function examescolectivos (){
 
-        return $this->belongsToMany('App\ExameColectivos')->withPivot('duracao','nota','respostasCertas','respostasErradas')->withTimestamps();
+        return $this->belongsToMany('App\ExameColectivos','estudantes_exame_colectivos')->withPivot('duracao','nota','respostasCertas','respostasErradas')->withTimestamps();
     }
 
     public function testemunhos (){

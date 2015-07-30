@@ -9,7 +9,7 @@ class Pergunta extends Model {
     }
 
     public function examescolectivos(){
-        return $this->belongsToMany('App\ExameColectivo');
+        return $this->belongsToMany('App\ExameColectivo','exame_colectivo_perguntas');
     }
 
 }

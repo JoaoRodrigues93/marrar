@@ -26,7 +26,7 @@
     </script>
     <div class="well">
         <div class="exame-title">
-            <h2 class="text-primary"><strong>Exame | {{$disciplina}}</strong></h2>
+            <h2 class="text-primary"><strong>Exame | {{$disciplina->nome}}</strong></h2>
         </div>
         <div class="exame-time">
             <h4 id="timer" class="text-right text-danger"></h4>
