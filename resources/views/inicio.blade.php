@@ -55,7 +55,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="#about">Sobre</a>
+                    <a class="page-scroll" href="#about">o que aprender</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#services">Como Funciona</a>
@@ -76,9 +76,10 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0); font-family:'Cooper Black'; color: #ffffff; font-size: 6em">marrar</h2>
-            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0);  color: #ffffff;">A todo lugar e a todo momento. Estude de forma divertida e prepare o seu futuro!</h2>
-            <a href="#services" class="btn btn-primary btn-xl page-scroll">Como Funciona</a>
+            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0); font-family:'Cooper Black'; color: #ffffff; font-size: 6em">
+                marrar</h2>
+            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0);  color: #ffffff; font-family: Circular,Helvetica,Arial,sans-serif;">A todo lugar e a todo momento. Estude de forma divertida e prepare o seu futuro!</h2>
+            <a href="#about" class="btn btn-primary btn-xl page-scroll">O que aprender</a>
         </div>
     </div>
 </header>
@@ -86,10 +87,11 @@
 <section class="bg-primary" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <div class="col-lg-8 col-lg-offset-2 text-center" style="color:#000">
                 <h2 class="section-heading">O que aprender?</h2>
                 <hr class="light">
-                <p class="text-faded">Prepare-se para seu exame de admissão onde quer que esteja!
+                <img src="{{URL::asset('start/img/cross.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="240" width="240">
+                <p class="text-faded" style="color:#585e53;font-family: Circular,Helvetica,Arial,sans-serif;">Prepare-se para seu exame de admissão onde quer que esteja!
                     Participe dos exames colectivos e testarás sua chance de admitir na vida real.
                 Proporcionamos material organizado de acordo com as disciplinas, exercicios de cada capitulo e exames para estudares brincando.</p>
                {{-- <a href="#" class="btn btn-default btn btn-default btn-xl">Get Started!</a>--}}
@@ -111,28 +113,32 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                    {{--<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>--}}
+                    <img src="{{URL::asset('start/img/teoria.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="84" width="84">{{----}}
                     <h3>Material Teórico</h3>
                     <p class="text-muted">Estude com nosso material teórico bem organizado.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    {{--<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>--}}
+                    <img src="{{URL::asset('start/img/pratica.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="84" width="84">
                     <h3>Exercicios</h3>
                     <p class="text-muted">Realize exercicios da matéria estudada.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                    {{--<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>--}}
+                    <img src="{{URL::asset('start/img/exame.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="84" width="84">
                     <h3>Exames</h3>
                     <p class="text-muted">Realize exames para testar suas capacidades.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                    {{--<i class="fa fa-4x wow bounceIn text-primary" data-wow-delay=".3s"></i>--}}
+                    <img src="{{URL::asset('start/img/ranking.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="84" width="84">
                     <h3>Ranking</h3>
                     <p class="text-muted">Fique no topo do ranking e terás mais chances de admitir</p>
                 </div>
@@ -145,7 +151,7 @@
     <div class="container text-center">
         <div class="call-to-action">
             {{-- <h2>Free Download at Start Bootstrap!</h2>--}}
-            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada">Comece Agora!</a>
+            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada" style="border-color: #76ff03; background-color: #76ff03; color:#fff;">Comece Agora!</a>
         </div>
     </div>
 </aside>
