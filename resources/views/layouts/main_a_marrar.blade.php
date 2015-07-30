@@ -37,7 +37,7 @@
 
     <div class="row">
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4">
             <nav>
                 <ul>
                     <li><a target="_blank" href="http://www.facebook.com"></a></li>
@@ -47,7 +47,7 @@
             </nav>
         </div>
 
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-8 col-xs-8 col-md-8">
             <nav>
                 <ul>
                     <li><a href="about.php">Sobre N&oacute;s</a></li>
