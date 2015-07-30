@@ -50,8 +50,7 @@ Route::get('perfil',function(){
     return View::make('perfil');
 });
 
-Route::get('/perfil/{id}', 'PerfilController@buscarPerfil');
-Route::post('registar-perfil','PerfilController@CriarPerfil');
+Route::get('perfil', 'PerfilController@buscarPerfil');
 Route::post('editar-perfil','PerfilController@EditarPerfil');
 
 Route::get('inicio',function(){

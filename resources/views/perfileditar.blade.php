@@ -27,8 +27,12 @@
 
             <div class="row">
                 <div class="col-lg-6">
-
                     <img src="{{URL::asset('img/pessoa.png')}}">
+<!--
+                    <form action="/script.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="foto"/>
+                    </form>
+-->
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
@@ -46,11 +50,7 @@
                     </div>
 
                     <div class="row">
-                        <p>Descricao do Usuario - Variavel nao existe na BD!</p>
-
-                        <p>Aproveitando este espaco, este texto em sí deveria fazer parte para ser modificado, mas,
-                            temos que todos sentarmos e discutirmos a respeito disto (Como poderemos modificar os dados,
-                            e poder melhorar isto).</p>
+                        <p>{!!$perfil->descricao!!}</p>
                         <br/>
                     </div>
                 </div>
@@ -60,10 +60,20 @@
             <div class="row">
                 <div class="row">
                     <div class="col-lg-6">
-                        {!!Form::label('nome','Nome completo (na BD tem variaveis Nome e Apelido, pvt after this)')!!}
+                        {!!Form::label('pnome','Primeiro Nome')!!}
                     </div>
                     <div class="col-lg-6">
-                        {!!Form::text('nome-completo',$perfil->nome,['placeholder'=>'Nome
+                        {!!Form::text('nome',$perfil->nome,['placeholder'=>'Nome
+                        Completo','class'=>'form-control'])!!}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        {!!Form::label('unome','Apelido')!!}
+                    </div>
+                    <div class="col-lg-6">
+                        {!!Form::text('apelido',$perfil->apelido,['placeholder'=>'Nome
                         Completo','class'=>'form-control'])!!}
                     </div>
                 </div>
@@ -76,7 +86,18 @@
                         {!!Form::text('nome-do-utilizador',$perfil->username,['placeholder'=>'Username','class'=>'form-control'])!!}
                     </div>
                 </div>
-
+<!--
+                <div class="row">
+                    <div class="col-lg-6">
+                        {!!Form::label('password','Password')!!}
+                    </div>
+                    Por alguma razao, a pass n ficou big.. U know why?
+                    <div class="col-lg-6">
+                        {!!Form::text('tmp',$perfil->password,['placeholder'=>'Username','class'=>'form-control'])!!}
+                        {!!Form::password('password','',['placeholder'=>'A Sua Senha','class'=>'form-control'])!!}
+                    </div>
+                </div>
+-->
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         {!!Form::label('data-nascimento','Data de Nascimento')!!}
@@ -111,7 +132,10 @@
                         {!!Form::label('provincia','Provincia')!!}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        {!!Form::text('provincia',$perfil->cidade,['placeholder'=>'Provincia','class'=>'form-control'])!!}
+                        {!!Form::select('provincia', array('Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
+                        'Inhambane', 'Manica' => 'Manica', 'Maputo' => 'Maputo', 'Matola' => 'Matola', 'Nampula' =>
+                        'Nampula', 'Niassa' => 'Niassa', 'Sofala' => 'Sofala', 'Tete' => 'Tete', 'Zambezia' =>
+                        'Zambezia'), $perfil->cidade, ['class'=>'form-control']);!!}
                     </div>
                 </div>
 
@@ -126,14 +150,22 @@
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        {!!Form::label('sexo','Sexo - Variavel em Falta na BD!')!!}
+                        {!!Form::label('sexo','Sexo')!!}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        {!!Form::select('sexo', array('Masculino' => 'Masculino', 'Feminino' =>
+                        'Feminino'), $perfil->sexo, ['class'=>'form-control']);!!}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        {!!Form::label('descricao','Descricao da Tua Pessoa')!!}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-                        <select class="form-control" name="sexo" form="registar">
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
-                        </select>
+                        {!!Form::textarea('descricao',$perfil->descricao,['rows'=> '2', 'placeholder'=>'Texto Descritivo sobre a sua pessoa','class'=>'form-control'])!!}
+
                     </div>
                 </div>
             </div>
