@@ -9,10 +9,9 @@
     <script xmlns="http://www.w3.org/1999/html">
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botao = document.getElementById("hide");
-            var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerText;
             botao.setAttribute("class", "btn btn-success btn-lg active");
             deSeleciona();
-            document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
+            document.getElementById('respostaEscolhida').setAttribute('value', opcaoEscolhida);
             document.getElementById(idEscolhido).setAttribute('class', 'bg-success');
         }
 
@@ -95,36 +94,37 @@
                             <div id="opcao1">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' =>
-                                    'field','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"]) !!}
-                                    {!! Form::label('example1',$pergunta->opcao1,['id'=>'op1']) !!}
+                                    'field','id'=>'example1','onclick'=>"alteraResposta('$pergunta->opcao1','opcao1')"]) !!}
+                                    <label   for="example1" id="op1">{{$pergunta->opcao1}}</label>
+
                             </div>
 
                             <div id="opcao2">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
-                                    {!! Form::label('example2',$pergunta->opcao2,['id'=>'op2']) !!}
+                                    'id'=>'example2','onclick'=>"alteraResposta('$pergunta->opcao2','opcao2')"]) !!}
+                                    <label   for="example2" id="op2">{{$pergunta->opcao2}}</label>
                             </div>
 
                             <div id="opcao3">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
-                                    {!! Form::label('example3',$pergunta->opcao3,['id'=>'op3']) !!}
+                                    'id'=>'example3','onclick'=>"alteraResposta('$pergunta->opcao3','opcao3')"]) !!}
+                                    <label   for="example3" id="op3">{{$pergunta->opcao3}}</label>
                             </div>
 
                             <div id="opcao4">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
-                                    {!! Form::label('example4',$pergunta->opcao4,['id'=>'op4']) !!}
+                                    'id'=>'example4','onclick'=>"alteraResposta('$pergunta->opcao4','opcao4')"]) !!}
+                                    <label   for="example4" id="op4">{{$pergunta->opcao4}}</label>
                             </div>
 
                             <div id="opcao5">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
-                                    {!! Form::label('example5',$pergunta->opcao5,['id'=>'op5']) !!}
+                                    'id'=>'example5','onclick'=>"alteraResposta('$pergunta->opcao5','opcao5')"]) !!}
+                                    <label   for="example5" id="op5">{{$pergunta->opcao5}}</label>
                                 </p>
                             </div>
 
@@ -186,7 +186,8 @@
                             }
 
                             //para esconder o botao confirmar e mostrar o botao proximo
-                            function esconder() {
+                            function
+                            esconder() {
                                 var content = document.getElementById("content");
                                 content.style.visibility = 'visible';
                                 var hide = document.getElementById("hide");//pega o elemento com id=hide

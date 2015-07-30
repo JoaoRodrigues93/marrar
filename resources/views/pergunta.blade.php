@@ -38,15 +38,16 @@
         </div>
         <div class="form-group">
 
-            {!! Form::label('questao','Pergunta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('questao','',['class'=>'form-control', 'placeholder'=>'Introduza a pergunta aqui','rows'=>'2']) !!}
+            {!! Form::label('pergunta','Pergunta',['class'=>'text-primary']) !!}
+            {!! Form::text('questao','',['class'=>'form-control', 'placeholder'=>'Introduza a questao aqui','rows'=>'2']) !!}
             {!! Form::label('correcto','Resposta correcta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcaoCorrecta','',['class'=>'form-control', 'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2']) !!}
+            {!! Form::text('opcaoCorrecta','',['class'=>'form-control', 'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2']) !!}
+
             {!! Form::label('erradas','Respostas erradas',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcao1','',['class'=>'form-control', 'placeholder'=>'Introduza a 1ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao2','',['class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao3','',['class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao4','',['class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::text('opcao1','',['class'=>'form-control', 'placeholder'=>'Introduza a 1ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::text('opcao2','',['class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::text('opcao3','',['class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::text('opcao4','',['class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2']) !!}
 
         </div>
         <div class="center-block" align="center">

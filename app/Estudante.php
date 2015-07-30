@@ -23,10 +23,17 @@ class Estudante extends Model implements AuthenticatableContract, CanResetPasswo
     }
 
     public function examescolectivos (){
-        $this->belongsToMany('App\ExameColectivos')->withPivot('duracao','nota','respostasCertas','respostasErradas');
-        return $this->belongsToMany('App\ExameColectivos')->withTimestamps();
+
+        return $this->belongsToMany('App\ExameColectivos')->withPivot('duracao','nota','respostasCertas','respostasErradas')->withTimestamps();
     }
 
+    public function testemunhos (){
+        return $this->hasMany('App\Testemunho');
+    }
+
+    public function dados (){
+        return $this->hasMany('App\Dado');
+    }
 
     protected $hidden = ['password', 'remember_token'];
 }

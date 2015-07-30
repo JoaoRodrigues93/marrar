@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExameNormalsTable extends Migration {
+class CreateTestemunhosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,10 @@ class CreateExameNormalsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('exame_normals', function(Blueprint $table)
+		Schema::create('testemunhos', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->dateTime('dataRealizacao');
-            $table->integer('duracao')->unsigned();
-            $table->decimal('nota',2,2);
-            $table->smallInteger('respostasCertas')->unsigned();
-            $table->smallInteger('respostasErradas')->unsigned();
-            $table->smallInteger('nrPerguntas')->unsigned();
+            $table->text('texto');
             $table->integer('estudante_id')->unsigned();
             $table->foreign('estudante_id')->references('id')->on('estudantes')->onDelete('cascade');
             $table->softDeletes();
@@ -35,7 +30,7 @@ class CreateExameNormalsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('exame_normals');
+		Schema::drop('testemunhos');
 	}
 
 }

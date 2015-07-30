@@ -10,6 +10,10 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
 
+    public function logout (){
+        Auth::logout();
+        return redirect('/');
+    }
 
     public function post(Request $request)
     {
@@ -29,7 +33,7 @@ class AuthController extends Controller
         $password = $request->input('login-password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentication passed...
-            return redirect()->intended('/');
+            return redirect()->intended('/home');
         }
 
     }
@@ -51,8 +55,8 @@ class AuthController extends Controller
         $estudante->password = $password;
         $estudante->save();
 
-        return "<h1>$estudante->nome foste registado com sucesso!</h1>" .
-        "<h2>Clique <a href='/login'>Aqui</a> para voltar</h2>";
+        Auth::login($estudante,true);
+        return redirect('/home');
     }
 
     public function redirectToProvider($provider)
@@ -63,6 +67,6 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->user();
-        // $user->token;
+        //$user->token;
     }
 }

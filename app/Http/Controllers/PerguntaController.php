@@ -69,7 +69,7 @@ Session::flash('message','Dados gravados com sucesso');
 
     public function EditarPergunta(Request $request){
 
-    $id= $request->input('id');
+        $id= $request->input('id');
         $pergunta=Pergunta::find($id);
         $pergunta -> questao = $request -> input('questao');
         $pergunta -> opcao1  = $request -> input('opcao1');
