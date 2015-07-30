@@ -57,8 +57,9 @@ class CapituloController extends Controller
     public function editarCapitulo($id)
     {
         $capitulo = Capitulo::find($id);
-        $disciplina = Disciplina::lists('nome', 'id');
-        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplina));
+        $disciplinas = Disciplina::lists('nome', 'id');
+        $disciplina = $capitulo->disciplina->nome;
+        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplinas,'disciplina'=>$disciplina));
     }
 
     public function editar(Request $request)

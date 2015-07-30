@@ -92,7 +92,7 @@ Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', function(){
-    return View::make('aestudar');
+    return View::make('aestudarAlt');
 });
 
 Route::get('inicioAlt', function(){

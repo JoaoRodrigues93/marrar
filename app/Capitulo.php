@@ -8,11 +8,11 @@ class Capitulo extends Model {
         return $this->belongsTo('App\Disciplina');
     }
 
-    public function  temas () {
+    public function  temas() {
         return $this ->hasMany('App\Tema');
     }
 
-    public function  testes (){
+    public function  testes(){
         $this->hasMany('App\Teste');
     }
 

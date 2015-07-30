@@ -1,9 +1,17 @@
-div.container {
-    height: 41em;
-    /*box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);*/
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+div.mainContainer {
+    height: auto;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 0;
-    background: transparent;
+    /*background: transparent;*/
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 75%;
+    background: #FAFAFA;
 }
 
 header {
@@ -23,17 +31,141 @@ nav.navbar-inverse {
     padding: 0;
     border-radius: 5px;
     background: #FAFAFA;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);*/
 }
 
 .texto {
     /*background: red;*/
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+    transform: perspective(60px) rotateY(.4deg);
+    -webkit-transform: perspective(60px) rotateY(.4deg);
 }
 
 .exercicio {
     /*background: green;*/
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-perspective-origin: top left;
+    transform: perspective(120px) rotateY(-.8deg);
+    -webkit-transform: perspective(120px) rotateY(-.8deg);
 }
+
+.pergunta{
+    border: 1px solid rgba(255,83,13, 0.5);
+    border-radius: 1em;
+    padding: 0 0 0 4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.apergunta h3{
+    color: rgb(255,83,13);
+}
+.respostas{
+    margin-left: 2em;
+}
+
+div.row.pergunta > div.row.cofirmacao > div.col-lg-4 > button{
+    float: right;
+    margin-right: 3em;
+    margin-bottom: 1.1em;
+}
+
+.teoria p{
+    text-align: justify;
+}
+/*O CSS do resumo original começa aqui*/
+
+.segundoContainer {
+    box-shadow: none;
+    width: 85%;
+}
+
+div > div > div:nth-child(5) > div:nth-child(1),
+div > div > div:nth-child(5) > div:nth-child(2),
+div > div > div:nth-child(5) > div:nth-child(3) {
+    position: relative;
+}
+
+div > div > div:nth-child(5) > div > button {
+
+     position: absolute;
+     /*top: 50%;*/
+     left: 50%;
+     margin-right: -50%;
+     transform: translate(-50%, -50%);
+
+ }
+
+div > div > div:nth-child(5) > div > label{
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+div > div > div:nth-child(5) {
+    margin-top: 3em;
+    /*height: 3.375em;*/
+    padding: 0;
+}
+
+body > div > div > div:nth-child(5) > div {
+    padding: 0;
+    margin: 0;
+}
+
+div > div > div:nth-child(6) > div:nth-child(1) > button {
+    float: right;
+}
+
+div > div > div:nth-child(5) > div:nth-child(1) > button {
+    border-radius: 50%;
+    background-image: url('../img/atras.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 4em;
+    height: 4em;
+}
+
+div > div > div:nth-child(5) > div:nth-child(2) > label {
+    border-radius: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #353740;
+
+    text-align: center;
+
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+}
+
+/*div > div > div:nth-child(5) > div:nth-child(2) > button:hover{
+    background: none;
+}*/
+
+div > div > div:nth-child(5) > div:nth-child(3) > button {
+    border-radius: 50%;
+    background-image: url('../img/proximo.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 4em;
+    height: 4em;
+}
+
+div > div > div:nth-child(6) {
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+.btnTeoExer {
+    background: #FF530D;
+    border: none;
+}
+
+/*Termina o CSS do resumo original*/
 
 footer {
     margin-top: 1.2em;
@@ -46,13 +178,13 @@ div.exercicio > div.container {
     margin-top: 43%;
 }
 
-div.col-lg-6.texto > div:nth-child(3) > ul > li{
+div.col-lg-6.texto > div:nth-child(3) > ul > li {
     display: inline-block;
     list-style: none;
 }
 
 div.col-lg-6.texto > div:nth-child(3) > ul > li:nth-child(1) > a,
-div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a{
+div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -63,15 +195,15 @@ div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a{
 }
 
 div.col-lg-6.texto > div:nth-child(3) > ul > li:nth-child(1) > a,
-div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a{
-   background-image: url('../img/atras.png');
+div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a {
+    background-image: url('../img/atras.png');
 }
 
-div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a{
+div.col-lg-6.texto > div:nth-child(3) > ul > li:last-child > a {
     background-image: url('../img/proximo.png');
 }
 
-div.col-lg-6.texto > div:nth-child(2) > div > p{
+div.col-lg-6.texto > div:nth-child(2) > div > p {
     font-size: 20px;
     width: 85%;
 }
