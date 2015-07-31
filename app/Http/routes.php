@@ -112,7 +112,7 @@ Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
 Route::post('/teste/{cap}/{id}',"TesteController@gravaTeste");
 
-Route::get('examenormal','ExameController@showNormal');
-Route::get('examecolectivo','ExameController@showColectivo');
+Route::get('/examenormal','ExameController@showNormal');
+Route::get('/examecolectivo','ExameController@showColectivo');
 Route::post('examenormal','ExameController@corrigeExame');
 Route::post('examecolectivo','ExameController@corrigeExame');

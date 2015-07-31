@@ -53,8 +53,8 @@
                     <li id="exames" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Exames<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="examenormal">Normal</a></li>
-                            <li><a href="examecolectivo">Colectivo</a></li>
+                            <li><a href="/examenormal">Normal</a></li>
+                            <li><a href="/examecolectivo">Colectivo</a></li>
                         </ul>
                     </li>
                     <li id="username" class="dropdown">

@@ -7,6 +7,7 @@ use App\Tema;
 use App\Teste;
 use Request;
 use Input;
+use Illuminate\Support\Facades\Auth;
 
 
 session_start();
@@ -50,7 +51,7 @@ public function inicializaTeste($capituloNome,$capituloId){
 
     public function gravaTeste(){
         $teste =new Teste();
-        $estudante=Estudante::find(1);
+        $estudante = Auth::user();
         $data = Input::all();
 
 
