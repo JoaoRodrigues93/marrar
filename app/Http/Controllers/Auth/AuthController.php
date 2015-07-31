@@ -83,7 +83,6 @@ class AuthController extends Controller
 
         $sexo = $user['gender'];
         $sexo = ($sexo=='male')? "Masculino": "Femenino";
-        $email = $user['email'];
         $username = $userData->id;
         $foto = $userData->avatar;
 
