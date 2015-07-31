@@ -20,8 +20,12 @@ hr {
     border-width: 3px;
 }
 
+hr.orange {
+    border-color: #fc530d;/*modifiquei aqui*/
+}
+
 hr.light {
-    border-color: #9fa59a;/*modifiquei aqui*/
+    border-color: #2c97de;/*modifiquei aqui*/
 }
 
 a {
@@ -57,7 +61,7 @@ p {
 
 .bg-dark {
     color: #fff;
-    background-color: #42A5F5;
+    background-color: #1b6b9f;
 }
 
 .text-faded {

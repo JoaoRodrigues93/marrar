@@ -76,8 +76,7 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0); font-family:'Cooper Black'; color: #ffffff; font-size: 6em">
-                marrar</h2>
+            {{--<h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0); font-family:'Cooper Black'; color: #ffffff; font-size: 6em">marrar</h2>--}}
             <h2 style="text-shadow: 0px 0px 200px rgba(0,0,0,0);  color: #ffffff; font-family: Circular,Helvetica,Arial,sans-serif;">A todo lugar e a todo momento. Estude de forma divertida e prepare o seu futuro!</h2>
             <a href="#about" class="btn btn-primary btn-xl page-scroll">O que aprender</a>
         </div>
@@ -89,12 +88,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center" style="color:#000">
                 <h2 class="section-heading">O que aprender?</h2>
-                <hr class="light">
-                <img src="{{URL::asset('start/img/cross.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="240" width="240">
-                <p class="text-faded" style="color:#585e53;font-family: Circular,Helvetica,Arial,sans-serif;">Prepare-se para seu exame de admissão onde quer que esteja!
-                    Participe dos exames colectivos e testarás sua chance de admitir na vida real.
-                Proporcionamos material organizado de acordo com as disciplinas, exercicios de cada capitulo e exames para estudares brincando.</p>
-               {{-- <a href="#" class="btn btn-default btn btn-default btn-xl">Get Started!</a>--}}
+                <hr class="primary">
+                <div class="col-lg-8">
+                    <p class="text-faded" style="color:#585e53;font-family: Circular,Helvetica,Arial,sans-serif;"><br/>Prepare-se para seu exame de admissão onde quer que esteja!
+                        Participe dos exames colectivos e testarás sua chance de admitir na vida real.
+                        Proporcionamos material organizado de acordo com as disciplinas, exercicios de cada capitulo e exames para estudares brincando.</p>
+                    {{-- <a href="#" class="btn btn-default btn btn-default btn-xl">Get Started!</a>--}}
+                </div>
+                <div class="col-lg-4">
+                    <img src="{{URL::asset('start/img/cross.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="240" width="240">
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -105,7 +110,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Como Funciona</h2>
-                <hr class="primary">
+                <hr class="orange">
             </div>
         </div>
     </div>
@@ -151,7 +156,17 @@
     <div class="container text-center">
         <div class="call-to-action">
             {{-- <h2>Free Download at Start Bootstrap!</h2>--}}
-            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada" style="border-color: #76ff03; background-color: #76ff03; color:#fff;">Comece Agora!</a>
+            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada" style="border-color: #43ba14; background-color: #43ba14; color:#fff;">Comece Agora!</a><div><br/><br/></div>
+
+                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6" >
+                    <a href="https://www.facebook.com/marrarmoz" style="float: left;"><img src="{{URL::asset('start/img/facebook.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="32" width="32">
+                    </a>
+                    <a href="https://twitter.com/marrarmz" style="float: left;"><img src="{{URL::asset('start/img/twitter.png')}}" data-wow-delay=".2s" class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" height="32" width="32">
+                    </a></div>
+                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                    <a href="" style="float: right;"><p style="color: #ffffff">Sobre nós</p></a>
+                </div>
+
         </div>
     </div>
 </aside>
