@@ -83,7 +83,7 @@
             </div>
             <?php } ?>
         </div>
-        {!!Form::open(array('url' => 'examenormal','onsubmit'=>'return valido()')) !!}
+        {!!Form::open(array("url" => "$action",'onsubmit'=>'return valido()')) !!}
         <ul class="nav nav-pills">
             <?php for($j = 1; $j <= $i; $j++) {
             ?>
@@ -210,7 +210,7 @@
         }
 
         window.onload = function () {
-            var Minutes = 60 * 60, display = document.querySelector('#timer');
+            var Minutes = 60 * 0.6, display = document.querySelector('#timer');
             startTimer(Minutes, display);
         };
 

@@ -37,13 +37,13 @@ return [
     'facebook'=> [
         'client_id' =>'873662779355317',
         'client_secret'=>'0541bebdbf58c9f4e69c0f44b5a3908c',
-        'redirect'=>'http://localhost:8000/home',
+        'redirect'=>'http://localhost:8000/login/done/facebook',
     ],
 
     'google'=>[
         'client_id' =>'68582577746-91q66jb77chnqsia0uuoelf6nb7uvn35.apps.googleusercontent.com',
         'client_secret'=>'5Dcj2-SjVpyTSczDANDMidow',
-        'redirect'=>'http://localhost:8000/home',
+        'redirect'=>'http://localhost:8000/login/done/google',
     ],
 
 ];

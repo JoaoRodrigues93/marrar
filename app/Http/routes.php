@@ -87,7 +87,7 @@ Route::post('login','Auth\AuthController@post');
 
 Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
-
+Route::get('login/done/{provider}','Auth\AuthController@handleProviderCallback');
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', function(){
@@ -106,5 +106,5 @@ Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
 Route::get('examenormal','ExameController@showNormal');
 Route::get('examecolectivo','ExameController@showColectivo');
-Route::post('examenormal','ExameController@corrigeExameNormal');
-Route::post('examecolectivo','ExameController@corrigeExameColectivo');
+Route::post('examenormal','ExameController@corrigeExame');
+Route::post('examecolectivo','ExameController@corrigeExame');

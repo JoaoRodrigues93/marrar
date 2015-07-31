@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Disciplina;
+use App\Estudante;
 use App\ExameColectivo;
 use App\ExameNormal;
 use App\Http\Controllers\PerguntaController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 
@@ -20,7 +22,8 @@ class ExameController extends Controller
         $nrPerguntas = $perguntas->count();
         $_SESSION["exame"] = $perguntas;
 
-            return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplina,"nrPerguntas"=>$nrPerguntas));
+        $action = 'examenormal';
+            return View('exame')->with(array("action"=>$action,"perguntas" => $perguntas,"disciplina"=>$disciplina,"nrPerguntas"=>$nrPerguntas));
         }
 
 
@@ -34,6 +37,8 @@ class ExameController extends Controller
         $disciplinaActual = $_SESSION['disciplinaActual'];
         $perguntaController = new PerguntaController();
         $dateTIme = getdate();
+        $user = Auth::user();
+        $already = false;
         $perguntas =null;
         if($dateTIme['mon']<10)
         $data = $dateTIme['year']."-0".$dateTIme['mon']."-".$dateTIme['mday'];
@@ -42,9 +47,16 @@ class ExameController extends Controller
         $examecolectivo = ExameColectivo::all()->where('dataCriacao',$data,true)->first();
 
         if($examecolectivo){
-
+            $estudantes = $examecolectivo->estudantes()->getResults();
+            foreach($estudantes as $estudante ){
+                if($estudante->id = $user->id){
+                    $already = true;
+                }
+            }
             $perguntas = $examecolectivo->perguntas()->getResults();
             $nrPerguntas = $perguntas->count();
+            if($already==true)
+                return View('exameRealizado');
         }
         else
         {
@@ -64,13 +76,16 @@ class ExameController extends Controller
 
         }
 
+        $action = 'examecolectivo';
+
 
         $_SESSION["exame"] = $perguntas;
-        return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplinaActual,"nrPerguntas"=>$nrPerguntas));
+        $_SESSION['examecolectivo'] = $examecolectivo;
+        return View('exame')->with(array("action"=>$action,"perguntas" => $perguntas,"disciplina"=>$disciplinaActual,"nrPerguntas"=>$nrPerguntas));
 
     }
 
-    public function corrigeExameNormal(Request $request){
+    public function corrigeExame(Request $request){
         $exame = $_SESSION['exame'];
         $pergunta = $exame[0];
         $repostaEscolhida="";
@@ -80,6 +95,7 @@ class ExameController extends Controller
         $nrRepostasErradas =0;
         $nrPerguntaActual=1;
         $relatorio="";
+        $duracao = 60;
 
         $estudante = $_SESSION['estudante'];
 
@@ -105,12 +121,19 @@ class ExameController extends Controller
 
         $uri = $request->path();
         if($uri=='examecolectivo'){
-            return "Exame Colectivo";
+            $examecolectivo = $_SESSION['examecolectivo'];
+            $estudante = Auth::user();
+            $estudante->examescolectivos()->save($examecolectivo,['nota'=>$nota,"respostasCertas"=>$nrRepostasCertas,
+                "respostasErradas"=>$nrRepostasErradas,"duracao"=>$duracao]);
+
+            $dadosExame = ['nota'=>$nota,"respostasCertas"=>$nrRepostasCertas,
+                "respostasErradas"=>$nrRepostasErradas,"duracao"=>$duracao];
+            return View('exameColectivoResultado',["dadosExame"=>$dadosExame,"nrPerguntas"=>$nrPerguntaActual]);
         }
         elseif($uri=='examenormal') {
             $examenormal = new ExameNormal();
             $examenormal->nota = $nota;
-            $examenormal->duracao = 60;
+            $examenormal->duracao = $duracao;
             $examenormal->respostasCertas = $nrRepostasCertas;
             $examenormal->respostasErradas = $nrRepostasErradas;
             $examenormal->nrPerguntas = $nrPerguntaActual;
