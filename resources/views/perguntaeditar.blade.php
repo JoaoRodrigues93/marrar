@@ -13,42 +13,43 @@
         {!! Form::open( array('url'=> 'editar-pergunta')) !!}
 
         <div class="jumbotron">
+            <div class="form-group" >
 
-            <div class="form-group">
-
-                {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', $disciplinas , Input::old('disciplinas'), ['class' => 'form-control'])
+                {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
+                {!! Form::select('disciplinas', $disciplinas , null, ['class' => 'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"])
                 !!}
                 {!! Form::label('capitulo','Selecione o capitulo',['class'=>'text-primary']) !!}
-                {!! Form::select('capitulos', $capitulos , Input::old('capitulos'),['class' => 'form-control'] ) !!}
+                {!! Form::select('capitulos',$capitulos,null,['class' => 'form-control','id'=>'capitulos','onchange'=>"adicionaTema()"] ) !!}
                 {!! Form::label('tema','Selecione o tema',['class'=>'text-primary']) !!}
-                {!! Form::select('tema', $tema , Input::old('tema'),['class' => 'form-control']) !!}
+                {!! Form::select('tema',$tema, null, ['class' => 'form-control', 'id'=>'temas1']) !!}
             </div>
         </div>
         <div class="form-group">
 
             {!! Form::label('questao','Pergunta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('questao',$pergunta->questao,['class'=>'form-control', 'placeholder'=>'Introduza a
+            {!! Form::text('questao',$pergunta->questao,['class'=>'form-control', 'placeholder'=>'Introduza a
             pergunta aqui','rows'=>'2']) !!}
-            {!! Form::hidden('id',$pergunta->id,['class'=>'form-control']) !!}
+            {!! Form::hidden('id',$pergunta->id,['class'=>'form-control','id'=>'id']) !!}
             {!! Form::label('correcto','Resposta correcta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcaoCorrecta',$pergunta->opcaoCorrecta,['class'=>'form-control',
+            {!! Form::text('opcaoCorrecta',$pergunta->opcaoCorrecta,['class'=>'form-control',
             'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2']) !!}
             {!! Form::label('erradas','Respostas erradas',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcao1',$pergunta->opcao1,['class'=>'form-control', 'placeholder'=>'Introduza a 1ª
+            {!! Form::text('opcao1',$pergunta->opcao1,['class'=>'form-control', 'placeholder'=>'Introduza a 1ª
             resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao2',$pergunta->opcao2,['class'=>'form-control', 'placeholder'=>'Introduza a 2ª
+            {!! Form::text('opcao2',$pergunta->opcao2,['class'=>'form-control', 'placeholder'=>'Introduza a 2ª
             resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao3',$pergunta->opcao3,['class'=>'form-control', 'placeholder'=>'Introduza a 3ª
+            {!! Form::text('opcao3',$pergunta->opcao3,['class'=>'form-control', 'placeholder'=>'Introduza a 3ª
             resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao4',$pergunta->opcao4,['class'=>'form-control', 'placeholder'=>'Introduza a 4ª
+            {!! Form::text('opcao4',$pergunta->opcao4,['class'=>'form-control', 'placeholder'=>'Introduza a 4ª
             resposta errada aqui','rows'=>'2']) !!}
 
         </div>
         <div class="center-block" align="center">
 
-            {!!Form::submit('Submeter pergunta',['class'=>'btn-primary']) !!}
-
+            {!!Form::submit('Submeter pergunta') !!}
+            {!! Form::hidden('idTema',$idTema, ['id'=>'idTema']) !!}
+            {!! Form::hidden('idCap',$idCap, ['id'=>'idCap']) !!}
+            {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
         </div>
 
 
@@ -61,6 +62,179 @@
 
     </div>
 
+
+    <script>
+
+
+            var temas = document.getElementById('temas1');
+            var idTema = document.getElementById('idTema');
+
+            var encontrado = false;
+            var i = 0;
+            while (encontrado == false && i < temas.length) {
+                if (temas[i].value == idTema.value) {
+                    encontrado = true;
+                    temas.selectedIndex = i;
+                    i = 0;
+                }
+                i++;
+            }
+
+            var disciplinas = document.getElementById('disciplinas');
+            var idDisciplina = document.getElementById('idDisc');
+            encontrado = false;
+
+
+            while (encontrado == false && i < disciplinas.length) {
+                if (disciplinas[i].value == idDisciplina.value) {
+                    encontrado = true;
+                    disciplinas.selectedIndex = i;
+                    i = 0;
+                }
+                i++;
+
+            }
+
+            var capitulos = document.getElementById('capitulos');
+            var idCapitulos = document.getElementById('idCap');
+            encontrado = false;
+
+
+            while (encontrado == false && i < capitulos.length) {
+                if (capitulos[i].value == idCapitulos.value) {
+                    encontrado = true;
+                    capitulos.selectedIndex = i;
+                    i = 0;
+                }
+                i++;
+            }
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script>
+
+
+        //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
+        function adicionaCapitulo() {
+
+            var  disciplina = document.getElementById('disciplinas');
+            var  capitulos = document.getElementById('capitulos');
+            var  temas = document.getElementById('temas');
+
+            var disciplinaSelecionada = disciplina.options[disciplina.selectedIndex].value;
+
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    var listaCapitulos = xmlhttp.responseText;
+                    var capituloJson = JSON.parse(listaCapitulos);
+                    var capitulo;
+
+
+                    for(k=capitulos.options.length-1;k>=0;k--)
+                    {
+                        capitulos.remove(k);
+                    }
+
+                    for(j=temas.options.length-1;j>=0;j--)
+                    {
+                        temas.remove(j);
+                    }
+
+                    for (var i = 0; i < capituloJson.capitulos.length; i++) {
+                        var option = document.createElement("option");
+                        capitulo = capituloJson.capitulos[i];
+                        option.text = capitulo.nome;
+                        capitulos.add(option);
+                        capitulos.options[i].value=capitulo.id;
+
+                    }
+
+                    capitulos.selectedIndex=-1;
+                    temas.selectedIndex=-1;
+                }
+
+            }
+            xmlhttp.open("GET","capitulo-combobox/"+disciplinaSelecionada,true);
+
+            xmlhttp.send();
+        }
+
+        //Funcao  que busca os temas do capitulo escolhido e adiciona a combobox temas
+        function adicionaTema(){
+
+            var  temas = document.getElementById('temas');
+            var  capitulos = document.getElementById('capitulos');
+
+
+            var capituloSelecionado = capitulos.options[capitulos.selectedIndex].value;
+
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+
+                    var listatemas = xmlhttp.responseText;
+                    var temaJson = JSON.parse(listatemas);
+                    var tema;
+
+
+                    for(k=temas.options.length-1;k>=0;k--)
+                    {
+                        temas.remove(k);
+                    }
+
+                    for (i = 0; i < temaJson.temas.length; i++) {
+                        var option = document.createElement("option");
+                        tema = temaJson.temas[i];
+                        option.text = tema.nome;
+                        temas.add(option);
+                        temas.options[i].value=tema.id;
+
+                    }
+
+                    temas.selectedIndex=-1;
+                }
+
+            }
+            xmlhttp.open("GET","tema-combobox/"+capituloSelecionado,true);
+
+            xmlhttp.send();
+
+
+
+        }
+
+
+
+    </script>
 
 
 @stop

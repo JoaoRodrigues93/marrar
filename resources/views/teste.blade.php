@@ -9,40 +9,43 @@
 
 
         <br>
+<div class="container">
+        <div class="col-lg-10 col-md-10  col-lg-offset-2 col-md-offset-2">
 
-        <div class="col-lg-10 col-md-10 col-sm-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
+            <div class="col-lg-12">
 
-            <div>
-                <h2 class="text-danger left" > Teste |  {{$disciplina}} |{{$capitulo}}</h2>
-                <hr>
+              <h2 class="text-danger left text-capitalize" > Teste |  {{$disciplina}} |{{$capitulo->nome}}</h2>
+                <hr class="col-lg-8">
+               <p></p>
 
             </div>
 
+
+
+
+
         </div>
 
-    <div class="row">
 
-        <div class="col-lg-2 col-md-2 col-sm-3">
+    <div class="row ">
 
-            <div class="col-lg-2 col-md-2 col-sm-0 " style="position: fixed; float: right">
+        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" >
+
                 <br>
                 <br>
-
-                <aside role="complementary">
-                    <div>
-                        <div class="panel-group">
+                        <div class="panel-group" style="position: fixed;">
                             <div class="panel panel-info">
                                 <div class="panel panel-heading">
                                     {!! Form::label('perguntas',"Perguntas")!!}
                                 </div>
                                 <div class="panel-body">
 
-                                    <ul style="overflow: auto">
+                                    <ul>
 
                                         <?php $j=0;?>
                                         @foreach($perguntas as $pergunta)
                                             {!! Form::hidden('contador',$j=$j+1)!!}
-                                            <li> <a href="#panel{{$j}}">
+                                            <li> <a href="#pergunta{{$j}}" id="panel{{$j}}" style="color: red" >
                                                     Pergunta {{$j}}
 
                                                 </a></li>
@@ -52,138 +55,218 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-
-
-
-                </aside>
 
             </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <br>
+                <br>
 
-        </div>
-
-        </div>
-
-        <div class="col-lg-10 col-md-10 col-sm-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
-
-            <div style="overflow: hidden">
-
-                <div class="row">
+                {!! Form::open(['entregarTeste']) !!}
+                <?php $i=0; ?>
+                @foreach($perguntas as $pergunta)
 
 
 
-                    <div class="col-lg-9 col-md-9 col-sm-12">
-
-
-                        <br>
-                        <br>
-                        <?php $i=0; ?>
-                        @foreach($perguntas as $pergunta)
+                    <div class="form-group">
 
 
 
-                            <div class="form-group">
+                        {!! Form::hidden('id',$i=$i+1)  !!}
 
 
-                                {!! Form::open() !!}
-                                {!! Form::hidden('id',$i=$i+1)  !!}
+                        <div class="panel-group" id="pergunta{{$i}}">
+                            <div class="panel panel-info">
+                                <div class="panel panel-heading">
+
+                                    {!! Form::label('pergunta',"Pergunta $i")!!}
+                                </div>
+                                <div class="panel-body">
 
 
-                                <div class="panel-group" id="panel{{$i}}">
-                                    <div class="panel panel-info">
-                                        <div class="panel panel-heading">
+                                    <div id="questao">
 
-                                            {!! Form::label('pergunta',"Pergunta $i")!!}
+                                        <h4> {!! Form::label('questao',$pergunta->questao)!!}</h4>
+                                        <p>
+
+
+
+                                        <div id="opcao1{{$i}}">
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')"]) !!}
+                                            <label   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
+                                            <p>
                                         </div>
-                                        <div class="panel-body">
 
+                                        <div id="opcao2{{$i}}">
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')"]) !!}
+                                            <label   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
+                                            <p>
+                                        </div>
 
-                                            <div id="questao">
+                                        <div id="opcao3{{$i}}">
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')"]) !!}
+                                            <label   for="example3{{$i}}">{{$pergunta->opcao3}}</label>
+                                            <p>
+                                        </div>
 
-                                                <h4> {!! Form::label('questao',$pergunta->questao)!!}</h4>
-                                                <p>
+                                        <div id="opcao4{{$i}}">
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')"]) !!}
+                                            <label   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
+                                            <p>
+                                        </div>
 
+                                        <div id="opcao5{{$i}}">
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')"]) !!}
+                                            <label   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
 
+                                            <p>
+                                        </div>
 
-                                                <div id="opcao1{{$i}}">
-                                                    {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')"]) !!}
-                                                    <label   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
-                                                    <p>
-                                                </div>
-
-                                                <div id="opcao2{{$i}}">
-                                                    {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')"]) !!}
-                                                    <label   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
-                                                    <p>
-                                                </div>
-
-                                                <div id="opcao3{{$i}}">
-                                                    {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')"]) !!}
-                                                    <label   for="example3{{$i}}">{{$pergunta->opcao3}}</label>
-                                                    <p>
-                                                </div>
-
-                                                <div id="opcao4{{$i}}">
-                                                    {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')"]) !!}
-                                                    <label   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
-                                                    <p>
-                                                </div>
-
-                                                <div id="opcao5{{$i}}">
-                                                    {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')"]) !!}
-                                                    <label   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
-
-                                                    <p>
-                                                </div>
-
-                                                <div id="content{{$i}}">
-
-                                                </div>
-                                                {!! Form::hidden("escolhida$i",'',['id'=>"escolhida$i"]) !!}
-
-
-
-                                            </div>
-
+                                        <div id="content{{$i}}">
 
                                         </div>
+                                        {!! Form::hidden("escolhida$i",'',['id'=>"escolhida$i"]) !!}
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                @endforeach
+
+                <div style="float: left">
+                    {!! Form::hidden('nota','',['id'=>"nota"]) !!}
+                    {!! Form::hidden("respCertas",'',['id'=>"respCertas"]) !!}
+                    {!! Form::hidden("respErradas",'',['id'=>"respErradas"]) !!}
+                    {!! Form::hidden("capituloId",$capitulo->id,['id'=>"capituloId"]) !!}
+
+                    <label id="resultado" class="alert alert-info" style="display: none"></label>
+                </div>
+                <div style="float: right">
+
+
+                    {!!Form::button('Entregar',['class'=>'btn btn-primary','onclick'=>"processarPergunta()", 'id'=>'btn_entregar']) !!}
+                </div>
+
+
+                {!! Form::close() !!}
+            </div>
+
+
+
+                    <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="float :left;">
+                        <br>
+                        <br>
+                        <div class="panel-group" id="pergunta{{$i}}">
+                            <div class="panel panel-info">
+                                <div class="panel panel-heading">
+
+                                    {!! Form::label('historico',"Histórico")!!}
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <h5 ><label>Testes feitos : </label><label id="feitos"> {{$total}}</label></h5>
+                                    <p>
+                                    <h5 ><label>Nota máxima : </label><label id="maxima">{{$max}}</label></h5>
+                                    <p>
+                                    <h5 ><label>Nota mínima  :</label><label id="minima">{{$min}}</label></h5>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+</div>
+
+        <div id="resultadoTeste" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Resultado do teste do capitulo "{{$capitulo->nome}}"</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+
+                            <h3 align="right">Nota do teste :</h3>
+                                 </div>
+                                <div class="col-lg-6">
+                                      <h3 align="left">  <label id="notaTeste"></label></h3>
+                                </div>
+                            </div>
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <h3 align="right"> Total de Perguntas :</h3>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3><label id="totalPerguntas"></label></h3>
+
                                     </div>
 
                                 </div>
 
 
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                    <h3 align="right"> Respostas certas :</h3>
+                                                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3><label id="certas"></label></h3>
 
-                                {!! Form::close() !!}
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <h3 align="right"> Respostas Erradas :</h3>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3><label id="erradas"></label></h3>
+
+                                    </div>
+                                <div class="col-lg-12">
+
+                                    <h4><label id="mensagem"></label></h4>
+
+                                </div>
 
 
-
+                                </div>
 
                             </div>
-                        @endforeach
+                            <div>
 
-                        <div style="float: left">
-
-                            <label id="resultado" class="alert alert-info" style="display: none"></label>
-                        </div>
-                        <div style="float: right">
-
-
-                            {!!Form::button('Entregar',['class'=>'btn btn-primary','onclick'=>"processarPergunta()", 'id'=>'btn_entregar']) !!}
-                        </div>
-
-
-
+                            </div>
+                        </form>
                     </div>
-
-
+                    <br>
+                    <br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
                 </div>
 
             </div>
         </div>
-
-
 
     <script>
         function alteraResposta(idEscolhido,id,opcaoEscolhida){
@@ -191,6 +274,13 @@
             deSeleciona(id);
             document.getElementById(idEscolhido).setAttribute('class','bg-success');
             document.getElementById("escolhida"+id).setAttribute('value',opcaoEscolhida);
+
+
+            var panel=document.getElementById("panel"+id);
+
+            if(panel.style.color!="green") {
+                panel.style.color = "green";
+            }
         }
 
         function deSeleciona(id){
@@ -248,8 +338,20 @@
 
                             for(var k=0;k<naoRespondidas.length;k++){
                                 text+= naoRespondidas[k];
+                                if(k+1<naoRespondidas.length){
+                                    if(naoRespondidas.length-(k+1)==1){
+                                        text+=' e ';
+                                    }
+                                    else{
+                                        text+=' , ';
+                                    }
+                                }
                             }
-                          alert("Responda todas as perguntas.As perguntas nao respondidas sao "+text);
+                            if(naoRespondidas.length==1){
+                                alert("Responda todas as perguntas.A pergunta não respondida é a "+text);
+                            }
+                          else
+                            {alert("Responda todas as perguntas.As perguntas não respondidas são "+text);}
                         }
 
                         else {
@@ -266,7 +368,7 @@
                                 if (perguntaEscolhida.value == pergunta.opcaoCorrecta) {
 
                                     content.setAttribute("class", "alert alert-success");
-                                    content.innerHTML = "<strong>Certo</strong> Parabens a resposta está certa";
+                                    content.innerHTML = "<strong>Certo</strong> Parabéns a resposta está certa";
                                     nrCertas++;
 
                                 }
@@ -292,7 +394,83 @@
                             var totalQuestoes=perguntas.perguntas.length;
                             var percentagemCerto=(nrCertas*100)/totalQuestoes;
                             resultado.style.display = "block";
-                            resultado.innerHTML="<strong>Resultado</strong> "+percentagemCerto.toPrecision(3)+"%  . Acertou "+nrCertas+" de "+totalQuestoes+ " dperguntas.";
+                            var notaTeste=(percentagemCerto*20)/100;
+                            resultado.innerHTML="<strong>Resultado</strong> "+percentagemCerto.toFixed(2)+"% ( "+notaTeste.toFixed(2)+" Val.)   . Acertou "+nrCertas+" de "+totalQuestoes+ " perguntas.";
+
+                            var nota = document.getElementById('nota');
+                            nota.value=notaTeste.toFixed(2);
+                            var respCertas = document.getElementById('respCertas');
+                            respCertas.value=nrCertas;
+                            var respErradas = document.getElementById('respErradas');
+                            respErradas.value=(totalQuestoes)-nrCertas;
+
+
+
+                            var form=$('form[entregarTeste]');
+                            var url=form.prop('action');
+
+                            $.ajax({
+                                url: url,
+                                data: form.serialize(),
+                                method: 'POST',
+                                success: function (data) {
+
+                                    document.getElementById('notaTeste').innerHTML = percentagemCerto.toFixed(2) + "% ( " + notaTeste.toFixed(2) + " Val)";
+                                    document.getElementById('certas').innerHTML = nrCertas;
+                                    document.getElementById('erradas').innerHTML = totalQuestoes - nrCertas;
+                                    $total = document.getElementById('totalPerguntas').innerHTML = totalQuestoes;
+
+                                    $msg = document.getElementById('mensagem');
+
+                                    if (percentagemCerto < 50) {
+
+                                        $msg.innerHTML = "<strong style=\"color: red\">Mau</strong> Precisa se esforçar mais na proxima vez."
+
+                                    }
+
+
+                                    else if (percentagemCerto > 50 && percentagemCerto < 75) {
+
+                                        $msg.innerHTML = "<strong style=\"color: green\">Bom</strong> Continue assim e chegarás ao topo."
+
+                                    }
+
+                                    else if (percentagemCerto < 100) {
+
+                                    $msg.innerHTML = "<strong style=\"color: green\">Muito Bom</strong> Continue assim e chegarás a nota máxima."
+                                    }
+                                    else if (percentagemCerto == 100) {
+
+                                        $msg.innerHTML = "<strong style=\"color: green\">Excelente</strong> Parabéns atingiu a nota máxima."
+                                    }
+
+                                    $('#resultadoTeste').modal();
+
+
+                                   var feitos= document.getElementById('feitos');
+                                   var maxima=document.getElementById('maxima');
+                                   var minima=document.getElementById('minima');
+
+                                    /*if(feitos.innerHTML=='---'){
+                                       feitos.inn;
+                                       maxima.innerHTML=notaTeste.toFixed(2);
+                                       minima.innerHTML=notaTeste.toFixed(2);
+                                       }
+                                    else {
+                                        feitos.innerHTML = feitos.innerHTML + 1;
+
+                                        if (notaTeste > maxima.innerHTML) {
+                                            maxima.innerHTML = notaTeste.toFixed(2);
+
+                                        }
+                                        else if (notaTeste < maxima.innerHTML) {
+                                            maxima.innerHTML = notaTeste.toFixed(2);
+
+                                        }
+                                    }*/
+                                }
+
+                            });
 
 
                         }
@@ -300,10 +478,13 @@
 
                 }
 
-                xmlhttp.open("GET","teste-validacao",true);
+                xmlhttp.open("GET","/teste-validacao",true);
 
                 xmlhttp.send();
             }
         </script>
+
+
+
 
 @stop

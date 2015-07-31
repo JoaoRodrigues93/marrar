@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.maincontent')
 
 @section('title')
     Marrar:Exercicios
@@ -180,7 +180,7 @@
                                     }
                                 }
 
-                                xmlhttp.open("GET", "exercicio/resposta", true);
+                                xmlhttp.open("GET", "/exercicio/resposta", true);
                                 xmlhttp.send();
 
 
@@ -321,7 +321,7 @@
 
                                 }
 
-                                xmlhttp.open("GET", "proximo", true);
+                                xmlhttp.open("GET", "/proximo", true);
                                 xmlhttp.send();
                             }
                             function proximo() {

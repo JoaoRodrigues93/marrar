@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+
 Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
 Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
@@ -41,8 +42,13 @@ Route::get('perguntaview', 'PerguntaController@InicializaPerguntaView');
 Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::get('teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::get('examenormal','ExameController@show');
+Route::post('examenormal','ExameController@corrigeExame');
 
+Route::get('registar',function(){
+    return View::make('registar');
+});
 Route::get('login',function(){
     return View::make('login');
 });
@@ -62,7 +68,7 @@ Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
-Route::get('exercicio','ExercicioController@show');
+Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');
 
@@ -104,6 +110,8 @@ Route::get('welcome',function (){
 
 Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
+Route::post('/teste/{cap}/{id}',"TesteController@gravaTeste");
+
 Route::get('examenormal','ExameController@showNormal');
 Route::get('examecolectivo','ExameController@showColectivo');
 Route::post('examenormal','ExameController@corrigeExame');
