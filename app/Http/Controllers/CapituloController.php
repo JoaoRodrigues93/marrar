@@ -190,13 +190,14 @@ public  function capituloTemaJason() {
         $tem.="]";
 
 
+        $imagem=$capitulo->nome;
 
 
         if (strlen($testeJson) < 20) {
             $testeJson .= "{\"nome\":\"$capitulo->nome\"," .
                 "\"id\":\"$capitulo->id\"" .
                 ",\"tema\":$tem" .
-                ",\"image\":\"okcomputer.png\"";
+                ",\"image\":\"$imagem[0].png\"";
 
             if($j==1){
                 $testeJson .=",\"first\": true";
@@ -219,7 +220,7 @@ public  function capituloTemaJason() {
             $testeJson .= ",{\"nome\":\"$capitulo->nome\"," .
                 "\"id\":\"$capitulo->id\"" .
                 ",\"tema\": $tem" .
-                ",\"image\":\"kida.png\"";
+                ",\"image\":\"$imagem[0].png\"";
 
             if($j==1){
                 $testeJson .=",\"first\": true ";
