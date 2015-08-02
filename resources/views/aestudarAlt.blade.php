@@ -6,11 +6,17 @@
 
 @section('conteudo')
 
+    <div class="container" id="container">
+
+
+    </div>
+
     <div class="container mainContainer">
 
-        <div class="container segundoContainer">
+        <div id="displayed" class="container segundoContainer">
+            {{--<iframe name="frame" id="frame" src="{{$conteudo}}"></iframe>
             <div class="row">
-                <h3>Cossenos</h3>
+                <h2>Cossenos</h2>
             </div>
 
             <div class="row teoria">
@@ -104,27 +110,38 @@
                     lorem dictum suscipit vitae sit amet leo. d est, eget varius ligula interdum at.
                     lorem dictum suscipit vitae sit amet leo. d est, eget varius ligula interdum at.
                 </p>
-            </div>
+            </div>--}}
 
-            <div class="row">
-                <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
-                    <button role="button" class="btn anterior"></button>
-                </div>
-                <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
-                    <label>1</label>
-                </div>
-                <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
-                    <button role="button" class="btn proxima"></button>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                    <button role="button" class=" btnTeoExer btn btn-danger btn-md disabled">Teória</button>
-                </div>
-                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                    <button role="button" class=" btnTeoExer btn btn-danger btn-md">Exercicio</button>
-                </div>
+        </div>
+
+        <input type="hidden" value="{{$conteudo}}" id="conteudo"/>
+
+        <script>
+            var conteudo=document.getElementById('conteudo');
+
+            alert();
+           document.getElementById("displayed").innerHTML = conteudo.innerHTML;
+        </script>
+
+        <div class="row btnControle">
+            <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+                <button role="button" class="btn anterior"></button>
+            </div>
+            <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+                <label>1</label>
+            </div>
+            <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+                <button role="button" class="btn proxima"></button>
+            </div>
+        </div>
+
+        <div class="row btnSelectConteudo">
+            <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                <button role="button" class=" btnTeoExer btn btn-danger btn-md disabled">Teória</button>
+            </div>
+            <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                <button role="button" class=" btnTeoExer btn btn-danger btn-md">Exercicio</button>
             </div>
         </div>
     </div>

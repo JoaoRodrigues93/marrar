@@ -57,7 +57,7 @@ class TemaController extends Controller
         fclose($myfile);
 
 
-        $tema = new Tema();
+         $tema = new Tema();
          $tema->nome = $request->input('nome');
          $tema->numero_questoes = $request->input('questoes');
          $tema->conteudo = $pathFinal;
@@ -120,8 +120,6 @@ class TemaController extends Controller
                 $temaJson .= ",{\"nome\":\"$tema->nome\"," .
                     "\"id\":\"$tema->id\"}";
             }
-
-
         }
 
         $temaJson .= " ]}";

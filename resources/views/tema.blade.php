@@ -64,10 +64,6 @@
 
        CKEDITOR.replace('conteudo');
 
-
-       /**/
-
-
         //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
         function adicionaCapitulo() {
 

@@ -1,4 +1,4 @@
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -49,54 +49,67 @@ nav.navbar-inverse {
     -webkit-transform: perspective(120px) rotateY(-.8deg);
 }
 
-.pergunta{
-    border: 1px solid rgba(255,83,13, 0.5);
+.pergunta {
+    border: 1px solid rgba(255, 83, 13, 0.5);
     border-radius: 1em;
     padding: 0 0 0 4em;
     margin-top: 2em;
     margin-bottom: 2em;
 }
 
-.apergunta h3{
-    color: rgb(255,83,13);
+.apergunta h3 {
+    color: rgb(255, 83, 13);
 }
-.respostas{
+
+.respostas {
     margin-left: 2em;
 }
 
-div.row.pergunta > div.row.cofirmacao > div.col-lg-4 > button{
+div.row.pergunta > div.row.cofirmacao > div.col-lg-4 > button {
     float: right;
     margin-right: 3em;
     margin-bottom: 1.1em;
 }
 
-.teoria p{
+.teoria p {
     text-align: justify;
 }
+
 /*O CSS do resumo original começa aqui*/
 
 .segundoContainer {
     box-shadow: none;
     width: 85%;
+    padding-top: 1.3em;
 }
 
-div > div > div:nth-child(5) > div:nth-child(1),
-div > div > div:nth-child(5) > div:nth-child(2),
-div > div > div:nth-child(5) > div:nth-child(3) {
+div.row.btnSelectConteudo {
+
+    margin-top: 4em;
+    height: 5em;
+}
+
+.btnControle {
+    margin-top: 3em;
+}
+
+.btnControle > div:nth-child(1),
+.btnControle > div:nth-child(2),
+.btnControle > div:nth-child(3) {
     position: relative;
 }
 
-div > div > div:nth-child(5) > div > button {
+.btnControle div > button {
 
-     position: absolute;
-     /*top: 50%;*/
-     left: 50%;
-     margin-right: -50%;
-     transform: translate(-50%, -50%);
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 
- }
+}
 
-div > div > div:nth-child(5) > div > label{
+.btnControle div > label {
     position: absolute;
     /*top: 50%;*/
     left: 50%;
@@ -104,22 +117,11 @@ div > div > div:nth-child(5) > div > label{
     transform: translate(-50%, -50%);
 }
 
-div > div > div:nth-child(5) {
-    margin-top: 3em;
-    /*height: 3.375em;*/
-    padding: 0;
-}
-
-body > div > div > div:nth-child(5) > div {
-    padding: 0;
-    margin: 0;
-}
-
-div > div > div:nth-child(6) > div:nth-child(1) > button {
+.btnSelectConteudo > div:nth-child(1) > button {
     float: right;
 }
 
-div > div > div:nth-child(5) > div:nth-child(1) > button {
+.btnControle > div:nth-child(1) > button {
     border-radius: 50%;
     background-image: url('../img/atras.png');
     background-position: center center;
@@ -129,23 +131,17 @@ div > div > div:nth-child(5) > div:nth-child(1) > button {
     height: 4em;
 }
 
-div > div > div:nth-child(5) > div:nth-child(2) > label {
+.btnControle label {
     border-radius: 100%;
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: #353740;
-
     text-align: center;
-
     width: 2em;
     height: 2em;
     line-height: 2em;
 }
 
-/*div > div > div:nth-child(5) > div:nth-child(2) > button:hover{
-    background: none;
-}*/
-
-div > div > div:nth-child(5) > div:nth-child(3) > button {
+.btnControle > div:nth-child(3) > button {
     border-radius: 50%;
     background-image: url('../img/proximo.png');
     background-position: center center;
@@ -155,7 +151,7 @@ div > div > div:nth-child(5) > div:nth-child(3) > button {
     height: 4em;
 }
 
-div > div > div:nth-child(6) {
+div > div:nth-child(6) {
     margin-top: 4em;
     margin-bottom: 2em;
 }
