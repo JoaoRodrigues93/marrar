@@ -36,7 +36,8 @@ class PerfilController extends Controller {
         $perfil -> sexo  = $request -> input('sexo');
         $perfil -> descricao  = $request -> input('descricao');
 
-//Validacao da Internet - Tou a levar porrada aki, prk neste momento, A Validacao PASSA, mesmo sem ter selecionado nada.
+        //$perfil -> foto = $request->input('imagem');
+/*
         $input = array('image' => Input::file('image'));
 
         // Within the ruleset, make sure we let the validator know that this
@@ -47,10 +48,14 @@ class PerfilController extends Controller {
 
         // Now pass the input and rules into the validator
         $validator = Validator::make($input, $rules);
-
+*/
         // Check to see if validation fails or passes
+        /*
         if ($validator->fails())
-        {
+        {*/
+
+        if ($request->hasFile('image')) {
+
             $imgName = $perfil->username . '.' .
                 $request->file('image')->getClientOriginalExtension();
 
@@ -59,9 +64,7 @@ class PerfilController extends Controller {
             );
 
             $perfil -> foto  = $imgName;
-        } else {
-
-            }
+        }
 
         $perfil ->save();
 
