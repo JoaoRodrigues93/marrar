@@ -18,7 +18,7 @@ display: none;
     background-color:#3b5998;
 }
 
-#loginModal .modal-header,#loginModal h4, #loginModal .close {
+#loginModal .modal-header,#loginModal h4, #loginModal .close,#registoModal .modal-header,#registoModal h4, #registoModal .close {
     background-color: #5cb85c;
     color:white !important;
     text-align: center;

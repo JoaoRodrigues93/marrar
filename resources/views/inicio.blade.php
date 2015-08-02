@@ -89,6 +89,7 @@
                 <li>
                     <a class="page-scroll" href="#services">Como Funciona</a>
                 </li>
+                <li>
                 <a>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#loginModal">
                         Entrar
@@ -223,7 +224,7 @@
 
 
 <!--- Registo -->
-<div id="registo" class="modal fade" role="dialog">
+<div id="registoModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,11 +281,8 @@
 
             <div class="modal-body">
                 <a class="btn btn-primary form-control" id="login-facebook" href='login/facebook'>
-                    <img width='32' height='32' alt='Facebook'
-                         src='{{URL::asset('img/facebook.png')}}'/> Entrar com facebook</a>
-                <a class="btn btn-primary form-control" id="login-google" href='login/google'>
-                    <img width='32' height='32' alt='Google'
-                         src='{{URL::asset('img/google.png')}}'/> Entrar com facebook</a>
+                    Entrar com facebook</a>
+                <a class="btn btn-primary form-control" id="login-google" href='login/google'>Entrar com google</a>
 
                 <form method='post' url='login'>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -296,15 +294,15 @@
                     <button type='submit' class='btn btn-success form-control'>entrar</button>
                 </form>
                 <div class='text-center'><b>Ou</b></div>
-                <a class='btn btn-danger form-control' onclick="closePopover()" data-toggle='modal'
-                   data-target='#registo'>Registe-se</a>
+                <a class='btn btn-default form-control' onclick="closePopover()" data-toggle='modal'
+                   data-target='#registoModal'>Registe-se</a>
 
                 <p class='text-center link'><a href='#'>Esqueceu Senha?</a></p>
             </div>
 
-            <div class="modal-footer">
+           {{-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            </div>
+            </div>--}}
         </div>
 
     </div>
