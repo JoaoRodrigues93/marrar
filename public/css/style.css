@@ -1,3 +1,7 @@
+body{
+    background-color:#e9e9e9;
+}
+
 #show{
 display: none;
 }
@@ -8,22 +12,28 @@ display: none;
     padding: 5px 20px 20px 20px;
 }
 
-#login-facebook{
+#login-facebook,.login-facebook{
     padding:0;
-    margin: 0;
-    background-color: #0000C2;
+    margin-bottom:10px;
+    background-color:#3b5998;
 }
 
-#login-facebook a {
-    color:#FFFFFF;
-    text-decoration:none;
-    font-size:0.9em ;
+#loginModal .modal-header,#loginModal h4, #loginModal .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
 }
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+
 
 #login-google {
     padding:0;
-    margin: 0;
-    background-color:#880000;
+    margin-bottom:10px;
+    background-color:#db4a39;
 }
 
 #login-google a {
@@ -68,7 +78,7 @@ body {
     background:none;
 }
 #wrap > .container {
-    padding: 70px 15px 0;
+    padding: 90px 15px 0;
 }
 
 .right {
@@ -141,8 +151,11 @@ body {
 
 
 
-
-
+.texto-pergunta {
+    font-weight:normal;
+    text-decoration:none;
+    font-size:1.1em;
+}
 
 
 

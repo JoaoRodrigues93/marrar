@@ -1,3 +1,4 @@
+<?php $ranking=true; ?>
 @extends('layouts.maincontent')
 @section('title')
     Lista de capitulos
@@ -17,6 +18,7 @@
         })();
 
     </script>
+
     <h2 class="text-primary" >{{$disciplina->nome}}</h2>
     {!! Form::hidden('id',$disciplina->id,['id'=>'disciplina_id']) !!}
 
