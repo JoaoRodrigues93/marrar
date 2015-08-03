@@ -1,6 +1,11 @@
+
 @section('title')
     Marrar:Disciplinas
 @stop
+<link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
+<link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
+
+    <div class="container">
 <div class="jumbotron">
     <div class="panel panel-body">
         <div class="row">
@@ -8,9 +13,9 @@
                 <div class="col-md-3 portfolio-item">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
 
-                        <object data="{{URL::asset('img/livros/'.$disciplina->nome.'.png')}}" type="image/png">
+                        <object id="imagem" data="{{URL::asset('img/livros/'.$disciplina->nome.'.png')}}" type="image/png">
 
-                            <img class="img-responsive" src="{{URL::asset('img/livros/book.png')}} ">
+                            <img class="img-responsive" src="{{URL::asset('img/livros/quimica.png')}} ">
 
                         </object>
 
@@ -23,3 +28,4 @@
         </div>
     </div>
 </div>
+    </div>
