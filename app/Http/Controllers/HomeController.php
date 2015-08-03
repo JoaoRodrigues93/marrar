@@ -3,6 +3,7 @@ session_start();
 
 use App\Dado;
 use App\Disciplina;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -35,7 +36,7 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $estudante = Auth::user();
         $disciplinas = Disciplina::all();
@@ -61,6 +62,12 @@ class HomeController extends Controller
         $_SESSION ['disciplinaActual'] = $disciplinaActual;
         $_SESSION ['estudante'] = $estudante;
         $_SESSION ['ranking'] =true;
+
+        $uri = $request->path();
+
+        if($uri=="home/maisDisciplinas") {
+          return view('home', ['disciplinas' => $disciplinas]);
+        }
 
         if ($dado) {
 
