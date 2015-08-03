@@ -18,8 +18,7 @@ class AestudarController extends Controller
     public function aEstudarTeoria(){
 
 
-        $tema = Tema::find(4);
-
+        $tema = Tema::find(6);
         $conteudo = $tema->conteudo;
 
 

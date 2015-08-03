@@ -81,6 +81,11 @@ div.row.pergunta > div.row.cofirmacao > div.col-lg-4 > button {
     box-shadow: none;
     width: 85%;
     padding-top: 1.3em;
+    /*max-height: 35em;*/
+    /*overflow-y: hidden;*/
+    word-wrap: break-word;
+    /*background: red;*/
+    margin-bottom: 20px;
 }
 
 div.row.btnSelectConteudo {
