@@ -40,11 +40,17 @@ class ExameController extends Controller
         $user = Auth::user();
         $already = false;
         $perguntas =null;
-        if($dateTIme['mon']<10)
-        $data = $dateTIme['year']."-0".$dateTIme['mon']."-".$dateTIme['mday'];
-        else
-        $data = $dateTIme['year']."-".$dateTIme['mon']."-".$dateTIme['mday'];
+
+        $dia = $dateTIme['mday'];
+        $mes = $dateTIme['mon'];
+        $ano = $dateTIme['year'];
+
+        $dia = ($dia>9)? $dia : "0".$dia;
+        $mes = ($mes>9)? $mes : "0".$mes;
+
+        $data = $ano."-".$mes."-".$dia;
         $examecolectivo = ExameColectivo::all()->where('dataCriacao',$data,true)->first();
+
 
         if($examecolectivo){
             $estudantes = $examecolectivo->estudantes()->getResults();

@@ -1,12 +1,12 @@
 @extends('layouts.maincontent')
 
+
 @section('title')
     Teste
 @stop
 
 
 @section('body')
-
 
         <br>
 <div class="container">
@@ -19,11 +19,6 @@
                <p></p>
 
             </div>
-
-
-
-
-
         </div>
 
 

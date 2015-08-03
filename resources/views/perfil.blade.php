@@ -41,7 +41,8 @@
                         echo "http://localhost:8000/images/catalog/".$perfil -> foto;
                     ?> class="img-responsive img-rounded"  width="500" height="500">
                     {!! Form::label('Product Image') !!}
-                    {!! Form::file('image', null) !!}
+<!--                    {!! Form::file('image', null,['id'=>'image']) !!}-->
+                    <input type="file" id="image" name="image" />
                     <!--
                                         <form action="/script.php" method="post" enctype="multipart/form-data">
                                             <input type="file" name="foto"/>
