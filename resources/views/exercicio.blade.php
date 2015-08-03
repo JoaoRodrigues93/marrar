@@ -9,9 +9,11 @@
     <script xmlns="http://www.w3.org/1999/html">
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botao = document.getElementById("hide");
+            var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
             botao.setAttribute("class", "btn btn-success btn-lg active");
+            document.getElementById('hide').disabled=false;
             deSeleciona();
-            document.getElementById('respostaEscolhida').setAttribute('value', opcaoEscolhida);
+            document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
             document.getElementById(idEscolhido).setAttribute('class', 'bg-success');
         }
 
@@ -29,7 +31,7 @@
 
 
 
-    <div class="container" onload="inicio()">
+    <div onload="inicio()">
         <div class="jumbotron">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
@@ -42,17 +44,15 @@
                 <div class=" row">
                     <img class="center-block" id="imagem" src=''/>
 
-                    <h1 class="text-primary text-center" id="mensg"></h1>
+                    <h1 style="color: green" id="mensg"></h1>
+{{--<small> <p  id="nrAcertos"></p>
+    <p  id="nrErros"></p></small>--}}
 
-                    <div class="col-md-6">
 
-                        <p class="bg-success" id="nrAcertos"></p>
+                        <p class="text-center text-success" id="nrAcertos"></p>
+                        <p  class="text-center text-danger" id="nrErros"></p>
 
-                    </div>
 
-                    <div class="col-md-6">
-                        <p class="bg-danger" id="nrErros"></p>
-                    </div>
                 </div>
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -94,37 +94,38 @@
                             <div id="opcao1">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' =>
-                                    'field','id'=>'example1','onclick'=>"alteraResposta('$pergunta->opcao1','opcao1')"]) !!}
-                                    <label   for="example1" id="op1">{{$pergunta->opcao1}}</label>
+                                    'field','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
+                                    !!}
+                                    <label for="example1" id="op1">{{$pergunta->opcao1}}</label>
 
                             </div>
 
                             <div id="opcao2">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example2','onclick'=>"alteraResposta('$pergunta->opcao2','opcao2')"]) !!}
-                                    <label   for="example2" id="op2">{{$pergunta->opcao2}}</label>
+                                    'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
+                                    <label for="example2" id="op2">{{$pergunta->opcao2}}</label>
                             </div>
 
                             <div id="opcao3">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example3','onclick'=>"alteraResposta('$pergunta->opcao3','opcao3')"]) !!}
-                                    <label   for="example3" id="op3">{{$pergunta->opcao3}}</label>
+                                    'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
+                                    <label for="example3" id="op3">{{$pergunta->opcao3}}</label>
                             </div>
 
                             <div id="opcao4">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example4','onclick'=>"alteraResposta('$pergunta->opcao4','opcao4')"]) !!}
-                                    <label   for="example4" id="op4">{{$pergunta->opcao4}}</label>
+                                    'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
+                                    <label for="example4" id="op4">{{$pergunta->opcao4}}</label>
                             </div>
 
                             <div id="opcao5">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field',
-                                    'id'=>'example5','onclick'=>"alteraResposta('$pergunta->opcao5','opcao5')"]) !!}
-                                    <label   for="example5" id="op5">{{$pergunta->opcao5}}</label>
+                                    'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
+                                    <label for="example5" id="op5">{{$pergunta->opcao5}}</label>
                                 </p>
                             </div>
 
@@ -158,7 +159,7 @@
 
                             function respostaCorrecta() {
                                 //progressBar
-
+                                document.getElementById('hide').disabled=true;
 
                                 var respostaCorrecta, id, idResposta;
                                 idResposta = document.getElementById("id");
@@ -179,7 +180,7 @@
                                     }
                                 }
 
-                                xmlhttp.open("GET", "exercicio/resposta", true);
+                                xmlhttp.open("GET", "/exercicio/resposta", true);
                                 xmlhttp.send();
 
 
@@ -200,7 +201,7 @@
                                 var respostaEscolhida = document.getElementById("respostaEscolhida");
 
 
-                                //
+                              //  alert(resposta+' '+respostaEscolhida.value);
 
 
                                 //compara a resposta escolhida com a resposta certa
@@ -231,13 +232,14 @@
                                 barMessage.innerHTML = percent + "%";
                                 bar.style.width = '' + percent + '%';
 
+                                document.getElementById('show').disabled=false;
                             }
                             //metodo ao clicar no botao proximo
 
 
                             function vaiPraProximo() {
                                 //  alert('Aqui');
-
+                                document.getElementById('show').disabled=true;
 
                                 if (window.XMLHttpRequest) {
                                     xmlhttp = new XMLHttpRequest();
@@ -261,30 +263,33 @@
 
                                             var mensg = document.getElementById("mensg");
                                             mensagemFinal.setAttribute('class', "panel panel-body visible");
-//alert(divHeight);
-                                            //    alert(divWidth);
-                                            //  mensagemFinal.style.width= "900px";
-                                            //      mensagemFinal.style.height= "600";
+
 
                                             //mensagem com nr de acertos e nr de erros
                                             var imagem = document.getElementById("imagem");
                                             if (contAcertos == 0) {
                                                 imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
-                                                mensg.innerHTML = "Dam: vai estudar seu burro";
+                                                mensg.innerHTML = "Estude mais e tente de novo!";
+                                                mensg.setAttribute('class','text-center');
+                                                mensg.style.color="red";
 
                                             } else if (contErros == 0) {
                                                 imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
-                                                mensg.innerHTML = "waauu super inteligente";
+                                                mensg.innerHTML = "Parabens, es super inteligente";
+                                                mensg.style.color="green";
+                                                mensg.setAttribute('class','text-center');
                                             }
                                             else {
-                                                mensg.innerHTML = "Precisas praticar mais";
+                                                mensg.innerHTML = "Bom mas precisas praticar mais";
+                                                mensg.setAttribute('class','text-center');
+                                                mensg.style.color="orange";
                                             }
 
                                             var nrAcertos = document.getElementById("nrAcertos");
-                                            nrAcertos.innerHTML = "Acertou: " + contAcertos + " perguntas";
+                                            nrAcertos.innerHTML = "Certas: " + contAcertos ;
                                             var nrErros = document.getElementById("nrErros");
-                                            nrErros.innerHTML = "Errou: " + contErros + " perguntas";
-                                            // document.write("Parabens: respondeste todas as questões");
+                                            nrErros.innerHTML = "Erradas: " + contErros ;
+
                                             return; //Para não executar o codigo abaixo
                                         }
 
@@ -316,7 +321,7 @@
 
                                 }
 
-                                xmlhttp.open("GET", "proximo", true);
+                                xmlhttp.open("GET", "/proximo", true);
                                 xmlhttp.send();
                             }
                             function proximo() {
@@ -326,6 +331,7 @@
                                 var show = document.getElementById("show");
                                 hide.style.display = "block";//mostra o botao confirmar
                                 show.style.display = "none";//esconde o botao proximo
+
                                 hide.setAttribute('class', 'btn btn-success btn-lg disabled');//desabilita o botao confirmar
                                 //desabilita os radios button
                                 var rad1 = document.getElementById("example1");
@@ -370,6 +376,7 @@
 
 
                         {!!Form::close()!!}
+
                     </div>
 
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
@@ -386,4 +393,5 @@
             </div>
         </div>
     </div>
+
 @stop

@@ -13,6 +13,7 @@
         <script src="{{URL::asset('js/bootstrap.js')}} "></script>
         <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
         <script src="{{URL::asset('tinymce/tinymce.min.js')}}"></script>
+
     @show
 
 

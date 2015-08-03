@@ -6,6 +6,8 @@ use App\Tema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+
+
 /**
  * Created by PhpStorm.
  * User: Xavier Ngomana
@@ -18,7 +20,7 @@ class PerguntaController extends Controller {
 
 
 
-public function InicializaPergunta(){
+    public function InicializaPergunta(){
     $disciplinas = Disciplina::lists('nome', 'id');
     return view('pergunta')->with(array('disciplinas'=>$disciplinas));
 }
@@ -50,6 +52,7 @@ Session::flash('message','Dados gravados com sucesso');
 }
 
     public function RemoverPergunta($id){
+
         Pergunta::find($id)->delete();
 
         return redirect('perguntaview');
@@ -59,10 +62,21 @@ Session::flash('message','Dados gravados com sucesso');
     public function Editar($id){
 
         $pergunta=Pergunta::find($id);
-        $disciplinas = Disciplina::lists('nome', 'id');
-        $capitulos = Capitulo::lists('nome', 'id');
-        $tema = Tema::lists('nome','id');
-        return view('perguntaeditar')->with(array('pergunta'=>$pergunta,'disciplinas'=>$disciplinas,'capitulos'=>$capitulos,'tema'=>$tema));
+        $idTema=$pergunta->tema()->get()->first();
+        $idCapitulo=$idTema->capitulo()->first();
+        $idDisc=$idCapitulo->disciplina()->first();
+
+
+        $tema=Tema::where('capitulo_id',$idCapitulo->id)->get()->lists('nome','id');;
+
+
+        $capitulos=Capitulo::where('disciplina_id',$idDisc->id)->get()->lists('nome','id');;
+
+        $pergunta->tema->capitulo->lists('nome','id');
+        $disciplinas = $pergunta->tema->capitulo->disciplina->lists('nome','id');
+
+        return view('perguntaeditar')->with(array('pergunta'=>$pergunta,'disciplinas'=>$disciplinas
+        ,'capitulos'=>$capitulos,'tema'=>$tema,'idTema'=>$idTema->id, 'idDisc'=>$idDisc->id,'idCap'=>$idCapitulo->id));
     }
 
 

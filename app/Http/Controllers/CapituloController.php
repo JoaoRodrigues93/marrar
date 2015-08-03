@@ -160,11 +160,13 @@ public  function capituloTemaJason() {
     $j=0;
     $nrcapitulos=$capitulos->count();
 
+
     foreach ($capitulos as $capitulo) {
 
         $temas=Tema::where('capitulo_id',$capitulo->id)->get();
 
         $tem="[";
+
         $i=0;
         $j++;
 
@@ -173,20 +175,29 @@ public  function capituloTemaJason() {
             $i++;
             $tem.="\"$tema->nome\"";
 
+
+
             if($temas->count()-$i!==0){
                 $tem.=",";
-            }
-        }
 
+            }
+
+
+
+
+
+        }
         $tem.="]";
+
+
+        $imagem=$capitulo->nome;
 
 
         if (strlen($testeJson) < 20) {
             $testeJson .= "{\"nome\":\"$capitulo->nome\"," .
                 "\"id\":\"$capitulo->id\"" .
                 ",\"tema\":$tem" .
-                ",\"image\":\"okcomputer.png\"" .
-                ",\"url\":\"#\"";
+                ",\"image\":\"$imagem[0].png\"";
 
             if($j==1){
                 $testeJson .=",\"first\": true";
@@ -209,8 +220,7 @@ public  function capituloTemaJason() {
             $testeJson .= ",{\"nome\":\"$capitulo->nome\"," .
                 "\"id\":\"$capitulo->id\"" .
                 ",\"tema\": $tem" .
-                ",\"image\":\"kida.png\"" .
-                ",\"url\":\"#\"";
+                ",\"image\":\"$imagem[0].png\"";
 
             if($j==1){
                 $testeJson .=",\"first\": true ";

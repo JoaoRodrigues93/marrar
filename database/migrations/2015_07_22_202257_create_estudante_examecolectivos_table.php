@@ -17,7 +17,7 @@ class CreateEstudanteExamecolectivosTable extends Migration {
          $table->integer('estudante_id')->unsigned();
          $table->integer('exame_colectivo_id')->unsigned();
          $table->integer('duracao')->unsigned();
-         $table->decimal('nota',2,2);
+         $table->decimal('nota',4,2);
          $table->smallInteger('respostasCertas')->unsigned();
          $table->smallInteger('respostasErradas')->unsigned();
          $table->foreign('estudante_id')->references('id')->on('estudantes')->onDelete('cascade');

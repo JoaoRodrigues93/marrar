@@ -1,9 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Disciplina;
+use App\Estudante;
+use App\ExameColectivo;
 use App\ExameNormal;
 use App\Http\Controllers\PerguntaController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 
@@ -12,19 +15,80 @@ session_start();
 class ExameController extends Controller
 {
 
-    public function showExame($disciplina)
+    public function showExameNormal($disciplina)
     {
         $perguntaController = new PerguntaController();
-        $perguntas = $perguntaController->buscarExame($disciplina);
+        $perguntas = $perguntaController->buscarExame($disciplina->nome);
         $nrPerguntas = $perguntas->count();
         $_SESSION["exame"] = $perguntas;
 
-            return View('exame')->with(array("perguntas" => $perguntas,"disciplina"=>$disciplina,"nrPerguntas"=>$nrPerguntas));
+        $action = 'examenormal';
+            return View('exame')->with(array("action"=>$action,"perguntas" => $perguntas,"disciplina"=>$disciplina,"nrPerguntas"=>$nrPerguntas));
         }
 
-    public function show(){
+
+
+    public function showNormal(){
         $disciplinaActual = $_SESSION['disciplinaActual'];
-        return $this->showExame($disciplinaActual->nome);
+        return $this->showExameNormal($disciplinaActual);
+    }
+
+    public function showColectivo () {
+        $disciplinaActual = $_SESSION['disciplinaActual'];
+        $perguntaController = new PerguntaController();
+        $dateTIme = getdate();
+        $user = Auth::user();
+        $already = false;
+        $perguntas =null;
+
+        $dia = $dateTIme['mday'];
+        $mes = $dateTIme['mon'];
+        $ano = $dateTIme['year'];
+
+        $dia = ($dia>9)? $dia : "0".$dia;
+        $mes = ($mes>9)? $mes : "0".$mes;
+
+        $data = $ano."-".$mes."-".$dia;
+        $examecolectivo = ExameColectivo::all()->where('dataCriacao',$data,true)->first();
+
+
+        if($examecolectivo){
+            $estudantes = $examecolectivo->estudantes()->getResults();
+            foreach($estudantes as $estudante ){
+                if($estudante->id = $user->id){
+                    $already = true;
+                }
+            }
+            $perguntas = $examecolectivo->perguntas()->getResults();
+            $nrPerguntas = $perguntas->count();
+            if($already==true)
+                return View('exameRealizado');
+        }
+        else
+        {
+
+            $perguntas = $perguntaController->buscarExame($disciplinaActual->nome);
+            $nrPerguntas = $perguntas->count();
+            $examecolectivo = new ExameColectivo();
+            $examecolectivo->dataCriacao = date_create();
+            $examecolectivo->tempoRealizacao = 60;
+            $examecolectivo->nrPerguntas = $nrPerguntas;
+            $examecolectivo->save();
+
+            foreach ($perguntas as $pergunta){
+                $examecolectivo->perguntas()->save($pergunta);
+            }
+
+
+        }
+
+        $action = 'examecolectivo';
+
+
+        $_SESSION["exame"] = $perguntas;
+        $_SESSION['examecolectivo'] = $examecolectivo;
+        return View('exame')->with(array("action"=>$action,"perguntas" => $perguntas,"disciplina"=>$disciplinaActual,"nrPerguntas"=>$nrPerguntas));
+
     }
 
     public function corrigeExame(Request $request){
@@ -37,6 +101,7 @@ class ExameController extends Controller
         $nrRepostasErradas =0;
         $nrPerguntaActual=1;
         $relatorio="";
+        $duracao = 60;
 
         $estudante = $_SESSION['estudante'];
 
@@ -46,14 +111,10 @@ class ExameController extends Controller
             $respostaCorrecta = $pergunta->opcaoCorrecta;
 
             if($repostaEscolhida==$respostaCorrecta){
-                /*$relatorio.="ID da pergunta: ".$idPergunta."  Resposta Escolhida: ".$repostaEscolhida.
-                    "  Resposta Correcta: ".$respostaCorrecta." ***RESPONDEU CORRECTAMENTE***\n";*/
                 $nrRepostasCertas++;
             }
 
             else{
-                    /*$relatorio.="ID da pergunta: ".$idPergunta."  Resposta Escolhida: ".$repostaEscolhida.
-                        "  Resposta Correcta: ".$respostaCorrecta." ***RESPONDEU ERRADAMENTE***\n";*/
                     $nrRepostasErradas++;
             }
 
@@ -61,29 +122,34 @@ class ExameController extends Controller
         }
 
         $nrPerguntaActual--;
-        /*
-        $table->dateTime('dataRealização');
-        $table->integer('duracao')->unsigned();
-        $table->decimal('nota',2,2);
-        $table->smallInteger('respostasCertas')->unsigned();
-        $table->smallInteger('respostasErradas')->unsigned();
-        $table->smallInteger('nrPerguntas')->unsigned();
-        $table->integer('estudante_id')->unsigned();
-        */
 
         $nota = ($nrRepostasCertas/$nrPerguntaActual)*20;
 
-        $examenormal = new ExameNormal();
-        $examenormal->nota =$nota;
-        $examenormal->duracao =60;
-        $examenormal->respostasCertas = $nrRepostasCertas;
-        $examenormal->respostasErradas = $nrRepostasErradas;
-        $examenormal->nrPerguntas = $nrPerguntaActual;
-        $examenormal->dataRealizacao = date_create();
-        $examenormal->estudante_id = $estudante->id;
+        $uri = $request->path();
+        if($uri=='examecolectivo'){
+            $examecolectivo = $_SESSION['examecolectivo'];
+            $estudante = Auth::user();
+            $estudante->examescolectivos()->save($examecolectivo,['nota'=>$nota,"respostasCertas"=>$nrRepostasCertas,
+                "respostasErradas"=>$nrRepostasErradas,"duracao"=>$duracao]);
 
-        $examenormal->save();
-        return View('exameResultado',['examenormal'=>$examenormal]);
+            $dadosExame = ['nota'=>$nota,"respostasCertas"=>$nrRepostasCertas,
+                "respostasErradas"=>$nrRepostasErradas,"duracao"=>$duracao];
+            return View('exameColectivoResultado',["dadosExame"=>$dadosExame,"nrPerguntas"=>$nrPerguntaActual]);
+        }
+        elseif($uri=='examenormal') {
+            $examenormal = new ExameNormal();
+            $examenormal->nota = $nota;
+            $examenormal->duracao = $duracao;
+            $examenormal->respostasCertas = $nrRepostasCertas;
+            $examenormal->respostasErradas = $nrRepostasErradas;
+            $examenormal->nrPerguntas = $nrPerguntaActual;
+            $examenormal->dataRealizacao = date_create();
+            $examenormal->estudante_id = $estudante->id;
+
+            $examenormal->save();
+            return View('exameResultado', ['examenormal' => $examenormal]);
+
+        }
     }
 
 }

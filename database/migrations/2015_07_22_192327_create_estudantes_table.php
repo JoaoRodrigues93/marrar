@@ -26,6 +26,7 @@ class CreateEstudantesTable extends Migration {
             $table->string('escola');
             $table->date('dataNascimento');
             $table->string('sexo');
+            $table->string('descricao');
             $table->rememberToken();
             $table->softDeletes();
 			$table->timestamps();;

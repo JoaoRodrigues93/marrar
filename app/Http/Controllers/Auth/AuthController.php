@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
 
         if ($request->has('opLogin')) {
-            return $this->login($request);
+            return $this->authenticate($request);
         } elseif ($request->has('opRegisto')) {
 
             return $this->registar($request);
@@ -27,7 +27,7 @@ class AuthController extends Controller
 
     }
 
-    public function login(Request $request)
+    public function authenticate(Request $request)
     {
         $email = $request->input('login-email');
         $password = $request->input('login-password');
@@ -66,7 +66,46 @@ class AuthController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
-        //$user->token;
+        $userData = Socialite::driver($provider)->user();
+
+        if($provider=="facebook"){
+            return $this->loginFacebook($userData);
+        }
+        elseif ($provider=="google"){
+            return $this->loginGoogle($userData);
+        }
+    }
+
+    public function loginFacebook($userData){
+        $user = $userData->user;
+        $nome = $user['first_name'];
+        $apelido = $user['last_name'];
+
+        $sexo = $user['gender'];
+        $sexo = ($sexo=='male')? "Masculino": "Femenino";
+        $username = $userData->id;
+        $foto = $userData->avatar;
+
+        $estudante = Estudante::firstOrCreate(['nome'=>$nome,'apelido'=>$apelido,
+            'sexo'=>$sexo,'username'=>$username,'foto'=>$foto]);
+        Auth::login($estudante,true);
+        return redirect('/home');
+    }
+
+    public function loginGoogle ($userData){
+        $user = $userData->user;
+        $name = $user['name'];
+        $nome = $name['givenName'];
+        $apelido = $name['familyName'];
+
+        $sexo = $user['gender'];
+        $sexo = ($sexo=='male')? "Masculino": "Femenino";
+        $email = $userData->email;
+        $username = $userData->id;
+        $foto = $userData->avatar;
+        $estudante = Estudante::firstOrCreate(['nome'=>$nome,'apelido'=>$apelido,
+            'sexo'=>$sexo,'username'=>$username,'foto'=>$foto]);
+        Auth::login($estudante,true);
+        return redirect('/home');
     }
 }

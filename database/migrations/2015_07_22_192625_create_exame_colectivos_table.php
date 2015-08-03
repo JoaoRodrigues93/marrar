@@ -15,7 +15,7 @@ class CreateExameColectivosTable extends Migration {
 		Schema::create('exame_colectivos', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->dateTime('dataCriacao');
+            $table->date('dataCriacao');
             $table->integer('tempoRealizacao')->unsigned();
             $table->smallInteger('nrPerguntas')->unsigned();
             $table->softDeletes();

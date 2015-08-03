@@ -1,3 +1,4 @@
+<?php $ranking=true; ?>
 @extends('layouts.maincontent')
 @section('title')
     Lista de capitulos
@@ -17,6 +18,7 @@
         })();
 
     </script>
+
     <h2 class="text-primary" >{{$disciplina->nome}}</h2>
     {!! Form::hidden('id',$disciplina->id,['id'=>'disciplina_id']) !!}
 
@@ -39,6 +41,7 @@
                     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 xmlhttp.onreadystatechange = function () {
+                    //
 
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
@@ -108,6 +111,7 @@
     </script>
 
     <script id="temas" type="text/x-mustache">
+
       @{{#data}}
         <div class='folderContent @{{id}}'>
           <div class='jaf-container'>
@@ -115,25 +119,33 @@
               <div class='art-wrap'>
                 <img src='expander/images/@{{image}}'>
               </div>
-              <h2><a href="@{{url}}" target="_blank" class="primaryColor">@{{nome}}</a></h2>
+              <h2 class="primaryColor">@{{nome}}</h2>
               <h3 class="secondaryColor">Lista de Temas</h3>
               <div class='multi'>
                 <ol class="secondaryColor">
                   @{{#tema}}
-                  <li><a href="@{{url}}" target="_blank" class="primaryColor">@{{.}}</a></li>
+
+                  <li><a href="exercicio/@{{id }}/@{{.}}"  class="primaryColor">@{{.}}</a></li>
+
                   @{{/tema}}
+
                 </ol>
-              </div>
+                </div>
+
             </div>
+
             <br class='clear'>
+            <button><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>
           </div>
           <a href="#" class="close">&times;</a>
         </div>
       @{{/data}}
     </script>
 </div>
+
 <script src="expander/js/mustache.js"></script>
 <script src="expander/js/jquery.app-folders.js"></script>
 <script src="expander/js/quantize.js"></script>
 <script src="expander/js/color-thief.js"></script>
+
 @stop

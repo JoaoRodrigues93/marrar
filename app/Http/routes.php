@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+
 Route::get('disciplina','DisciplinaController@showDisciplina');
 Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
 Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
@@ -41,9 +42,13 @@ Route::get('perguntaview', 'PerguntaController@InicializaPerguntaView');
 Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('teste','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('exame','ExameController@show');
+Route::get('teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::get('examenormal','ExameController@show');
+Route::post('examenormal','ExameController@corrigeExame');
 
+Route::get('registar',function(){
+    return View::make('registar');
+});
 Route::get('login',function(){
     return View::make('login');
 });
@@ -51,8 +56,7 @@ Route::get('perfil',function(){
     return View::make('perfil');
 });
 
-Route::get('/perfil/{id}', 'PerfilController@buscarPerfil');
-Route::post('registar-perfil','PerfilController@CriarPerfil');
+Route::get('perfil', 'PerfilController@buscarPerfil');
 Route::post('editar-perfil','PerfilController@EditarPerfil');
 
 Route::get('inicio',function(){
@@ -64,7 +68,7 @@ Route::get('buscar-teste','PerguntaController@buscarTeste');
 Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
-Route::get('exercicio','ExercicioController@show');
+Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');
 
@@ -89,7 +93,7 @@ Route::post('login','Auth\AuthController@post');
 
 Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
-
+Route::get('login/done/{provider}','Auth\AuthController@handleProviderCallback');
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'AestudarController@aEstudarTeoria');
@@ -104,3 +108,9 @@ Route::get('welcome',function (){
 
 Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
+Route::post('/teste/{cap}/{id}',"TesteController@gravaTeste");
+
+Route::get('/examenormal','ExameController@showNormal');
+Route::get('/examecolectivo','ExameController@showColectivo');
+Route::post('examenormal','ExameController@corrigeExame');
+Route::post('examecolectivo','ExameController@corrigeExame');

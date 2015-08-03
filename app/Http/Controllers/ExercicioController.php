@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Capitulo;
 use App\Pergunta;
 use App\Tema;
 use App\Disciplina;
@@ -11,9 +12,9 @@ session_start();
 
 class ExercicioController extends Controller{
 
-  /*  public function showJogo () {
-        $tema = Tema::find(3);
-        $perguntas=$tema->perguntas();*/
+    public function showJogo () {
+        $tema = Tema::find(1);
+        $perguntas=$tema->perguntas();
 
         /*$perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
@@ -22,12 +23,12 @@ class ExercicioController extends Controller{
             ->select('perguntas.*')
             ->get();*/
 
-   /*  $nrPerguntas=$perguntas->count();
+     $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
         $_SESSION['perguntas'] = $perguntas;
         return view('exercicio')->with(array('caminho'=>$tema->nome,'pergunta'=>$pergunta,"perguntas"=>$perguntas,'nrPerguntas'=>$nrPerguntas));
 
-    }*/
+    }
 
   /*  public function doPergunta (Request $request){
         $respostaCerta =$request-> input('respostaCerta');
@@ -50,11 +51,20 @@ class ExercicioController extends Controller{
         $_SESSION['perguntas'] = $perguntas;
         $_SESSION['perguntaActual'] = $perguntaActual;
         $_SESSION['nrPerguntas'] = $nrPerguntas;
-        return View('exercicio')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina,"capitulo"=>$capitulo,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
+        return view('exercicio')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina,"capitulo"=>$capitulo,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
     }
 
-    public function show(){
-        return $this->showExercicio("Frances","ABC","Aprender o ABC");
+    public function show($idCapitulo,$tema){
+        $tema = str_replace("%20", " ", $tema);
+
+
+        $capitulo=Capitulo::find($idCapitulo);
+
+       // $tema=$capitulo->tema()->where('temas.nome',$tema)->first();
+
+       $disciplina=$capitulo->disciplina()->first();
+
+       return $this->showExercicio($disciplina->nome,$capitulo->nome,$tema);
     }
 
     public  function  respostaCorrecta(){
