@@ -48,35 +48,35 @@
                         <p class="text-left">
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('1{{$i}}','{{$i}}','{{$pergunta->opcao1}}')"/>
-                            <label for="resposta1{{$i}}">{{$pergunta->opcao1}}</label>
+                            <label class="texto-pergunta" for="resposta1{{$i}}">{{$pergunta->opcao1}}</label>
                     </div>
 
                     <div id="opcao2{{$i}}">
                         <p class="text-left">
                             <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('2{{$i}}','{{$i}}','{{$pergunta->opcao2}}')"/>
-                            <label for="resposta2{{$i}}">{{$pergunta->opcao2}}</label>
+                            <label class="texto-pergunta" for="resposta2{{$i}}">{{$pergunta->opcao2}}</label>
                     </div>
 
                     <div id="opcao3{{$i}}">
                         <p class="text-left">
                             <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('3{{$i}}','{{$i}}','{{$pergunta->opcao3}}')"/>
-                            <label for="resposta3{{$i}}">{{$pergunta->opcao3}}</label>
+                            <label class="texto-pergunta" for="resposta3{{$i}}">{{$pergunta->opcao3}}</label>
                     </div>
 
                     <div id="opcao4{{$i}}">
                         <p class="text-left">
                             <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('4{{$i}}','{{$i}}','{{$pergunta->opcao4}}')"/>
-                            <label for="resposta4{{$i}}">{{$pergunta->opcao4}}</label>
+                            <label class="texto-pergunta" for="resposta4{{$i}}">{{$pergunta->opcao4}}</label>
                     </div>
 
                     <div id="opcao5{{$i}}">
                         <p class="text-left">
                             <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('5{{$i}}','{{$i}}','{{$pergunta->opcao5}}')"/>
-                            <label for="resposta5{{$i}}">{{$pergunta->opcao5}}</label>
+                            <label class="texto-pergunta" for="resposta5{{$i}}">{{$pergunta->opcao5}}</label>
                         </p>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
 
                 display.textContent = minutes + ":" + seconds;
 
-                if (diff == 30) {
+                if (diff == 600) {
                     modalAlert("Tempo de execução de Exame", "O exame termina em 30 segundos.");
                 }
 
@@ -210,7 +210,7 @@
         }
 
         window.onload = function () {
-            var Minutes = 60 * 0.6, display = document.querySelector('#timer');
+            var Minutes = 60 * 60, display = document.querySelector('#timer');
             startTimer(Minutes, display);
         };
 

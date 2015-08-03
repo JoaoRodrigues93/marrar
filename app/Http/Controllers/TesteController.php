@@ -30,7 +30,11 @@ public function inicializaTeste($capituloNome,$capituloId){
     $perguntas = $perguntaController->buscarTeste($disciplina->nome,$capitulo->nome);
 
     $_SESSION['perguntas']=$perguntas;
-    $estudante=Estudante::find(1);
+    //Alterei a linha abaixo
+    //$estudante=Estudante::find(1); para
+    $estudante = Auth::user();
+
+    $ranking = true;
 
     $teste=Teste::where('capitulo_id',$capitulo->id)
         ->where('estudante_id',$estudante->id)->get();
@@ -45,7 +49,7 @@ public function inicializaTeste($capituloNome,$capituloId){
      $min='---';
      $max='---';
     }
-    return view('teste')->with(array('perguntas'=>$perguntas,'capitulo'=>$capitulo,'disciplina'=>$disciplina->nome,'total'=>$total,'max'=>$max,'min'=>$min));
+    return view('teste')->with(array('perguntas'=>$perguntas,'capitulo'=>$capitulo,'disciplina'=>$disciplina->nome,'total'=>$total,'max'=>$max,'min'=>$min,$ranking));
 }
 
 

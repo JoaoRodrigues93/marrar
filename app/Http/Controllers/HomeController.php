@@ -60,6 +60,7 @@ class HomeController extends Controller
         $_SESSION ['disciplinas'] = $disciplinasNovas;
         $_SESSION ['disciplinaActual'] = $disciplinaActual;
         $_SESSION ['estudante'] = $estudante;
+        $_SESSION ['ranking'] =true;
 
         if ($dado) {
 

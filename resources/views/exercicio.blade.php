@@ -31,7 +31,7 @@
 
 
 
-    <div class="container" onload="inicio()">
+    <div onload="inicio()">
         <div class="jumbotron">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
