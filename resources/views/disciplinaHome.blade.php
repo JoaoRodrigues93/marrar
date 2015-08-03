@@ -7,10 +7,16 @@
             @foreach($disciplinas as $disciplina)
                 <div class="col-md-3 portfolio-item">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
-                        <img class="img-responsive" src="{{URL::asset('img/book.png')}} " alt={{$disciplina->nome}}>
-                        <h3>
+
+                        <object data="{{URL::asset('img/livros/'.$disciplina->nome.'.png')}}" type="image/png">
+
+                            <img class="img-responsive" src="{{URL::asset('img/livros/book.png')}} ">
+
+                        </object>
+
+                        <h2 class="text-center">
                             {{$disciplina->nome}}
-                        </h3>
+                        </h2>
                     </a>
                 </div>
             @endforeach
