@@ -38,7 +38,7 @@
                     if ($perfil->foto == '')
                         echo "http://localhost:8000/img/pessoa.png";
                     else
-                        echo "http://localhost:8000/images/catalog/".$perfil -> foto;
+                        echo $perfil -> foto;
                     ?> class="img-responsive img-rounded"  width="500" height="500">
                     {!! Form::label('Product Image') !!}
 <!--                    {!! Form::file('image', null,['id'=>'image']) !!}-->
