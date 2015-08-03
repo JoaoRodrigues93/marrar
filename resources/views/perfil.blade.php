@@ -94,15 +94,6 @@
                         Completo','class'=>'form-control'])!!}
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        {!!Form::label('nome-utilizador','Nome do Utilizador')!!}
-                    </div>
-                    <div class="col-lg-6">
-                        {!!Form::text('nome-do-utilizador',$perfil->username,['placeholder'=>'Username','class'=>'form-control'])!!}
-                    </div>
-                </div>
                 <!--
                                 <div class="row">
                                     <div class="col-lg-6">
