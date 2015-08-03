@@ -26,8 +26,7 @@
 
         <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" >
 
-                <br>
-                <br>
+
                         <div class="panel-group" style="position: fixed;">
                             <div class="panel panel-info">
                                 <div class="panel panel-heading">
@@ -53,8 +52,6 @@
 
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <br>
-                <br>
 
                 {!! Form::open(['entregarTeste']) !!}
                 <?php $i=0; ?>
@@ -157,8 +154,7 @@
 
 
                     <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="float :left;">
-                        <br>
-                        <br>
+
                         <div class="panel-group" id="pergunta{{$i}}">
                             <div class="panel panel-info">
                                 <div class="panel panel-heading">

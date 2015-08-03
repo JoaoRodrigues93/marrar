@@ -96,9 +96,7 @@ Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
 Route::get('login/done/{provider}','Auth\AuthController@handleProviderCallback');
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
-Route::get('aestudar', function(){
-    return View::make('aestudarAlt');
-});
+Route::get('aestudar', 'AestudarController@aEstudarTeoria');
 
 Route::get('inicioAlt', function(){
     return View::make('initialAlt');

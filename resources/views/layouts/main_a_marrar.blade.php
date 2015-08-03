@@ -6,7 +6,7 @@
 
     @section('head')
         <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
-        <link href="{{URL::asset('js/bootstrap.js')}} " rel="script">
+        <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/aestudar.css')}}" rel="stylesheet">
 
