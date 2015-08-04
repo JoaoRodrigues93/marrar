@@ -99,7 +99,7 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::get('aestudar', 'AestudarController@aEstudarTeoria');
 
 Route::get('inicioAlt', function(){
-    return View::make('initialAlt');
+    return View::make('initial');
 });
 
 Route::get('welcome',function (){

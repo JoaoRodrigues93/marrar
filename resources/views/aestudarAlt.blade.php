@@ -17,14 +17,25 @@
 
             <?php
 
-            //echo file_get_contents($conteudo);
+            function ainda($texto)
+            {
 
+
+                //coverter todas as entidades html em seus
+                //correspondes de caracteres, isso não inclue tags
+                $textoDecodificado = html_entity_decode($texto);
+
+                //Retira espaço em branco (ou outros caracteres) do final da string
+                $textoTrim = rtrim($textoDecodificado, [" ", "\t"]);
+
+                
+
+            }
 
             $texto = file_get_contents($conteudo);
+            echo $texto;
 
-                echo $texto;
-
-                //$findme = '';
+            //$findme = '';
 
             //$pos = strpos($texto, $findme);
 
