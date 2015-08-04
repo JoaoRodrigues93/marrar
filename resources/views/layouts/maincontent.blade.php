@@ -45,9 +45,14 @@
                             @endif
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            @for($i=0;$i<$nrDisciplinas;$i++)
+                            @for($i=0;$i<$nrDisciplinas && $i<4;$i++)
                                 <li><a href="/disciplinaHome/{{$outrasDisciplinas[$i]->id}}">{{$outrasDisciplinas[$i]->nome}}</a></li>
                             @endfor
+                            @if($nrDisciplinas >4)
+                                <li>
+                                    <a href="/home/maisDisciplinas">Mais Disciplinas</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                     <li id="exames" class="dropdown">

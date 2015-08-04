@@ -200,7 +200,8 @@
     <div class="container text-center">
         <div class="call-to-action">
             {{-- <h2>Free Download at Start Bootstrap!</h2>--}}
-            <a href="disciplinaHome" class="btn btn-default btn-xl wow tada"
+            <a href="#registoModal" class="btn btn-default btn-xl wow tada" data-toggle='modal'
+               data-target='#registoModal'
                style="border-color: #43ba14; background-color: #43ba14; color:#fff;">Comece Agora!</a>
 
             <div><br/><br/></div>

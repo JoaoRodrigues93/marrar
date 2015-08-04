@@ -81,7 +81,7 @@ Route::get('tema-combobox/{id}','TemaController@buscarTemaCapitulo');
 Route::get('capituloHome','CapituloController@showHome');
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
-
+Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('disciplinaHome/{id}','CapituloController@showCapituloHome');
 
 Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
@@ -91,7 +91,6 @@ Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login','Auth\AuthController@post');
 
-Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
 Route::get('login/done/{provider}','Auth\AuthController@handleProviderCallback');
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
@@ -114,3 +113,4 @@ Route::get('/examenormal','ExameController@showNormal');
 Route::get('/examecolectivo','ExameController@showColectivo');
 Route::post('examenormal','ExameController@corrigeExame');
 Route::post('examecolectivo','ExameController@corrigeExame');
+Route::get('home/maisDisciplinas','HomeController@index');
