@@ -22,6 +22,22 @@ header nav{
     padding: 0;
 }
 
+header nav div button.btn{
+    margin: 1.5em 5em 0 0;
+    background: #FAFAFA;
+    color: #2C97DE;
+    border: none;
+    text-transform: lowercase;
+    letter-spacing: .045em;
+    border-radius: 3em;
+    width: 6em;
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.3);
+    font-weight: 100;
+    text-decoration: none;
+    line-height: 100%;
+    font-family: Helvetica, sans-serif;
+}
+
 nav.navbar-inverse{
     background: transparent;
     border: none;

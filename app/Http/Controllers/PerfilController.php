@@ -26,7 +26,8 @@ class PerfilController extends Controller {
         $perfil = Estudante::find($id);
         $perfil -> nome  = $request -> input('nome');
         $perfil -> apelido  = $request -> input('apelido');
-        $perfil -> username = $request -> input('nome-do-utilizador');
+        //Not Used Anymore for Showing Purposes and Saving.
+        //$perfil -> username = $request -> input('nome-do-utilizador');
         //$perfil -> password = $request -> input('password');
         $perfil -> email  = $request -> input('email');
         $perfil -> telefone  = $request -> input('telefone');
