@@ -3,6 +3,7 @@
 use App\Capitulo;
 use App\Dado;
 use App\Disciplina;
+use App\GestorDisciplinaEstudada;
 use App\Tema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -146,6 +147,10 @@ public function showCapituloHome($id){
 public function showHome(){
 
     $disciplina=$_SESSION['disciplina'];
+    //Guarda dados da disciplina escolhida
+    $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
+    $estudante = Auth::user();
+    $gestorDisciplinaEstudada->guardaDisciplinaEstudada($estudante->id,$disciplina->id,$disciplina->nome);
     return view('capituloHome')->with(array('disciplina'=>$disciplina));
 }
 

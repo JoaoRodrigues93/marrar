@@ -4,6 +4,7 @@ use App\Disciplina;
 use App\Estudante;
 use App\ExameColectivo;
 use App\ExameNormal;
+use App\GestorRanking;
 use App\Http\Controllers\PerguntaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,7 @@ class ExameController extends Controller
         if($examecolectivo){
             $estudantes = $examecolectivo->estudantes()->getResults();
             foreach($estudantes as $estudante ){
-                if($estudante->id = $user->id){
+                if($estudante->id == $user->id){
                     $already = true;
                 }
             }
@@ -93,6 +94,7 @@ class ExameController extends Controller
 
     public function corrigeExame(Request $request){
         $exame = $_SESSION['exame'];
+        $disciplina = $_SESSION['disciplinaActual'];
         $pergunta = $exame[0];
         $repostaEscolhida="";
         $idPergunta=0;
@@ -134,6 +136,8 @@ class ExameController extends Controller
 
             $dadosExame = ['nota'=>$nota,"respostasCertas"=>$nrRepostasCertas,
                 "respostasErradas"=>$nrRepostasErradas,"duracao"=>$duracao];
+            $gestorRanking = new GestorRanking();
+            $gestorRanking->guardaRanking($disciplina->id,$estudante->id,$nota,$estudante->nome,$disciplina->nome);
             return View('exameColectivoResultado',["dadosExame"=>$dadosExame,"nrPerguntas"=>$nrPerguntaActual]);
         }
         elseif($uri=='examenormal') {

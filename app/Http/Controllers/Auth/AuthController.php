@@ -27,14 +27,26 @@ class AuthController extends Controller
 
     }
 
+    public function loginValido(Request $request){
+
+    }
+
     public function authenticate(Request $request)
     {
         $email = $request->input('login-email');
         $password = $request->input('login-password');
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password],true) ||
+
+            Auth::attempt(['username'=>$email,'password'=>$password],true)) {
             // Authentication passed...
             return redirect()->intended('/home');
         }
+
+       else {
+           $error =true;
+           $mensagem = "Os dados fornecidos para Login não conferem";
+           return view('inicio', ['error' => $error, "mensagem" => $mensagem]);
+       }
 
     }
 

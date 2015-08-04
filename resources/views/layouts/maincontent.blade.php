@@ -35,6 +35,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
+
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -64,17 +65,17 @@
                     </li>
                     <li id="username" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{$estudante->nome}}
-                            @if($estudante->foto)
+                        @if($estudante->foto)
 
-                            @else
+                        @else
                             <span class="glyphicon glyphicon-user"></span>
                             @endif
                             </a>
-                        <ul class="dropdown-menu" >
-                            <li><a href="/perfil">Perfil</a></li>
-                            <li><a href="/auth/logout">Sair</a></li>
-                        </ul>
-                        <li>
+                            <ul class="dropdown-menu" >
+                                <li><a href="/perfil">Perfil</a></li>
+                                <li><a href="/auth/logout">Sair</a></li>
+                            </ul>
+                    <li>
                             <a><img width="24" height="24" class="img-responsive" src="{{$estudante->foto}}"/></a>
                         </li>
                     </li>
@@ -91,12 +92,21 @@
                 if(isset($ranking))
                     {
                     ?>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well">
+                    @yield('body')
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    @include('ranking')
+                </div>
+                {{-- Será usado quando o ranking estiver pronto --}}
+                {{--
+                <div class="col-lg-12 col-md-9 col-sm-9 col-xs-12">
                     @yield('body')
                 </div>
                 <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <h2>Ranking</h2>
-                </div>
+                </div>--}}
 
                 <?php } else { ?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

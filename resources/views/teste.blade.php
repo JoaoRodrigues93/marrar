@@ -84,31 +84,31 @@
 
                                         <div id="opcao1{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')"]) !!}
-                                            <label   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
+                                            <label class="texto-pergunta"   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao2{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')"]) !!}
-                                            <label   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
+                                            <label class="texto-pergunta"   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao3{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')"]) !!}
-                                            <label   for="example3{{$i}}">{{$pergunta->opcao3}}</label>
+                                            <label class="texto-pergunta"  for="example3{{$i}}">{{$pergunta->opcao3}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao4{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')"]) !!}
-                                            <label   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
+                                            <label class="texto-pergunta"   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao5{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')"]) !!}
-                                            <label   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
+                                            <label class="texto-pergunta"   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
 
                                             <p>
                                         </div>

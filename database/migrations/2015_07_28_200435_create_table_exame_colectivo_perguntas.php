@@ -16,7 +16,7 @@ class CreateTableExameColectivoPerguntas extends Migration {
         {
             $table->increments('id');
             $table->integer('exame_colectivo_id')->unsigned();
-            $table->integer('pergunta_id');
+            $table->integer('pergunta_id')->unsigned();
             $table->foreign('exame_colectivo_id')->references('id')->on('exame_colectivos');
             $table->foreign('pergunta_id')->references('id')->on('perguntas');
             $table->softDeletes();

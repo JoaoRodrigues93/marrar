@@ -39,26 +39,19 @@
     <![endif]-->
     <script>
         $(document).ready(function () {
-            $('[data-toggle="popover"]').popover();
-            var login = document.getElementById('loginButton');
-            var header, content;
+            @if(isset($error))
+            $('#errorModal').modal("show");
+            @endif
+            });
 
 
-            content = "<br>" +
-            " <form method='post' url='login' > <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token() }}\" />"
-            + "<input type='hidden' name='opLogin' id='opLogin' value='1' />  " +
-            "<input type='email' name='login-email' id='login-email' class='form-control' placeholder='e-mail' /><br/>" +
-            " <input type='password' name='login-password' id='login-password' class='form-control' placeholder='password' /></br>" +
-            "<button type='submit' class='btn btn-success form-control'>entrar</button><br/>" +
-            "</form>" +
-            "<p class='text-center'><b>Ou</b></p>" +
-            "<a class='btn btn-primary form-control' onclick='closePopover()' data-toggle='modal' data-target='#registo'>Registe-se</a> " +
-            "<p class='text-center'><a href='#'>Esqueceu Senha</a></p>";
-            login.setAttribute("data-content", content);
-        });
 
         function closePopover() {
             $('#loginModal').modal('hide');
+        }
+
+        function closeModal(modalToClose){
+            $('#'+modalToClose).modal('hide');
         }
     </script>
 </head>
@@ -237,21 +230,21 @@
                     <input type='hidden' name='opRegisto' id='opRegisto' value='1'/>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <p><input type="text" id="nome" name="nome" class="form-control" placeholder="nome"/>
+                    <p><input type="text" id="nome" name="nome" class="form-control" placeholder="nome" required="true"/>
 
-                    <p><input type="text" id="apelido" name="apelido" class="form-control" placeholder="apelido"/>
+                    <p><input type="text" id="apelido" name="apelido" class="form-control" placeholder="apelido" required="true"/>
 
-                    <p><input type="text" id="username" name="username" class="form-control" placeholder="username"/>
+                    <p><input type="text" id="username" name="username" class="form-control" placeholder="nome de utilizador" required="true"/>
 
                     <p><input type="email" id="email" name="email" class="form-control"
-                              placeholder="exemplo@exemplo.co.mz"/>
+                              placeholder="exemplo@provedor.co.mz" required="true"/>
 
                     <p><input type="password" id="password" name="password" class="form-control"
-                              placeholder="password"/>
+                              placeholder="password" required="true"/>
                     </p>
 
                     <div>
-                        <div class="col-lg-6 col-md6 col-sm-6"><input type="checkbox" name="termos" id="termos"/>
+                        <div class="col-lg-6 col-md6 col-sm-6"><input type="checkbox" name="termos" id="termos" required="true"/>
                             <label for="termos">Aceitos os termos e condições</label>
                         </div>
                         <div class="col-lg-6 col-md6 col-sm-6">
@@ -288,10 +281,10 @@
                 <form method='post' url='login'>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     <input type='hidden' name='opLogin' id='opLogin' value='1'/>
-                    <input type='email' name='login-email' id='login-email' class='form-control'
-                           placeholder='e-mail'/><br/>
+                    <input type='text' name='login-email' id='login-email' class='form-control'
+                           placeholder='e-mail ou nome de utilizaor' required="true" /><br/>
                     <input type='password' name='login-password' id='login-password' class='form-control'
-                           placeholder='password'/></br>
+                           placeholder='password' required="true"/></br>
                     <button type='submit' class='btn btn-success form-control'>entrar</button>
                 </form>
                 <div class='text-center'><b>Ou</b></div>
@@ -308,6 +301,37 @@
 
     </div>
 </div>
+
+<div id="errorModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Erro de Login</h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="text-danger"><strong>O username ou email e password não são válidos</strong></p>
+                <button onclick="closeModal('errorModal')" class="btn btn-primary form-control"
+                        data-toggle='modal'
+                        data-target='#loginModal'
+                        >Tente de Novo: Entrar</button>
+                    <div class="text-center">OU</div>
+                <button onclick="closeModal('errorModal')" class="btn btn-success form-control"
+                        data-toggle='modal'
+                        data-target='#registoModal'
+                        >Registe-se aqui</button>
+            </div>
+
+            <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+             </div>
+        </div>
+
+    </div>
+</div>
+
 
 <!-- Plugin JavaScript -->
 <script src="start/js/jquery.easing.min.js"></script>

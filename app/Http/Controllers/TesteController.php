@@ -2,6 +2,7 @@
 use App\Capitulo;
 use App\Disciplina;
 use App\Estudante;
+use App\GestorTesteFeito;
 use App\Pergunta;
 use App\Tema;
 use App\Teste;
@@ -57,7 +58,7 @@ public function inicializaTeste($capituloNome,$capituloId){
         $teste =new Teste();
         $estudante = Auth::user();
         $data = Input::all();
-
+        $disciplina = $_SESSION['disciplinaActual'];
 
         if(Request::ajax()) {
             $teste->nota=$data['nota'];
@@ -69,7 +70,12 @@ public function inicializaTeste($capituloNome,$capituloId){
             date_default_timezone_set('Africa/Maputo');
             $date = date('Y-m-d h:i:s', time());
             $teste->dataRealizacao=$date;
+            $capitulo = Capitulo::find($data['capituloId']);
             $teste->save();
+
+            $gestorTeste = new GestorTesteFeito();
+            $gestorTeste->guardaTesteFeito($disciplina->id,$estudante->id,$teste->nota,$estudante->nome,
+                $disciplina->nome,$capitulo->nome,$capitulo->id);
 
         }
 

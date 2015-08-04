@@ -26,16 +26,17 @@
         <div class="container-fluid">
             <div class="navbar-header">
 
-                <a class="navbar-brand" href="#">Marrar</a>
+                <a class="navbar-brand" href="/home">Marrar</a>
 
 
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Marrar</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li><a href="/disciplina">Disciplinas</a></li>
+                    <li><a href="/capitulo">Capitulos</a></li>
+                    <li><a href="/tema">Temas</a></li>
+                    <li><a href="/pergunta"</a>Perguntas</li>
                 </ul>
             </div>
         </div>

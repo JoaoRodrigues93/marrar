@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>
-        @yield('title')
-
-    </title>
-    @section('links')
-    <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
-    <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
-    <script src="{{URL::asset('js/jquery.min.js')}}"></script>
-    <script src="{{URL::asset('js/bootstrap.js')}} "></script>
-    @show
-
-
-</head>
-<body>
-
-<div class="container">
-
+<?php $ranking=true;  ?>
+@extends('layouts.maincontent')
+@section('body')
     <div class="form-group">
 
         <div class="container">
@@ -33,13 +15,13 @@
 
                     <!-- {{URL::asset('')}} -->
 
-                    <img src=
+                    <img src="
                         <?php
                     if ($perfil->foto == '')
                         echo "http://localhost:8000/img/pessoa.png";
                     else
                         echo $perfil -> foto;
-                    ?> class="img-responsive img-rounded"  width="500" height="500">
+                    ?>" class="img-responsive img-rounded"  width="500" height="500">
                     {!! Form::label('Product Image') !!}
 <!--                    {!! Form::file('image', null,['id'=>'image']) !!}-->
                     <input type="file" id="image" name="image" />
@@ -197,9 +179,4 @@
 
     </div>
     {!!Form::close()!!}
-</div>
-
-</body>
-
-
-</html>
+@stop
