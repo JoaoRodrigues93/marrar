@@ -135,7 +135,8 @@
             </div>
 
             <br class='clear'>
-            <button><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>
+            <input type="hidden" value="teste/@{{nome}}/@{{id}}" id="fazerTeste"/>
+            <button onclick="document.location.href=document.getElementById('fazerTeste').value"><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>
           </div>
           <a href="#" class="close">&times;</a>
         </div>
