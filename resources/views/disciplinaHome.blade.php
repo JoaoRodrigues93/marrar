@@ -14,6 +14,7 @@
                 <div class="col-md-3 portfolio-item">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
 
+
                         <?php
                             switch($disciplina->nome){
                                 case "Biologia": $path='biologia.png';break;
@@ -24,16 +25,17 @@
                                 case "Português"  : $path='portugues.png'; break;
                                 case "Química"  : $path='quimica.png'; break;
                                 case "Geografia"  : $path='geografia.png'; break;
-                                default: $path='quimica.png'; break;
+                                default: $path='default.png'; break;
                             }
                         ?>
+                            <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png">
+
+                                <img class="img-responsive" src="{{URL::asset('img/livros/default.png')}} ">
+
+                            </object>
 
 
-                        <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png">
 
-                            <img class="img-responsive" src="{{URL::asset('img/livros/quimica.png')}} ">
-
-                        </object>
                         <h2 class="text-center">
                             {{$disciplina->nome}}
                         </h2>

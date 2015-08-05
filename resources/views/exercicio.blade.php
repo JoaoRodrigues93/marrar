@@ -275,7 +275,7 @@
 
                                             } else if (contErros == 0) {
                                                 imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
-                                                mensg.innerHTML = "Parabens, es super inteligente";
+                                                mensg.innerHTML = "Parabéns, acertaste todas questoes";
                                                 mensg.style.color="green";
                                                 mensg.setAttribute('class','text-center');
                                             }
