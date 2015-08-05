@@ -111,27 +111,68 @@ Session::flash('message','Dados gravados com sucesso');
     public function buscarExame($disciplina){
         //metodo que retorna o array de perguntas do exame baseando se no unico paramentro que é a disciplina
 
-        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+      /*  $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
             ->where('disciplinas.nome','=',$disciplina)
             ->select('perguntas.*')
-            ->get();
+            ->get();*/
+        $capitulos=Capitulo::join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('disciplinas.nome','=',$disciplina)
+            ->select('capitulos.*')
+            ->orderByRaw("RAND()")
+            ->get() ;
 
-        return $this->randomize($perguntas);
+        $pergunt=array();
+
+
+        foreach($capitulos as $capitulo){
+
+            $pergunta=$this->buscarTeste($disciplina,$capitulo->nome);
+            $j=count($pergunt);
+            $k=count($pergunta);
+            $l=0;
+
+            for($i=$j;$i<($j+$k);$i++){
+                $pergunt[count($pergunt)]=$pergunta[$l];
+
+                $l++;
+            }
+
+        }
+        return $pergunt;
     }
 
     public function buscarTeste($disciplina,$capitulo){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
 
-        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
-            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+        $temas=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
             ->where('disciplinas.nome','=',$disciplina)
             ->where('capitulos.nome','=',$capitulo)
-            ->select('perguntas.*')
-            ->get();
-        return $this->randomize($perguntas);
+            ->select('temas.*')
+            ->orderByRaw("RAND()")
+            ->get() ;
+
+       $pergunt=array();
+
+
+        foreach($temas as $tema){
+
+            $pergunta=$this->buscarExercicios($disciplina,$capitulo,$tema->nome);
+            $j=count($pergunt);
+            $k=$pergunta->count();
+            $l=0;
+
+            for($i=$j;$i<($j+$k);$i++){
+                $pergunt[count($pergunt)]=$pergunta[$l];
+
+             $l++;
+            }
+
+        }
+
+        return $pergunt;
     }
 
     public function buscarExercicios($disciplina,$capitulo,$tema){
@@ -146,9 +187,17 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('disciplinas.nome','=',$disciplina)
             ->where('capitulos.nome','=',$capitulo)
             ->where('temas.nome','=',$tema)
-            ->select('perguntas.*')
-            ->get();
-        return $this->randomize($perguntas);
+            ->select('perguntas.*');
+
+
+        if($perguntas->count()>3);
+
+        { $perguntas=$perguntas->orderByRaw("RAND()")
+            ->take(3);
+
+        }
+
+        return $this->randomize($perguntas->get());
     }
 
     private function randomize($perguntas){

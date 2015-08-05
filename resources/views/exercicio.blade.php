@@ -71,7 +71,7 @@
                         <div class="col-md-11"><h2 class="text-danger left">{!!$caminho!!}</h2>
                         </div>
                         <div class="col-md-1">
-                            <a onclick="return check()" href="{{URL::to('capitulo_list')}}">Desistir</a></div>
+                            <a onclick="return check()" href="{{URL::to('capituloHome')}}">Desistir</a></div>
                     </div>
 
                     <div class="progress">
@@ -229,8 +229,8 @@
                                 var bar = document.getElementById("progressBar");
                                 var barMessage = document.getElementById("barMessage");//mensagem no progress bar
                                 var percent = ((contAcertos + contErros) / nrPerguntas) * 100;
-                                barMessage.innerHTML = percent + "%";
-                                bar.style.width = '' + percent + '%';
+                                barMessage.innerHTML = percent.toFixed(1) + "%";
+                                bar.style.width = '' + percent.toFixed(1) + '%';
 
                                 document.getElementById('show').disabled=false;
                             }

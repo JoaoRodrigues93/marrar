@@ -20,7 +20,7 @@ class ExameController extends Controller
     {
         $perguntaController = new PerguntaController();
         $perguntas = $perguntaController->buscarExame($disciplina->nome);
-        $nrPerguntas = $perguntas->count();
+        $nrPerguntas = collect( $perguntas)->count();
         $_SESSION["exame"] = $perguntas;
 
         $action = 'examenormal';
