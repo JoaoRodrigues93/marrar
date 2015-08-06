@@ -51,7 +51,21 @@ class ExercicioController extends Controller{
         $_SESSION['perguntas'] = $perguntas;
         $_SESSION['perguntaActual'] = $perguntaActual;
         $_SESSION['nrPerguntas'] = $nrPerguntas;
+
+        $idDisc=Disciplina::where('disciplinas.nome',$disciplina)->first();
+        $idCap=Capitulo::where('disciplina_id',$idDisc->id)->where('capitulos.nome',$capitulo)->first();
+
+        $_SESSION['caminho']="teoria/$idDisc->id/$idCap->id/$tema.html";
+
         return view('exercicio')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina,"capitulo"=>$capitulo,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
+    }
+
+    public function teoria(){
+
+        $teoria=  $_SESSION['caminho'];
+
+        return file_get_contents($teoria);
+
     }
 
     public function show($idCapitulo,$tema){

@@ -32,7 +32,7 @@
 
 
     <div onload="inicio()">
-        <div class="jumbotron">
+        <div class="jumbotron" id="conteud">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -63,6 +63,8 @@
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
             </div>
+
+
             <div id="divPrincipal" class="container">
                 <div class="panel panel-body">
 
@@ -135,8 +137,7 @@
                                 {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
                                 {{--{!!Form::hidden('respostaCerta',$pergunta->opcaoCorrecta,array('id'=>'respostaCerta'))!!}--}}
 
-
-                            </div>
+                              </div>
                         </div>
 
                         <script>
@@ -383,15 +384,37 @@
                 </div>
             </div>
             <div class="row"></div>
-            <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-7">
-                    <button type="button" class="btn btn-danger">Teoria</button>
-                    <button type="button" class="btn btn-danger disabled">Exercicio</button>
-                </div>
 
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-7">
+                <button type="button" id="btn_teoria" class="btn btn-danger" onclick="abrirTeoria()" >Teoria</button>
+                <button type="button" id="btn_exercicio" class="btn btn-danger " disabled onclick="abrirExercicio()">Exercicio</button>
             </div>
+
         </div>
     </div>
+
+    <script >
+
+
+
+        function abrirTeoria(){
+
+            $("#conteud").load("/teoria.html");
+
+            document.getElementById('btn_exercicio').disabled=false;
+            document.getElementById('btn_teoria').disabled=true;
+
+
+        }
+
+        function abrirExercicio(){
+
+            location.reload();
+        }
+
+    </script>
 
 @stop

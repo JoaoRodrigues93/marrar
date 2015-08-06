@@ -114,3 +114,5 @@ Route::get('/examecolectivo','ExameController@showColectivo');
 Route::post('examenormal','ExameController@corrigeExame');
 Route::post('examecolectivo','ExameController@corrigeExame');
 Route::get('home/maisDisciplinas','HomeController@index');
+
+Route::get('teoria.html','ExercicioController@teoria');
