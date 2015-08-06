@@ -196,7 +196,6 @@ public  function capituloTemaJason() {
 
 
         $imagem=$capitulo->nome;
-       $imagem= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $imagem ) );
 
 
         if (strlen($testeJson) < 20) {

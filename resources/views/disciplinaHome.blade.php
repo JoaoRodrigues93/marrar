@@ -11,7 +11,7 @@
         <div class="row">
             <?php $path="";?>
             @foreach($disciplinas as $disciplina)
-                <div class="col-md-3 portfolio-item">
+                <div class="col-md-3 col-lg-3 col-sm-3 portfolio-item">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
 
 
@@ -32,9 +32,7 @@
                             }
                         ?>
                             <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png">
-
                                 <img class="img-responsive" src="{{URL::asset('img/livros/default.png')}} ">
-
                             </object>
 
 

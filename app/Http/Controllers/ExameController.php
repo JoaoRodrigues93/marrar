@@ -69,7 +69,7 @@ class ExameController extends Controller
         {
 
             $perguntas = $perguntaController->buscarExame($disciplinaActual->nome);
-            $nrPerguntas = $perguntas->count();
+            $nrPerguntas = count($perguntas);
             $examecolectivo = new ExameColectivo();
             $examecolectivo->dataCriacao = date_create();
             $examecolectivo->tempoRealizacao = 60;
