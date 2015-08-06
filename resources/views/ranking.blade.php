@@ -45,7 +45,7 @@ $estudante  = Auth::user();
         @if($testesFeitos)
             <ul>
                 @foreach($testesFeitos as $teste)
-                    <li>{{$testes>capitulo}} : {{$teste->nota}} valores</li>
+                    <li>{{$teste->capitulo}} : {{$teste->nota}} valores</li>
                 @endforeach
             </ul>
         @else
