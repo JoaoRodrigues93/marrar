@@ -72,7 +72,6 @@ class HomeController extends Controller
         if ($dado) {
 
             return redirect("disciplinaHome/$dado->id_ultima_disciplina");
-
         }
         else
             return view('home',['disciplinas'=>$disciplinas]);

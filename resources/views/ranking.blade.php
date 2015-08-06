@@ -5,10 +5,9 @@ $gestorTesteFeito = new \App\GestorTesteFeito();
 $rankingDados = $gestorRanking->rankingDisciplinaActual();
 $disciplinasEstudadas = $gestorDisciplinaEstudada->disciplinaEstudadas();
 $testesFeitos = $gestorTesteFeito->testesFeitos();
+
 $rankingArray = $rankingDados['ranking'];
 $minhaPosicao = $rankingDados['posicao'];
-$tamanhoRanking =count($rankingArray);
-$tamanhoTestes = count($testesFeitos);
 $estudante  = Auth::user();
 
 ?>
@@ -28,28 +27,26 @@ $estudante  = Auth::user();
     </div>
     <div id="ranking" class="well">
         <h4>Classificação: {{$_SESSION['disciplinaActual']->nome}}</h4>
-        @if($rankingDados)
+
             <ol>
-                @for($i=0; $i<$tamanhoRanking && $i<5; $i++)
-                <li>
-                    {{$rankingArray[$i]->estudante}}
+                @foreach($rankingArray as $ranking)
+
+                    <li>
+                    {{$ranking->estudante}}
                 </li>
-                @endfor
+                @endforeach
             </ol>
         @if($minhaPosicao>5)
             <p>{{$minhaPosicao}}. {{$estudante->nome}}</p>
-        @endif
-        @else
-        <p>Não há classificação disponivel para hoje.</p>
         @endif
     </div>
     <div id="ultimosTestes" class="well">
         <h4>Último testes realizados</h4>
         @if($testesFeitos)
             <ul>
-                @for($i=0;$i<$tamanhoTestes && $i<5;$i++)
-                    <li>{{$testesFeitos[$i]->capitulo}} : {{$testesFeitos[$i]->nota}} valores</li>
-                @endfor
+                @foreach($testesFeitos as $teste)
+                    <li>{{$testes>capitulo}} : {{$teste->nota}} valores</li>
+                @endforeach
             </ul>
         @else
             <p>Até agora não fez nenhum teste. Faça um teste e comece a fazer</p>
