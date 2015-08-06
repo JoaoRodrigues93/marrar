@@ -16,15 +16,18 @@
 
 
                         <?php
-                            switch($disciplina->nome){
-                                case "Biologia": $path='biologia.png';break;
-                                case "Física"  : $path='fisica.png'; break;
-                                case "Filosofia"  : $path='filosofia.png'; break;
-                                case "História"  : $path='historia.png'; break;
-                                case "Matemática"  : $path='matematica.png'; break;
-                                case "Português"  : $path='portugues.png'; break;
-                                case "Química"  : $path='quimica.png'; break;
-                                case "Geografia"  : $path='geografia.png'; break;
+                        $disciplin= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
+                            $disciplin=strtolower($disciplin);
+                            switch($disciplin){
+
+                                case "biologia": $path='biologia.png';break;
+                                case "fisica"  : $path='fisica.png'; break;
+                                case "filosofia"  : $path='filosofia.png'; break;
+                                case "historia"  : $path='historia.png'; break;
+                                case "matematica"  : $path='matematica.png'; break;
+                                case "portugues"  : $path='portugues.png'; break;
+                                case "quimica"  : $path='quimica.png'; break;
+                                case "geografia"  : $path='geografia.png'; break;
                                 default: $path='default.png'; break;
                             }
                         ?>
