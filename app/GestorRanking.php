@@ -39,7 +39,8 @@ class GestorRanking {
         $estudante = Auth::user();
         $posicaoActual =0;
         $posicao =-1;
-        $rankings = Ranking::all()->where('disciplina_id',$disciplina->id)->where('dataRealizacao',$dataRealizacao);
+        $rankings = Ranking::all()->where('disciplina_id',$disciplina->id)
+            ->where('dataRealizacao',$dataRealizacao)->sortByDesc("nota");
 
 
         foreach($rankings as $ranking){

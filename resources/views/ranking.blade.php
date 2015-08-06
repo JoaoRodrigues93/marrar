@@ -32,7 +32,7 @@ $estudante  = Auth::user();
                 @foreach($rankingArray as $ranking)
 
                     <li>
-                    {{$ranking->estudante}}
+                   <p> {{$ranking->estudante}} : <strong>{{ round($ranking->nota,1)}}</strong> valores</p>
                 </li>
                 @endforeach
             </ol>
