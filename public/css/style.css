@@ -18,6 +18,16 @@ display: none;
     background-color:#3b5998;
 }
 
+#ranking{
+     max-height: 450px;
+     overflow-y:scroll;
+ }
+
+#ultimosTestes{
+    max-height: 450px;
+    overflow-y:scroll;
+}
+
 #loginModal .modal-header,#loginModal h4, #loginModal .close,#registoModal .modal-header,#registoModal h4, #registoModal .close {
     background-color: #5cb85c;
     color:white !important;

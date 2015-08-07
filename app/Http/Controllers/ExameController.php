@@ -126,6 +126,7 @@ class ExameController extends Controller
         $nrPerguntaActual--;
 
         $nota = ($nrRepostasCertas/$nrPerguntaActual)*20;
+        $nota = round($nota,1);
 
         $uri = $request->path();
         if($uri=='examecolectivo'){
