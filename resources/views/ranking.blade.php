@@ -2,8 +2,11 @@
 $gestorRanking = new \App\GestorRanking();
 $gestorDisciplinaEstudada = new \App\GestorDisciplinaEstudada();
 $gestorTesteFeito = new \App\GestorTesteFeito();
+if($gestorRanking)
 $rankingDados = $gestorRanking->rankingDisciplinaActual();
+if($gestorDisciplinaEstudada)
 $disciplinasEstudadas = $gestorDisciplinaEstudada->disciplinaEstudadas();
+if($gestorTesteFeito)
 $testesFeitos = $gestorTesteFeito->testesFeitos();
 
 $rankingArray = $rankingDados['ranking'];
