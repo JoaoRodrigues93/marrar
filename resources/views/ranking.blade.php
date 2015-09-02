@@ -8,9 +8,10 @@ if($gestorDisciplinaEstudada)
 $disciplinasEstudadas = $gestorDisciplinaEstudada->disciplinaEstudadas();
 if($gestorTesteFeito)
 $testesFeitos = $gestorTesteFeito->testesFeitos();
-
+if (isset($rankingDados)){
 $rankingArray = $rankingDados['ranking'];
 $minhaPosicao = $rankingDados['posicao'];
+}
 $estudante  = Auth::user();
 
 ?>
@@ -18,7 +19,7 @@ $estudante  = Auth::user();
 <div class="container-fluid">
     <div id="disciplinasEstudadas" class="well">
         <h4>Disciplinas Estudadas</h4>
-        @if($disciplinasEstudadas)
+        @if(isset($disciplinasEstudadas))
             <ul>
             @foreach($disciplinasEstudadas as $disciplina)
                 <li>{{$disciplina->disciplina}}</li>
@@ -29,7 +30,7 @@ $estudante  = Auth::user();
         @endif
     </div>
     <div id="ranking" class="well">
-        @if($rankingArray)
+        @if(isset($rankingArray))
         <h4>Classificação: {{$_SESSION['disciplinaActual']->nome}}</h4>
 
             <ol>
@@ -51,7 +52,7 @@ $estudante  = Auth::user();
     </div>
     <div id="ultimosTestes" class="well">
         <h4>Último testes realizados</h4>
-        @if($testesFeitos)
+        @if(isset($testesFeitos))
             <ul>
                 @foreach($testesFeitos as $teste)
                     <li>{{$teste->capitulo}} : {{$teste->nota}} valores</li>
