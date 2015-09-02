@@ -26,6 +26,7 @@ $estudante  = Auth::user();
         @endif
     </div>
     <div id="ranking" class="well">
+        @if($rankingArray)
         <h4>Classificação: {{$_SESSION['disciplinaActual']->nome}}</h4>
 
             <ol>
@@ -39,6 +40,11 @@ $estudante  = Auth::user();
         @if($minhaPosicao>5)
             <p>{{$minhaPosicao}}. {{$estudante->nome}}</p>
         @endif
+       @else
+            <h4>Classificação</h4>
+            <p>Classificação não disponivel.</p>
+       @endif
+
     </div>
     <div id="ultimosTestes" class="well">
         <h4>Último testes realizados</h4>

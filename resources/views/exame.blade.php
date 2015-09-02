@@ -9,7 +9,10 @@
 
         function escolheOpcao(id, nr, respota) {
             deSeleciona(nr);
-            document.getElementById('opcao' + id).setAttribute('class', 'alert alert-info text-uppercase');
+            opcaoEscolhida =document.getElementById('opcao' + id);
+            opcaoEscolhida.setAttribute('class', 'bg-primary');
+            opcaoEscolhida.style.borderRadius ="5px";
+
             var btn = document.getElementById('nav' + nr);
             var respostaEscolhida = document.getElementById("resposta" + nr);
             respostaEscolhida.value = respota;
@@ -25,6 +28,7 @@
         }
     </script>
     <div class="well">
+        <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
         <div class="exame-title">
             <h2 class="text-primary"><strong>Exame | {{$disciplina->nome}}</strong></h2>
         </div>
@@ -128,6 +132,7 @@
     </div>
     <script>
         var confirmacao;
+        var desistirPermitido = true;
 
         function valido() {
             var valido = true;
@@ -156,8 +161,10 @@
                 xmlhttp = new XMLHttpRequest();
             }
 
-            if (confirmacao == true || valido == true)
+            if (confirmacao == true || valido == true) {
+                desistirPermitido = false;
                 return true;
+            }
             else
                 return false;
         }
@@ -165,6 +172,7 @@
         function confirmarEnvio() {
             confirmacao = true;
             var btn = document.getElementById('entregar');
+            desistirPermitido = false;
             btn.click();
             closeModal();
         }
@@ -232,5 +240,27 @@
             var xmlhttp = new XMLHttpRequest();
 
         }
+
+        function desistir() {
+            mensagem = "<p>Deseja realmente abandonar o exame? Vais perder todo progresso até aqui.</p>"
+                    + "<button name='confirmar' class='btn btn-success' id='confirmarEnvio' onclick='confirmarDesistencia ()'>Confirmar</button>"
+                    + "    <button name='cancelar' class='btn btn-danger' id='cancelarEnvio' onclick='cancelarDesistencia ()'>Cancelar</button>";
+            modalAlert("Exame", mensagem);
+        }
+
+        function confirmarDesistencia (){
+            //window.location.assign("/home")
+            desistirPermitido = false;
+            window.location ="/home";
+            closeModal();
+        }
+
+        function cancelarDesistencia (){
+            closeModal();
+        }
+
+        window.onbeforeunload = function() {
+            if (desistirPermitido) return 'Estás prestes a abandonar está pagina. Se abandonares a página vais perder todo o progresso.';
+        };
     </script>
 @stop
