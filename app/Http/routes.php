@@ -57,7 +57,9 @@ Route::get('perfil',function(){
 });
 
 Route::get('perfil', 'PerfilController@buscarPerfil');
-Route::post('editar-perfil','PerfilController@EditarPerfil');
+Route::get('editar-perfil', 'PerfilController@buscarEditPerfil');
+Route::post('edito-perfil','PerfilController@HabilitarEditarPerfil');
+Route::post('edita-perfil','PerfilController@EditarPerfil');
 
 Route::get('inicio',function(){
     return View::make('inicio');

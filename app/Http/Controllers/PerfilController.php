@@ -20,13 +20,23 @@ class PerfilController extends Controller {
 
     }
 
+    public function buscarEditPerfil() {
+        $perfil = Auth::user();
+        return view('editar-perfil')->with(array('perfil'=>$perfil));
+
+    }
+
+    public function HabilitarEditarPerfil(Request $request) {
+        return redirect('editar-perfil/');
+    }
+
     public function EditarPerfil(Request $request){
 
         $id= $request->input('id');
         $perfil = Estudante::find($id);
         $perfil -> nome  = $request -> input('nome');
         $perfil -> apelido  = $request -> input('apelido');
-        //Not Used Anymore for Showing Purposes and Saving.
+        //Not Used Anymore for Showing Purposes and Saving...
         //$perfil -> username = $request -> input('nome-do-utilizador');
         //$perfil -> password = $request -> input('password');
         $perfil -> email  = $request -> input('email');
@@ -36,24 +46,6 @@ class PerfilController extends Controller {
         $perfil-> dataNascimento = $request -> input('date');
         $perfil -> sexo  = $request -> input('sexo');
         $perfil -> descricao  = $request -> input('descricao');
-
-        //$perfil -> foto = $request->input('imagem');
-/*
-        $input = array('image' => Input::file('image'));
-
-        // Within the ruleset, make sure we let the validator know that this
-        // file should be an image
-        $rules = array(
-            'image' => 'image'
-        );
-
-        // Now pass the input and rules into the validator
-        $validator = Validator::make($input, $rules);
-*/
-        // Check to see if validation fails or passes
-        /*
-        if ($validator->fails())
-        {*/
 
         if ($request->hasFile('image')) {
 

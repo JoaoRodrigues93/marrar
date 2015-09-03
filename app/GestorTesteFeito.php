@@ -29,7 +29,7 @@ class GestorTesteFeito {
 
     public function testesFeitos (){
         $estudante = Auth::user();
-        $testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id);
+        $testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id)->sortByDesc('id');
         return $testesFeitos;
     }
 }

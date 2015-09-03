@@ -32,7 +32,7 @@
 
 
     <div onload="inicio()">
-        <div class="jumbotron" id="conteud">
+
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -140,224 +140,9 @@
                               </div>
                         </div>
 
-                        <script>
-                            /* ('#hide').click(function(){
-                             ('#content').hide();
-                             ('#hide').hide();
-                             ('#show').show();
-                             });*/
-
-                            var nrPerguntas = parseInt("{{$nrPerguntas}}");
-                            var resposta;
-                            var contAcertos = 0;
-                            var contErros = 0;
-
-                            function inicio() {
-
-                                var content = document.getElementById("content");
-                                content.style.display = "none";
-                            }
-
-                            function respostaCorrecta() {
-                                //progressBar
-                                document.getElementById('hide').disabled=true;
-
-                                var respostaCorrecta, id, idResposta;
-                                idResposta = document.getElementById("id");
-                                id = idResposta.value;
-                                if (window.XMLHttpRequest) {
-                                    xmlhttp = new XMLHttpRequest();
-                                }
-                                else {
-                                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                }
-
-                                xmlhttp.onreadystatechange = function () {
-                                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                        resposta = xmlhttp.responseText;
-
-                                        esconder();
-
-                                    }
-                                }
-
-                                xmlhttp.open("GET", "/exercicio/resposta", true);
-                                xmlhttp.send();
 
 
-                            }
-
-                            //para esconder o botao confirmar e mostrar o botao proximo
-                            function
-                            esconder() {
-                                var content = document.getElementById("content");
-                                content.style.visibility = 'visible';
-                                var hide = document.getElementById("hide");//pega o elemento com id=hide
-                                var show = document.getElementById("show");
-                                hide.style.display = "none";//esconde o botao confirmar
-                                show.style.display = "block";//mostra o botao proximo
-                                //hide.setAttribute("class","");
-
-
-                                var respostaEscolhida = document.getElementById("respostaEscolhida");
-
-
-                              //  alert(resposta+' '+respostaEscolhida.value);
-
-
-                                //compara a resposta escolhida com a resposta certa
-
-                                if (resposta == respostaEscolhida.value) {
-                                    // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
-                                    content.setAttribute("class", "col-md-6 alert alert-success");
-
-                                    content.innerHTML = "<strong>Certo</strong> Parabens a resposta está certa";
-                                    contAcertos++;
-                                }
-                                else {
-                                    content.setAttribute("class", "col-md-6 alert alert-danger")
-                                    content.innerHTML = "<strong>Errado</strong> A resposta correcta é " + resposta;
-                                    contErros++;
-                                }
-                                //desabilita os radios button
-                                document.getElementById("example1").disabled = true;
-                                document.getElementById("example2").disabled = true;
-                                document.getElementById("example3").disabled = true;
-                                document.getElementById("example4").disabled = true;
-                                document.getElementById("example5").disabled = true;
-                                deSeleciona();
-//progress bar
-                                var bar = document.getElementById("progressBar");
-                                var barMessage = document.getElementById("barMessage");//mensagem no progress bar
-                                var percent = ((contAcertos + contErros) / nrPerguntas) * 100;
-                                barMessage.innerHTML = percent.toFixed(1) + "%";
-                                bar.style.width = '' + percent.toFixed(1) + '%';
-
-                                document.getElementById('show').disabled=false;
-                            }
-                            //metodo ao clicar no botao proximo
-
-
-                            function vaiPraProximo() {
-                                //  alert('Aqui');
-                                document.getElementById('show').disabled=true;
-
-                                if (window.XMLHttpRequest) {
-                                    xmlhttp = new XMLHttpRequest();
-                                }
-                                else {
-                                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                }
-
-                                xmlhttp.onreadystatechange = function () {
-                                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                        var pergunta = xmlhttp.responseText;
-
-
-                                        if (pergunta == "vazio") {
-                                            var mensagemFinal = document.getElementById("mensagemFinal");
-
-                                            var divPrincipal = document.getElementById("divPrincipal");
-                                            divPrincipal.setAttribute("class", "hidden");
-                                            var divWidth = divPrincipal.clientWidth;
-                                            var divHeight = divPrincipal.clientHeight;
-
-                                            var mensg = document.getElementById("mensg");
-                                            mensagemFinal.setAttribute('class', "panel panel-body visible");
-
-
-                                            //mensagem com nr de acertos e nr de erros
-                                            var imagem = document.getElementById("imagem");
-                                            if (contAcertos == 0) {
-                                                imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
-                                                mensg.innerHTML = "Estude mais e tente de novo!";
-                                                mensg.setAttribute('class','text-center');
-                                                mensg.style.color="red";
-
-                                            } else if (contErros == 0) {
-                                                imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
-                                                mensg.innerHTML = "Parabéns, acertaste todas questoes";
-                                                mensg.style.color="green";
-                                                mensg.setAttribute('class','text-center');
-                                            }
-                                            else {
-                                                mensg.innerHTML = "Bom mas precisas praticar mais";
-                                                mensg.setAttribute('class','text-center');
-                                                mensg.style.color="orange";
-                                            }
-
-                                            var nrAcertos = document.getElementById("nrAcertos");
-                                            nrAcertos.innerHTML = "Certas: " + contAcertos ;
-                                            var nrErros = document.getElementById("nrErros");
-                                            nrErros.innerHTML = "Erradas: " + contErros ;
-
-                                            return; //Para não executar o codigo abaixo
-                                        }
-
-                                        else {
-
-                                            //  alert(perguntasJson);
-                                            var pergunta = JSON.parse(pergunta);
-                                            var questao = document.getElementById("questao");
-                                            var op1 = document.getElementById("op1");
-                                            var op2 = document.getElementById("op2");
-                                            var op3 = document.getElementById("op3");
-                                            var op4 = document.getElementById("op4");
-                                            var op5 = document.getElementById("op5");
-
-//                               var pergunta;
-//                               pergunta = perguntas.perguntas[2];
-
-                                            questao.innerHTML = pergunta.questao;
-                                            op1.innerHTML = pergunta.opcao1;
-                                            op2.innerHTML = pergunta.opcao2;
-                                            op3.innerHTML = pergunta.opcao3;
-                                            op4.innerHTML = pergunta.opcao4;
-                                            op5.innerHTML = pergunta.opcao5;
-                                            //  alert(questao.innerHTML+' ' +op1.value);
-                                            proximo();
-
-                                        }
-                                    }
-
-                                }
-
-                                xmlhttp.open("GET", "/proximo", true);
-                                xmlhttp.send();
-                            }
-                            function proximo() {
-                                var content = document.getElementById("content");
-                                content.style.visibility = 'hidden';
-                                var hide = document.getElementById("hide");//pega o elemento com id=hide
-                                var show = document.getElementById("show");
-                                hide.style.display = "block";//mostra o botao confirmar
-                                show.style.display = "none";//esconde o botao proximo
-
-                                hide.setAttribute('class', 'btn btn-success btn-lg disabled');//desabilita o botao confirmar
-                                //desabilita os radios button
-                                var rad1 = document.getElementById("example1");
-                                rad1.disabled = false;
-                                rad1.checked = false;
-                                var rad2 = document.getElementById("example2");
-                                rad2.disabled = false;
-                                rad2.checked = false;
-                                var rad3 = document.getElementById("example3");
-                                rad3.disabled = false;
-                                rad3.checked = false;
-                                var rad4 = document.getElementById("example4");
-                                rad4.disabled = false;
-                                rad4.checked = false;
-                                var rad5 = document.getElementById("example5");
-                                rad5.disabled = false;
-                                rad5.checked = false;
-
-
-                            }
-
-                        </script>
-
-
-                        <div class="container">
+                        {{--<div class="container">
                             <div class="row">
                                 <div class="col-md-6" id="content">
                                 </div>
@@ -373,6 +158,20 @@
 
                             </div>
 
+                        </div>--}}
+
+                        <div id="content" class="well envio">
+                            <div class="row">
+                                <div id="hide" class="col-md-8 col-lg-8 col-sm-8">
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                    <div class="right">
+                                        <button id="show" class="btn btn-success btn-lg">Verificar</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
                         </div>
 
 
@@ -385,7 +184,7 @@
             </div>
             <div class="row"></div>
 
-        </div>
+
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-7">
@@ -395,6 +194,221 @@
 
         </div>
     </div>
+
+
+    <script>
+
+
+        var nrPerguntas = parseInt("{{$nrPerguntas}}");
+        var resposta;
+        var contAcertos = 0;
+        var contErros = 0;
+
+        function inicio() {
+
+            var content = document.getElementById("content");
+            content.style.display = "none";
+        }
+
+        function respostaCorrecta() {
+            //progressBar
+            document.getElementById('hide').disabled=true;
+
+            var respostaCorrecta, id, idResposta;
+            idResposta = document.getElementById("id");
+            id = idResposta.value;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    resposta = xmlhttp.responseText;
+
+                    esconder();
+
+                }
+            }
+
+            xmlhttp.open("GET", "/exercicio/resposta", true);
+            xmlhttp.send();
+
+
+        }
+
+        //para esconder o botao confirmar e mostrar o botao proximo
+        function
+        esconder() {
+            var content = document.getElementById("content");
+           // content.style.visibility = 'visible';
+            content.setAttribute('class', 'well envio');
+            var hide = document.getElementById("hide");//pega o elemento com id=hide
+            var show = document.getElementById("show");
+            hide.style.display = "none";//esconde o botao confirmar
+            show.style.display = "block";//mostra o botao proximo
+            //hide.setAttribute("class","");
+
+
+            var respostaEscolhida = document.getElementById("respostaEscolhida");
+
+
+            //  alert(resposta+' '+respostaEscolhida.value);
+
+
+            //compara a resposta escolhida com a resposta certa
+
+            if (resposta == respostaEscolhida.value) {
+                // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
+                content.setAttribute("class", "col-md-6 alert alert-success");
+
+                content.innerHTML = "<strong>Certo</strong> Parabens a resposta está certa";
+                contAcertos++;
+            }
+            else {
+                content.setAttribute("class", "col-md-6 alert alert-danger")
+                content.innerHTML = "<strong>Errado</strong> A resposta correcta é " + resposta;
+                contErros++;
+            }
+            //desabilita os radios button
+            document.getElementById("example1").disabled = true;
+            document.getElementById("example2").disabled = true;
+            document.getElementById("example3").disabled = true;
+            document.getElementById("example4").disabled = true;
+            document.getElementById("example5").disabled = true;
+            deSeleciona();
+//progress bar
+            var bar = document.getElementById("progressBar");
+            var barMessage = document.getElementById("barMessage");//mensagem no progress bar
+            var percent = ((contAcertos + contErros) / nrPerguntas) * 100;
+            barMessage.innerHTML = percent.toFixed(1) + "%";
+            bar.style.width = '' + percent.toFixed(1) + '%';
+
+            document.getElementById('show').disabled=false;
+        }
+        //metodo ao clicar no botao proximo
+
+
+        function vaiPraProximo() {
+            //  alert('Aqui');
+            document.getElementById('show').disabled=true;
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var pergunta = xmlhttp.responseText;
+
+
+                    if (pergunta == "vazio") {
+                        var mensagemFinal = document.getElementById("mensagemFinal");
+
+                        var divPrincipal = document.getElementById("divPrincipal");
+                        divPrincipal.setAttribute("class", "hidden");
+                        var divWidth = divPrincipal.clientWidth;
+                        var divHeight = divPrincipal.clientHeight;
+
+                        var mensg = document.getElementById("mensg");
+                        mensagemFinal.setAttribute('class', "panel panel-body visible");
+
+
+                        //mensagem com nr de acertos e nr de erros
+                        var imagem = document.getElementById("imagem");
+                        if (contAcertos == 0) {
+                            imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
+                            mensg.innerHTML = "Estude mais e tente de novo!";
+                            mensg.setAttribute('class','text-center');
+                            mensg.style.color="red";
+
+                        } else if (contErros == 0) {
+                            imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
+                            mensg.innerHTML = "Parabéns, acertaste todas questoes";
+                            mensg.style.color="green";
+                            mensg.setAttribute('class','text-center');
+                        }
+                        else {
+                            mensg.innerHTML = "Bom mas precisas praticar mais";
+                            mensg.setAttribute('class','text-center');
+                            mensg.style.color="orange";
+                        }
+
+                        var nrAcertos = document.getElementById("nrAcertos");
+                        nrAcertos.innerHTML = "Certas: " + contAcertos ;
+                        var nrErros = document.getElementById("nrErros");
+                        nrErros.innerHTML = "Erradas: " + contErros ;
+
+                        return; //Para não executar o codigo abaixo
+                    }
+
+                    else {
+
+                        //  alert(perguntasJson);
+                        var pergunta = JSON.parse(pergunta);
+                        var questao = document.getElementById("questao");
+                        var op1 = document.getElementById("op1");
+                        var op2 = document.getElementById("op2");
+                        var op3 = document.getElementById("op3");
+                        var op4 = document.getElementById("op4");
+                        var op5 = document.getElementById("op5");
+
+//                               var pergunta;
+//                               pergunta = perguntas.perguntas[2];
+
+                        questao.innerHTML = pergunta.questao;
+                        op1.innerHTML = pergunta.opcao1;
+                        op2.innerHTML = pergunta.opcao2;
+                        op3.innerHTML = pergunta.opcao3;
+                        op4.innerHTML = pergunta.opcao4;
+                        op5.innerHTML = pergunta.opcao5;
+                        //  alert(questao.innerHTML+' ' +op1.value);
+                        proximo();
+
+                    }
+                }
+
+            }
+
+            xmlhttp.open("GET", "/proximo", true);
+            xmlhttp.send();
+        }
+        function proximo() {
+            var content = document.getElementById("content");
+            content.style.visibility = 'hidden';
+            var hide = document.getElementById("hide");//pega o elemento com id=hide
+            var show = document.getElementById("show");
+            hide.style.display = "block";//mostra o botao confirmar
+            show.style.display = "none";//esconde o botao proximo
+
+            hide.setAttribute('class', 'btn btn-success btn-lg disabled');//desabilita o botao confirmar
+            //desabilita os radios button
+            var rad1 = document.getElementById("example1");
+            rad1.disabled = false;
+            rad1.checked = false;
+            var rad2 = document.getElementById("example2");
+            rad2.disabled = false;
+            rad2.checked = false;
+            var rad3 = document.getElementById("example3");
+            rad3.disabled = false;
+            rad3.checked = false;
+            var rad4 = document.getElementById("example4");
+            rad4.disabled = false;
+            rad4.checked = false;
+            var rad5 = document.getElementById("example5");
+            rad5.disabled = false;
+            rad5.checked = false;
+
+
+        }
+
+    </script>
+
 
     <script >
 
