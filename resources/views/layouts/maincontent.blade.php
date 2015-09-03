@@ -13,6 +13,9 @@
     <title>
         @yield('title')
     </title>
+
+
+
     @section('links')
         <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
