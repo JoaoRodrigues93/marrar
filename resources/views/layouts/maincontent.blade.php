@@ -100,7 +100,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well" style="background-color: #ffffff">
                     @yield('body')
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-xs hidden-sm">
                     @include('ranking')
                 </div>
                 {{-- Será usado quando o ranking estiver pronto --}}
