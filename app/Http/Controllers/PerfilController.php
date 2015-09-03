@@ -20,6 +20,16 @@ class PerfilController extends Controller {
 
     }
 
+    public function buscarEditPerfil() {
+        $perfil = Auth::user();
+        return view('editar-perfil')->with(array('perfil'=>$perfil));
+
+    }
+
+    public function HabilitarEditarPerfil(Request $request) {
+        return redirect('editar-perfil/');
+    }
+
     public function EditarPerfil(Request $request){
 
         $id= $request->input('id');
