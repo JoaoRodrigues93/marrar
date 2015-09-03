@@ -5,15 +5,19 @@
 @stop
 @section('body')
 
+
+
     <div class="container">
         <div class="jumbotron">
             <h2 class="text-center">Capitulo</h2>
             {!! Form::open( array('url'=> 'editar-capitulo')) !!}
 
             <div class="form-group">
-                {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas',array('default'=> $disciplina)+$disciplinas,null,['class'=>'form-control']) !!}
-            </div>
+
+                {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
+                {!! Form::select('disciplinas', $disciplinas , null, ['class' => 'form-control','id'=>'disciplinas'])
+                !!}
+                </div>
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
@@ -24,10 +28,32 @@
 
             <div>
                 <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
+                {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
             </div>
 
 
             {!! Form::close() !!}
         </div>
+
+        <script>
+
+            var disciplinas = document.getElementById('disciplinas');
+            var idDisciplina = document.getElementById('idDisc');
+            encontrado = false;
+            i = 0;
+
+            while (encontrado == false && i < disciplinas.length) {
+                if (disciplinas[i].value == idDisciplina.value) {
+                    encontrado = true;
+                    disciplinas.selectedIndex = i;
+
+                }
+                i++;
+
+            }
+
+        </script>
     </div>
+
+
 @stop

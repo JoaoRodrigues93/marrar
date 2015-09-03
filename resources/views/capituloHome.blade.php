@@ -78,7 +78,25 @@
 
                 }
 
-             xmlhttp.open("GET", "capitulo-validacao", true);
+                var windowWidth = window.innerWidth;
+
+                var screenResolution=4;
+                if(windowWidth<400)
+                {
+                    screenResolution=1;
+                }
+                else if(windowWidth<768)
+                {
+                    screenResolution=2;
+                }
+
+                else if(windowWidth<992){
+                    screenResolution=3;
+
+                }
+
+
+             xmlhttp.open("GET", "capitulo-validacao/"+screenResolution, true);
 
                 xmlhttp.send();
 

@@ -84,10 +84,9 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('disciplinaHome/{id}','CapituloController@showCapituloHome');
 
-Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
+Route::get('capitulo-validacao/{id}',"CapituloController@capituloTemaJason");
 
 
-Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login','Auth\AuthController@post');
 

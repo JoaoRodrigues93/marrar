@@ -58,9 +58,9 @@ class CapituloController extends Controller
     public function editarCapitulo($id)
     {
         $capitulo = Capitulo::find($id);
+        $idDisc=$capitulo->disciplina()->first();
         $disciplinas = Disciplina::lists('nome', 'id');
-        $disciplina = $capitulo->disciplina->nome;
-        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplinas,'disciplina'=>$disciplina));
+        return view('capitulo_editar')->with(array('idDisc'=>$idDisc->id,'capitulos' => $capitulo, 'disciplinas' => $disciplinas));
     }
 
     public function editar(Request $request)
@@ -155,8 +155,9 @@ public function showHome(){
 }
 
 
+
     //Devolve objecto json com todos capitulos e temas
-public  function capituloTemaJason() {
+public  function capituloTemaJason($screen) {
 
     $id_disciplina=$_SESSION['disciplina']->id;
     $capitulos=Capitulo::where('disciplina_id',$id_disciplina)->get();
@@ -214,7 +215,7 @@ public  function capituloTemaJason() {
 
             }
 
-            if($j%4==0){
+            if($j%$screen==0){
                 $testeJson .=",\"last\": true ";
                 $j=0;
             }
@@ -236,7 +237,7 @@ public  function capituloTemaJason() {
 
             }
 
-            if($j%4==0){
+            if($j%$screen==0){
                 $testeJson .=",\"last\": true ";
                 $j=0;
             }

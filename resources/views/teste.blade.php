@@ -8,19 +8,6 @@
 
 @section('body')
 
-        <br>
-<div class="container">
-        <div class="col-lg-10 col-md-10  col-lg-offset-2 col-md-offset-2">
-
-            <div class="col-lg-12">
-
-              <h2 class="text-danger left text-capitalize" > Teste |  {{$disciplina}} |{{$capitulo->nome}}</h2>
-                <hr class="col-lg-8">
-               <p></p>
-
-            </div>
-        </div>
-
 
     <div class="row ">
 
@@ -51,33 +38,34 @@
                         </div>
 
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
+
+               <label> <h2 class="text-danger left text-capitalize" style="margin-left: 2%" >  Teste |  {{$disciplina}} |{{$capitulo->nome}}</h2></label>
+                <hr width="100%">
+
+
 
                 {!! Form::open(['entregarTeste']) !!}
-                <?php $i=0; ?>
-                @foreach($perguntas as $pergunta)
+
+
+  <div class="form-group" >
 
 
 
-                    <div class="form-group">
 
-
+                        <?php $i=0; ?>
+                        @foreach($perguntas as $pergunta)
 
                         {!! Form::hidden('id',$i=$i+1)  !!}
 
 
                         <div class="panel-group" id="pergunta{{$i}}">
-                            <div class="panel panel-info">
-                                <div class="panel panel-heading">
 
-                                    {!! Form::label('pergunta',"Pergunta $i")!!}
-                                </div>
-                                <div class="panel-body">
 
 
                                     <div id="questao">
 
-                                        <h4> {!! Form::label('questao',$pergunta->questao)!!}</h4>
+                                        <h4> {!! Form::label('questao',"$i. $pergunta->questao")!!}</h4>
                                         <p>
 
 
@@ -123,15 +111,16 @@
                                     </div>
 
 
-                                </div>
-                            </div>
+
+
 
                         </div>
 
-
+                                <hr  width="100%">
+                            @endforeach
 
                     </div>
-                @endforeach
+
 
                 <div style="float: left">
                     {!! Form::hidden('nota','',['id'=>"nota"]) !!}
@@ -177,7 +166,7 @@
                         </div>
 
                     </div>
-</div>
+
 
         <div id="resultadoTeste" class="modal fade" role="dialog">
             <div class="modal-dialog">

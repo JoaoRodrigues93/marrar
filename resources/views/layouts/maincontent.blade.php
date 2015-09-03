@@ -9,6 +9,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         @yield('title')
     </title>
@@ -93,7 +94,7 @@
                     {
                     ?>
 
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well" style="background-color: #ffffff">
                     @yield('body')
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

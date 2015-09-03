@@ -84,7 +84,7 @@ ol, li {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	width: 25%;
+	width: 36%;
 	height: 225px;
 	padding: 3% 3% 10px 3%;
 	cursor: pointer;
@@ -218,7 +218,6 @@ ol, li {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	min-width: 320px;
 	padding: 20px 0 0 60px;
 	background-color: #aaa;
 	border: 1px solid rgba(0,0,0,0.3);
@@ -272,22 +271,41 @@ ol, li {
 
 @media (max-width: 480px){
 
-	.folder {
-		height: 145px;
-	}
+    .folder {
+		height: 50%;
+        width: 50%;
+        }
+
 
 	.folderContent {
 		padding: 20px 40px;
-		width: 100%;
+        width: 100%;
 	}
 
 }
 
-@media (min-width: 481px) and (max-width: 768px){
+@media (min-width: 481px) and (max-width: 579px){
 
 	.folder {
-		height: 210px;
+		height: 50%;
+
 	}
+}
+
+
+@media (min-width: 580px) and (max-width: 768px){
+
+    .folder {
+        height: 50%;
+    }
+}
+
+@media (min-width: 769px) {
+
+    .folder {
+        height: 50%;
+        width: 25%;
+    }
 }
 
 @media (max-width: 768px){
@@ -306,7 +324,7 @@ ol, li {
 @media (min-width: 769px){
 
 	.jaf-row {
-		width: 800px;
+		width: 100%;
 		margin: 0 auto;
 	}
 }
