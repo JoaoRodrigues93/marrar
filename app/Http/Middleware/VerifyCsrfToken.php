@@ -12,8 +12,20 @@ class VerifyCsrfToken extends BaseVerifier {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+    
+          protected $except = [
+        '/examenormal',
+        '/examecolectivo',
+        '/perfil',
+        '/edito-perfil',
+        '/editar-perfil',
+        '/edita-perfil' ,
+              
+    ];
 	public function handle($request, Closure $next)
 	{
 		return parent::handle($request, $next);
 	}
+        
+        
 }
