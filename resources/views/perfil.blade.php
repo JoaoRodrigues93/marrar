@@ -8,13 +8,9 @@
             {!!Form::open(array('url'=>'edito-perfil', 'files' => true))!!}
 
 
-            <div class="row">
+            <div class="row" style="margin-left: 15px">
 
                 <div class="col-sm-4"">
-
-
-
-                    <!-- {{URL::asset('')}} -->
 
                     <img src="
                         <?php
@@ -47,7 +43,7 @@
             </div>
 
             <!-- Ta ai Nelson-->
-            <div class="row">
+            <div class="row" style="margin-left: 11px">
                 <br/>
                 <br/>
                 <div class="row">
