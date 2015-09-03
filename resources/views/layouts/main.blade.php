@@ -36,7 +36,7 @@
                     <li><a href="/disciplina">Disciplinas</a></li>
                     <li><a href="/capitulo">Capitulos</a></li>
                     <li><a href="/tema">Temas</a></li>
-                    <li><a href="/pergunta"</a>Perguntas</li>
+                    <li><a href="/pergunta">Perguntas</a></li>
                 </ul>
             </div>
         </div>
