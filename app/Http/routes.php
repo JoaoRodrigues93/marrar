@@ -42,7 +42,7 @@ Route::get('perguntaview', 'PerguntaController@InicializaPerguntaView');
 Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::get('/teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('examenormal','ExameController@show');
 Route::post('examenormal','ExameController@corrigeExame');
 
@@ -118,3 +118,6 @@ Route::post('examecolectivo','ExameController@corrigeExame');
 Route::get('home/maisDisciplinas','HomeController@index');
 
 Route::get('teoria.html','ExercicioController@teoria');
+
+Route::get('capituloHomeMobile','CapituloController@showHomeMobile');
+Route::get('/capituloHomeMobile/{id}','TemaController@showTemaMobile');

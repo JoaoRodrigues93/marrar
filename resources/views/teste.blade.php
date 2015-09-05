@@ -40,7 +40,7 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
 
-               <label> <h2 class="text-danger left text-capitalize" style="margin-left: 2%" >  Teste |  {{$disciplina}} |{{$capitulo->nome}}</h2></label>
+               <label> <h2 class="text-danger left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
                 <hr width="100%">
 
 

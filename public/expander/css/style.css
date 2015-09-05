@@ -84,7 +84,7 @@ ol, li {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	width: 36%;
+	width: 25%;
 	height: 225px;
 	padding: 3% 3% 10px 3%;
 	cursor: pointer;
@@ -273,7 +273,7 @@ ol, li {
 
     .folder {
 		height: 50%;
-        width: 50%;
+
         }
 
 
