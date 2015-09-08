@@ -42,7 +42,7 @@
         }
     })
 
-    // Initialize WOW.js Scrolling Animations
+    // Initialize WOW.min.js Scrolling Animations
     new WOW().init();
 
 })(jQuery); // End of use strict

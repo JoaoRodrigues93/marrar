@@ -36,7 +36,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('inicio');
+        return view('marrar');
     }
 
     public  function editar_inicial() {
