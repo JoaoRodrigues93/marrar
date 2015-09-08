@@ -97,10 +97,10 @@
                     {
                     ?>
 
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well" style="background-color: #ffffff">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="background-color: #ffffff">
                     @yield('body')
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-xs hidden-sm">
+                <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
                     @include('ranking')
                 </div>
                 {{-- Será usado quando o ranking estiver pronto --}}
@@ -111,7 +111,6 @@
                 <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <h2>Ranking</h2>
                 </div>--}}
-
                 <?php } else { ?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     @yield('body')
