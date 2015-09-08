@@ -24,8 +24,6 @@
             @endif
             });
 
-
-
         function closePopover() {
             $('#loginModal').modal('hide');
         }
@@ -102,7 +100,7 @@
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <img class="image wow animated swing img-responsive" data-wow-delay="0.36s"
+                <img class="image nam animated swing img-responsive" data-wow-delay="0.36s"
                      src="{{URL::asset('img/aprender/aprender-1646.png')}}">
             </div>
         </div>
@@ -114,7 +112,7 @@
         <h2>como funciona?</h2>
 
         <div class="funcionando row">
-            <div class="col-lg-3 col-md-6 col-sm-6 wow animated zoomIn">
+            <div class="col-lg-3 col-md-6 col-sm-6 nam animated zoomIn">
                 <img src="{{URL::asset('img/teoria.png')}}" height="84" width="84">
                 <h4>Material Te&oacute;rico</h4>
                 <p class="text-muted">Come&ccedil;a pelo material de apoio &agrave;s
@@ -122,14 +120,14 @@
                 </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 wow animated zoomIn" data-wow-delay="0.3s">
+            <div class="col-lg-3 col-md-6 col-sm-6 nam animated zoomIn" data-wow-delay="0.3s">
                 <img src="{{URL::asset('img/pratica.png')}}" height="84" width="84">
                 <h4>Exercic&iacute;os</h4>
                 <p class="text-muted">Resolva exerc&iacute;cios. Coloque em pr&aacute;tica o que aprendera. Pratique!
                 </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 wow animated zoomIn" data-wow-delay="0.6s">
+            <div class="col-lg-3 col-md-6 col-sm-6 nam animated zoomIn" data-wow-delay="0.6s">
                 <img src="{{URL::asset('img/exame.png')}}" height="84" width="84">
                 <h4>Exames</h4>
                 <p class="text-muted">
@@ -137,7 +135,7 @@
                 </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 wow animated zoomIn" data-wow-delay="0.9s">
+            <div class="col-lg-3 col-md-6 col-sm-6 nam animated zoomIn" data-wow-delay="0.9s">
                 <img src="{{URL::asset('img/ranking.png')}}" height="84" width="84">
                 <h4>Ranking</h4>
                 <p class="text-muted">Fique no topo do ranking e ter&aacute; mais chances de admitir. &Eacute; poss&iacute;vel!
@@ -151,7 +149,7 @@
     <div class="queDizem text-center container">
         <h2>o que os outros dizem</h2>
         <div class="row dizendo">
-            <div class="pessoa col-lg-4 col-md-4 col-sm-4 wow animated fadeInUp" data-wow-delay="0.3s">
+            <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.3s">
                 <img src="{{URL::asset('img/dizem/severino.jpg')}}" height="145" width="145">
 
                 <p class="text-left">&ldquo;Todos passamos pela fase de prepara&ccedil;&atilde;o
@@ -161,7 +159,7 @@
                 <h6 class="text-right">Severino Mateus</h6>
             </div>
 
-            <div class="pessoa col-lg-4 col-md-4 col-sm-4 wow delay-05s animated fadeInUp" data-wow-delay="0.5s">
+            <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam delay-05s animated fadeInUp" data-wow-delay="0.5s">
                 <img src="{{URL::asset('img/dizem/patricio.jpg')}}" height="145" width="145">
 
                 <p class="text-left">&ldquo;Est&atilde;o de Parab&eacute;ns gostei
@@ -170,7 +168,7 @@
                 <h6 class="text-right">PaTricio Sweez Jr.</h6>
             </div>
 
-            <div class="pessoa col-lg-4 col-md-4 col-sm-4 wow animated fadeInUp" data-wow-delay="0.7s">
+            <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.7s">
                 <img src="{{URL::asset('img/dizem/valdo.jpg')}}" height="145" width="145">
 
                 <p class="text-left">&ldquo;Dando suporte a um dos passos mais importantes da caminhada
@@ -287,16 +285,13 @@
 
 <script src="{{URL::asset('js/jquery.easing.min.js')}}" rel="script"></script>
 <script>
-    /*wow = new WOW(
-     {
-     boxClass:     'wow',      // default
-     animateClass: 'animated', // default
-     offset:       0,          // default
-     mobile:       true,       // default
-     live:         true        // default
-     }
-     )*/
-    new WOW().init();
+     new WOW(
+            {
+                boxClass:     'nam',
+                offset:       -40,
+                mobile:       false
+            }
+     ).init();
 </script>
 
 </body>
