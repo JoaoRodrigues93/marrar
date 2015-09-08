@@ -188,7 +188,7 @@
 <footer>
 
     <div class="row">
-        <div class="rede col-lg-4 col-sm-4 col-md-4">
+        <div class="rede col-lg-4 col-sm-4 col-md-4 col-xs-6">
             <nav>
                 <ul>
                     <li><a target="_blank" href="http://www.facebook.com/marrarmoz"></a></li>
@@ -198,7 +198,7 @@
             </nav>
         </div>
 
-        <div class="menu col-lg-8 col-sm-8 col-md-8">
+        <div class="menu col-lg-8 col-sm-8 col-md-8 col-xs-6">
             <nav>
                 <ul>
                     <li><a href="about.php">Sobre N&oacute;s</a></li>
