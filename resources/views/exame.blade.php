@@ -26,7 +26,8 @@ Marrar: Exame
 <div class="well">
     <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
     <div class="exame-title">
-        <h2 class="text-primary"><strong>Exame | {{$disciplina->nome}}</strong></h2>
+        <h2 class="text-primary hidden-xs"><strong>Exame | {{$disciplina->nome}}</strong></h2>
+        <h4 class="text-primary hidden-lg hidden-md hidden-sm">Exame | {{$disciplina->nome}}</h4>
     </div>
     <div class="exame-time">
         <h4 id="timer" class="text-right text-danger"></h4>
@@ -42,47 +43,47 @@ Marrar: Exame
             $i++;
             ?>
             <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                <h2>{{$pergunta->questao}}</h2>
+                <h2 class="hidden-xs">{{$pergunta->questao}}</h2>
+                <h4 class="hidden-lg hidden-md hidden-sm">{{$pergunta->questao}}</h4>
 
                 <div>
                     <div id="opcao1{{$i}}" class="">
                         <p class="text-left">
-                            <strong>A.</strong>
+
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('1{{$i}}','{{$i}}','{{$pergunta->opcao1}}')"/>
-                            <label class="texto-pergunta" for="resposta1{{$i}}">{{$pergunta->opcao1}}</label>
+                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong>{{$pergunta->opcao1}}</label>
                     </div>
 
                     <div id="opcao2{{$i}}">
                         <p class="text-left">
-                            <strong>B.</strong>
+
                             <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('2{{$i}}','{{$i}}','{{$pergunta->opcao2}}')"/>
-                            <label class="texto-pergunta" for="resposta2{{$i}}">{{$pergunta->opcao2}}</label>
+                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong>{{$pergunta->opcao2}}</label>
                     </div>
 
                     <div id="opcao3{{$i}}">
                         <p class="text-left">
-                            <strong>C.</strong>
+
                             <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('3{{$i}}','{{$i}}','{{$pergunta->opcao3}}')"/>
-                            <label class="texto-pergunta" for="resposta3{{$i}}">{{$pergunta->opcao3}}</label>
+                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong>{{$pergunta->opcao3}}</label>
                     </div>
 
                     <div id="opcao4{{$i}}">
                         <p class="text-left">
-                            <strong>D.</strong>
+
                             <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('4{{$i}}','{{$i}}','{{$pergunta->opcao4}}')"/>
-                            <label class="texto-pergunta" for="resposta4{{$i}}">{{$pergunta->opcao4}}</label>
+                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong>{{$pergunta->opcao4}}</label>
                     </div>
 
                     <div id="opcao5{{$i}}">
                         <p class="text-left">
-                            <strong>E.</strong>
                             <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
                                    onclick="escolheOpcao('5{{$i}}','{{$i}}','{{$pergunta->opcao5}}')"/>
-                            <label class="texto-pergunta" for="resposta5{{$i}}">{{$pergunta->opcao5}}</label>
+                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong>{{$pergunta->opcao5}}</label>
                         </p>
                     </div>
                 </div>
@@ -125,9 +126,6 @@ Marrar: Exame
             </div>
             <div id="modal-body" class="modal-body">
                 <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -212,6 +210,7 @@ Marrar: Exame
 
     window.onload = function () {
     var Minutes = 60 * 60, display = document.querySelector('#timer');
+            retiraRadioButton ();
             startTimer(Minutes, display);
     };
             function modalAlert(title, message) {
@@ -249,19 +248,17 @@ Marrar: Exame
     closeModal();
     }
 
-    window.onbeforeunload = function() {
-    if (desistirPermitido) return 'Estás prestes a abandonar está pagina. Se abandonares a página vais perder todo o progresso.';
-    };
-            window.onload = function () {
-             
-             var radioButton1;
-                
+    function retiraRadioButton () {
+    var radioButton1;
             for (i = 1; i <= nrPerguntas; i++){
-                for (j=1; j<=5; j++) {   
-                 radioButton1 = document.getElementById("resposta"+j+""+i);
-                 radioButton1.style.display = "none";
-            }
-            }
-            };
+    for (j = 1; j <= 5; j++) {
+    radioButton1 = document.getElementById("resposta" + j + "" + i);
+            radioButton1.style.display = "none";
+    }
+    }
+    }
+
+    window.onbeforeunload = function() {
+    if (desistirPermitido) return 'Estás prestes a abandonar está pagina. Se abandonares a página vais perder todo o progresso.'; };
 </script>
 @stop
