@@ -9,13 +9,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @yield('title')
     </title>
-
-
-
     @section('links')
         <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
@@ -97,10 +94,11 @@
                     {
                     ?>
 
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well">
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="background-color: #ffffff">
                     @yield('body')
                 </div>
-                <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     @include('ranking')
                 </div>
                 {{-- Será usado quando o ranking estiver pronto --}}
