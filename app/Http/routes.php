@@ -97,13 +97,12 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'AestudarController@aEstudarTeoria');
 
-Route::get('inicioAlt', function(){
-    return View::make('initial');
+Route::get('marrar', function(){
+    return View::make('marrar');
 });
 
 Route::get('welcome',function (){
     return View('inicio');
-
 });
 
 Route::post('/','Auth\AuthController@post');

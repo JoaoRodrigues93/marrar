@@ -15,7 +15,7 @@
     <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
     <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
     <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
-    <script src="{{URL::asset('js/main.js')}}"></script>
+    <script src="{{URL::asset('marmarrar.js)}}"></script>
     <script src="{{URL::asset('js/bootstrap.js')}} "></script>
 
     <!-- Custom Fonts -->
@@ -113,7 +113,7 @@
                 <h2 class="section-heading">O que aprender?</h2>
                 <hr class="primary">
                 <div class="col-lg-8">
-                    <p class="text-faded" style="color:#585e53;font-family: Circular,Helvetica,Arial,sans-serif;"><br/>Prepare-se
+                    <p class="text-faded text-right" style="color:#585e53;font-family: Circular,Helvetica,Arial,sans-serif;"><br/>Prepare-se
                         para seu exame de admissão onde quer que esteja!
                         Participe dos exames colectivos e testarás sua chance de admitir na vida real.
                         Proporcionamos material organizado de acordo com as disciplinas, exercicios de cada capitulo e

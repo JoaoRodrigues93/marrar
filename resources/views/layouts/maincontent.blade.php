@@ -9,6 +9,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @yield('title')
     </title>
@@ -89,7 +90,7 @@
 <div class="container">
         <div class="row">
             <?php
-                if(isset($ranking))
+                if(isset($ranking) && 1==2)
                     {
                     ?>
 
