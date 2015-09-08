@@ -4,7 +4,11 @@
     Marrar:Exercicios
 @stop
 @section('body')
-
+<style>
+body{
+    background-color: #f9f8f9;
+}
+</style>
 
     <script xmlns="http://www.w3.org/1999/html">
         function alteraResposta(opcaoEscolhida, idEscolhido) {
@@ -76,7 +80,9 @@
                         <div class="col-md-2 col-sm-2 col-xs-4">
                             <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right text-danger">Desistir</p></a></div>
                     </div>
-
+                @if(!$pergunta)
+                    Nao ha exercicio disponivel
+                @else
                     <div class="progress">
                         <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-success active"
                              role="progressbar" aria-valuenow="70"
@@ -181,7 +187,7 @@
                         </div>
 
                         {!!Form::close()!!}
-
+@endif
                     </div>
 
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
