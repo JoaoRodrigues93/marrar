@@ -2,6 +2,10 @@ body{
     background-color:#e9e9e9;
 }
 
+.well {
+    background-color: #ffffff;
+}
+
 #show{
 display: none;
 }
@@ -174,4 +178,27 @@ body {
     height: auto;
     border: 0;
     vertical-align: middle;
+}
+
+/*Blade exercicio */
+.envio {
+    margin-top: -10px;
+    height: auto;
+    background-color: #e1e1e1
+}
+
+.envio-success {
+    margin-top:-10px;
+    height: auto;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.envio-error {
+    margin-top:-10px;
+    height: auto;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }

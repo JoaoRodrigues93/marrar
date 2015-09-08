@@ -78,7 +78,24 @@
 
                 }
 
-             xmlhttp.open("GET", "capitulo-validacao", true);
+                var windowWidth = window.innerWidth;
+                var screenResolution=4;
+                if(windowWidth<400)
+                {
+                    screenResolution=1;
+                }
+                else if(windowWidth<768)
+                {
+                    screenResolution=2;
+                }
+
+                else if(windowWidth<992){
+                    screenResolution=3;
+
+                }
+
+
+             xmlhttp.open("GET", "capitulo-validacao/"+screenResolution, true);
 
                 xmlhttp.send();
 
@@ -87,7 +104,7 @@
     });
 
 </script>
-
+<div class='app-icon' style="background-color: #000000;width: 20px;"></div>
 
 <div class="app-folders-container">
     <script id="capitulos" type="text/x-mustache">
@@ -98,6 +115,7 @@
           <div class='folder' id='@{{id}}'>
             <a href='#'>
               <img class='app-icon' src='expander/images/@{{image}}'>
+
               <p class='album-name'>@{{nome}}</p>
               </a>
           </div>
@@ -135,7 +153,7 @@
             </div>
 
             <br class='clear'>
-            <input type="hidden" value="teste/@{{nome}}/@{{id}}" id="fazerTeste"/>
+            <input type="hidden" value="/teste/@{{nome}}/@{{id}}" id="fazerTeste"/>
             <button onclick="document.location.href=document.getElementById('fazerTeste').value"><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>
           </div>
           <a href="#" class="close">&times;</a>

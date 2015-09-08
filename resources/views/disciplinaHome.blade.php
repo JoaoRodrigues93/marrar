@@ -6,12 +6,13 @@
 <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
 
     <div class="container">
-<div class="jumbotron">
+
     <div class="panel panel-body">
         <div class="row">
             <?php $path="";?>
             @foreach($disciplinas as $disciplina)
-                <div class="col-md-3 col-lg-3 col-sm-3 portfolio-item">
+
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6 portfolio-item">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
 
 
@@ -37,13 +38,13 @@
 
 
 
-                        <h2 class="text-center">
+                        <h4 class="text-center">
                             {{$disciplina->nome}}
-                        </h2>
+                        </h4>
                     </a>
                 </div>
             @endforeach
         </div>
     </div>
 </div>
-    </div>
+

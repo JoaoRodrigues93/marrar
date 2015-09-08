@@ -90,7 +90,7 @@
 <div class="container">
         <div class="row">
             <?php
-                if(isset($ranking) && 1==2)
+                if(isset($ranking))
                     {
                     ?>
 

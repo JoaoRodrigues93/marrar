@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+include 'Mobile_Detect.php';
 
 session_start();
 
@@ -58,9 +59,9 @@ class CapituloController extends Controller
     public function editarCapitulo($id)
     {
         $capitulo = Capitulo::find($id);
+        $idDisc=$capitulo->disciplina()->first();
         $disciplinas = Disciplina::lists('nome', 'id');
-        $disciplina = $capitulo->disciplina->nome;
-        return view('capitulo_editar')->with(array('capitulos' => $capitulo, 'disciplinas' => $disciplinas,'disciplina'=>$disciplina));
+        return view('capitulo_editar')->with(array('idDisc'=>$idDisc->id,'capitulos' => $capitulo, 'disciplinas' => $disciplinas));
     }
 
     public function editar(Request $request)
@@ -140,6 +141,12 @@ public function showCapituloHome($id){
     $_SESSION ['disciplinaActual'] = $disciplinaActual;
     $_SESSION ['estudante'] = $user;
     $_SESSION['disciplina']=$disciplina1;
+    $detect = new \Mobile_Detect();
+    if ($detect->isMobile())
+    {
+        return redirect('capituloHomeMobile');
+    }
+    else
     return redirect('capituloHome');
 
 }
@@ -151,12 +158,33 @@ public function showHome(){
     $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
     $estudante = Auth::user();
     $gestorDisciplinaEstudada->guardaDisciplinaEstudada($estudante->id,$disciplina->id,$disciplina->nome);
+
+    $detect = new \Mobile_Detect();
+    if ($detect->isMobile())
+    {
+        return redirect('capituloHomeMobile');
+    }
+    else
     return view('capituloHome')->with(array('disciplina'=>$disciplina));
+
 }
 
+    public function showHomeMobile(){
+
+        $disciplina=$_SESSION['disciplina'];
+        //Guarda dados da disciplina escolhida
+        $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
+        $estudante = Auth::user();
+        $gestorDisciplinaEstudada->guardaDisciplinaEstudada($estudante->id,$disciplina->id,$disciplina->nome);
+
+        $id_disciplina=$_SESSION['disciplina']->id;
+        $capitulos=Capitulo::where('disciplina_id',$id_disciplina)->get();
+        return view('capituloHomeMobile')->with(array('disciplina'=>$disciplina,'capitulos'=>$capitulos));
+
+    }
 
     //Devolve objecto json com todos capitulos e temas
-public  function capituloTemaJason() {
+public  function capituloTemaJason($screen) {
 
     $id_disciplina=$_SESSION['disciplina']->id;
     $capitulos=Capitulo::where('disciplina_id',$id_disciplina)->get();
@@ -214,7 +242,7 @@ public  function capituloTemaJason() {
 
             }
 
-            if($j%4==0){
+            if($j%$screen==0){
                 $testeJson .=",\"last\": true ";
                 $j=0;
             }
@@ -236,7 +264,7 @@ public  function capituloTemaJason() {
 
             }
 
-            if($j%4==0){
+            if($j%$screen==0){
                 $testeJson .=",\"last\": true ";
                 $j=0;
             }

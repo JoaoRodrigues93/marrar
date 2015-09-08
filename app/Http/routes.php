@@ -42,7 +42,7 @@ Route::get('perguntaview', 'PerguntaController@InicializaPerguntaView');
 Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
 Route::post('editar-pergunta','PerguntaController@EditarPergunta');
-Route::get('teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::get('/teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('examenormal','ExameController@show');
 Route::post('examenormal','ExameController@corrigeExame');
 
@@ -57,7 +57,9 @@ Route::get('perfil',function(){
 });
 
 Route::get('perfil', 'PerfilController@buscarPerfil');
-Route::post('editar-perfil','PerfilController@EditarPerfil');
+Route::get('editar-perfil', 'PerfilController@buscarEditPerfil');
+Route::post('edito-perfil','PerfilController@HabilitarEditarPerfil');
+Route::post('edita-perfil','PerfilController@EditarPerfil');
 
 Route::get('inicio',function(){
     return View::make('inicio');
@@ -84,10 +86,9 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::get('disciplinaHome',"DisciplinaController@showDisciplinaHome");
 Route::get('disciplinaHome/{id}','CapituloController@showCapituloHome');
 
-Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
+Route::get('capitulo-validacao/{id}',"CapituloController@capituloTemaJason");
 
 
-Route::get('capitulo-validacao',"CapituloController@capituloTemaJason");
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login','Auth\AuthController@post');
 
@@ -116,3 +117,6 @@ Route::post('examecolectivo','ExameController@corrigeExame');
 Route::get('home/maisDisciplinas','HomeController@index');
 
 Route::get('teoria.html','ExercicioController@teoria');
+
+Route::get('capituloHomeMobile','CapituloController@showHomeMobile');
+Route::get('/capituloHomeMobile/{id}','TemaController@showTemaMobile');

@@ -5,13 +5,11 @@
 
         <div class="container">
 
-            {!!Form::open(array('url'=>'edito-perfil', 'files' => true))!!}
+            {!!Form::open(array('url'=>'edita-perfil', 'files' => true))!!}
 
 
-            <div class="row" style="margin-left: 15px">
-
+            <div class="row">
                 <div class="col-sm-4"">
-
                     <img src="
                         <?php
                     if ($perfil->foto == '')
@@ -19,6 +17,7 @@
                     else
                         echo $perfil -> foto;
                     ?>" class="img-responsive img-rounded"  width="250" height="250">
+                    <input type="file" id="image" name="image" />
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
@@ -43,7 +42,7 @@
             </div>
 
             <!-- Ta ai Nelson-->
-            <div class="row" style="margin-left: 11px">
+            <div class="row">
                 <br/>
                 <br/>
                 <div class="row">
@@ -52,7 +51,7 @@
                     </div>
                     <div class="col-sm-4"">
                         {!!Form::text('nome',$perfil->nome,['placeholder'=>'Nome
-                        Completo','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        Completo','class'=>'form-control', ])!!}
                     </div>
                 </div>
 
@@ -62,7 +61,7 @@
                     </div>
                     <div class="col-sm-4"">
                         {!!Form::text('apelido',$perfil->apelido,['placeholder'=>'Nome
-                        Completo','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        Completo','class'=>'form-control'])!!}
                     </div>
                 </div>
                 <!--
@@ -84,7 +83,7 @@
                     <div class="col-sm-4"">
                         {!!Form::input('date', 'date', $perfil->dataNascimento, ['class' => 'form-control',
                         'placeholder' =>
-                        'Date', 'disabled' => 'disabled'])!!}
+                        'Date'])!!}
                     </div>
                 </div>
 
@@ -93,7 +92,7 @@
                         {!!Form::label('telefone','Telefone')!!}
                     </div>
                     <div class="col-sm-4"">
-                        {!!Form::text('telefone',$perfil->telefone,['placeholder'=>'8xxxxxxxx','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        {!!Form::text('telefone',$perfil->telefone,['placeholder'=>'8xxxxxxxx','class'=>'form-control'])!!}
                     </div>
                 </div>
 
@@ -102,7 +101,7 @@
                         {!!Form::label('email','Email')!!}
                     </div>
                     <div class="col-sm-4"">
-                        {!!Form::email('email',$perfil->email,['placeholder'=>'Email','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        {!!Form::email('email',$perfil->email,['placeholder'=>'Email','class'=>'form-control'])!!}
                     </div>
                 </div>
 
@@ -111,10 +110,10 @@
                         {!!Form::label('provincia','Provincia')!!}
                     </div>
                     <div class="col-sm-4"">
-                        {!!Form::select('provincia', array('' => '', 'Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
+                        {!!Form::select('provincia', array('Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
                         'Inhambane', 'Manica' => 'Manica', 'Maputo' => 'Maputo', 'Matola' => 'Matola', 'Nampula' =>
                         'Nampula', 'Niassa' => 'Niassa', 'Sofala' => 'Sofala', 'Tete' => 'Tete', 'Zambezia' =>
-                        'Zambezia'), $perfil->cidade, ['class'=>'form-control', 'disabled' => 'disabled']);!!}
+                        'Zambezia'), $perfil->cidade, ['class'=>'form-control']);!!}
                     </div>
                 </div>
 
@@ -123,7 +122,7 @@
                         {!!Form::label('escola','Escola')!!}
                     </div>
                     <div class="col-sm-4"">
-                        {!!Form::text('escola',$perfil->escola,['placeholder'=>'Escola','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        {!!Form::text('escola',$perfil->escola,['placeholder'=>'Escola','class'=>'form-control'])!!}
                     </div>
                 </div>
 
@@ -133,7 +132,7 @@
                     </div>
                     <div class="col-sm-4">
                         {!!Form::select('sexo', array('Masculino' => 'Masculino', 'Feminino' =>
-                        'Feminino'), $perfil->sexo, ['class'=>'form-control', 'disabled' => 'disabled']);!!}
+                        'Feminino'), $perfil->sexo, ['class'=>'form-control']);!!}
                     </div>
                 </div>
 
@@ -144,7 +143,7 @@
                     <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> -->
                     <div class="col-sm-4"">
 
-                        {!!Form::textarea('descricao',$perfil->descricao,['rows'=> '2', 'placeholder'=>'Texto Descritivo sobre a sua pessoa','class'=>'form-control', 'disabled' => 'disabled'])!!}
+                        {!!Form::textarea('descricao',$perfil->descricao,['rows'=> '2', 'placeholder'=>'Texto Descritivo sobre a sua pessoa','class'=>'form-control'])!!}
 
                     </div>
                 </div>

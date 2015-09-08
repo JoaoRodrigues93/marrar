@@ -6,7 +6,7 @@ use App\Disciplina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-
+session_start();
 /**
  * Created by PhpStorm.
  * User: Yola
@@ -128,5 +128,15 @@ class TemaController extends Controller
 
     }
 
+
+    public function showTemaMobile($id){
+
+        $temas = Tema::where('capitulo_id',$id)->get();
+        $capitulo= Capitulo::find($id);
+        $disciplina=$_SESSION['disciplinaActual'];
+
+        return view('temaMobile')->with(array('capitulo'=>$capitulo,'temas'=>$temas,'disciplina'=>$disciplina));
+
+    }
 
 }

@@ -32,7 +32,7 @@
                 <tr>
 
                     <th></th>
-                    <th>Nome</th>+
+                    <th>Nome</th>
                     <th> Acção</th>
 
                 </tr>
