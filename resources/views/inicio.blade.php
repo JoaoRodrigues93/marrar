@@ -288,7 +288,6 @@
      new WOW(
             {
                 boxClass:     'nam',
-                offset:       -40,
                 mobile:       false
             }
      ).init();
