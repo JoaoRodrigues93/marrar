@@ -56,7 +56,7 @@ class PerfilController extends Controller {
                 base_path() . '/public/images/catalog/', $imgName
             );
 
-            $perfil -> foto  = "http://localhost:8000/images/catalog/".$imgName;
+            $perfil -> foto  = "http://192.168.0.100:8000/images/catalog/".$imgName;
         }
 
         $perfil ->save();
