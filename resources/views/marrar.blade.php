@@ -194,7 +194,6 @@
 </footer>
 
 <script src="{{URL::asset('js/jquery.easing.min.js')}}" rel="script"></script>
-<script src="{{URL::asset('js/noframework.waypoints.min.js')}}"></script>
 <script>
     /*wow = new WOW(
             {
