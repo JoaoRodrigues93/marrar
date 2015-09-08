@@ -8,13 +8,15 @@
 
     <script xmlns="http://www.w3.org/1999/html">
         function alteraResposta(opcaoEscolhida, idEscolhido) {
-            var botao = document.getElementById("hide");
+            var botaoConfirmar = document.getElementById("hide");
             var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
-            botao.setAttribute("class", "btn btn-success btn-lg active");
-            document.getElementById('hide').disabled=false;
+            botaoConfirmar.setAttribute("class", "btn btn-success btn-lg active");
+            document.getElementById("hide").disabled=false;
             deSeleciona();
             document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
-            document.getElementById(idEscolhido).setAttribute('class', 'bg-success');
+            var opcaoEsc=document.getElementById(idEscolhido);
+                    opcaoEsc.setAttribute('class', 'bg-primary');
+            opcaoEsc.style.borderRadius="5px";
         }
 
         function deSeleciona() {
@@ -32,7 +34,7 @@
 
 
     <div onload="inicio()">
-
+        <div  class="container" id="conteud">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -45,12 +47,12 @@
                     <img class="center-block" id="imagem" src=''/>
 
                     <h1 style="color: green" id="mensg"></h1>
-{{--<small> <p  id="nrAcertos"></p>
-    <p  id="nrErros"></p></small>--}}
+                    {{--<small> <p  id="nrAcertos"></p>
+                        <p  id="nrErros"></p></small>--}}
 
 
-                        <p class="text-center text-success" id="nrAcertos"></p>
-                        <p  class="text-center text-danger" id="nrErros"></p>
+                    <p class="text-center text-success" id="nrAcertos"></p>
+                    <p  class="text-center text-danger" id="nrErros"></p>
 
 
                 </div>
@@ -66,14 +68,13 @@
 
 
             <div id="divPrincipal" class="container">
-                <div class="panel panel-body">
 
                     <div class="row">
 
-                        <div class="col-md-11"><h2 class="text-danger left">{!!$caminho!!}</h2>
+                        <div class="col-md-10 col-sm-10 col-xs-8" ><h2 class="text-primary">{!!$caminho!!}</h2>
                         </div>
-                        <div class="col-md-1">
-                            <a onclick="return check()" href="{{URL::to('capituloHome')}}">Desistir</a></div>
+                        <div class="col-md-2 col-sm-2 col-xs-4">
+                            <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right text-danger">Desistir</p></a></div>
                     </div>
 
                     <div class="progress">
@@ -87,7 +88,7 @@
 
 
                         {!!Form::open(array('url' => 'exercicio')) !!}
-                        <h3> {!! Form::label('questao',$pergunta->questao, ['id'=>'questao']) !!}</h3>
+                        <h3 class="text-capitalize"> {!! Form::label('questao',$pergunta->questao, ['id'=>'questao']) !!}</h3>
 
                         <p>
 
@@ -137,12 +138,13 @@
                                 {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
                                 {{--{!!Form::hidden('respostaCerta',$pergunta->opcaoCorrecta,array('id'=>'respostaCerta'))!!}--}}
 
-                              </div>
+                            </div>
                         </div>
 
 
 
-                        {{--<div class="container">
+
+                    {{--    <div class="container">
                             <div class="row">
                                 <div class="col-md-6" id="content">
                                 </div>
@@ -160,13 +162,17 @@
 
                         </div>--}}
 
-                        <div id="content" class="well envio">
+                        <div id="envio" class="well envio">
                             <div class="row">
-                                <div id="hide" class="col-md-8 col-lg-8 col-sm-8">
+                                <div class="col-md-8 col-lg-8 col-sm-8" id="content">
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-4">
                                     <div class="right">
-                                        <button id="show" class="btn btn-success btn-lg">Verificar</button>
+
+                                        {!!Form::button('Confirmar',['class'=>'btn btn-success btn-lg
+                                        disabled','id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
+                                        {!!Form::button(' Continuar ',['class'=>'btn btn-primary
+                                        btn-lg','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
                                     </div>
                                 </div>
                                 <br>
@@ -174,20 +180,19 @@
                             </div>
                         </div>
 
-
                         {!!Form::close()!!}
 
                     </div>
 
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
-                </div>
+
             </div>
-            <div class="row"></div>
+            <div class="row"><p></p></div>
 
-
+        </div>
         <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-7">
+            <div class="col-lg-5 col-md-5 col-sm-3 col-xs-3"></div>
+            <div class="col-lg-7 col-md-7 col-sm-9 col-xs-9">
                 <button type="button" id="btn_teoria" class="btn btn-danger" onclick="abrirTeoria()" >Teoria</button>
                 <button type="button" id="btn_exercicio" class="btn btn-danger " disabled onclick="abrirExercicio()">Exercicio</button>
             </div>
@@ -195,9 +200,12 @@
         </div>
     </div>
 
-
     <script>
-
+        /* ('#hide').click(function(){
+         ('#content').hide();
+         ('#hide').hide();
+         ('#show').show();
+         });*/
 
         var nrPerguntas = parseInt("{{$nrPerguntas}}");
         var resposta;
@@ -243,14 +251,13 @@
         function
         esconder() {
             var content = document.getElementById("content");
-           // content.style.visibility = 'visible';
-            content.setAttribute('class', 'well envio');
+            content.style.visibility = 'visible';
             var hide = document.getElementById("hide");//pega o elemento com id=hide
             var show = document.getElementById("show");
             hide.style.display = "none";//esconde o botao confirmar
             show.style.display = "block";//mostra o botao proximo
             //hide.setAttribute("class","");
-
+            var envio=document.getElementById("envio");
 
             var respostaEscolhida = document.getElementById("respostaEscolhida");
 
@@ -262,14 +269,15 @@
 
             if (resposta == respostaEscolhida.value) {
                 // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
-                content.setAttribute("class", "col-md-6 alert alert-success");
+                envio.setAttribute("class", 'well envio-success');
 
-                content.innerHTML = "<strong>Certo</strong> Parabens a resposta está certa";
+                content.innerHTML = "<p><strong>Parabens!</strong> acertaste a resposta</p>";
                 contAcertos++;
             }
             else {
-                content.setAttribute("class", "col-md-6 alert alert-danger")
-                content.innerHTML = "<strong>Errado</strong> A resposta correcta é " + resposta;
+                envio.setAttribute("class",  'well alert envio-error')
+                content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
+                " A resposta correcta é: " +resposta;
                 contErros++;
             }
             //desabilita os radios button
@@ -287,13 +295,18 @@
             bar.style.width = '' + percent.toFixed(1) + '%';
 
             document.getElementById('show').disabled=false;
+            document.getElementById("content").style.visibility="none";
         }
         //metodo ao clicar no botao proximo
 
 
         function vaiPraProximo() {
             //  alert('Aqui');
+           var content= document.getElementById("content")
+                   content.style.visibility="none";
+            content.disabled=true;
             document.getElementById('show').disabled=true;
+            document.getElementById("envio").setAttribute('class','well envio');
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -381,6 +394,7 @@
         function proximo() {
             var content = document.getElementById("content");
             content.style.visibility = 'hidden';
+            var envio=document.getElementById("")
             var hide = document.getElementById("hide");//pega o elemento com id=hide
             var show = document.getElementById("show");
             hide.style.display = "block";//mostra o botao confirmar

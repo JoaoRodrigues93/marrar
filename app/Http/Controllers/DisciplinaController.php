@@ -82,6 +82,10 @@ class DisciplinaController extends Controller
     }
  public function showDisciplinaHome(){
      $disciplinas=Disciplina::all();
-     return view("disciplinaHome")->with('disciplinas',$disciplinas);
+     $i=0;
+     foreach($disciplinas as $disciplina){
+         $i++;
+     }
+     return view("disciplinaHome")->with(array('disciplinas'=>$disciplinas,"i"=>$i));
  }
 }
