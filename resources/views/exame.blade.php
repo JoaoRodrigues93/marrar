@@ -258,6 +258,20 @@ Marrar: Exame
     }
     }
 
+
+    window.onkeydown = function (event){
+    submeter(event)
+    }
+
+
+    function submeter(event) {
+    var code = event.keyCode ? event.keyCode : event.which;
+            var button;
+            if (code == 13){
+    button = document.getElementById("entregar");
+            button.click();
+    }
+    }
     window.onbeforeunload = function() {
     if (desistirPermitido) return 'Estás prestes a abandonar está pagina. Se abandonares a página vais perder todo o progresso.'; };
 </script>

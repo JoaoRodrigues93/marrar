@@ -8,17 +8,16 @@
             {!!Form::open(array('url'=>'edito-perfil', 'files' => true))!!}
 
 
-            <div class="row" style="margin-left: 15px">
+            <div class="row" style="text-align: center;">
 
-                <div class="col-sm-4"">
-
+                <div class="col-sm-4">
                     <img src="
                         <?php
                     if ($perfil->foto == '')
-                        echo "http://localhost:8000/img/pessoa.png";
+                        echo "http://192.168.0.100:8000/img/pessoa.png";
                     else
                         echo $perfil -> foto;
-                    ?>" class="img-responsive img-rounded"  width="250" height="250">
+                    ?>" class="img-responsive img-rounded"  width="250" height="250" style="margin: 0 auto;">
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
@@ -42,46 +41,34 @@
                 </div>
             </div>
 
-            <!-- Ta ai Nelson-->
-            <div class="row" style="margin-left: 11px">
+            <div class="row">
                 <br/>
                 <br/>
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('pnome','Primeiro Nome')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::text('nome',$perfil->nome,['placeholder'=>'Nome
                         Completo','class'=>'form-control', 'disabled' => 'disabled'])!!}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('unome','Apelido')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::text('apelido',$perfil->apelido,['placeholder'=>'Nome
                         Completo','class'=>'form-control', 'disabled' => 'disabled'])!!}
                     </div>
                 </div>
-                <!--
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        {!!Form::label('password','Password')!!}
-                                    </div>
-                                    Por alguma razao, a pass n ficou big.. U know why?
-                                    <div class="col-lg-6">
-                                        {!!Form::text('tmp',$perfil->password,['placeholder'=>'Username','class'=>'form-control'])!!}
-                                        {!!Form::password('password','',['placeholder'=>'A Sua Senha','class'=>'form-control'])!!}
-                                    </div>
-                                </div>
-                -->
+
                 <div class="row">
                     <div class="col-sm-4">
                         {!!Form::label('data-nascimento','Data de Nascimento')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::input('date', 'date', $perfil->dataNascimento, ['class' => 'form-control',
                         'placeholder' =>
                         'Date', 'disabled' => 'disabled'])!!}
@@ -92,25 +79,25 @@
                     <div class="col-sm-4">
                         {!!Form::label('telefone','Telefone')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::text('telefone',$perfil->telefone,['placeholder'=>'8xxxxxxxx','class'=>'form-control', 'disabled' => 'disabled'])!!}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('email','Email')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::email('email',$perfil->email,['placeholder'=>'Email','class'=>'form-control', 'disabled' => 'disabled'])!!}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('provincia','Provincia')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::select('provincia', array('' => '', 'Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
                         'Inhambane', 'Manica' => 'Manica', 'Maputo' => 'Maputo', 'Matola' => 'Matola', 'Nampula' =>
                         'Nampula', 'Niassa' => 'Niassa', 'Sofala' => 'Sofala', 'Tete' => 'Tete', 'Zambezia' =>
@@ -122,13 +109,13 @@
                     <div class="col-sm-4">
                         {!!Form::label('escola','Escola')!!}
                     </div>
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::text('escola',$perfil->escola,['placeholder'=>'Escola','class'=>'form-control', 'disabled' => 'disabled'])!!}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('sexo','Sexo')!!}
                     </div>
                     <div class="col-sm-4">
@@ -138,11 +125,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
                         {!!Form::label('descricao','Descricao da Tua Pessoa')!!}
                     </div>
                     <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> -->
-                    <div class="col-sm-4"">
+                    <div class="col-sm-4">
 
                         {!!Form::textarea('descricao',$perfil->descricao,['rows'=> '2', 'placeholder'=>'Texto Descritivo sobre a sua pessoa','class'=>'form-control', 'disabled' => 'disabled'])!!}
 
