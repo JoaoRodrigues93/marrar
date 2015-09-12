@@ -49,6 +49,9 @@ Route::post('examenormal','ExameController@corrigeExame');
 Route::get('registar',function(){
     return View::make('registar');
 });
+
+Route::get('pergunta2', 'PerguntaController@InicializaPergunta2');
+
 Route::get('login',function(){
     return View::make('login');
 });
