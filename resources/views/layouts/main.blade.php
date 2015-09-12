@@ -11,9 +11,7 @@
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.js')}} "></script>
-        <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
-        <script src="{{URL::asset('tinymce/tinymce.min.js')}}"></script>
-
+        <script src="{{URL::asset('ckeditorstardard/ckeditor/ckeditor.js')}}"></script>
     @show
 
 
