@@ -94,7 +94,7 @@ class ExercicioController extends Controller{
     public  function  respostaProximo(){
         $_SESSION['perguntaActual']++;
         $perguntaActual = $_SESSION['perguntaActual'];
-        $testeJson = "";
+        $testeJson="";
         $perguntas = $_SESSION['perguntas'];
         $nrPerguntas = $_SESSION["nrPerguntas"];
 // create a new progress bar (50 units)
@@ -121,14 +121,7 @@ class ExercicioController extends Controller{
 
         if($perguntaActual<$nrPerguntas){
             $pergunta = $perguntas[$perguntaActual];
-            $testeJson .= "{\"questao\":\"$pergunta->questao\",".
-                "\"id\":\"$pergunta->id\"".
-                ",\"opcao1\":\"$pergunta->opcao1\"" .
-                ",\"opcao2\":\"$pergunta->opcao2\"" .
-                ",\"opcao3\":\"$pergunta->opcao3\"" .
-                ",\"opcao4\":\"$pergunta->opcao4\"" .
-                ",\"opcao5\":\"$pergunta->opcao5\"".
-                ",\"opcaoCorrecta\":\"$pergunta->opcaoCorrecta\"}";
+            $testeJson =json_encode($pergunta);
         }
 
         /*foreach ($perguntas as $pergunta) {
