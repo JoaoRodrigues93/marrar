@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
 @stop
 @section('body')
+<div class="well">
 <div align="center">
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <script type="text/javascript">
@@ -161,7 +162,7 @@
       @{{/data}}
     </script>
 </div>
-
+</div>
 <script src="expander/js/mustache.js"></script>
 <script src="expander/js/jquery.app-folders.js"></script>
 <script src="expander/js/quantize.js"></script>

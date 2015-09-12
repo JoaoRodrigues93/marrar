@@ -40,7 +40,7 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
 
-               <label> <h2 class="text-danger left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
+               <label> <h2 class="text-primary left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
                 <hr width="100%">
 
 
@@ -54,6 +54,18 @@
 
 
                         <?php $i=0; ?>
+
+                            {!! Form::hidden("vazio",$count,['id'=>"vazio"]) !!}
+                          @if($count==0 )
+
+                              <div align="center">
+
+                                 <h3 class="alert alert-warning">Infelizmente nenhuma questão foi registada para esse capítulo.Tente outra hora!</h3>
+
+                              </div>
+
+
+                           @else
                         @foreach($perguntas as $pergunta)
 
                         {!! Form::hidden('id',$i=$i+1)  !!}
@@ -71,32 +83,32 @@
 
 
                                         <div id="opcao1{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')"]) !!}
-                                            <label class="texto-pergunta"   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')",'style'=>"display: none"]) !!}
+                                            <label class="texto-pergunta"   for="example1{{$i}}" ><strong>A. </strong>{{$pergunta->opcao1}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao2{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')"]) !!}
-                                            <label class="texto-pergunta"   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')",'style'=>"display: none"]) !!}
+                                            <label class="texto-pergunta"  for="example2{{$i}}"><strong>B. </strong>{{$pergunta->opcao2}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao3{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')"]) !!}
-                                            <label class="texto-pergunta"  for="example3{{$i}}">{{$pergunta->opcao3}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')",'style'=>"display: none"]) !!}
+                                            <label class="texto-pergunta"  for="example3{{$i}}"><strong>C. </strong>{{$pergunta->opcao3}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao4{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')"]) !!}
-                                            <label class="texto-pergunta"   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')",'style'=>"display: none"]) !!}
+                                            <label class="texto-pergunta"   for="example4{{$i}}"><strong>D. </strong>{{$pergunta->opcao4}}</label>
                                             <p>
                                         </div>
 
                                         <div id="opcao5{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')"]) !!}
-                                            <label class="texto-pergunta"   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')",'style'=>"display: none"]) !!}
+                                            <label class="texto-pergunta"   for="example5{{$i}}"><strong>E. </strong>{{$pergunta->opcao5}}</label>
 
                                             <p>
                                         </div>
@@ -118,6 +130,7 @@
 
                                 <hr  width="100%">
                             @endforeach
+                            @endif
 
                     </div>
 
@@ -272,6 +285,14 @@
 
 
         <script>
+
+            var vazio = document.getElementById('vazio');
+            if(vazio.value==0){
+
+                document.getElementById('btn_entregar').style.display="none";
+
+            }
+
             function processarPergunta() {
 
                 if (window.XMLHttpRequest) {
@@ -462,6 +483,11 @@
 
                 xmlhttp.send();
             }
+
+
+
+            window.onbeforeunload = function() {
+                return 'Estás prestes a abandonar esta página. Se abandonares a página vais perder o teste.'; };
         </script>
 
 
