@@ -77,7 +77,19 @@
                                 <li><a href="/auth/logout">Sair</a></li>
                             </ul>
                     <li>
-                            <a><img width="24" height="24" class="img-responsive" src="{{$estudante->foto}}"/></a>
+                        <!-- Validacao de Redes Sociais Comexa aki -->
+                        <?php
+                        if (starts_with($estudante->foto, 'http'))
+                        {
+                            //Imagem para os que criaram usando redes sociais
+                            $fotolink = $estudante->foto;
+                        }
+                        else {
+                            //Imagem para os que criaram perfil no site
+                            $fotolink = Request::root().$estudante->foto;
+                        }
+                        ?>
+                        <a><img width="24" height="24" class="img-responsive" src="{{$fotolink}}"/></a>
                         </li>
                     </li>
                 </ul>

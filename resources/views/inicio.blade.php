@@ -12,9 +12,13 @@
     <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
     {{--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>--}}
     <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
+<<<<<<< HEAD
     <script src="{{URL::asset('js/marrar.js')}}"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="{{URL::asset('js/WOW.min.js')}}"></script>
+=======
+
+>>>>>>> origin/master
     <script src="{{URL::asset('js/bootstrap.js')}} "></script>
 
     <script>

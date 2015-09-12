@@ -113,6 +113,7 @@ class AuthController extends Controller
         $sexo = $user['gender'];
         $sexo = ($sexo=='male')? "Masculino": "Femenino";
         $email = $userData->email;
+        //Ver isto Mais tarde...
         $username = $userData->id;
         $foto = $userData->avatar;
         $estudante = Estudante::firstOrCreate(['nome'=>$nome,'apelido'=>$apelido,
