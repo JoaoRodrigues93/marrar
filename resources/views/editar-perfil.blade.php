@@ -13,9 +13,17 @@
                     <img src="
                         <?php
                     if ($perfil->foto == '')
-                        echo "http://localhost:8000/img/pessoa.png";
-                    else
-                        echo $perfil -> foto;
+                        echo Request::root()."/img/pessoa.png";
+                    else {
+                        if (starts_with($perfil->foto, 'http')) {
+                            //Rede Social nao tem Username, pode-se melhorar para depois identificar qual rede social 'e e trocar no username.
+                            //Pelo que sei, existe o username de cada rede social, temos que pegar depois isso.
+                            $perfil->username = "";
+                            echo $perfil -> foto;
+                        }
+                        else
+                            echo Request::root().$perfil -> foto;
+                    }
                     ?>" class="img-responsive img-rounded"  width="250" height="250">
                     <input type="file" id="image" name="image" />
                 </div>
@@ -31,7 +39,10 @@
                     </div>
 
                     <div class="row">
-                        #{!!$perfil->username!!}
+                        <?php
+                            if ($perfil->username != '')
+                                echo "#".$perfil->username;
+                        ?>
                     </div>
 
                     <div class="row">

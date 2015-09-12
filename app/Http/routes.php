@@ -94,6 +94,8 @@ Route::post('login','Auth\AuthController@post');
 
 Route::get('login/{provider}','Auth\AuthController@redirectToProvider');
 Route::get('login/done/{provider}','Auth\AuthController@handleProviderCallback');
+
+//Funciona?
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 Route::get('aestudar', 'AestudarController@aEstudarTeoria');
