@@ -210,8 +210,8 @@ Hero
 }
 
 .down-arrow {
-    /*color: #fff;*/
-    color: #2C97DE;
+    color: #fff;
+    /*color: #2C97DE;*/
     font-size: 30px;
     position: absolute;
     bottom: 30px;
@@ -223,8 +223,8 @@ Hero
 }
 
 .down-arrow a {
-    /*color: #fff; */
-    color: #2C97DE;
+    color: #fff;
+    /*color: #2C97DE;*/
 }
 
 /* ==========================================================================

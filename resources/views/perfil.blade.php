@@ -14,9 +14,17 @@
                     <img src="
                         <?php
                     if ($perfil->foto == '')
-                        echo "http://192.168.0.100:8000/img/pessoa.png";
-                    else
-                        echo $perfil -> foto;
+                        echo Request::root()."/img/pessoa.png";
+                    else {
+                        if (starts_with($perfil->foto, 'http')) {
+                            //Rede Social nao tem Username, pode-se melhorar para depois identificar qual rede social 'e e trocar no username.
+                            //Pelo que sei, existe o username de cada rede social, temos que pegar depois isso.
+                            $perfil->username = "";
+                            echo $perfil -> foto;
+                        }
+                        else
+                            echo Request::root().$perfil -> foto;
+                    }
                     ?>" class="img-responsive img-rounded"  width="250" height="250" style="margin: 0 auto;">
                 </div>
                 <div class="col-sm-4">
@@ -31,7 +39,10 @@
                     </div>
 
                     <div class="row">
-                        #{!!$perfil->username!!}
+                        <?php
+                        if ($perfil->username != '')
+                            echo "#".$perfil->username;
+                        ?>
                     </div>
 
                     <div class="row">
@@ -98,7 +109,7 @@
                         {!!Form::label('provincia','Provincia')!!}
                     </div>
                     <div class="col-sm-4">
-                        {!!Form::select('provincia', array('' => '', 'Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
+                        {!!Form::select('provincia', array('' => 'Provincia', 'Cabo Delgado' => 'Cabo Delgado', 'Gaza' => 'Gaza', 'Inhambane' =>
                         'Inhambane', 'Manica' => 'Manica', 'Maputo' => 'Maputo', 'Matola' => 'Matola', 'Nampula' =>
                         'Nampula', 'Niassa' => 'Niassa', 'Sofala' => 'Sofala', 'Tete' => 'Tete', 'Zambezia' =>
                         'Zambezia'), $perfil->cidade, ['class'=>'form-control', 'disabled' => 'disabled']);!!}
@@ -119,7 +130,7 @@
                         {!!Form::label('sexo','Sexo')!!}
                     </div>
                     <div class="col-sm-4">
-                        {!!Form::select('sexo', array('Masculino' => 'Masculino', 'Feminino' =>
+                        {!!Form::select('sexo', array('' => 'Sexo', 'Masculino' => 'Masculino', 'Feminino' =>
                         'Feminino'), $perfil->sexo, ['class'=>'form-control', 'disabled' => 'disabled']);!!}
                     </div>
                 </div>

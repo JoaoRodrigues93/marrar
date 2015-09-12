@@ -62,7 +62,7 @@
        //para comecar o select box com vazio
        document.getElementById('disciplinas').selectedIndex=-1;
 
-       CKEDITOR.replace('conteudo');
+//       CKEDITOR.replace('conteudo');
 
         //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
         function adicionaCapitulo() {
