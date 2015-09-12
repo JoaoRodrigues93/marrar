@@ -38,7 +38,7 @@ body{
 
 
     <div onload="inicio()">
-        <div  class="container" id="conteud">
+        <div  class="content-fluid" id="conteud">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -71,7 +71,7 @@ body{
             </div>
 
 
-            <div id="divPrincipal" class="container">
+            <div id="divPrincipal" class="well">
 
                     <div class="row">
 
@@ -103,38 +103,38 @@ body{
                             <div id="opcao1">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' =>
-                                    'field','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
+                                    'field radio','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
                                     !!}
-                                    <label class="texto-pergunta" for="example1" id="op1">{{$pergunta->opcao1}}</label>
+                                    <strong>A. </strong><label class="texto-pergunta" for="example1" id="op1">{{$pergunta->opcao1}}</label>
 
                             </div>
 
                             <div id="opcao2">
                                 <p>
-                                    {!! Form::radio('example', 1, false, ['class' => 'field',
+                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
-                                    <label class="texto-pergunta" for="example2" id="op2">{{$pergunta->opcao2}}</label>
+                                    <strong>B. </strong><label class="texto-pergunta" for="example2" id="op2">{{$pergunta->opcao2}}</label>
                             </div>
 
                             <div id="opcao3">
                                 <p>
-                                    {!! Form::radio('example', 1, false, ['class' => 'field',
+                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
-                                    <label class="texto-pergunta" for="example3" id="op3">{{$pergunta->opcao3}}</label>
+                                    <strong>C. </strong><label class="texto-pergunta" for="example3" id="op3">{{$pergunta->opcao3}}</label>
                             </div>
 
                             <div id="opcao4">
                                 <p>
-                                    {!! Form::radio('example', 1, false, ['class' => 'field',
+                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
-                                    <label class="texto-pergunta" for="example4" id="op4">{{$pergunta->opcao4}}</label>
+                                    <strong>D. </strong> <label class="texto-pergunta" for="example4" id="op4">{{$pergunta->opcao4}}</label>
                             </div>
 
                             <div id="opcao5">
                                 <p>
-                                    {!! Form::radio('example', 1, false, ['class' => 'field',
+                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
-                                    <label class="texto-pergunta" for="example5" id="op5">{{$pergunta->opcao5}}</label>
+                                    <strong>E. </strong> <label class="texto-pergunta" for="example5" id="op5">{{$pergunta->opcao5}}</label>
                                 </p>
                             </div>
 
@@ -286,6 +286,7 @@ body{
                 " A resposta correcta é: " +resposta;
                 contErros++;
             }
+
             //desabilita os radios button
             document.getElementById("example1").disabled = true;
             document.getElementById("example2").disabled = true;

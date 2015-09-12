@@ -12,7 +12,7 @@
             <?php $path="";?>
             @foreach($disciplinas as $disciplina)
 
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6 portfolio-item">
+                <div  class="col-md-3 col-lg-3 col-sm-4 col-xs-6 disc">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
 
 
@@ -32,8 +32,8 @@
                                 default: $path='default.png'; break;
                             }
                         ?>
-                            <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png">
-                                <img class="img-responsive" src="{{URL::asset('img/livros/default.png')}} ">
+                            <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png" >
+                                <img class="img-responsive " src="{{URL::asset('img/livros/default.png')}} ">
                             </object>
 
 
