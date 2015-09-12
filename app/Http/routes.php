@@ -107,6 +107,10 @@ Route::get('marrar', function(){
     return View::make('marrar');
 });
 
+Route::get('inicio2', function(){
+    return View::make('inicioOLD');
+});
+
 Route::get('welcome',function (){
     return View('inicio');
 });

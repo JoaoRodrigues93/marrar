@@ -37,7 +37,6 @@
             </div>
         </div>
         <div class="form-group">
-
             {!! Form::label('pergunta','Pergunta',['class'=>'text-primary']) !!}
             {!! Form::text('questao','',['class'=>'form-control', 'placeholder'=>'Introduza a questao aqui','rows'=>'2']) !!}
             {!! Form::label('correcto','Resposta correcta',['class'=>'text-primary']) !!}
