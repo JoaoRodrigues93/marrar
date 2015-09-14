@@ -84,11 +84,12 @@ public function inicializaTeste($capituloNome,$capituloId){
    //Devolve um json com todas as perguntas
     public function validaTeste(){
 
-        $testeJson = "{\"perguntas\":[ ";
+        //$testeJson = "{\"perguntas\":[ ";
         $perguntas = $_SESSION['perguntas'];
-        $nrPerguntas =0;
+        //$nrPerguntas =0;
 
-        foreach ($perguntas as $pergunta) {
+        $testeJson=json_encode($perguntas);
+        /*foreach ($perguntas as $pergunta) {
              if (strlen($testeJson) < 20) {
                  $testeJson .= "{\"questao\":\"$pergunta->questao\"," .
                      "\"id\":\"$pergunta->id\"" .
@@ -114,7 +115,7 @@ public function inicializaTeste($capituloNome,$capituloId){
 
         }
 
-        $testeJson.=" ]}";
+        $testeJson.=" ]}";*/
 
 
         return $testeJson;

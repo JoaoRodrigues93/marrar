@@ -180,7 +180,7 @@ public function showHome(){
         $id_disciplina=$_SESSION['disciplina']->id;
         $capitulos=Capitulo::where('disciplina_id',$id_disciplina)->get();
         $detect = new \Mobile_Detect();
-        if ($detect->isMobile())
+        if (!$detect->isMobile())
         {
             return redirect('capituloHome');
         }
