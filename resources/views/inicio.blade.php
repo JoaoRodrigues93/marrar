@@ -7,10 +7,9 @@
     <title>Marrar</title>
     <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
     <link href="{{URL::asset('css/animate.css')}} " rel="stylesheet">
+    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
     <link href="{{URL::asset('css/marrar.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
-
     <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
     <script src="{{URL::asset('js/marrar.js')}}"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">

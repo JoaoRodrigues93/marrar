@@ -17,12 +17,7 @@ class AestudarController extends Controller
 
     public function aEstudarTeoria(){
 
-
-        $tema = Tema::find(6);
-        $conteudo = $tema->conteudo;
-
-
-        return View::make('aestudarAlt')->with('conteudo',$conteudo);
+        return View::make('aestudar');
     }
 
     public function aEstudarTeoriaAtr($titulo){

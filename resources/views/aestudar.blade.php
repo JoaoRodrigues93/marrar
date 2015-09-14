@@ -1,19 +1,21 @@
-@extends('layouts.main_a_marrar')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>a marrar...</title>
+    <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
+    <link href="{{asset('css/marrar.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+    <script src="{{URL::asset('js/bootstrap.js')}} "></script>
+</head>
+<body>
 
-@section('title')
-    Marrar | A estudar
-@stop
 
-@section('conteudo')
+<div class="container bordaCircular sombra aestudar" style="margin-top: 20px">
 
-    <div class="container">
-        <div class="col-lg-6 texto">
 
-        </div>
 
-        <div class="col-lg-6 exercicio">
+</div>
 
-        </div>
-    </div>
-
-@stop
+</body>
+</html>

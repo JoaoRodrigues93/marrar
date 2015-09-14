@@ -11,6 +11,8 @@ body {
     width: 100%;
     margin: 0;
     height: 100%;
+    background: #F5F5F5;
+
 }
 
 html{
@@ -482,27 +484,27 @@ scrollbar
     width: 6px;
 }
 
-::-webkit-scrollbar-track {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;*/
-    border: none;
-    background: #F3F5F8;
-    opacity: 0;
+::-webkit-scrollbar-button{
+    /*visibility: hidden;*/
+    background: #CCC;
+}
 
+::-webkit-scrollbar-button:hover{
+    background: #BBB;
+}
+
+::-webkit-scrollbar-track {
+    border: none;
+    background: whitesmoke;
 }
 
 ::-webkit-scrollbar-thumb {
-    /*-webkit-border-radius: 10px;
-    border-radius: 10px;*/
-    /*background: rgba(44, 151, 222, .7);*/
-    /*background: #353740;*/
-    background: rgba(44, 151, 222, .5);
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5)*/
+    background: #CCC;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
 }
 
 /* ==========================================================================
@@ -539,14 +541,14 @@ device max-with: 320px
 /* Scale Font Based On Screen Resolution*/
 @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
     html {
-        font-size: 125%;
+        /*font-size: 125%;*/
     }
 }
 
 /* Scale Font Based On Screen Size*/
 @media only screen and (max-device-width : 667px) {
     html {
-        font-size: 31.25%;
+        /*font-size: 31.25%;*/
     }
 }
 @media only screen and (min-width: 320px) {
@@ -670,7 +672,21 @@ Lab
     box-shadow: 0 0 5px #888;
 }
 
+.sombra{
+    box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+}
 
+.bordaCircular{
+    border-radius: 6px;
+}
+/* ==========================================================================
+Teória
+========================================================================== */
+
+.aestudar{
+    background: #FFFFFF;
+    height: 500px;
+}
 
 
 

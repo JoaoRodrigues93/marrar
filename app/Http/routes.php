@@ -49,6 +49,9 @@ Route::post('examenormal','ExameController@corrigeExame');
 Route::get('registar',function(){
     return View::make('registar');
 });
+
+Route::get('pergunta2', 'PerguntaController@InicializaPergunta2');
+
 Route::get('login',function(){
     return View::make('login');
 });
@@ -102,6 +105,10 @@ Route::get('aestudar', 'AestudarController@aEstudarTeoria');
 
 Route::get('marrar', function(){
     return View::make('marrar');
+});
+
+Route::get('inicio2', function(){
+    return View::make('inicioOLD');
 });
 
 Route::get('welcome',function (){
