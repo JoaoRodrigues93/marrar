@@ -11,6 +11,8 @@ body {
     width: 100%;
     margin: 0;
     height: 100%;
+    background: #fff;
+
 }
 
 html{
@@ -482,13 +484,26 @@ scrollbar
     width: 6px;
 }
 
+::-webkit-scrollbar-button{
+    width: 10px;
+    height: 25%;
+    color: white;
+    background: #CCCCCC;
+    visibility: hidden;
+}
+
+::-webkit-scrollbar-button:hover{
+    background: #EEEEEE;
+}
+
 ::-webkit-scrollbar-track {
     /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 10px;
     border-radius: 10px;*/
     border: none;
-    background: #F3F5F8;
+    background: #CCCCCC;
     opacity: 0;
+    visibility: hidden;
 
 }
 
@@ -496,13 +511,14 @@ scrollbar
     /*-webkit-border-radius: 10px;
     border-radius: 10px;*/
     /*background: rgba(44, 151, 222, .7);*/
-    /*background: #353740;*/
-    background: rgba(44, 151, 222, .5);
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5)*/
+    /*background: red;*/
+    /*background: rgba(44, 151, 222, .5);*/
+     box-shadow: 0 0 5px #333;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
 }
 
 /* ==========================================================================
@@ -539,14 +555,14 @@ device max-with: 320px
 /* Scale Font Based On Screen Resolution*/
 @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
     html {
-        font-size: 125%;
+        /*font-size: 125%;*/
     }
 }
 
 /* Scale Font Based On Screen Size*/
 @media only screen and (max-device-width : 667px) {
     html {
-        font-size: 31.25%;
+        /*font-size: 31.25%;*/
     }
 }
 @media only screen and (min-width: 320px) {
