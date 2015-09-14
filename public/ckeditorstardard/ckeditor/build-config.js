@@ -66,7 +66,6 @@ var CKBUILDER_CONFIG = {
 		'format' : 1,
 		'horizontalrule' : 1,
 		'htmlwriter' : 1,
-		'image' : 1,
 		'indentlist' : 1,
 		'link' : 1,
 		'list' : 1,

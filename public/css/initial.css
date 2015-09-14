@@ -1,16 +1,19 @@
 .mainPodeAprender{
-    /*background: #FAFAFA;*/
+    background: #FFFFFF;
     padding: 4em 0 4em 0;
 
 }
 
 .mainComoFunciona{
-    background: #E0E0E0; /*#F1F1F1 F3F5F8 E0E0E0 EEEEEE F5F5F5 #FAFAFA*/
+    background: #F5F5F5; /*#F1F1F1 F3F5F8 E0E0E0 EEEEEE F5F5F5 #FAFAFA*/
     padding: 5em 0 8em 0;
+
+    /*background: linear-gradient(to bottom, rgba(224,224,224,.89),rgba(224,224,224,.89),
+    rgba(224,224,224,.89),rgba(224,224,224,.89),rgba(255,255,255,1));*/
 }
 
 .mainQueDizem{
-    /*background: #FAFAFA;*/
+    background: #FFFFFF;
     padding: 3em 0 5em 0;
 }
 

@@ -20,7 +20,7 @@
     </script>
 
     <h2 class="text-primary" >{{$disciplina->nome}}</h2>
-    {!! Form::hidden('id',$disciplina->id,['id'=>'disciplina_id']) !!}
+    {!! Form::hidden('id',$disciplina->id,['id'=>' _id']) !!}
 
 </div>
 <script type="text/javascript">
@@ -115,7 +115,6 @@
           <div class='folder' id='@{{id}}'>
             <a href='#'>
               <img class='app-icon' src='expander/images/@{{image}}'>
-
               <p class='album-name'>@{{nome}}</p>
               </a>
           </div>
@@ -124,12 +123,10 @@
         </div>
         @{{/last}}
       @{{/data}}
-
       </div>
     </script>
 
     <script id="temas" type="text/x-mustache">
-
       @{{#data}}
         <div class='folderContent @{{id}}'>
           <div class='jaf-container'>
@@ -142,16 +139,11 @@
               <div class='multi'>
                 <ol class="secondaryColor">
                   @{{#tema}}
-
                   <li><a href="exercicio/@{{id }}/@{{.}}"  class="primaryColor">@{{.}}</a></li>
-
                   @{{/tema}}
-
                 </ol>
                 </div>
-
             </div>
-
             <br class='clear'>
             <input type="hidden" value="/teste/@{{nome}}/@{{id}}" id="fazerTeste"/>
             <button onclick="document.location.href=document.getElementById('fazerTeste').value"><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>

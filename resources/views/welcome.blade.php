@@ -8,7 +8,7 @@
     <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
     <link href="{{URL::asset('css/main.css')}} " rel="stylesheet">
     <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
-    <script src="{{URL::asset('marmarrar.js)}}"></script>
+    <script src="{{URL::asset('js/marrar.js)}}"></script>
     <script src="{{URL::asset('js/bootstrap.js')}} "></script>
 
     <script>
