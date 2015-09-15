@@ -129,3 +129,11 @@ Route::get('teoria.html','ExercicioController@teoria');
 
 Route::get('capituloHomeMobile','CapituloController@showHomeMobile');
 Route::get('/capituloHomeMobile/{id}','TemaController@showTemaMobile');
+
+Route::get('/devolveDadosDisc/{id}','PerguntaController@showPerguntaPorDisc');
+Route::get('/devolveDadosCapi/{id}','PerguntaController@showPerguntaPorCapi');
+Route::get('/devolveDadosTema/{id}','PerguntaController@showPerguntaPorTema');
+
+
+
+

@@ -57,9 +57,9 @@
 
         <hr>
 
-        <div class="container">
+         <div class="container" >
 
-            <table class="table table-bordered text-center" id="tabelaPerguntas">
+            <table class="table table-bordered text-center" id="tabelaPerguntas" style="background-color:#ffffff">
 
                 <thead class="text-capitalize">
                 <tr>
@@ -80,11 +80,13 @@
 
                 <tbody>
 
+                <?php $i=0;?>
                 @foreach($perguntas as $pergunta)
 
                     <tr>
 
-                        <th scope="row">{{$pergunta->id}}</th>
+                        <?php $i++; ?>
+                        <th scope="row">{{$i}}</th>
                         <td> {{$pergunta->questao}}</td>
                         <td>{{$pergunta->opcaoCorrecta}}</td>
                         <td> {{$pergunta->opcao1}}</td>
@@ -162,6 +164,8 @@
 
                     capitulos.selectedIndex=-1;
                     temas.selectedIndex=-1;
+                    devolveDados(disciplinaSelecionada,0,0);
+
                 }
 
             }
@@ -226,7 +230,7 @@
 
 
 
-        function devolveDados(){
+        function devolveDados( disciplina, capitulo,  tema){
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
@@ -242,15 +246,21 @@
 
 
 
-
+                    var perguntas = JSON.parse(xmlhttp.responseText);
+                    preencheTabela(perguntas);
 
                 }
 
 
 
             }
-
-            xmlhttp.open("GET","devolveDados/"+capituloSelecionado,true);
+            if(capitulo==0 && tema==0)
+                xmlhttp.open("GET","/devolveDadosDisc/"+disciplina,true);
+            else
+            if(tema==0)
+                xmlhttp.open("GET","/devolveDadosCapi/"+capitulo,true);
+            else
+                xmlhttp.open("GET","/devolveDadosTema/"+tema,true);
 
             xmlhttp.send();
 
@@ -265,24 +275,37 @@
 
 
 
-function preecheTabela() {
+function preencheTabela(perguntas) {
     var table = document.getElementById('tabelaPerguntas');
     var linhas = table.rows;
 
-    alert(linhas.length);
 
     for (i = linhas.length - 1; i >= 0; i--) {
-        alert(linhas[i].innerHTML);
-        t
-        if (i != 1) {
+
+        if (i != 0) {
             table.deleteRow(i);
         }
+    }
 
-}
-        // var row = table.insertRow(1);
-            //row.innerHTML = "<td>"+nome+"</td> <td>"+presidio+"</td><td>"+cidade+"</td><td>"+status+"</td>";
 
-        }
+    for (i = 0; i < perguntas.length; i++) {
+        pergunta = perguntas[i];
+        row = table.insertRow(i + 1);
+        row.innerHTML ="<th scope=\"row\">"+(i+1)+"</th>"+
+                "<td>" + pergunta.questao + "</td >" +
+        "<td>" + pergunta.opcaoCorrecta + "</td> " +
+        "<td>" + pergunta.opcao1 + "</td> " +
+        "<td>" + pergunta.opcao2 + "</td >" +
+        "<td>" + pergunta.opcao3 + "</td >" +
+        "<td>" + pergunta.opcao4 + "</td >"+
+        "<td><a href=\"/perguntaview/editar/"+pergunta.id+"\">Editar</a> | <a onclick=\"return check()\" href=\"/perguntaview/remover/"+pergunta.id+"\">Remover</a></td>";
+
+    }
+
+}     //
+            //row.innerHTML = "<td>"+nome+"</td> <td>"+presidio+"</td><td>"+cidade+"</td><td>"+status+"</td>}";
+
+
 
 
 
