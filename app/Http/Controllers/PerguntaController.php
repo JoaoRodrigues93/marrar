@@ -106,6 +106,19 @@ Session::flash('message','Dados gravados com sucesso');
 
     }
 
+    public function showPerguntaPorDisc($id){
+
+        $perguntas= Pergunta::join('temas','temas.id','=','perguntas.tema_id')
+            ->join('capitulos','capitulos.id','=','temas.capitulo_id')
+            ->join('disciplinas','disciplinas.id','=','capitulos.disciplina_id')
+            ->where('disciplinas.id', $id)
+            ->get();
+
+        $testeJson = json_encode($perguntas);
+
+        return $testeJson;
+    }
+
 
 
 

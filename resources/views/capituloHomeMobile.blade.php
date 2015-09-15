@@ -5,12 +5,13 @@
 @stop
 
 @section('body')
-<div align="center">
-  <label>  <h2 class="text-primary" >{{$disciplina->nome}}</h2></label>
-    <hr width="100%">
 
-</div>
     <div class="panel panel-body">
+        <div align="center">
+            <label>  <h2 class="text-primary" >{{$disciplina->nome}}</h2></label>
+            <hr width="100%">
+
+        </div>
         <div class="row">
 
             @foreach($capitulos as $capitulo)
