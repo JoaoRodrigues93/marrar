@@ -148,7 +148,7 @@ Session::flash('message','Dados gravados com sucesso');
         return $pergunt;
     }
 
-    public function buscarTeste($disciplina,$capitulo){
+    public function buscarTeste($capitulo){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
 
         $temas=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
@@ -180,7 +180,7 @@ Session::flash('message','Dados gravados com sucesso');
         return $pergunt;
     }
 
-    public function buscarExercicios($disciplina,$capitulo,$tema){
+    public function buscarExercicios($tema,$quantidade){
        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
        // $disciplina='matematica';//esses dois atributos devem ser parametros
        // $capitulo='trigonometria';
@@ -189,17 +189,13 @@ Session::flash('message','Dados gravados com sucesso');
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
-            ->where('disciplinas.nome','=',$disciplina)
-            ->where('capitulos.nome','=',$capitulo)
-            ->where('temas.nome','=',$tema)
+            ->where('temas.id','=',$tema)
             ->select('perguntas.*');
 
 
-        if($perguntas->count()>3);
-
-        { $perguntas=$perguntas->orderByRaw("RAND()")
-            ->take(3);
-
+        if($perguntas->count()>$quantidade){
+            $perguntas=$perguntas->orderByRaw("RAND()")
+            ->take($quantidade);
         }
 
         return $this->randomize($perguntas->get());
