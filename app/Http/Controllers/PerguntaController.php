@@ -114,6 +114,7 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('disciplinas.id', $id)
             ->get();
 
+
         $testeJson = json_encode($perguntas);
 
         return $testeJson;
