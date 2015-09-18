@@ -277,7 +277,7 @@ scrollbar
 }
 
 ::-webkit-scrollbar-button:hover {
-    background: #BBB;
+    background: #BBBBBB;
 }
 
 ::-webkit-scrollbar-track {
@@ -286,7 +286,7 @@ scrollbar
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #CCC;
+    background: #CCCCCC;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {

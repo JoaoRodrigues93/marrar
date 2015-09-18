@@ -6,6 +6,7 @@
       <w>animação</w>
       <w>aprender</w>
       <w>borda</w>
+      <w>botao</w>
       <w>botoes</w>
       <w>coloque</w>
       <w>confirmar</w>
@@ -16,7 +17,10 @@
       <w>dizendo</w>
       <w>dropdown</w>
       <w>entrar</w>
+      <w>envio</w>
       <w>ercã</w>
+      <w>escolhida</w>
+      <w>esconder</w>
       <w>exame</w>
       <w>exames</w>
       <w>exer</w>
@@ -30,15 +34,19 @@
       <w>maincontent</w>
       <w>marrar</w>
       <w>materia</w>
+      <w>mostrar</w>
       <w>navbar</w>
       <w>noframework</w>
       <w>opcoes</w>
       <w>outros</w>
+      <w>perguntas</w>
       <w>pessoa</w>
       <w>pode</w>
       <w>pratica</w>
+      <w>proximo</w>
       <w>quenomevoudar</w>
       <w>resolva</w>
+      <w>resposta</w>
       <w>scrolar</w>
       <w>scrollbar</w>
       <w>sombra</w>
@@ -49,6 +57,7 @@
       <w>teória</w>
       <w>tipografia</w>
       <w>waypoints</w>
+      <w>xmlhttp</w>
     </words>
   </dictionary>
 </component>
