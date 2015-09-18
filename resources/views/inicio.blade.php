@@ -151,7 +151,7 @@
             <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.3s">
                 <img src="{{URL::asset('img/dizem/severino.jpg')}}" height="145" width="145">
 
-                <p class="text-left">&ldquo;Todos passamos pela fase de prepara&ccedil;&atilde;o
+                <p class="text-center">&ldquo;Todos passamos pela fase de prepara&ccedil;&atilde;o
                     aos exames de admiss&atilde;o...criamos uma plataforma que pudesse ajudar os
                     que est&atilde;o nesta fase.  Boa sorte a todos!&rdquo;
                 </p>
@@ -161,7 +161,7 @@
             <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam delay-05s animated fadeInUp" data-wow-delay="0.5s">
                 <img src="{{URL::asset('img/dizem/patricio.jpg')}}" height="145" width="145">
 
-                <p class="text-left">&ldquo;Est&atilde;o de Parab&eacute;ns gostei
+                <p class="text-center">&ldquo;Est&atilde;o de Parab&eacute;ns gostei
                     [da vossa plataforma, a simplicidade aplicada &eacute; incr&iacute;vel]...ir&iacute;a ajudar muitos Estudantes...&rdquo;
                 </p>
                 <h6 class="text-right">PaTricio Sweez Jr.</h6>
@@ -170,7 +170,7 @@
             <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.7s">
                 <img src="{{URL::asset('img/dizem/valdo.jpg')}}" height="145" width="145">
 
-                <p class="text-left">&ldquo;Dando suporte a um dos passos mais importantes da caminhada
+                <p class="text-center">&ldquo;Dando suporte a um dos passos mais importantes da caminhada
                     ...dos que pretendem chegar &agrave; Universidade:
                     "A PREPARA&Ccedil;&Atilde;O PARA O EXAME DE ADMISS&Atilde;O"...
                     AVANTE MARRAR&rdquo;
@@ -198,11 +198,11 @@
         <div class="menu col-lg-8 col-sm-8 col-md-8 col-xs-6">
             <nav>
                 <ul>
-                    <li><a href="about.php">Sobre N&oacute;s</a></li>
-                    <li><a href="http://www.blog.com">Blog</a></li>
-                    <li><a href="escolas.php">Escolas</a></li>
-                    <li><a href="provincias.php">Provicias</a></li>
-                    <li><a href="parceiros.php">Parceiros</a></li>
+                    <li><a href="#">Sobre N&oacute;s</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Escolas</a></li>
+                    <li><a href="#">Provicias</a></li>
+                    <li><a href="#">Parceiros</a></li>
                 </ul>
             </nav>
         </div>

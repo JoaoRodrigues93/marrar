@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 
 use App\Tema;
 use Illuminate\Support\Facades\View;

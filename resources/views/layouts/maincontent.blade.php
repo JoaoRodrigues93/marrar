@@ -23,7 +23,7 @@
 <body>
 <section id="wrap">
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top bottom">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -106,7 +106,7 @@
                     {
                     ?>
 
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class="bordaCircular tema col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     @yield('body')
                 </div>
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">

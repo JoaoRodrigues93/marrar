@@ -7,7 +7,7 @@
 
     <div class="container">
 
-    <div class="panel panel-body">
+    <div class="panel panel-body disciplinaHome">
         <div class="row">
             <?php $path="";?>
             @foreach($disciplinas as $disciplina)

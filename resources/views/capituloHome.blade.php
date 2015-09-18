@@ -4,7 +4,7 @@
     Lista de capitulos
 @stop
 @section('links')
-@@parent
+@parent
 <link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
 @stop
 @section('body')
@@ -115,7 +115,7 @@
           <div class='folder' id='@{{id}}'>
             <a href='#'>
               <img class='app-icon' src='expander/images/@{{image}}'>
-              <p class='album-name'>@{{nome}}</p>
+              <p style="margin-top: 6px" class='album-name'>@{{nome}}</p>
               </a>
           </div>
         @{{#last}}
@@ -146,9 +146,11 @@
             </div>
             <br class='clear'>
             <input type="hidden" value="/teste/@{{nome}}/@{{id}}" id="fazerTeste"/>
-            <button onclick="document.location.href=document.getElementById('fazerTeste').value"><a href="teste/@{{nome}}/@{{id}}">Clique aqui para fazer o Teste</a></button>
+            <button onclick="document.location.href=document.getElementById('fazerTeste').value">
+            <a href="teste/@{{nome}}/@{{id}}">Fazer o Teste</a></button>
           </div>
-          <a href="#" class="close">&times;</a>
+          {{--<a href="#" class="close">&times;</a>--}}
+          <a href="#" class="close"><img src="../img/icons/ic_close_white_24dp_1x.png"></a>
         </div>
       @{{/data}}
     </script>

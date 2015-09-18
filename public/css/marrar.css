@@ -15,7 +15,7 @@ body {
 
 }
 
-html{
+html {
     font-size: 62.5%;
     width: 100%;
     height: 100%;
@@ -86,10 +86,15 @@ Nav, Logo e Button entrar
 ========================================================================== */
 .headerNav div div a {
     font-family: 'Cooper Black', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 6.6rem;
+    font-size: 7rem;
     /*font-size: 66px;*/
     text-shadow: 1px 1px 2px #999;
     /*box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);*/
+
+    color: #fff;
+    /*line-height: 8rem;*/
+
+    text-align: center;
 }
 
 .logo {
@@ -101,7 +106,7 @@ Nav, Logo e Button entrar
     color: #FAFAFF; /*color: #9d9d9d;*/
 }
 
-header nav {
+nav.headerNav {
     /*background: #2C97DE;
     height: 5em;*/
     transition: all 800ms;
@@ -161,7 +166,7 @@ Hero
     /*padding: 60px 0 60px 0;*/
     /*min-height: 680px;*/
     min-height: 42.5em;
-    background: url("../img/vamosmarrar.png") rgba(40, 70, 102, .6)  no-repeat center center;
+    /*background: url("../img/vamosmarrar.png") rgba(40, 70, 102, .6)  no-repeat center center;*/
 
     /*background-image:  linear-gradient(to bottom, rgb(44, 151, 222),  rgba(255, 255, 255, 0));
     background-repeat : no-repeat, no-repeat, no-repeat;
@@ -169,7 +174,8 @@ Hero
 
     /*background: url(img.png) no-repeat 50% 300px, linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
 
-    /*background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url("../img/vamosmarrar.png") no-repeat;*/
+    /*background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url("../img/vamosmarrar2249.png") no-repeat;*/
+    background: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("../img/vamosmarrar2249.png") no-repeat;
 
     /*background: linear-gradient(to bottom, rgba(44,151,222,.89),rgba(44,151,222,.2),
     rgba(44,151,222,0),rgba(44,151,222,0),rgba(44,151,222,0), rgba(255, 255, 255,0)),
@@ -179,6 +185,11 @@ Hero
     color: #FFF;
     width: 100%;
     height: 100%;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
 
 }
 
@@ -241,29 +252,39 @@ Animação
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out; }
+    animation-timing-function: ease-in-out;
+}
 
 @-webkit-keyframes floating-arrow {
     from {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); }
+        transform: translate(-50%, 0);
+    }
     65% {
         -webkit-transform: translate(-50%, 15px);
-        transform: translate(-50%, 15px); }
+        transform: translate(-50%, 15px);
+    }
     to {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); } }
+        transform: translate(-50%, 0);
+    }
+}
 
 @keyframes floating-arrow {
     from {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); }
+        transform: translate(-50%, 0);
+    }
     65% {
         -webkit-transform: translate(-50%, 15px);
-        transform: translate(-50%, 15px); }
+        transform: translate(-50%, 15px);
+    }
     to {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); } }
+        transform: translate(-50%, 0);
+    }
+}
+
 .floating-logo {
     -webkit-animation-name: floating-logo;
     animation-name: floating-logo;
@@ -272,26 +293,33 @@ Animação
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out; }
+    animation-timing-function: ease-in-out;
+}
 
 @-webkit-keyframes floating-logo {
     from {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); }
+        transform: translate(-50%, 0);
+    }
     50% {
         -webkit-transform: translate(-50%, 10px);
-        transform: translate(-50%, 10px); }
+        transform: translate(-50%, 10px);
+    }
     to {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); } }
+        transform: translate(-50%, 0);
+    }
+}
 
 @keyframes floating-logo {
     from {
         -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0); }
+        transform: translate(-50%, 0);
+    }
     50% {
         -webkit-transform: translate(-50%, 10px);
-        transform: translate(-50%, 10px); }
+        transform: translate(-50%, 10px);
+    }
     to {
         -webkit-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
@@ -337,25 +365,26 @@ Animação
     animation-delay: 2.5s;
     -webkit-animation-delay: 2.5s;
 }
+
 /* ==========================================================================
 funciona
 ========================================================================== */
 
-
 /* ==========================================================================
 dizem
 ========================================================================== */
-.pessoa{
+.pessoa {
     padding-top: 1.6em;
+    opacity: 0;
 }
 
-.pessoa img{
+.pessoa img {
     border-radius: 50%;
     box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.55), 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
     margin-bottom: 2em;
 }
 
-.pessoa p{
+.pessoa p {
     font-size: 1.5rem;
     font-style: italic;
     margin-left: 0;
@@ -363,14 +392,14 @@ dizem
     /*height: 6.8%;*/
 }
 
-.pessoa h6{
+.pessoa h6 {
     color: #FF530D;
     opacity: 0.9;
     padding-right: 5%;
 }
 
 div.mainQueDizem > div:last-child > div >
-div.pessoa > p{
+div.pessoa > p {
     margin-right: 0;
 }
 
@@ -384,11 +413,11 @@ box-shadow: 0 0 0 7px white, 0 0 0 8px #e0e0e0;
     min-height: 35em;
 */
 
-*:before, *:after{
+*:before, *:after {
     box-sizing: border-box;
 }
 
-.image{
+.image {
     display: block;
     width: 100%;
     margin: 0 0 2em 0;
@@ -399,12 +428,12 @@ box-shadow: 0 0 0 7px white, 0 0 0 8px #e0e0e0;
     vertical-align: baseline;
 }
 
-div.podeAprender div img{
+div.podeAprender div img {
     max-height: 400px;
     /*height: 210px;*/
 }
 
-#podeAprender > div > div:nth-child(1){
+#podeAprender > div > div:nth-child(1) {
     padding-top: 10%;
 }
 
@@ -481,15 +510,16 @@ footer > div > div.menu > nav > ul {
 scrollbar
 ========================================================================== */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 7px;
 }
 
-::-webkit-scrollbar-button{
+::-webkit-scrollbar-button {
     /*visibility: hidden;*/
-    background: #CCC;
+    /*background: #CCC;*/
+    height: 15px;
 }
 
-::-webkit-scrollbar-button:hover{
+::-webkit-scrollbar-button:hover {
     background: #BBB;
 }
 
@@ -536,6 +566,16 @@ device max-with: 320px
     header nav {
         height: 4em;
     }
+
+    footer .row{
+
+        /*margin: 0;*/
+        padding-bottom: 10px;
+    }
+
+    footer .row div:first-child{
+        margin-left: -30px;
+    }
 }
 
 /* Scale Font Based On Screen Resolution*/
@@ -546,11 +586,12 @@ device max-with: 320px
 }
 
 /* Scale Font Based On Screen Size*/
-@media only screen and (max-device-width : 667px) {
+@media only screen and (max-device-width: 667px) {
     html {
         /*font-size: 31.25%;*/
     }
 }
+
 @media only screen and (min-width: 320px) {
 
     /* Small screen, non-retina */
@@ -559,7 +600,7 @@ device max-with: 320px
 
 @media only screen and (max-width: 780px) {
 
-    div.podeAprender div img{
+    div.podeAprender div img {
         margin-top: 5%;
 
     }
@@ -568,19 +609,13 @@ device max-with: 320px
 
 @media only screen and (min-width: 781px) and (max-width: 1003px) {
 
-    .container{
+    .container {
         width: 95%;
     }
 
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
-only screen and (                min-resolution: 192dpi) and (min-width: 320px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 320px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (                min-resolution: 192dpi) and (min-width: 320px), only screen and (                min-resolution: 2dppx)  and (min-width: 320px) {
 
     /* Small screen, retina, stuff to override above media query */
 
@@ -592,13 +627,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 320px) 
 
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px),
-only screen and (                min-resolution: 192dpi) and (min-width: 700px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 700px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (                min-resolution: 192dpi) and (min-width: 700px), only screen and (                min-resolution: 2dppx)  and (min-width: 700px) {
 
     /* Medium screen, retina, stuff to override above media query */
 
@@ -612,29 +641,26 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 700px) 
 
 @media only screen and (max-width: 928px) {
 
-    #podeAprender > div > div:nth-child(1){
+    #podeAprender > div > div:nth-child(1) {
         padding-top: 0;
     }
 
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
-only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
-only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
-only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (                min-resolution: 192dpi) and (min-width: 1300px), only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
 
     /* Large screen, retina, stuff to override above media query */
 
 }
 
-@media (min-width: 700px) and (orientation: landscape) {  }
+@media (min-width: 700px) and (orientation: landscape) {
+}
 
-@media tv and (min-width: 700px) and (orientation: landscape) {  }
+@media tv and (min-width: 700px) and (orientation: landscape) {
+}
 
-@media (min-width: 700px), handheld and (orientation: landscape) { }
+@media (min-width: 700px), handheld and (orientation: landscape) {
+}
 
 /*cores */
 
@@ -668,32 +694,92 @@ Lab
 
 #Example_E {
     -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px#888;
+    -webkit-box-shadow: 0 0 5px #888;
     box-shadow: 0 0 5px #888;
 }
 
-.sombra{
-    box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+.sombra {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
 }
 
-.bordaCircular{
+.bordaCircular {
     border-radius: 6px;
 }
+
 /* ==========================================================================
 Teória
 ========================================================================== */
 
-.aestudar{
-    background: #FFFFFF;
-    height: 500px;
+.aestudar {
+    /*background: #FFFFFF;*/
+    height: 600px;
+    /*box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;*/
+    /*border-radius: 4px;*/
+    position: relative;
+    padding: 0;
 }
 
+/*.exercicios{
+    height: 100%;
+    width: 100%;
+    background: red;
+    top: 0;
+    left: 0;
+    z-index:2;
+    position: absolute;
+    opacity: 0.5;
 
+}*/
 
+.btn-teoria {
+    float: right;
+}
 
+.botoes button {
+    background: #FF530D;
+    color: white;
+    font-weight: 500;
+}
 
+.quenomevoudar {
+    /*background: #CCC;*/
+    position: absolute;
+    margin: 0;
+    /*z-index: 1;*/
+    width: 100%;
+    height: 90%;
+    box-shadow: 0 5px 5px -6px #333;
+}
 
+.botoes {
+    /*background: #F1F1F1;*/
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    margin: 0 0 16px 0;
+    /*z-index: 1;*/
+}
 
+#myNavbar{
+    background: #2C97DE;
+}
 
+.quenomevoudar .exercicios{
+   background: red;
+    width: 100%;
+    height: 25%;
+    margin: 0;
+    z-index: 2;
+    position: absolute;
+}
 
+.quenomevoudar .teoria{
+  background: blue;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    overflow-y: scroll;
+}
 

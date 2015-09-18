@@ -4,23 +4,18 @@
     Marrar:Exercicios
 @stop
 @section('body')
-<style>
-body{
-    background-color: #f9f8f9;
-}
-</style>
 
     <script xmlns="http://www.w3.org/1999/html">
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botaoConfirmar = document.getElementById("hide");
             var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
             botaoConfirmar.setAttribute("class", "btn btn-success btn-lg active");
-            document.getElementById("hide").disabled=false;
+            document.getElementById("hide").disabled = false;
             deSeleciona();
             document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
-            var opcaoEsc=document.getElementById(idEscolhido);
-                    opcaoEsc.setAttribute('class', 'bg-primary');
-            opcaoEsc.style.borderRadius="5px";
+            var opcaoEsc = document.getElementById(idEscolhido);
+            opcaoEsc.setAttribute('class', 'bg-primary');
+            opcaoEsc.style.borderRadius = "5px";
         }
 
         function deSeleciona() {
@@ -38,7 +33,7 @@ body{
 
 
     <div onload="inicio()">
-        <div  class="content-fluid" id="conteud">
+        <div class="content-fluid aestudar" id="conteud">
             <div id="mensagemFinal" class="hidden">
                 <div class="row"><h1></h1></div>
                 <div class="row"><h1></h1></div>
@@ -56,7 +51,8 @@ body{
 
 
                     <p class="text-center text-success" id="nrAcertos"></p>
-                    <p  class="text-center text-danger" id="nrErros"></p>
+
+                    <p class="text-center text-danger" id="nrErros"></p>
 
 
                 </div>
@@ -73,13 +69,14 @@ body{
 
             <div id="divPrincipal" class="well">
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-md-10 col-sm-10 col-xs-8" ><h2 class="text-primary">{!!$caminho!!}</h2>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-4">
-                            <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right text-danger">Desistir</p></a></div>
+                    <div class="col-md-10 col-sm-10 col-xs-8"><h2 class="text-primary">{!!$caminho!!}</h2>
                     </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4">
+                        <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p
+                                    class="text-right text-danger">Desistir</p></a></div>
+                </div>
                 @if(!$pergunta)
                     Nao ha exercicio disponivel
                 @else
@@ -105,7 +102,8 @@ body{
                                     {!! Form::radio('example', 1, false, ['class' =>
                                     'field radio','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
                                     !!}
-                                    <strong>A. </strong><label class="texto-pergunta" for="example1" id="op1">{{$pergunta->opcao1}}</label>
+                                    <strong>A. </strong><label class="texto-pergunta" for="example1"
+                                                               id="op1">{{$pergunta->opcao1}}</label>
 
                             </div>
 
@@ -113,28 +111,32 @@ body{
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
-                                    <strong>B. </strong><label class="texto-pergunta" for="example2" id="op2">{{$pergunta->opcao2}}</label>
+                                    <strong>B. </strong><label class="texto-pergunta" for="example2"
+                                                               id="op2">{{$pergunta->opcao2}}</label>
                             </div>
 
                             <div id="opcao3">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
-                                    <strong>C. </strong><label class="texto-pergunta" for="example3" id="op3">{{$pergunta->opcao3}}</label>
+                                    <strong>C. </strong><label class="texto-pergunta" for="example3"
+                                                               id="op3">{{$pergunta->opcao3}}</label>
                             </div>
 
                             <div id="opcao4">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
-                                    <strong>D. </strong> <label class="texto-pergunta" for="example4" id="op4">{{$pergunta->opcao4}}</label>
+                                    <strong>D. </strong> <label class="texto-pergunta" for="example4"
+                                                                id="op4">{{$pergunta->opcao4}}</label>
                             </div>
 
                             <div id="opcao5">
                                 <p>
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
-                                    <strong>E. </strong> <label class="texto-pergunta" for="example5" id="op5">{{$pergunta->opcao5}}</label>
+                                    <strong>E. </strong> <label class="texto-pergunta" for="example5"
+                                                                id="op5">{{$pergunta->opcao5}}</label>
                                 </p>
                             </div>
 
@@ -148,25 +150,23 @@ body{
                         </div>
 
 
+                        {{--    <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6" id="content">
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3">
+
+                                        {!!Form::button('Confirmar',['class'=>'btn btn-success btn-lg
+                                        disabled','id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
+                                        {!!Form::button(' Proximo ',['class'=>'btn btn-primary
+                                        btn-lg','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
+                                    </div>
 
 
-                    {{--    <div class="container">
-                            <div class="row">
-                                <div class="col-md-6" id="content">
                                 </div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3">
 
-                                    {!!Form::button('Confirmar',['class'=>'btn btn-success btn-lg
-                                    disabled','id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
-                                    {!!Form::button(' Proximo ',['class'=>'btn btn-primary
-                                    btn-lg','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
-                                </div>
-
-
-                            </div>
-
-                        </div>--}}
+                            </div>--}}
 
                         <div id="envio" class="well envio">
                             <div class="row">
@@ -187,7 +187,7 @@ body{
                         </div>
 
                         {!!Form::close()!!}
-@endif
+                        @endif
                     </div>
 
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
@@ -199,8 +199,10 @@ body{
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-3 col-xs-3"></div>
             <div class="col-lg-7 col-md-7 col-sm-9 col-xs-9">
-                <button type="button" id="btn_teoria" class="btn btn-danger" onclick="abrirTeoria()" >Teoria</button>
-                <button type="button" id="btn_exercicio" class="btn btn-danger " disabled onclick="abrirExercicio()">Exercicio</button>
+                <button type="button" id="btn_teoria" class="btn btn-danger" onclick="abrirTeoria()">Teoria</button>
+                <button type="button" id="btn_exercicio" class="btn btn-danger " disabled onclick="abrirExercicio()">
+                    Exercicio
+                </button>
             </div>
 
         </div>
@@ -226,7 +228,7 @@ body{
 
         function respostaCorrecta() {
             //progressBar
-            document.getElementById('hide').disabled=true;
+            document.getElementById('hide').disabled = true;
 
             var respostaCorrecta, id, idResposta;
             idResposta = document.getElementById("id");
@@ -263,7 +265,7 @@ body{
             hide.style.display = "none";//esconde o botao confirmar
             show.style.display = "block";//mostra o botao proximo
             //hide.setAttribute("class","");
-            var envio=document.getElementById("envio");
+            var envio = document.getElementById("envio");
 
             var respostaEscolhida = document.getElementById("respostaEscolhida");
 
@@ -281,9 +283,9 @@ body{
                 contAcertos++;
             }
             else {
-                envio.setAttribute("class",  'well alert envio-error')
+                envio.setAttribute("class", 'well alert envio-error')
                 content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
-                " A resposta correcta é: " +resposta;
+                        " A resposta correcta é: " + resposta;
                 contErros++;
             }
 
@@ -301,19 +303,19 @@ body{
             barMessage.innerHTML = percent.toFixed(1) + "%";
             bar.style.width = '' + percent.toFixed(1) + '%';
 
-            document.getElementById('show').disabled=false;
-            document.getElementById("content").style.visibility="none";
+            document.getElementById('show').disabled = false;
+            document.getElementById("content").style.visibility = "none";
         }
         //metodo ao clicar no botao proximo
 
 
         function vaiPraProximo() {
             //  alert('Aqui');
-           var content= document.getElementById("content")
-                   content.style.visibility="none";
-            content.disabled=true;
-            document.getElementById('show').disabled=true;
-            document.getElementById("envio").setAttribute('class','well envio');
+            var content = document.getElementById("content")
+            content.style.visibility = "none";
+            content.disabled = true;
+            document.getElementById('show').disabled = true;
+            document.getElementById("envio").setAttribute('class', 'well envio');
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -344,25 +346,25 @@ body{
                         if (contAcertos == 0) {
                             imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
                             mensg.innerHTML = "Estude mais e tente de novo!";
-                            mensg.setAttribute('class','text-center');
-                            mensg.style.color="red";
+                            mensg.setAttribute('class', 'text-center');
+                            mensg.style.color = "red";
 
                         } else if (contErros == 0) {
                             imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
                             mensg.innerHTML = "Parabéns, acertaste todas questoes";
-                            mensg.style.color="green";
-                            mensg.setAttribute('class','text-center');
+                            mensg.style.color = "green";
+                            mensg.setAttribute('class', 'text-center');
                         }
                         else {
                             mensg.innerHTML = "Bom mas precisas praticar mais";
-                            mensg.setAttribute('class','text-center');
-                            mensg.style.color="orange";
+                            mensg.setAttribute('class', 'text-center');
+                            mensg.style.color = "orange";
                         }
 
                         var nrAcertos = document.getElementById("nrAcertos");
-                        nrAcertos.innerHTML = "Certas: " + contAcertos ;
+                        nrAcertos.innerHTML = "Certas: " + contAcertos;
                         var nrErros = document.getElementById("nrErros");
-                        nrErros.innerHTML = "Erradas: " + contErros ;
+                        nrErros.innerHTML = "Erradas: " + contErros;
 
                         return; //Para não executar o codigo abaixo
                     }
@@ -401,7 +403,7 @@ body{
         function proximo() {
             var content = document.getElementById("content");
             content.style.visibility = 'hidden';
-            var envio=document.getElementById("")
+            var envio = document.getElementById("")
             var hide = document.getElementById("hide");//pega o elemento com id=hide
             var show = document.getElementById("show");
             hide.style.display = "block";//mostra o botao confirmar
@@ -431,21 +433,20 @@ body{
     </script>
 
 
-    <script >
+    <script>
 
 
-
-        function abrirTeoria(){
+        function abrirTeoria() {
 
             $("#conteud").load("/teoria.html");
 
-            document.getElementById('btn_exercicio').disabled=false;
-            document.getElementById('btn_teoria').disabled=true;
+            document.getElementById('btn_exercicio').disabled = false;
+            document.getElementById('btn_teoria').disabled = true;
 
 
         }
 
-        function abrirExercicio(){
+        function abrirExercicio() {
 
             location.reload();
         }
