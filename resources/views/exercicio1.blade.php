@@ -96,12 +96,12 @@
                         {!!Form::open(array('url' => 'exercicio')) !!}
                         <h3 class="text-capitalize"> {!! Form::label('questao',"", ['id'=>'questao']) !!}</h3>
 
-                        <p>
+
 
                         <div class="container">
 
                             <div id="opcao1">
-                                <p>
+
                                     {!! Form::radio('example', 1, false, ['class' =>
                                     'field radio','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
                                     !!}
@@ -110,32 +110,32 @@
                             </div>
 
                             <div id="opcao2">
-                                <p>
+
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
                                     <strong>B. </strong><label class="texto-pergunta" for="example2" id="op2"></label>
                             </div>
 
                             <div id="opcao3">
-                                <p>
+
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
                                     <strong>C. </strong><label class="texto-pergunta" for="example3" id="op3"></label>
                             </div>
 
                             <div id="opcao4">
-                                <p>
+
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
                                     <strong>D. </strong> <label class="texto-pergunta" for="example4" id="op4"></label>
                             </div>
 
                             <div id="opcao5">
-                                <p>
+
                                     {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                     'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
                                     <strong>E. </strong> <label class="texto-pergunta" for="example5" id="op5"></label>
-                                </p>
+
                             </div>
 
                             <div>
@@ -228,19 +228,7 @@
             content.style.display = "none";
         }
 
-        function preenchePerguntaActual() {
 
-            //var pergunta, questao, resposta1, resposta2, resposta3, resposta4, resposta5,verificar;
-           // pergunta = perguntas[perguntaActual];
-            var perguntas=document.getElementById("perguntas");
-            $('#questao').innerHTML(pergunta.questao);
-            $('#op1').innerHTML(pergunta.opcao1);
-            $('#op2').innerHTML(pergunta.opcao2);
-            $('#op3').innerHTML(pergunta.opcao3);
-            $('#op4').innerHTML(pergunta.opcao4);
-            $('#op5').innerHTML(pergunta.opcao5);
-
-        }
 
         function respostaCorrecta() {
             //progressBar
@@ -396,7 +384,7 @@
 
                         //  alert(perguntasJson);
 
-                        var pergunta = JSON.parse(pergunta);
+                         pergunta = JSON.parse(pergunta);
                         var questao = document.getElementById("questao");
                         var op1 = document.getElementById("op1");
                         var op2 = document.getElementById("op2");
@@ -477,10 +465,7 @@
         }
 
         $(document).ready(function () {
-            /*perguntaActual = 0;
-            perguntas = JSON.parse('<?php echo json_encode($perguntas); ?>');
-            nrPerguntas = "{{$nrPerguntas}}";
-            preenchePerguntaActual();*/
+
             vaiPraProximo();
 
         });

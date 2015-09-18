@@ -182,7 +182,7 @@ body {
 
 /*Blade exercicio */
 .envio {
-    margin-top: -10px;
+    margin-top: 0;
     margin-bottom: -20px;
     height: auto;
     width: auto;
@@ -192,7 +192,7 @@ body {
 }
 
 .envio-success {
-    margin-top: -10px;
+    margin-top: 0;
     margin-bottom: -20px;
     height: auto;
     width: auto;
@@ -204,7 +204,7 @@ body {
 }
 
 .envio-error {
-    margin-top: -10px;
+    margin-top: 0;
     margin-bottom: -20px;
     height: auto;
     width: auto;
@@ -236,10 +236,8 @@ border-color: #0055aa;
 #opcao1,#opcao2,#opcao3,#opcao4,#opcao5{
     width:95%;
     border-radius:5px;
+    margin-bottom: 10px;
 
 }
 
 
-#opcao1, #opcao2,#pcao3{
-    margin-bottom: 100px;
-}
