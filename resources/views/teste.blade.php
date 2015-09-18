@@ -36,11 +36,11 @@
                                 </div>
                             </div>
                         </div>
-
+            {!! Form::hidden("testeValidacao",'false',['id'=>"testeValidacao"]) !!}
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
 
-               <label> <h2 class="text-danger left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
+               <label> <h2 class="text-primary left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
                 <hr width="100%">
 
 
@@ -54,6 +54,18 @@
 
 
                         <?php $i=0; ?>
+
+                            {!! Form::hidden("vazio",$count,['id'=>"vazio"]) !!}
+                          @if($count==0 )
+
+                              <div align="center">
+
+                                 <h3 class="alert alert-warning">Infelizmente nenhuma questão foi registada para esse capítulo.Tente outra hora!</h3>
+
+                              </div>
+
+
+                           @else
                         @foreach($perguntas as $pergunta)
 
                         {!! Form::hidden('id',$i=$i+1)  !!}
@@ -65,40 +77,45 @@
 
                                     <div id="questao">
 
-                                        <h4> {!! Form::label('questao',"$i. $pergunta->questao")!!}</h4>
+                                        <h4> {!! Form::label('questao','',['id'=>"perguntass$i"])!!}</h4>
                                         <p>
+                                        <hr width="100%">
 
 
 
                                         <div id="opcao1{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'$pergunta->opcao1')"]) !!}
-                                            <label class="texto-pergunta"   for="example1{{$i}}" >{{$pergunta->opcao1}}</label>
-                                            <p>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'op1$i')",'style'=>"display:none"]) !!}
+                                            <div class="col-lg-12"> <strong>A. </strong><label class="texto-pergunta"  id="op1{{$i}}" for="example1{{$i}}" ></label></div>
+                                            <hr width="100%">
+
                                         </div>
 
                                         <div id="opcao2{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'$pergunta->opcao2')"]) !!}
-                                            <label class="texto-pergunta"   for="example2{{$i}}">{{$pergunta->opcao2}}</label>
-                                            <p>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'op2$i')",'style'=>"display:none"]) !!}
+                                           <div class="col-lg-12"> <strong>B. </strong><label class="texto-pergunta"  id="op2{{$i}}" for="example2{{$i}}"></label></div>
+                                            <hr width="100%">
+
                                         </div>
 
                                         <div id="opcao3{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'$pergunta->opcao3')"]) !!}
-                                            <label class="texto-pergunta"  for="example3{{$i}}">{{$pergunta->opcao3}}</label>
-                                            <p>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'op3$i')",'style'=>"display:none"]) !!}
+                                            <div class="col-lg-12"> <strong>C. </strong><label class="texto-pergunta" id="op3{{$i}}" for="example3{{$i}}"></label></div>
+                                            <hr width="100%">
+
                                         </div>
 
                                         <div id="opcao4{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'$pergunta->opcao4')"]) !!}
-                                            <label class="texto-pergunta"   for="example4{{$i}}">{{$pergunta->opcao4}}</label>
-                                            <p>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'op4$i')",'style'=>"display:none"]) !!}
+                                            <div class="col-lg-12"> <strong>D. </strong><label class="texto-pergunta"  id="op4{{$i}}" for="example4{{$i}}"></label></div>
+                                            <hr width="100%">
+
                                         </div>
 
                                         <div id="opcao5{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'$pergunta->opcao5')"]) !!}
-                                            <label class="texto-pergunta"   for="example5{{$i}}">{{$pergunta->opcao5}}</label>
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'op5$i')",'style'=>"display:none"]) !!}
+                                            <div class="col-lg-12">  <strong>E. </strong><label class="texto-pergunta"  id="op5{{$i}}" for="example5{{$i}}"></label></div>
+                                            <hr width="100%">
 
-                                            <p>
                                         </div>
 
                                         <div id="content{{$i}}">
@@ -118,6 +135,7 @@
 
                                 <hr  width="100%">
                             @endforeach
+                            @endif
 
                     </div>
 
@@ -128,6 +146,12 @@
                     {!! Form::hidden("respErradas",'',['id'=>"respErradas"]) !!}
                     {!! Form::hidden("capituloId",$capitulo->id,['id'=>"capituloId"]) !!}
 
+                    <label id="eliminaTag" class='texto-pergunta' style="display: none"></label>
+
+
+                    <div id="testeFinal"></div>
+
+
                     <label id="resultado" class="alert alert-info" style="display: none"></label>
                 </div>
                 <div style="float: right">
@@ -135,6 +159,7 @@
 
                     {!!Form::button('Entregar',['class'=>'btn btn-primary','onclick'=>"processarPergunta()", 'id'=>'btn_entregar']) !!}
                 </div>
+                <hr width="100%">
 
 
                 {!! Form::close() !!}
@@ -158,7 +183,6 @@
                                     <h5 ><label>Nota máxima : </label><label id="maxima">{{$max}}</label></h5>
                                     <p>
                                     <h5 ><label>Nota mínima  :</label><label id="minima">{{$min}}</label></h5>
-
 
                                     </div>
                                 </div>
@@ -248,12 +272,17 @@
             </div>
         </div>
 
+
+
+
     <script>
         function alteraResposta(idEscolhido,id,opcaoEscolhida){
 
             deSeleciona(id);
             document.getElementById(idEscolhido).setAttribute('class','bg-success');
-            document.getElementById("escolhida"+id).setAttribute('value',opcaoEscolhida);
+            opcao=document.getElementById(opcaoEscolhida);
+
+            document.getElementById("escolhida"+id).setAttribute('value',opcao.innerHTML);
 
 
             var panel=document.getElementById("panel"+id);
@@ -272,6 +301,14 @@
 
 
         <script>
+
+            var vazio = document.getElementById('vazio');
+            if(vazio.value==0){
+
+                document.getElementById('btn_entregar').style.display="none";
+
+            }
+
             function processarPergunta() {
 
                 if (window.XMLHttpRequest) {
@@ -291,18 +328,51 @@
                         var perguntasJson = xmlhttp.responseText;
 
                         var perguntas = JSON.parse(perguntasJson);
+
+                        //variavel usada para inicializar o teste
+                        testeValidacao=document.getElementById('testeValidacao');
+
+                        if(testeValidacao.value=='false'){
+                            //inicializaTeste
+                            testeValidacao.value='true';
+
+                                for(i=0;i<perguntas.length;i++){
+
+                                div1=document.getElementById('op1'+(i+1));
+                                div2=document.getElementById('op2'+(i+1));
+                                div3=document.getElementById('op3'+(i+1));
+                                div4=document.getElementById('op4'+(i+1));
+                                div5=document.getElementById('op5'+(i+1));
+
+                                 var perguntass=document.getElementById('perguntass'+(i+1));
+
+                                 perguntass.innerHTML=(i+1)+". "+perguntas[i].questao;
+
+
+                                div1.innerHTML= perguntas[i].opcao1;
+                                div2.innerHTML=perguntas[i].opcao2;
+                                div4.innerHTML=perguntas[i].opcao4;
+                                div3.innerHTML=perguntas[i].opcao3;
+                                div5.innerHTML=perguntas[i].opcao5;
+
+                            }
+
+                        }
+
+                        else{
+
+
                         var pergunta;
                         var perguntaEscolhida;
-
                         var j = 1;
                         var naoRespondidas = [];
                         var encontraNaoRespondida = false;
 
 
-                        while (j <= perguntas.perguntas.length) {
+                        while (j <= perguntas.length) {
 
                             perguntaEscolhida = document.getElementById('escolhida'+j);
-                            pergunta = perguntas.perguntas[j-1];
+                            pergunta = perguntas[j-1];
 
 
 
@@ -336,16 +406,21 @@
 
                         else {
 
-                            var nrCertas=0;
-                            for (i = 0; i < perguntas.perguntas.length; i++) {
+                            var nrCertas = 0;
+                            for (i = 0; i < perguntas.length; i++) {
                                 perguntaEscolhida = document.getElementById('escolhida' + (i + 1));
 
 
-                                pergunta = perguntas.perguntas[i];
+                                pergunta = perguntas[i];
 
 
                                 var content = document.getElementById("content" + (i + 1));
-                                if (perguntaEscolhida.value == pergunta.opcaoCorrecta) {
+
+                                var escolhida=perguntaEscolhida.value;
+                                var correcta=document.getElementById('eliminaTag');
+                                correcta.innerHTML=perguntas[i].opcaoCorrecta;
+                                correcta=correcta.innerHTML;
+                                if (escolhida == correcta) {
 
                                     content.setAttribute("class", "alert alert-success");
                                     content.innerHTML = "<strong>Certo</strong> Parabéns a resposta está certa";
@@ -360,34 +435,33 @@
                                 }
 
 
-                                document.getElementById('example1'+(i+1)).disabled=true;
-                                document.getElementById('example2'+(i+1)).disabled=true;
-                                document.getElementById('example3'+(i+1)).disabled=true;
-                                document.getElementById('example4'+(i+1)).disabled=true;
-                                document.getElementById('example5'+(i+1)).disabled=true;
+                                document.getElementById('example1' + (i + 1)).disabled = true;
+                                document.getElementById('example2' + (i + 1)).disabled = true;
+                                document.getElementById('example3' + (i + 1)).disabled = true;
+                                document.getElementById('example4' + (i + 1)).disabled = true;
+                                document.getElementById('example5' + (i + 1)).disabled = true;
 
                             }
 
-                            btn_entregar=document.getElementById('btn_entregar').disabled=true;
+                            btn_entregar = document.getElementById('btn_entregar').disabled = true;
 
                             var resultado = document.getElementById('resultado');
-                            var totalQuestoes=perguntas.perguntas.length;
-                            var percentagemCerto=(nrCertas*100)/totalQuestoes;
+                            var totalQuestoes = perguntas.length;
+                            var percentagemCerto = (nrCertas * 100) / totalQuestoes;
                             resultado.style.display = "block";
-                            var notaTeste=(percentagemCerto*20)/100;
-                            resultado.innerHTML="<strong>Resultado</strong> "+percentagemCerto.toFixed(2)+"% ( "+notaTeste.toFixed(2)+" Val.)   . Acertou "+nrCertas+" de "+totalQuestoes+ " perguntas.";
+                            var notaTeste = (percentagemCerto * 20) / 100;
+                            resultado.innerHTML = "<strong>Resultado</strong> " + percentagemCerto.toFixed(2) + "% ( " + notaTeste.toFixed(2) + " Val.)   . Acertou " + nrCertas + " de " + totalQuestoes + " perguntas.";
 
                             var nota = document.getElementById('nota');
-                            nota.value=notaTeste.toFixed(2);
+                            nota.value = notaTeste.toFixed(2);
                             var respCertas = document.getElementById('respCertas');
-                            respCertas.value=nrCertas;
+                            respCertas.value = nrCertas;
                             var respErradas = document.getElementById('respErradas');
-                            respErradas.value=(totalQuestoes)-nrCertas;
+                            respErradas.value = (totalQuestoes) - nrCertas;
 
 
-
-                            var form=$('form[entregarTeste]');
-                            var url=form.prop('action');
+                            var form = $('form[entregarTeste]');
+                            var url = form.prop('action');
 
                             $.ajax({
                                 url: url,
@@ -417,7 +491,7 @@
 
                                     else if (percentagemCerto < 100) {
 
-                                    $msg.innerHTML = "<strong style=\"color: green\">Muito Bom</strong> Continue assim e chegarás a nota máxima."
+                                        $msg.innerHTML = "<strong style=\"color: green\">Muito Bom</strong> Continue assim e chegarás a nota máxima."
                                     }
                                     else if (percentagemCerto == 100) {
 
@@ -427,32 +501,32 @@
                                     $('#resultadoTeste').modal();
 
 
-                                   var feitos= document.getElementById('feitos');
-                                   var maxima=document.getElementById('maxima');
-                                   var minima=document.getElementById('minima');
+                                    var feitos = document.getElementById('feitos');
+                                    var maxima = document.getElementById('maxima');
+                                    var minima = document.getElementById('minima');
 
                                     /*if(feitos.innerHTML=='---'){
-                                       feitos.inn;
-                                       maxima.innerHTML=notaTeste.toFixed(2);
-                                       minima.innerHTML=notaTeste.toFixed(2);
-                                       }
-                                    else {
-                                        feitos.innerHTML = feitos.innerHTML + 1;
+                                     feitos.inn;
+                                     maxima.innerHTML=notaTeste.toFixed(2);
+                                     minima.innerHTML=notaTeste.toFixed(2);
+                                     }
+                                     else {
+                                     feitos.innerHTML = feitos.innerHTML + 1;
 
-                                        if (notaTeste > maxima.innerHTML) {
-                                            maxima.innerHTML = notaTeste.toFixed(2);
+                                     if (notaTeste > maxima.innerHTML) {
+                                     maxima.innerHTML = notaTeste.toFixed(2);
 
-                                        }
-                                        else if (notaTeste < maxima.innerHTML) {
-                                            maxima.innerHTML = notaTeste.toFixed(2);
+                                     }
+                                     else if (notaTeste < maxima.innerHTML) {
+                                     maxima.innerHTML = notaTeste.toFixed(2);
 
-                                        }
-                                    }*/
+                                     }
+                                     }*/
                                 }
 
                             });
 
-
+                        }
                         }
                     }
 
@@ -462,9 +536,20 @@
 
                 xmlhttp.send();
             }
+
+
+
+            window.onbeforeunload = function() {
+                return 'Estás prestes a abandonar esta página. Se abandonares a página vais perder o teste.'; };
         </script>
 
 
+    <script>
+//inicializa o teste
+document.getElementById('btn_entregar').click();
+
+
+    </script>
 
 
 @stop

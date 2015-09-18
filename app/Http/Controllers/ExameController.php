@@ -19,7 +19,7 @@ class ExameController extends Controller
     public function showExameNormal($disciplina)
     {
         $perguntaController = new PerguntaController();
-        $perguntas = $perguntaController->buscarExame($disciplina->nome);
+        $perguntas = $perguntaController->buscarExame($disciplina->id);
         $nrPerguntas = collect( $perguntas)->count();
         $_SESSION["exame"] = $perguntas;
 
@@ -68,7 +68,7 @@ class ExameController extends Controller
         else
         {
 
-            $perguntas = $perguntaController->buscarExame($disciplinaActual->nome);
+            $perguntas = $perguntaController->buscarExame($disciplinaActual->id);
             $nrPerguntas = count($perguntas);
             $examecolectivo = new ExameColectivo();
             $examecolectivo->dataCriacao = date_create();

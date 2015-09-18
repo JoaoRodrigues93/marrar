@@ -27,8 +27,8 @@ public function inicializaTeste($capituloNome,$capituloId){
     $disciplina=$capitulo->disciplina()->first();
 
     $perguntaController = new PerguntaController();
-
-    $perguntas = $perguntaController->buscarTeste($disciplina->nome,$capitulo->nome);
+    $quantidade=2;
+    $perguntas = $perguntaController->buscarTeste($capitulo->id,$quantidade);
 
     $_SESSION['perguntas']=$perguntas;
     //Alterei a linha abaixo
@@ -49,8 +49,7 @@ public function inicializaTeste($capituloNome,$capituloId){
      $total='---';
      $min='---';
      $max='---';
-    }
-    return view('teste')->with(array('perguntas'=>$perguntas,'capitulo'=>$capitulo,'disciplina'=>$disciplina->nome,'total'=>$total,'max'=>$max,'min'=>$min,$ranking));
+    }return view('teste')->with(array('perguntas'=>$perguntas,'capitulo'=>$capitulo,'disciplina'=>$disciplina->nome,'total'=>$total,'max'=>$max,'min'=>$min,$ranking,'count'=>count($perguntas)));
 }
 
 
@@ -75,7 +74,7 @@ public function inicializaTeste($capituloNome,$capituloId){
 
             $gestorTeste = new GestorTesteFeito();
             $gestorTeste->guardaTesteFeito($disciplina->id,$estudante->id,$teste->nota,$estudante->nome,
-                $disciplina->nome,$capitulo->nome,$capitulo->id);
+            $disciplina->nome,$capitulo->nome,$capitulo->id);
 
         }
 
@@ -85,11 +84,12 @@ public function inicializaTeste($capituloNome,$capituloId){
    //Devolve um json com todas as perguntas
     public function validaTeste(){
 
-        $testeJson = "{\"perguntas\":[ ";
+        //$testeJson = "{\"perguntas\":[ ";
         $perguntas = $_SESSION['perguntas'];
-        $nrPerguntas =0;
+        //$nrPerguntas =0;
 
-        foreach ($perguntas as $pergunta) {
+        $testeJson=json_encode($perguntas);
+        /*foreach ($perguntas as $pergunta) {
              if (strlen($testeJson) < 20) {
                  $testeJson .= "{\"questao\":\"$pergunta->questao\"," .
                      "\"id\":\"$pergunta->id\"" .
@@ -115,7 +115,7 @@ public function inicializaTeste($capituloNome,$capituloId){
 
         }
 
-        $testeJson.=" ]}";
+        $testeJson.=" ]}";*/
 
 
         return $testeJson;

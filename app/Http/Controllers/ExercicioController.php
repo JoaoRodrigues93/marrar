@@ -26,7 +26,7 @@ class ExercicioController extends Controller{
      $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
         $_SESSION['perguntas'] = $perguntas;
-        return view('exercicio')->with(array('caminho'=>$tema->nome,'pergunta'=>$pergunta,"perguntas"=>$perguntas,'nrPerguntas'=>$nrPerguntas));
+        return view('exercicio1')->with(array('caminho'=>$tema->nome,'pergunta'=>$pergunta,"perguntas"=>$perguntas,'nrPerguntas'=>$nrPerguntas));
 
     }
 
@@ -44,20 +44,26 @@ class ExercicioController extends Controller{
     public function showExercicio($disciplina,$capitulo,$tema)
     {
         $perguntaController = new PerguntaController();
-        $perguntas = $perguntaController->buscarExercicios($disciplina,$capitulo,$tema);
+
+        $temaActual=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+                        ->where('capitulos.id','=',$capitulo->id)
+                        ->where('temas.nome','=',$tema)
+                        ->Select('temas.*')->get()->first();
+        $temaId=$temaActual->id;
+        $quantidade=10;
+        $perguntas = $perguntaController->buscarExercicios($temaId,10);
         $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
-        $perguntaActual =0;
+        $perguntaActual =-1;
         $_SESSION['perguntas'] = $perguntas;
         $_SESSION['perguntaActual'] = $perguntaActual;
         $_SESSION['nrPerguntas'] = $nrPerguntas;
 
-        $idDisc=Disciplina::where('disciplinas.nome',$disciplina)->first();
-        $idCap=Capitulo::where('disciplina_id',$idDisc->id)->where('capitulos.nome',$capitulo)->first();
 
-        $_SESSION['caminho']="teoria/$idDisc->id/$idCap->id/$tema.html";
+        $_SESSION['caminho']="teoria/$disciplina->id/$capitulo->id/$tema.html";
 
-        return view('exercicio')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina,"capitulo"=>$capitulo,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
+
+        return view('exercicio1')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina->nome,"capitulo"=>$capitulo->nome,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
     }
 
     public function teoria(){
@@ -78,7 +84,7 @@ class ExercicioController extends Controller{
 
        $disciplina=$capitulo->disciplina()->first();
 
-       return $this->showExercicio($disciplina->nome,$capitulo->nome,$tema);
+       return $this->showExercicio($disciplina,$capitulo,$tema);
     }
 
     public  function  respostaCorrecta(){
@@ -93,31 +99,12 @@ class ExercicioController extends Controller{
 
     public  function  respostaProximo(){
         $_SESSION['perguntaActual']++;
+
         $perguntaActual = $_SESSION['perguntaActual'];
         $testeJson="";
         $perguntas = $_SESSION['perguntas'];
         $nrPerguntas = $_SESSION["nrPerguntas"];
-// create a new progress bar (50 units)
 
-       // $progress = new ProgressBar($output, $nrPerguntas);
-        //$this->output->progressStart($nrPerguntas);
-
-// start and displays the progress bar
-     //   $progress->start();
-
-       // $i = 0;
-        //while ($i++ < $nrPerguntas) {
-            // ... do some work
-
-            // advance the progress bar 1 unit
-         //   $this->output->progressAdvance();
-
-            // you can also advance the progress bar by more than 1 unit
-            // $progress->advance(3);
-      //  }
-
-// ensure that the progress bar is at 100%
-       // $this->output->progressFinish();
 
         if($perguntaActual<$nrPerguntas){
             $pergunta = $perguntas[$perguntaActual];
