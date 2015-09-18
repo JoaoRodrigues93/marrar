@@ -27,8 +27,8 @@ public function inicializaTeste($capituloNome,$capituloId){
     $disciplina=$capitulo->disciplina()->first();
 
     $perguntaController = new PerguntaController();
-
-    $perguntas = $perguntaController->buscarTeste($disciplina->nome,$capitulo->nome);
+    $quantidade=2;
+    $perguntas = $perguntaController->buscarTeste($capitulo->id,$quantidade);
 
     $_SESSION['perguntas']=$perguntas;
     //Alterei a linha abaixo

@@ -137,17 +137,18 @@ Session::flash('message','Dados gravados com sucesso');
             ->select('perguntas.*')
             ->get();*/
         $capitulos=Capitulo::join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
-            ->where('disciplinas.nome','=',$disciplina)
+            ->where('disciplinas.id','=',$disciplina)
             ->select('capitulos.*')
             ->orderByRaw("RAND()")
             ->get() ;
 
         $pergunt=array();
-
+        $quantidade=2;
 
         foreach($capitulos as $capitulo){
 
-            $pergunta=$this->buscarTeste($disciplina,$capitulo->nome);
+
+            $pergunta=$this->buscarTeste($capitulo->id,$quantidade);
             $j=count($pergunt);
             $k=count($pergunta);
             $l=0;
@@ -162,13 +163,12 @@ Session::flash('message','Dados gravados com sucesso');
         return $pergunt;
     }
 
-    public function buscarTeste($capitulo){
+    public function buscarTeste($capitulo, $quantidade){
         //metodo que retorna o array de perguntas para o teste baseando se no capitulo e na disciplina
 
         $temas=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
-            ->where('disciplinas.nome','=',$disciplina)
-            ->where('capitulos.nome','=',$capitulo)
+            ->where('capitulos.id','=',$capitulo)
             ->select('temas.*')
             ->orderByRaw("RAND()")
             ->get() ;
@@ -178,7 +178,7 @@ Session::flash('message','Dados gravados com sucesso');
 
         foreach($temas as $tema){
 
-            $pergunta=$this->buscarExercicios($disciplina,$capitulo,$tema->nome);
+            $pergunta=$this->buscarExercicios($tema->id,$quantidade);
             $j=count($pergunt);
             $k=$pergunta->count();
             $l=0;
@@ -206,11 +206,11 @@ Session::flash('message','Dados gravados com sucesso');
             ->where('temas.id','=',$tema)
             ->select('perguntas.*');
 
-
+        $perguntas=$perguntas->orderByRaw("RAND()");
         if($perguntas->count()>$quantidade){
-            $perguntas=$perguntas->orderByRaw("RAND()")
-            ->take($quantidade);
+            $perguntas=$perguntas->take($quantidade);
         }
+
 
         return $this->randomize($perguntas->get());
     }
