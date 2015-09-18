@@ -74,6 +74,9 @@ Route::get('buscar-exame','PerguntaController@buscarExame');
 Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 
 Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
+
+Route::get('aestudar/{idCapitulo}/{tema}','ExercicioController@show');
+
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');
 

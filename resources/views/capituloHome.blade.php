@@ -126,7 +126,7 @@
               <div class='multi'>
                 <ol class="secondaryColor">
                   @{{#tema}}
-                  <li><a href="exercicio/@{{id }}/@{{.}}"  class="primaryColor">@{{.}}</a></li>
+                  <li><a href="aestudar/@{{id }}/@{{.}}"  class="primaryColor">@{{.}}</a></li>
                   @{{/tema}}
                 </ol>
                 </div>

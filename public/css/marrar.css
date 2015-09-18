@@ -567,13 +567,13 @@ device max-with: 320px
         height: 4em;
     }
 
-    footer .row{
+    footer .row {
 
         /*margin: 0;*/
         padding-bottom: 10px;
     }
 
-    footer .row div:first-child{
+    footer .row div:first-child {
         margin-left: -30px;
     }
 }
@@ -735,10 +735,22 @@ Teória
     float: right;
 }
 
+.btn-confirmar, .btn-continuar,
 .botoes button {
-    background: #FF530D;
     color: white;
     font-weight: 500;
+}
+
+.botoes button {
+    background: #FF530D;
+}
+
+.btn-confirmar{
+   background: #76FF03;
+}
+
+.btn-continuar{
+   background: #00BCD4;
 }
 
 .quenomevoudar {
@@ -761,25 +773,34 @@ Teória
     /*z-index: 1;*/
 }
 
-#myNavbar{
+#myNavbar {
     background: #2C97DE;
 }
 
-.quenomevoudar .exercicios{
-   background: red;
+.quenomevoudar .exercicios {
+    /*background: red;*/
     width: 100%;
-    height: 25%;
+    height: 100%;
     margin: 0;
     z-index: 2;
     position: absolute;
 }
 
-.quenomevoudar .teoria{
-  background: blue;
+.quenomevoudar .teoria {
+    /*background: blue;*/
     height: 100%;
     width: 100%;
     z-index: 1;
     position: absolute;
     overflow-y: scroll;
+    display: none;
+    padding: 50px;
 }
 
+#conteud {
+
+}
+
+.opcoes{
+    width: auto;
+}
