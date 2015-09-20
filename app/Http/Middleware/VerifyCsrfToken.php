@@ -21,8 +21,15 @@ class VerifyCsrfToken extends BaseVerifier {
         '/examenormal',
         '/examecolectivo',     
     ];
-	public function handle($request, Closure $next)
+         
+    public function handle($request, Closure $next)
 	{
+        
+        foreach($this->except as $route) {
+            if ($request->is($route)) {
+                return $next($request);
+            }
+        }
 		return parent::handle($request, $next);
 	}
         
