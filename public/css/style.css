@@ -37,6 +37,7 @@ display: none;
     padding:0;
     margin-bottom:10px;
     background-color:#3b5998;
+    border:none;
 }
 
 #ranking{
@@ -63,6 +64,7 @@ display: none;
     padding:0;
     margin-bottom:10px;
     background-color:#db4a39;
+    border:none;
 }
 
 #login-google a {
@@ -293,3 +295,16 @@ scrollbar
     background: rgba(0, 0, 0, 0.3);
     opacity: 0;
 }
+
+
+/*CSS para login e registo mobile*/
+
+#login-registo-mobile {
+    margin: 75px 0px 0px 10px;
+}
+
+#login-mobile .form-control, #registo-mobile .form-control {
+    margin: 0px 0px 5px 0px;
+}
+
+/*Fim do CSS para login e registo mobile*/

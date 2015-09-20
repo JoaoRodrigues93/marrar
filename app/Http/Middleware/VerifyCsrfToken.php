@@ -13,11 +13,13 @@ class VerifyCsrfToken extends BaseVerifier {
 	 * @return mixed
 	 */
     
-          protected $except = [
+         protected $except = [
         '/perfil',
         '/edito-perfil',
         '/editar-perfil',
-        '/edita-perfil',     
+        '/edita-perfil',
+        '/examenormal',
+        '/examecolectivo',     
     ];
 	public function handle($request, Closure $next)
 	{

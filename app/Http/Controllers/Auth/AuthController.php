@@ -45,6 +45,10 @@ class AuthController extends Controller
        else {
            $error =true;
            $mensagem = "Os dados fornecidos para Login não conferem";
+           
+           if($request->has('mobile'))
+           return view('inicio', ['errorMobile' => $error, "mensagem" => $mensagem]);
+           else    
            return view('inicio', ['error' => $error, "mensagem" => $mensagem]);
        }
 
