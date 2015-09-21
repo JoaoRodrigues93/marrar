@@ -308,3 +308,11 @@ scrollbar
 }
 
 /*Fim do CSS para login e registo mobile*/
+
+/* CSS para Perfil e editarPerfil */
+
+#perfil-header {
+    color: #2c97de;
+}
+
+/* Fim do CSS para Perfil e editarPerfil */
