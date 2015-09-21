@@ -85,35 +85,39 @@
 
                                         <div id="opcao1{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'op1$i')",'style'=>"display:none"]) !!}
-                                            <div class="col-lg-12"> <strong>A. </strong><label class="texto-pergunta"  id="op1{{$i}}" for="example1{{$i}}" ></label></div>
+                                            <strong>A. </strong><label class="texto-pergunta"  id="op1{{$i}}" for="example1{{$i}}" ></label>
+
                                             <hr width="100%">
 
                                         </div>
 
                                         <div id="opcao2{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'op2$i')",'style'=>"display:none"]) !!}
-                                           <div class="col-lg-12"> <strong>B. </strong><label class="texto-pergunta"  id="op2{{$i}}" for="example2{{$i}}"></label></div>
+                                            <strong>B. </strong><label class="texto-pergunta"  id="op2{{$i}}" for="example2{{$i}}"></label>
+
                                             <hr width="100%">
 
                                         </div>
 
                                         <div id="opcao3{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'op3$i')",'style'=>"display:none"]) !!}
-                                            <div class="col-lg-12"> <strong>C. </strong><label class="texto-pergunta" id="op3{{$i}}" for="example3{{$i}}"></label></div>
+                                           <strong>C. </strong><label class="texto-pergunta" id="op3{{$i}}" for="example3{{$i}}"></label>
+
                                             <hr width="100%">
 
                                         </div>
 
                                         <div id="opcao4{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'op4$i')",'style'=>"display:none"]) !!}
-                                            <div class="col-lg-12"> <strong>D. </strong><label class="texto-pergunta"  id="op4{{$i}}" for="example4{{$i}}"></label></div>
+                                            <strong>D. </strong><label class="texto-pergunta"  id="op4{{$i}}" for="example4{{$i}}"></label>
+
                                             <hr width="100%">
 
                                         </div>
 
                                         <div id="opcao5{{$i}}">
                                             {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'op5$i')",'style'=>"display:none"]) !!}
-                                            <div class="col-lg-12">  <strong>E. </strong><label class="texto-pergunta"  id="op5{{$i}}" for="example5{{$i}}"></label></div>
+                                            <strong>E. </strong><label class="texto-pergunta"  id="op5{{$i}}" for="example5{{$i}}"></label>
                                             <hr width="100%">
 
                                         </div>
