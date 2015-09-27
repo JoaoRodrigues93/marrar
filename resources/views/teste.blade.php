@@ -75,50 +75,99 @@
 
 
 
+
                                     <div id="questao">
 
                                         <h4> {!! Form::label('questao','',['id'=>"perguntass$i"])!!}</h4>
                                         <p>
                                         <hr width="100%">
 
+                                        @if($pergunta->imagem==true)
 
+                                            <div id="opcao1{{$i}}" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'op1$i','col-lg-4 col-md-4 col-sm-6 col-xs-12')",'style'=>"display:none"]) !!}
+                                                <strong>A. </strong><label class="texto-pergunta"  id="op1{{$i}}" for="example1{{$i}}" ></label>
+
+
+
+                                            </div>
+
+                                            <div id="opcao2{{$i}}" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'op2$i','col-lg-4 col-md-4 col-sm-6 col-xs-12')",'style'=>"display:none"]) !!}
+                                                <strong>B. </strong><label class="texto-pergunta"  id="op2{{$i}}" for="example2{{$i}}"></label>
+
+
+
+                                            </div>
+
+                                            <div id="opcao3{{$i}}" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'op3$i','col-lg-4 col-md-4 col-sm-6 col-xs-12')",'style'=>"display:none"]) !!}
+                                                <strong>C. </strong><label class="texto-pergunta" id="op3{{$i}}" for="example3{{$i}}"></label>
+
+
+                                            </div>
+
+                                            <div id="opcao4{{$i}}" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'op4$i','col-lg-4 col-md-4 col-sm-6 col-xs-12')",'style'=>"display:none"]) !!}
+                                                <strong>D. </strong><label class="texto-pergunta"  id="op4{{$i}}" for="example4{{$i}}"></label>
+
+
+                                            </div>
+
+                                            <div id="opcao5{{$i}}" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'op5$i','col-lg-4 col-md-4 col-sm-6 col-xs-12')",'style'=>"display:none"]) !!}
+                                                <strong>E. </strong><label class="texto-pergunta"  id="op5{{$i}}" for="example5{{$i}}"></label>
+
+
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div id="content{{$i}}" >
+
+                                                </div>
+                                            </div>
+                                            {!! Form::hidden("escolhida$i",'',['id'=>"escolhida$i"]) !!}
+
+
+
+
+                                            @else
 
                                         <div id="opcao1{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'op1$i')",'style'=>"display:none"]) !!}
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field','id'=>'example1'.$i,'onclick'=>"alteraResposta('opcao1$i',$i,'op1$i','')",'style'=>"display:none"]) !!}
                                             <strong>A. </strong><label class="texto-pergunta"  id="op1{{$i}}" for="example1{{$i}}" ></label>
 
-                                            <hr width="100%">
+                                            <hr width="100%" class="hidden-lg hidden-md">
 
                                         </div>
 
                                         <div id="opcao2{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'op2$i')",'style'=>"display:none"]) !!}
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example2'.$i,'onclick'=>"alteraResposta('opcao2$i',$i,'op2$i','')",'style'=>"display:none"]) !!}
                                             <strong>B. </strong><label class="texto-pergunta"  id="op2{{$i}}" for="example2{{$i}}"></label>
 
-                                            <hr width="100%">
+                                            <hr width="100%" class="hidden-lg hidden-md">
 
                                         </div>
 
                                         <div id="opcao3{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'op3$i')",'style'=>"display:none"]) !!}
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example3'.$i,'onclick'=>"alteraResposta('opcao3$i',$i,'op3$i','')",'style'=>"display:none"]) !!}
                                            <strong>C. </strong><label class="texto-pergunta" id="op3{{$i}}" for="example3{{$i}}"></label>
 
-                                            <hr width="100%">
+                                            <hr width="100%" class="hidden-lg hidden-md">
 
                                         </div>
 
                                         <div id="opcao4{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'op4$i')",'style'=>"display:none"]) !!}
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example4'.$i,'onclick'=>"alteraResposta('opcao4$i',$i,'op4$i','')",'style'=>"display:none"]) !!}
                                             <strong>D. </strong><label class="texto-pergunta"  id="op4{{$i}}" for="example4{{$i}}"></label>
 
-                                            <hr width="100%">
+                                            <hr width="100%" class="hidden-lg hidden-md">
 
                                         </div>
 
                                         <div id="opcao5{{$i}}">
-                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'op5$i')",'style'=>"display:none"]) !!}
+                                            {!! Form::radio("example$i", 1, false, ['class' => 'field', 'id'=>'example5'.$i,'onclick'=>"alteraResposta('opcao5$i',$i,'op5$i','')",'style'=>"display:none"]) !!}
                                             <strong>E. </strong><label class="texto-pergunta"  id="op5{{$i}}" for="example5{{$i}}"></label>
-                                            <hr width="100%">
+
 
                                         </div>
 
@@ -128,7 +177,7 @@
                                         {!! Form::hidden("escolhida$i",'',['id'=>"escolhida$i"]) !!}
 
 
-
+                                        @endif
                                     </div>
 
 
@@ -136,6 +185,7 @@
 
 
                         </div>
+
 
                                 <hr  width="100%">
                             @endforeach
@@ -280,10 +330,10 @@
 
 
     <script>
-        function alteraResposta(idEscolhido,id,opcaoEscolhida){
+        function alteraResposta(idEscolhido,id,opcaoEscolhida,classe){
 
-            deSeleciona(id);
-            document.getElementById(idEscolhido).setAttribute('class','bg-success');
+            deSeleciona(id,classe);
+            document.getElementById(idEscolhido).setAttribute('class','bg-success '+classe);
             opcao=document.getElementById(opcaoEscolhida);
 
             document.getElementById("escolhida"+id).setAttribute('value',opcao.innerHTML);
@@ -296,9 +346,9 @@
             }
         }
 
-        function deSeleciona(id){
+        function deSeleciona(id,classe){
             for (i=1;i<=5;i++)
-                document.getElementById('opcao'+i+''+id).setAttribute('class','');
+                document.getElementById('opcao'+i+''+id).setAttribute('class',classe);
         }
     </script>
 

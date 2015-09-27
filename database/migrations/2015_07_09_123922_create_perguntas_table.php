@@ -16,16 +16,17 @@ class CreatePerguntasTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 			$table->increments('id');
-            $table->string('questao');
-            $table->string('opcao1');
-            $table->string('opcao2');
-            $table->string('opcao3');
-            $table->string('opcao4');
-            $table->string('opcao5');
+            $table->longText('questao');
+            $table->longText('opcao1');
+            $table->longText('opcao2');
+            $table->longText('opcao3');
+            $table->longText('opcao4');
+            $table->longText('opcao5');
             $table->integer('tema_id')->unsigned();
             $table->softDeletes();
             $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
-            $table->string('opcaoCorrecta');
+            $table->longText('opcaoCorrecta');
+            $table->boolean('imagem');
 			$table->timestamps();
 		});
 	}

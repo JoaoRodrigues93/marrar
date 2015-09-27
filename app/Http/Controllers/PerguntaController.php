@@ -46,13 +46,47 @@ public function registaPerguntas(Request $request){
     $pergunta -> opcao3  = $request -> input('opcao3');
     $pergunta -> opcao4  = $request -> input('opcao4');
     $pergunta -> opcao5  = $request -> input('opcaoCorrecta');
+
     $pergunta -> opcaoCorrecta = $request -> input('opcaoCorrecta');
 
-$tema = Tema::find($request -> input('tema'));
+    $string1=strstr($pergunta -> opcao1,'<p><img');
+
+    /*$string4=strstr($pergunta -> opcao4,'<p><img');
+    $string5=strstr($pergunta -> opcao5,'<p><img');*/
+
+    if($string1!=false)
+    {
+        $pergunta -> imagem=true;
+    }
+    else {
+        $string2=strstr($pergunta -> opcao2,'<p><img');
+        if($string2!=false){
+            $pergunta -> imagem=true;
+
+        }
+
+        else{
+            $string3=strstr($pergunta -> opcao3,'<p><img');
+            if($string3!=false){
+                $pergunta -> imagem=true;
+
+            }
+
+            else{
+                $pergunta -> imagem=false;
+            }
+
+        }
+
+    }
+
+
+   $tema = Tema::find($request -> input('tema'));
 $pergunta = $tema->perguntas()->save($pergunta);
 Session::flash('message','Dados gravados com sucesso');
 
     return redirect('/pergunta');
+
 
 }
 
