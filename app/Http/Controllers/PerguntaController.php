@@ -180,14 +180,19 @@ Session::flash('message','Dados gravados com sucesso');
         $quantidade=2;
 
         foreach($capitulos as $capitulo){
+
+
             $pergunta=$this->buscarTeste($capitulo->id,$quantidade);
             $j=count($pergunt);
             $k=count($pergunta);
             $l=0;
+
             for($i=$j;$i<($j+$k);$i++){
                 $pergunt[count($pergunt)]=$pergunta[$l];
+
                 $l++;
             }
+
         }
         return $pergunt;
     }

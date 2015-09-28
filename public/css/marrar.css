@@ -1,0 +1,807 @@
+/*@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(http://ufonts.com/downloads/25386!632814225);*/
+
+body {
+    font-family: 'Roboto', 'Avenir Next', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    /*font-size: 14px;*/
+    overflow-x: hidden;
+    color: #2a3237;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    background: #F5F5F5;
+
+}
+
+html {
+    font-size: 62.5%;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+Tipografia
+========================================================================== */
+p {
+    font-size: 1.8rem;
+    /*font-size: 18px;*/
+    line-height: 1.5;
+    color: #8a8e91;
+}
+
+h1 {
+    font-size: 6rem;
+    /*font-size: 60px;*/
+}
+
+h2 {
+    font-size: 4rem;
+    /*font-size: 40px;*/
+}
+
+h3 {
+    font-size: 3rem;
+    /*font-size: 30px;*/
+}
+
+h4 {
+    font-size: 2.4rem;
+    /*font-size: 24px;*/
+}
+
+h5 {
+    font-size: 1.8rem;
+    /*font-size: 18px;*/
+}
+
+h6 {
+    font-size: 1.5rem;
+    /*font-size: 15px;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    /*margin: 10px 0;*/
+    color: #3C3C3C; /*3C3C3C 666666 353740*/
+    line-height: 1.4;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.white {
+    color: white;
+}
+
+.typed {
+    display: inline-block;
+    margin: 0;
+}
+
+/* ==========================================================================
+Nav, Logo e Button entrar
+========================================================================== */
+.headerNav div div a {
+    font-family: 'Cooper Black', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7rem;
+    /*font-size: 66px;*/
+    text-shadow: 1px 1px 2px #999;
+    /*box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);*/
+
+    color: #fff;
+    /*line-height: 8rem;*/
+
+    text-align: center;
+}
+
+.logo {
+    padding-top: .3em;
+    padding-left: 10%;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FAFAFF; /*color: #9d9d9d;*/
+}
+
+nav.headerNav {
+    /*background: #2C97DE;
+    height: 5em;*/
+    transition: all 800ms;
+    margin: 0;
+    padding: 25px 0 25px 0;
+}
+
+header nav div button.btn {
+    margin: 1.5em 5em 0 0;
+    background: #FAFAFA;
+    color: #2C97DE;
+    border: none;
+    text-transform: lowercase;
+    letter-spacing: .045em;
+    border-radius: 3em;
+    width: 6em;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
+    font-weight: 100;
+    text-decoration: none;
+    line-height: 100%;
+    font-family: Helvetica, sans-serif;
+}
+
+header nav div button.btn:hover {
+    background: whitesmoke;
+    color: #2C97DE;
+}
+
+nav.navbar-inverse {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+#login {
+    margin: 1.5em 5em 0 0;
+    background: #FAFAFA;
+    color: #2C97DE;
+    border: none;
+    text-transform: lowercase;
+    letter-spacing: .045em;
+    border-radius: 3em;
+    width: 6em;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
+    font-weight: 100;
+    text-decoration: none;
+    line-height: 100%;
+    font-family: Helvetica, sans-serif;
+    transition: all 1.6s;
+}
+
+/* ==========================================================================
+Hero
+========================================================================== */
+.hero {
+    position: relative;
+    /*padding: 60px 0 60px 0;*/
+    /*min-height: 680px;*/
+    min-height: 42.5em;
+    /*background: url("../img/vamosmarrar.png") rgba(40, 70, 102, .6)  no-repeat center center;*/
+
+    /*background-image:  linear-gradient(to bottom, rgb(44, 151, 222),  rgba(255, 255, 255, 0));
+    background-repeat : no-repeat, no-repeat, no-repeat;
+    background-position: bottom, right, left, right;*/
+
+    /*background: url(img.png) no-repeat 50% 300px, linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
+
+    /*background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url("../img/vamosmarrar2249.png") no-repeat;*/
+    background: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("../img/vamosmarrar2249.png") no-repeat;
+
+    /*background: linear-gradient(to bottom, rgba(44,151,222,.89),rgba(44,151,222,.2),
+    rgba(44,151,222,0),rgba(44,151,222,0),rgba(44,151,222,0), rgba(255, 255, 255,0)),
+    url("../img/vamosmarrar2249.png") no-repeat;*/
+
+    background-size: cover;
+    color: #FFF;
+    width: 100%;
+    height: 100%;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
+
+}
+
+.hero h1, .hero h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.pub {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.table {
+    display: table;
+    height: 100%;
+}
+
+.hero .container {
+    height: 100%;
+}
+
+.hero .header-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+.down-arrow {
+    color: #fff;
+    /*color: #2C97DE;*/
+    font-size: 30px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+}
+
+.down-arrow a {
+    color: #fff;
+    /*color: #2C97DE;*/
+}
+
+/* ==========================================================================
+Anima��o
+========================================================================== */
+
+.floating-arrow {
+    -webkit-animation-name: floating-arrow;
+    animation-name: floating-arrow;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes floating-arrow {
+    from {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    65% {
+        -webkit-transform: translate(-50%, 15px);
+        transform: translate(-50%, 15px);
+    }
+    to {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes floating-arrow {
+    from {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    65% {
+        -webkit-transform: translate(-50%, 15px);
+        transform: translate(-50%, 15px);
+    }
+    to {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+.floating-logo {
+    -webkit-animation-name: floating-logo;
+    animation-name: floating-logo;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes floating-logo {
+    from {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    50% {
+        -webkit-transform: translate(-50%, 10px);
+        transform: translate(-50%, 10px);
+    }
+    to {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes floating-logo {
+    from {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    50% {
+        -webkit-transform: translate(-50%, 10px);
+        transform: translate(-50%, 10px);
+    }
+    to {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+.delay-01s {
+    animation-delay: 0.1s;
+    -webkit-animation-delay: 0.1s;
+}
+
+.delay-02s {
+    animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+}
+
+.delay-03s {
+    animation-delay: 0.3s;
+    -webkit-animation-delay: 0.3s;
+}
+
+.delay-05s {
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+}
+
+.delay-1s {
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+}
+
+.delay-15s {
+    animation-delay: 1.5s;
+    -webkit-animation-delay: 1.5s;
+}
+
+.delay-2s {
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+}
+
+.delay-25s {
+    animation-delay: 2.5s;
+    -webkit-animation-delay: 2.5s;
+}
+
+/* ==========================================================================
+funciona
+========================================================================== */
+
+/* ==========================================================================
+dizem
+========================================================================== */
+.pessoa {
+    padding-top: 1.6em;
+    opacity: 0;
+}
+
+.pessoa img {
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.55), 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2em;
+}
+
+.pessoa p {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-left: 0;
+    margin-right: 1em;
+    /*height: 6.8%;*/
+}
+
+.pessoa h6 {
+    color: #FF530D;
+    opacity: 0.9;
+    padding-right: 5%;
+}
+
+div.mainQueDizem > div:last-child > div >
+div.pessoa > p {
+    margin-right: 0;
+}
+
+/*box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1)
+box-shadow: 0 0 0 7px white, 0 0 0 8px #e0e0e0;
+    border-bottom: solid 1px #ccc;
+    box-sizing: border-box;
+
+    img
+        height: 100vh;
+    min-height: 35em;
+*/
+
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    margin: 0 0 2em 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+div.podeAprender div img {
+    max-height: 400px;
+    /*height: 210px;*/
+}
+
+#podeAprender > div > div:nth-child(1) {
+    padding-top: 10%;
+}
+
+/* ==========================================================================
+footer
+========================================================================== */
+
+footer {
+    background: #2C97DE;
+    height: 8em;
+}
+
+footer div.row {
+    padding-top: 3.5%;
+}
+
+footer ul li {
+    margin: 0;
+    padding: 0 .8em 0 0;
+    list-style: none;
+    float: left;
+}
+
+footer a {
+    color: #353740;
+    display: block;
+    width: auto;
+    height: 20px;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a {
+    background-image: url("../img/icons/facebook.png");
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a {
+    background-image: url("../img/icons/twitter.png");
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a {
+    background-image: url("../img/icons/google-plus.png");
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a {
+    width: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    opacity: .7;
+    font-size: 0;
+}
+
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(1) > a:hover,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(2) > a:hover,
+footer > div > div.col-lg-4 > nav > ul > li:nth-child(3) > a:hover {
+    opacity: 1;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+footer > div > div.menu > nav > ul {
+    padding-right: 2%;
+    float: right;
+}
+
+/* ==========================================================================
+scrollbar
+========================================================================== */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-button {
+    /*visibility: hidden;*/
+    /*background: #CCC;*/
+    height: 15px;
+}
+
+::-webkit-scrollbar-button:hover {
+    background: #BBB;
+}
+
+::-webkit-scrollbar-track {
+    border: none;
+    background: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CCC;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+}
+
+/* ==========================================================================
+outros tamanhos de erc�
+========================================================================== */
+
+/* =====================
+device max-with: 320px
+========================*/
+@media (max-width: 620px) {
+
+    .headerNav div div a {
+        font-size: 4.3rem;
+        font-size: 43px;
+    }
+
+    .logo {
+        padding-left: 1.9%;
+    }
+
+    header nav div button.btn {
+        width: 4em;
+        line-height: 50%;
+        padding: .5em 0 .5em 0;
+        margin: .7em 2em 0 0;
+
+    }
+
+    header nav {
+        height: 4em;
+    }
+
+    footer .row {
+
+        /*margin: 0;*/
+        padding-bottom: 10px;
+    }
+
+    footer .row div:first-child {
+        margin-left: -30px;
+    }
+}
+
+/* Scale Font Based On Screen Resolution*/
+@media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+    html {
+        /*font-size: 125%;*/
+    }
+}
+
+/* Scale Font Based On Screen Size*/
+@media only screen and (max-device-width: 667px) {
+    html {
+        /*font-size: 31.25%;*/
+    }
+}
+
+@media only screen and (min-width: 320px) {
+
+    /* Small screen, non-retina */
+
+}
+
+@media only screen and (max-width: 780px) {
+
+    div.podeAprender div img {
+        margin-top: 5%;
+
+    }
+
+}
+
+@media only screen and (min-width: 781px) and (max-width: 1003px) {
+
+    .container {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px), only screen and (                min-resolution: 192dpi) and (min-width: 320px), only screen and (                min-resolution: 2dppx)  and (min-width: 320px) {
+
+    /* Small screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 700px) {
+
+    /* Medium screen, non-retina */
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 700px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 700px), only screen and (                min-resolution: 192dpi) and (min-width: 700px), only screen and (                min-resolution: 2dppx)  and (min-width: 700px) {
+
+    /* Medium screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 1300px) {
+
+    /* Large screen, non-retina */
+
+}
+
+@media only screen and (max-width: 928px) {
+
+    #podeAprender > div > div:nth-child(1) {
+        padding-top: 0;
+    }
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px), only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px), only screen and (                min-resolution: 192dpi) and (min-width: 1300px), only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
+
+    /* Large screen, retina, stuff to override above media query */
+
+}
+
+@media (min-width: 700px) and (orientation: landscape) {
+}
+
+@media tv and (min-width: 700px) and (orientation: landscape) {
+}
+
+@media (min-width: 700px), handheld and (orientation: landscape) {
+}
+
+/*cores */
+
+/*
+#E9EAED;
+*/
+
+/* ==========================================================================
+Lab
+========================================================================== */
+
+.top {
+    box-shadow: 0 -5px 5px -5px #333;
+}
+
+.right {
+    box-shadow: 5px 0 5px -5px #333;
+}
+
+.bottom {
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+.left {
+    box-shadow: -5px 0 5px -5px #333;
+}
+
+.all {
+    box-shadow: 0 0 5px #333;
+}
+
+#Example_E {
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+.sombra {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+.bordaCircular {
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+Te�ria
+========================================================================== */
+
+.aestudar {
+    /*background: #FFFFFF;*/
+    height: 600px;
+    /*box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;*/
+    /*border-radius: 4px;*/
+    position: relative;
+    padding: 0;
+}
+
+/*.exercicios{
+    height: 100%;
+    width: 100%;
+    background: red;
+    top: 0;
+    left: 0;
+    z-index:2;
+    position: absolute;
+    opacity: 0.5;
+
+}*/
+
+.btn-teoria {
+    float: right;
+}
+
+.btn-confirmar, .btn-continuar,
+.botoes button {
+    color: white;
+    font-weight: 500;
+}
+
+.botoes button {
+    background: #FF530D;
+}
+
+.btn-confirmar{
+   background: #76FF03;
+}
+
+.btn-continuar{
+   background: #00BCD4;
+}
+
+.quenomevoudar {
+    /*background: #CCC;*/
+    position: absolute;
+    margin: 0;
+    /*z-index: 1;*/
+    width: 100%;
+    height: 90%;
+    box-shadow: 0 5px 5px -6px #333;
+}
+
+.botoes {
+    /*background: #F1F1F1;*/
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    margin: 0 0 16px 0;
+    /*z-index: 1;*/
+}
+
+#myNavbar {
+    background: #2C97DE;
+}
+
+.quenomevoudar .exercicios {
+    /*background: red;*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 2;
+    position: absolute;
+}
+
+.quenomevoudar .teoria {
+    /*background: blue;*/
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    overflow-y: scroll;
+    display: none;
+    padding: 50px;
+}
+
+#conteud {
+
+}
+
+.opcoes{
+    width: auto;
+}
+

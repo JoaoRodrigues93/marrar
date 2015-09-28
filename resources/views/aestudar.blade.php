@@ -7,7 +7,7 @@
 @section('links')
     @parent
     <link rel="stylesheet" href="{{URL::asset('css/marrar.css')}}">
-    {{--    <link rel="stylesheet" href="{{URL::asset('css/estudar.css')}}">--}}
+
 @stop
 
 @section('body')
@@ -18,22 +18,26 @@
         }
     </style>--}}
 
-    <script>
+    <script >
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botaoConfirmar = document.getElementById("hide");
             var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
             botaoConfirmar.setAttribute("class", "btn btn-confirmar active");
-            document.getElementById("hide").disabled = false;
-            deSeleciona();
+            document.getElementById("hide").disabled=false;
+            classe=document.getElementById('classe');
+            alert(classe.value);
+
+            deSeleciona(classe.value);
             document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
-            var opcaoEsc = document.getElementById(idEscolhido);
-            opcaoEsc.setAttribute('class', 'bg-success');
-            opcaoEsc.style.borderRadius = "5px";
+            var opcaoEsc=document.getElementById(idEscolhido);
+
+            opcaoEsc.setAttribute('class', 'bg-success '+classe);
+            opcaoEsc.style.borderRadius="5px";
         }
 
-        function deSeleciona() {
+        function deSeleciona(classe) {
             for (i = 1; i <= 5; i++)
-                document.getElementById('opcao' + i).setAttribute('class', '');
+                document.getElementById('opcao' + i).setAttribute('class', classe);
         }
         function check() {
 
@@ -46,176 +50,146 @@
     <div class="well aestudar">
 
         <div {{--style="background: yellow"--}} class="quenomevoudar" onload="inicio()">
-            <div class="row exercicios" id="conteud">
+            <div  class="row exercicios" id="conteud">
 
                 {{--<div onload="inicio()">--}}
-                {{--<div  class="content-fluid" id="conteud">--}}
-                <div id="mensagemFinal" class="hidden">
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
+                    {{--<div  class="content-fluid" id="conteud">--}}
+                        <div id="mensagemFinal" class="hidden">
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
 
-                    <div class=" row">
-                        <img class="center-block" id="imagem" src=''/>
+                            <div class=" row">
+                                <img class="center-block" id="imagem" src=''/>
 
-                        <h1 style="color: green" id="mensg"></h1>
-                        {{--<small> <p  id="nrAcertos"></p>
-                            <p  id="nrErros"></p></small>--}}
-
-
-                        <p class="text-center text-success" id="nrAcertos"></p>
-
-                        <p class="text-center text-danger" id="nrErros"></p>
+                                <h1 style="color: green" id="mensg"></h1>
+                                {{--<small> <p  id="nrAcertos"></p>
+                                    <p  id="nrErros"></p></small>--}}
 
 
-                    </div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                    <div class="row"><h1></h1></div>
-                </div>
+                                <p class="text-center text-success" id="nrAcertos"></p>
+                                <p  class="text-center text-danger" id="nrErros"></p>
 
 
-                <div id="divPrincipal">
-
-                    <div class="row">
-
-                        <div class="col-md-10 col-sm-10 col-xs-8"><h2 class="text-primary">{!!$caminho!!}</h2>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-4">
-                            <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p
-                                        class="text-right text-danger">Desistir</p></a></div>
-                    </div>
-                    @if(!$pergunta)
-                        Nao ha exercicio disponivel
-                    @else
-                        <div class="progress">
-                            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-success active"
-                                 role="progressbar" aria-valuenow="70"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                                <span id="barMessage"></span>
                             </div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
+                            <div class="row"><h1></h1></div>
                         </div>
-                        <div>
 
 
-                            {!!Form::open(array('url' => 'exercicio')) !!}
-                            <h3 class="text-capitalize"> {!! Form::label('questao',"", ['id'=>'questao']) !!}</h3>
+                        <div id="divPrincipal">
 
+                            <div class="row">
 
-                            <div class="container opcoes">
-
-                                <div id="opcao1">
-
-                                    {!! Form::radio('example', 1, false, ['class' =>
-                                    'field radio','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
-                                    !!}
-                                    <strong>A. </strong><label class="texto-pergunta" for="example1" id="op1"></label>
-
+                                <div class="col-md-10 col-sm-10 col-xs-8" ><h2 class="text-primary">{!!$caminho!!}</h2>
                                 </div>
-
-                                <div id="opcao2">
-
-                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
-                                    'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
-                                    <strong>B. </strong><label class="texto-pergunta" for="example2" id="op2"></label>
+                                <div class="col-md-2 col-sm-2 col-xs-4">
+                                    <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right text-danger">Desistir</p></a></div>
+                            </div>
+                            @if(!$pergunta)
+                                Nao ha exercicio disponivel
+                            @else
+                                <div class="progress">
+                                    <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-success active"
+                                         role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                        <span id="barMessage"></span>
+                                    </div>
                                 </div>
-
-                                <div id="opcao3">
-
-                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
-                                    'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
-                                    <strong>C. </strong><label class="texto-pergunta" for="example3" id="op3"></label>
-                                </div>
-
-                                <div id="opcao4">
-
-                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
-                                    'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
-                                    <strong>D. </strong> <label class="texto-pergunta" for="example4" id="op4"></label>
-                                </div>
-
-                                <div id="opcao5">
-
-                                    {!! Form::radio('example', 1, false, ['class' => 'field radio',
-                                    'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
-                                    <strong>E. </strong> <label class="texto-pergunta" for="example5" id="op5"></label>
-
-                                </div>
-
                                 <div>
 
-                                    <label id="perguntas" style="display: none"></label>
-                                    {!!Form::hidden('respostaEscolhida','',array('id'=>'respostaEscolhida'))!!}
-                                    {!!Form::hidden('id',"$pergunta->id",array('id'=>'id'))!!}
-                                    {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
-                                    {{--{!!Form::hidden('respostaCerta',$pergunta->opcaoCorrecta,array('id'=>'respostaCerta'))!!}--}}
 
+                                    {!!Form::open(array('url' => 'exercicio')) !!}
+                                    <h3 class="text-capitalize"> {!! Form::label('questao',"", ['id'=>'questao']) !!}</h3>
+
+
+
+                                    <div class="container opcoes">
+                                        <div id="opcao1">
+
+                                            {!! Form::radio('example', 1, false, ['class' =>
+                                            'field radio','id'=>'example1','onclick'=>"alteraResposta('op1','opcao1')"])
+                                            !!}
+                                            <strong>A. </strong><label class="texto-pergunta" for="example1" id="op1"></label>
+
+                                        </div>
+
+                                        <div id="opcao2">
+
+                                            {!! Form::radio('example', 1, false, ['class' => 'field radio',
+                                            'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
+                                            <strong>B. </strong><label class="texto-pergunta" for="example2" id="op2"></label>
+                                        </div>
+
+                                        <div id="opcao3">
+
+                                            {!! Form::radio('example', 1, false, ['class' => 'field radio',
+                                            'id'=>'example3','onclick'=>"alteraResposta('op3','opcao3')"]) !!}
+                                            <strong>C. </strong><label class="texto-pergunta" for="example3" id="op3"></label>
+                                        </div>
+
+                                        <div id="opcao4">
+
+                                            {!! Form::radio('example', 1, false, ['class' => 'field radio',
+                                            'id'=>'example4','onclick'=>"alteraResposta('op4','opcao4')"]) !!}
+                                            <strong>D. </strong> <label class="texto-pergunta" for="example4" id="op4"></label>
+                                        </div>
+
+                                        <div id="opcao5">
+
+                                            {!! Form::radio('example', 1, false, ['class' => 'field radio',
+                                            'id'=>'example5','onclick'=>"alteraResposta('op5','opcao5')"]) !!}
+                                            <strong>E. </strong> <label class="texto-pergunta" for="example5" id="op5"></label>
+
+                                        </div>
+
+                                        <div>
+
+                                            <label id="perguntas" style="display: none"></label>
+                                            {!!Form::hidden('respostaEscolhida','',array('id'=>'respostaEscolhida'))!!}
+                                            {!!Form::hidden('id',"$pergunta->id",array('id'=>'id'))!!}
+                                            {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
+                                            {!!Form::hidden('classe','',array('id'=>'classe'))!!}
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="envio" class="envio">
+                                        <div class="row">
+                                            <div class="col-md-8 col-lg-8 col-sm-8" id="content">
+                                            </div>
+                                            <div class="col-md-4 col-lg-4 col-sm-4">
+                                                <div class="right">
+
+                                                    {!!Form::button('Confirmar',['class'=>'btn btn-confirmar disabled',
+                                                    'id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
+                                                    {!!Form::button(' Continuar ',['class'=>'btn btn-continuar
+                                                     ','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+
+                                    {!!Form::close()!!}
+                                    @endif
                                 </div>
-                            </div>
 
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
 
-                            {{--    <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6" id="content">
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-3">
-
-                                            {!!Form::button('Confirmar',['class'=>'btn btn-success btn-lg
-                                            disabled','id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
-                                            {!!Form::button(' Proximo ',['class'=>'btn btn-primary
-                                            btn-lg','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
-                                        </div>
-
-
-                                    </div>
-
-                                </div>--}}
-
-                            <div id="envio" class="envio">
-                                <div class="row">
-                                    <div class="col-md-8 col-lg-8 col-sm-8" id="content">
-                                    </div>
-                                    <div class="col-md-4 col-lg-4 col-sm-4">
-                                        <div class="right">
-                                            {!!Form::button('Confirmar',['class'=>'btn btn-confirmar disabled',
-                                            'id'=>'hide','value'=>'Hide',"onclick"=>"respostaCorrecta()"]) !!}
-                                            {!!Form::button(' Continuar ',['class'=>'btn btn-continuar
-                                             ','id'=>'show','value'=>'Show', "onclick"=>"vaiPraProximo()"])!!}
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-
-                            {!!Form::close()!!}
-                            @endif
                         </div>
-
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8"></div>
-
-                </div>
-                {{--<div class="row"><p></p></div>--}}
-
-                {{--</div>--}}
-                {{--<div class="row">
-                    <div class="col-lg-5 col-md-5 col-sm-3 col-xs-3"></div>
-                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-9">
-                        <button type="button" id="btn_teoria" class="btn btn-danger" onclick="abrirTeoria()" >Teoria</button>
-                        <button type="button" id="btn_exercicio" class="btn btn-danger " disabled onclick="abrirExercicio()">Exercicio</button>
-                    </div>
-
-                </div>--}}
-                {{--</div>--}}
 
             </div>
 
@@ -238,31 +212,25 @@
 
 
     <script>
-        /* ('#hide').click(function(){
-         ('#content').hide();
-         ('#hide').hide();
-         ('#show').show();
-         });*/
 
         var nrPerguntas = parseInt("{{$nrPerguntas}}");
         var resposta;
         var contAcertos = 0;
         var contErros = 0;
         var perguntas;
-        var perguntaActual = 0;
+        var perguntaActual=0;
 
         function inicio() {
 
             var content = document.getElementById("content");
             content.style.display = "none";
-
-            var val = false;
         }
+
 
 
         function respostaCorrecta() {
             //progressBar
-            document.getElementById('hide').disabled = true;
+            document.getElementById('hide').disabled=true;
 
             var respostaCorrecta, id, idResposta;
             idResposta = document.getElementById("id");
@@ -299,7 +267,7 @@
             hide.style.display = "none";//esconde o botao confirmar
             show.style.display = "block";//mostra o botao proximo
             //hide.setAttribute("class","");
-            var envio = document.getElementById("envio");
+            var envio=document.getElementById("envio");
 
             var respostaEscolhida = document.getElementById("respostaEscolhida");
 
@@ -308,9 +276,9 @@
 
 
             //compara a resposta escolhida com a resposta certa
-            var perguntas = document.getElementById("perguntas");
-            perguntas.innerHTML = resposta;
-            resposta = perguntas.innerHTML;
+            var perguntas=document.getElementById("perguntas");
+            perguntas.innerHTML=resposta;
+            resposta=perguntas.innerHTML;
 
 
             if (resposta == respostaEscolhida.value) {
@@ -321,9 +289,9 @@
                 contAcertos++;
             }
             else {
-                envio.setAttribute("class", 'alert envio-error')
+                envio.setAttribute("class",  'alert envio-error')
                 content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida est� errada." +
-                        " A resposta correcta �: " + resposta;
+                        " A resposta correcta �: " +resposta;
                 contErros++;
             }
 
@@ -341,8 +309,8 @@
             barMessage.innerHTML = percent.toFixed(1) + "%";
             bar.style.width = '' + percent.toFixed(1) + '%';
 
-            document.getElementById('show').disabled = false;
-            document.getElementById("content").style.visibility = "none";
+            document.getElementById('show').disabled=false;
+            document.getElementById("content").style.visibility="none";
 
         }
         //metodo ao clicar no botao proximo
@@ -350,13 +318,12 @@
 
         function vaiPraProximo() {
 
-            //  alert('Aqui');
-            var content = document.getElementById("content");
-            content.innerHTML = "";
-            content.style.visibility = "none";
-            content.disabled = true;
-            document.getElementById('show').disabled = true;
-            document.getElementById("envio").setAttribute('class', 'envio');
+            var content= document.getElementById("content");
+            content.innerHTML="";
+            content.style.visibility="none";
+            content.disabled=true;
+            document.getElementById('show').disabled=true;
+            document.getElementById("envio").setAttribute('class','envio');
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -387,25 +354,25 @@
                         if (contAcertos == 0) {
                             imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
                             mensg.innerHTML = "Estude mais e tente de novo!";
-                            mensg.setAttribute('class', 'text-center');
-                            mensg.style.color = "red";
+                            mensg.setAttribute('class','text-center');
+                            mensg.style.color="red";
 
                         } else if (contErros == 0) {
                             imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
                             mensg.innerHTML = "Parab�ns, acertaste todas questoes";
-                            mensg.style.color = "green";
-                            mensg.setAttribute('class', 'text-center');
+                            mensg.style.color="green";
+                            mensg.setAttribute('class','text-center');
                         }
                         else {
                             mensg.innerHTML = "Bom mas precisas praticar mais";
-                            mensg.setAttribute('class', 'text-center');
-                            mensg.style.color = "orange";
+                            mensg.setAttribute('class','text-center');
+                            mensg.style.color="orange";
                         }
 
                         var nrAcertos = document.getElementById("nrAcertos");
-                        nrAcertos.innerHTML = "Certas: " + contAcertos;
+                        nrAcertos.innerHTML = "Certas: " + contAcertos ;
                         var nrErros = document.getElementById("nrErros");
-                        nrErros.innerHTML = "Erradas: " + contErros;
+                        nrErros.innerHTML = "Erradas: " + contErros ;
 
                         return; //Para n�o executar o codigo abaixo
                     }
@@ -424,6 +391,34 @@
 
 //                               var pergunta;
 //                               pergunta = perguntas.perguntas[2];
+
+                        var div1 = document.getElementById("opcao1");
+                        var div2 = document.getElementById("opcao2");
+                        var div3 = document.getElementById("opcao3");
+                        var div4 = document.getElementById("opcao4");
+                        var div5 = document.getElementById("opcao5");
+                        var classe=document.getElementById('classe');
+
+                       if(pergunta.imagem==true){
+                            div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div4.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div5.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+
+                           classe.value='col-lg-2 col-md-2 col-sm-6 col-xs-12';
+
+                        }
+
+                        else{
+                            div1.setAttribute('class','');
+                            div2.setAttribute('class','');
+                            div3.setAttribute('class','');
+                            div4.setAttribute('class','');
+                            div5.setAttribute('class','');
+                           classe.value='';
+
+                        }
 
                         questao.innerHTML = pergunta.questao;
                         op1.innerHTML = pergunta.opcao1;
@@ -445,7 +440,7 @@
         function proximo() {
             var content = document.getElementById("content");
             content.style.visibility = 'hidden';
-            var envio = document.getElementById("")
+            var envio=document.getElementById("")
             var hide = document.getElementById("hide");//pega o elemento com id=hide
             var show = document.getElementById("show");
             hide.style.display = "block";//mostra o botao confirmar
@@ -475,12 +470,11 @@
     </script>
 
 
-    <script>
+    <script >
 
 
-        function abrirTeoria() {
 
-            var val = false;
+        function abrirTeoria(){
 
 //            $("#conteud").load("/teoria.html");
 
@@ -494,18 +488,17 @@
                 'display': 'block'
             });
 
-            if (!val) {
-                $('.teoria').load("/teoria.html");
-                val = true;
-            }
+            $('.teoria').load("/teoria.html");
 
-            document.getElementById('btn_exercicio').disabled = false;
-            document.getElementById('btn_teoria').disabled = true;
+
+
+            document.getElementById('btn_exercicio').disabled=false;
+            document.getElementById('btn_teoria').disabled=true;
 
 
         }
 
-        function abrirExercicio() {
+        function abrirExercicio(){
 
             location.reload();
         }

@@ -63,7 +63,7 @@ class ExercicioController extends Controller{
         $_SESSION['caminho']="teoria/$disciplina->id/$capitulo->id/$tema.html";
 
 
-        return view('estudar')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina->nome,"capitulo"=>$capitulo->nome,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
+        return view('aestudar')->with(array('caminho'=>$tema,"perguntas" => $perguntas,"disciplina"=>$disciplina->nome,"capitulo"=>$capitulo->nome,"tema"=>$tema, 'pergunta'=>$pergunta, 'nrPerguntas'=>$nrPerguntas));
     }
 
     public function teoria(){

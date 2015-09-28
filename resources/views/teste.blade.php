@@ -14,9 +14,9 @@
         <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" >
 
 
-                        <div class="panel-group" style="position: fixed;">
-                            <div class="panel panel-info">
-                                <div class="panel panel-heading">
+                        <div class="panel-group"  style="position: fixed ;" >
+                            <div class="panel panel-info" style="border: none">
+                                <div class="panel panel-heading text-primary" style="background-color:#2c97de; color: #ffffff; border-color: #2c97de; border-bottom-left-radius: 0; border-bottom-right-radius: 0">
                                     {!! Form::label('perguntas',"Perguntas")!!}
                                 </div>
                                 <div class="panel-body">
@@ -224,8 +224,8 @@
                     <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="float :left;">
 
                         <div class="panel-group" id="pergunta{{$i}}">
-                            <div class="panel panel-info">
-                                <div class="panel panel-heading">
+                            <div class="panel panel-info" style="border: none">
+                                <div class="panel panel-heading text-primary" style="background-color:#2c97de; color: #ffffff; border-color: #2c97de border-bottom-left-radius: 0; border-bottom-right-radius: 0">
 
                                     {!! Form::label('historico',"Histórico")!!}
                                 </div>

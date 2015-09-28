@@ -76,7 +76,6 @@ Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
 
 Route::get('aestudar/{idCapitulo}/{tema}','ExercicioController@show');
-Route::get('estudar/{idCapitulo}/{tema}','ExercicioController@show');
 
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');
@@ -118,8 +117,6 @@ Route::get('inicio2', function(){
 Route::get('welcome',function (){
     return View('inicio');
 });
-
-Route::get('estudar', 'AestudarController@estudar');
 
 Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
