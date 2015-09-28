@@ -24,11 +24,10 @@ body{
 
 
 #show{
-display: none;
+  display: none;
 }
 
 #questao{
-
     clear:left;
     padding: 5px 20px 20px 20px;
 }
@@ -296,11 +295,31 @@ scrollbar
     opacity: 0;
 }
 
+.dropdown-menu{
+  border: none;
+}
 
 /*CSS para login e registo mobile*/
 
 #login-registo-mobile {
     margin: 75px 0px 0px 10px;
+    /*padding: 150px 0 0 10px;*/
+    /*position: absolute;*/
+}
+
+#nelson{
+    position: absolute;
+    width: 100%;
+
+    margin-top: 27.5px;
+    /*margin-bottom: 200px;*/
+    z-index: 1001;
+}
+
+#registo-mobile > h3{
+    color: whitesmoke;
+    font-size: 2.3rem;
+    text-align: center;
 }
 
 #login-mobile .form-control, #registo-mobile .form-control {

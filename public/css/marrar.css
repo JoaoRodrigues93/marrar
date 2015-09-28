@@ -24,44 +24,49 @@ html {
 /* ==========================================================================
 Tipografia
 ========================================================================== */
-p {
+.marrar p {
     font-size: 1.8rem;
     /*font-size: 18px;*/
     line-height: 1.5;
     color: #8a8e91;
 }
 
-h1 {
+.marrar h1 {
     font-size: 6rem;
     /*font-size: 60px;*/
 }
 
-h2 {
+.marrar h2 {
     font-size: 4rem;
     /*font-size: 40px;*/
 }
 
-h3 {
+.marrar h3 {
     font-size: 3rem;
     /*font-size: 30px;*/
 }
 
-h4 {
+.marrar h4 {
     font-size: 2.4rem;
     /*font-size: 24px;*/
 }
 
-h5 {
+.marrar h5 {
     font-size: 1.8rem;
     /*font-size: 18px;*/
 }
 
-h6 {
+.marrar h6 {
     font-size: 1.5rem;
     /*font-size: 15px;*/
 }
 
-h1, h2, h3, h4, h5, h6 {
+.marrar h1,
+.marrar h2,
+.marrar h3,
+.marrar h4,
+.marrar h5,
+.marrar h6 {
     position: relative;
     /*margin: 10px 0;*/
     color: #3C3C3C; /*3C3C3C 666666 353740*/
@@ -135,6 +140,11 @@ header nav div button.btn:hover {
     color: #2C97DE;
 }
 
+header nav div button.btn:focus,
+header nav div button.btn:active:focus{
+    outline: none;
+    outline-offset: 0;
+}
 nav.navbar-inverse {
     background: transparent;
     border: none;
@@ -199,11 +209,16 @@ Hero
 }
 
 .pub {
+    /*margin: 130px 0 0 0;*/
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     position: absolute;
+}
+.pub h1,
+.pub h3{
+    color: white;
 }
 
 .table {
@@ -220,6 +235,10 @@ Hero
     text-align: center;
     vertical-align: middle;
     color: white;
+}
+
+.headerNav{
+    position: absolute;
 }
 
 .down-arrow {
@@ -544,6 +563,19 @@ outros tamanhos de erc�
 /* =====================
 device max-with: 320px
 ========================*/
+@media (max-width: 780px){
+    .headerNav div div a {
+        font-size: 5.3rem;
+        font-size: 53px;
+    }
+
+    .pub {
+        margin-top: 50%;
+
+        /*padding-top: 68%;*/
+    }
+}
+
 @media (max-width: 620px) {
 
     .headerNav div div a {
@@ -560,7 +592,6 @@ device max-with: 320px
         line-height: 50%;
         padding: .5em 0 .5em 0;
         margin: .7em 2em 0 0;
-
     }
 
     header nav {
@@ -568,7 +599,6 @@ device max-with: 320px
     }
 
     footer .row {
-
         /*margin: 0;*/
         padding-bottom: 10px;
     }
@@ -706,30 +736,16 @@ Lab
     border-radius: 6px;
 }
 
+
 /* ==========================================================================
-Te�ria
+Teória
 ========================================================================== */
 
 .aestudar {
-    /*background: #FFFFFF;*/
-    height: 600px;
-    /*box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;*/
-    /*border-radius: 4px;*/
+    height: 500px;
     position: relative;
     padding: 0;
 }
-
-/*.exercicios{
-    height: 100%;
-    width: 100%;
-    background: red;
-    top: 0;
-    left: 0;
-    z-index:2;
-    position: absolute;
-    opacity: 0.5;
-
-}*/
 
 .btn-teoria {
     float: right;
@@ -746,11 +762,11 @@ Te�ria
 }
 
 .btn-confirmar{
-   background: #76FF03;
+    background: #76FF03;
 }
 
 .btn-continuar{
-   background: #00BCD4;
+    background: #00BCD4;
 }
 
 .quenomevoudar {
@@ -794,7 +810,7 @@ Te�ria
     position: absolute;
     overflow-y: scroll;
     display: none;
-    padding: 50px;
+    padding: 60px;
 }
 
 #conteud {
@@ -804,4 +820,3 @@ Te�ria
 .opcoes{
     width: auto;
 }
-
