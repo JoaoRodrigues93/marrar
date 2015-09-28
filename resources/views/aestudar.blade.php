@@ -25,17 +25,17 @@
             botaoConfirmar.setAttribute("class", "btn btn-confirmar active");
             document.getElementById("hide").disabled=false;
             classe=document.getElementById('classe');
-            alert(classe.value);
 
             deSeleciona(classe.value);
             document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
             var opcaoEsc=document.getElementById(idEscolhido);
 
-            opcaoEsc.setAttribute('class', 'bg-success '+classe);
+            opcaoEsc.setAttribute('class', 'bg-success '+classe.value);
             opcaoEsc.style.borderRadius="5px";
         }
 
         function deSeleciona(classe) {
+
             for (i = 1; i <= 5; i++)
                 document.getElementById('opcao' + i).setAttribute('class', classe);
         }
@@ -281,19 +281,21 @@
             resposta=perguntas.innerHTML;
 
 
-            if (resposta == respostaEscolhida.value) {
-                // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
-                envio.setAttribute("class", 'envio-success');
+    /*
+                if (resposta == respostaEscolhida.value) {
+                    // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
+                    envio.setAttribute("class", 'envio-success');
 
-                content.innerHTML = "<p><strong>Parabens!</strong> acertaste a resposta</p>";
-                contAcertos++;
-            }
-            else {
-                envio.setAttribute("class",  'alert envio-error')
-                content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida est� errada." +
-                        " A resposta correcta �: " +resposta;
-                contErros++;
-            }
+                    content.innerHTML = "<p><strong>Parabéns!</strong> acertaste a resposta</p>";
+                    contAcertos++;
+                }
+                else {
+                    envio.setAttribute("class",  'alert envio-error')
+                    content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
+                            " A resposta correcta é : " +resposta;
+                    contErros++;
+                }
+    */
 
             //desabilita os radios button
             document.getElementById("example1").disabled = true;
@@ -359,7 +361,7 @@
 
                         } else if (contErros == 0) {
                             imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
-                            mensg.innerHTML = "Parab�ns, acertaste todas questoes";
+                            mensg.innerHTML = "Parabéns, acertaste todas questões";
                             mensg.style.color="green";
                             mensg.setAttribute('class','text-center');
                         }
