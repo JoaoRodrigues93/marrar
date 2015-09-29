@@ -77,6 +77,10 @@ Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
 
 Route::get('aestudar/{idCapitulo}/{tema}','ExercicioController@show');
 
+Route::get('estudar/{idCapitulo}/{tema}','ExercicioController@show');
+
+Route::get('estudar','ExercicioController@estudar');
+
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');
 
