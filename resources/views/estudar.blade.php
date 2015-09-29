@@ -23,7 +23,7 @@
             </div>
 
         </div>
-        <div class="row botoes">
+        <div id="botoes" class="row botoes">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <button id="btn_teoria" class="btn btn-teoria" onclick="abrirTeoria()">Teória</button>
             </div>
@@ -37,13 +37,18 @@
 
     <script>
 
+        var val = false;
+
         function abrirTeoria() {
 
-            var val = false;
 
+            document.getElementById('botoes').setAttribute('class', 'row botoes top' );
+
+            if(!val){
+                $('.teoria').load("/teoria.html");
+                val = true;
+            }
 //            $("#conteud").load("/teoria.html");
-            $('.teoria').load("/teoria.html");
-
             $('.teoria').css({
                 'display': 'block'
             });
@@ -71,6 +76,8 @@
             $('.exercicios').css({
                 'display': 'block'
             });
+
+            document.getElementById('botoes').setAttribute('class', 'row botoes');
 
             /*$('body').css({
              'overflow-x': 'scroll'
