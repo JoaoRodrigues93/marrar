@@ -207,6 +207,7 @@ body {
     margin-right: -20px;
     /*background-color: #e1e1e1;*/
     padding: 19px;
+    /*box-shadow: none;*/
 }
 
 .envio-success {
