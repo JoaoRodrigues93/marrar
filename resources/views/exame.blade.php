@@ -13,7 +13,9 @@ Marrar: Exame
                     opcaoEscolhida.style.borderRadius = "5px";
                     var btn = document.getElementById('nav' + nr);
                     var respostaEscolhida = document.getElementById("resposta" + nr);
-                    respostaEscolhida.value = respota;
+                    var divResposta = document.getElementById('alinea'+id);
+                    respostaEscolhida.value = divResposta.innerHTML;
+                    //alert(respostaEscolhida.value);
                     btn.style.color = "#fff";
                     btn.style.backgroundColor = "#5cb85c";
                     btn.style.borderColor = "#4cae4c";
@@ -43,48 +45,45 @@ Marrar: Exame
             $i++;
             ?>
             <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                <h2 class="hidden-xs">{{$pergunta->questao}}</h2>
-                <h4 class="hidden-lg hidden-md hidden-sm">{{$pergunta->questao}}</h4>
+                <h2 class="hidden-xs"><?=$pergunta->questao?></h2>
+                <h4 class="hidden-lg hidden-md hidden-sm"><?=$pergunta->questao?></h4>
 
                 <div>
-                    <div id="opcao1{{$i}}" class="">
+                    <div id="opcao1{{$i}}" class="" onclick="escolheOpcao('1{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('1{{$i}}','{{$i}}','{{$pergunta->opcao1}}')"/>
-                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong>{{$pergunta->opcao1}}</label>
+                                   />
+                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong><div id="alinea1{{$i}}"><?= $pergunta->opcao1 ?></div></label>
                     </div>
 
-                    <div id="opcao2{{$i}}">
+                    <div id="opcao2{{$i}}" class="" onclick="escolheOpcao('2{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('2{{$i}}','{{$i}}','{{$pergunta->opcao2}}')"/>
-                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong>{{$pergunta->opcao2}}</label>
+                                   />
+                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong><div id="alinea2{{$i}}"><?= $pergunta->opcao2 ?></div></label>
                     </div>
-
-                    <div id="opcao3{{$i}}">
+                    <div id="opcao3{{$i}}" class="" onclick="escolheOpcao('3{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('3{{$i}}','{{$i}}','{{$pergunta->opcao3}}')"/>
-                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong>{{$pergunta->opcao3}}</label>
+                                   />
+                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong><div id="alinea3{{$i}}"><?= $pergunta->opcao3 ?></div></label>
                     </div>
-
-                    <div id="opcao4{{$i}}">
+                    <div id="opcao4{{$i}}" class="" onclick="escolheOpcao('4{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('4{{$i}}','{{$i}}','{{$pergunta->opcao4}}')"/>
-                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong>{{$pergunta->opcao4}}</label>
+                                   />
+                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong><div id="alinea4{{$i}}"><?= $pergunta->opcao4 ?></div></label>
                     </div>
-
-                    <div id="opcao5{{$i}}">
+                    <div id="opcao5{{$i}}" class="" onclick="escolheOpcao('5{{$i}}','{{$i}}')">
                         <p class="text-left">
+
                             <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('5{{$i}}','{{$i}}','{{$pergunta->opcao5}}')"/>
-                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong>{{$pergunta->opcao5}}</label>
-                        </p>
+                                   />
+                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong><div id="alinea5{{$i}}"><?= $pergunta->opcao5 ?></div></label>
                     </div>
                 </div>
             </div>
