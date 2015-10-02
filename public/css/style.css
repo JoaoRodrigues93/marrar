@@ -203,11 +203,13 @@ body {
     margin-bottom: -20px;
     height: auto;
     width: auto;
-    margin-left: -20px;
-    margin-right: -20px;
+    margin-left: -15px;
+    margin-right: -15px;
     /*background-color: #e1e1e1;*/
     padding: 19px;
-    /*box-shadow: none;*/
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 
 .envio-success {
@@ -221,6 +223,9 @@ body {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     padding: 19px;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 
 .envio-error {
@@ -234,6 +239,9 @@ body {
     background-color: #f2dede;
     border-color: #ebccd1;
     padding: 19px;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 
 #divPrincipal{
@@ -316,3 +324,23 @@ scrollbar
 }
 
 /* Fim do CSS para Perfil e editarPerfil */
+
+
+/*#op1 > p > img,#op2 > p > img,#op3 > p > img,#op4 > p > img,#op5 > p > img{
+    width: 125px;
+    height: 125px;
+
+}*/
+
+/*#op1 p img{
+    width: 125px;
+    height: 125px;
+    border-style: solid;
+    border-color: #ff0000;
+    border-width:20px;
+}*/
+.selecionar{
+    width: 95%;
+    padding-left: 15px;
+
+}

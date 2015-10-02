@@ -18,6 +18,9 @@
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.min.js')}} "></script>
+        <link href="{{URL::asset('favs/m_marrar_32.png')}} " rel="shortcut icon">
+
+
     @show
 </head>
 <body>

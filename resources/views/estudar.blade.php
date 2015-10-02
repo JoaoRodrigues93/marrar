@@ -19,22 +19,35 @@
                 Teória
             </div>
 
-            <script >
+            <script>
+               /* window.onload = function () {
+                    alert("funcionou");
+                    var label = document.getElementById('op1');
+                    label.style.border = "solid 20px red";
+                    label.style.width = "100px";
+                    label.style.height = "100px";
+
+                }*/
                 function alteraResposta(opcaoEscolhida, idEscolhido) {
                     var botaoConfirmar = document.getElementById("hide");
                     var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
                     botaoConfirmar.setAttribute("class", "btn btn-success btn-lg active");
                     document.getElementById("hide").disabled=false;
-                    deSeleciona();
+                    var classe=document.getElementById('classe');
+
+                    deSeleciona(classe.value);
                     document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
                     var opcaoEsc=document.getElementById(idEscolhido);
-                    opcaoEsc.setAttribute('class', 'bg-success');
+
+                    opcaoEsc.setAttribute('class', 'bg-success '+classe.value);
                     opcaoEsc.style.borderRadius="5px";
                 }
 
-                function deSeleciona() {
+
+                function deSeleciona(classe) {
+
                     for (i = 1; i <= 5; i++)
-                        document.getElementById('opcao' + i).setAttribute('class', '');
+                        document.getElementById('opcao' + i).setAttribute('class', classe);
                 }
                 function check() {
 
@@ -43,6 +56,7 @@
 
             </script>
 
+
             <div class="exercicios" onload="inicio()">
 
                 <div  class="content-fluid" id="conteud">
@@ -50,9 +64,9 @@
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
+                        {{--<div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
+                        <div class="row"><h1></h1></div>--}}
 
                         <div class=" row">
                             <img class="center-block" id="imagem" src=''/>
@@ -116,7 +130,7 @@
 
                                     </div>
 
-                                    <div id="opcao2">
+                                    <div id="opcao2" >
 
                                         {!! Form::radio('example', 1, false, ['class' => 'field radio',
                                         'id'=>'example2','onclick'=>"alteraResposta('op2','opcao2')"]) !!}
@@ -151,6 +165,7 @@
                                         {!!Form::hidden('respostaEscolhida','',array('id'=>'respostaEscolhida'))!!}
                                         {!!Form::hidden('id',"$pergunta->id",array('id'=>'id'))!!}
                                         {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
+                                        {!!Form::hidden('classe','',array('id'=>'classe'))!!}
                                         {{--{!!Form::hidden('respostaCerta',$pergunta->opcaoCorrecta,array('id'=>'respostaCerta'))!!}--}}
 
                                     </div>
@@ -219,66 +234,6 @@
         </div>
 
     </div>
-
-
-    <script>
-
-        var val = false;
-
-        function abrirTeoria() {
-
-
-            document.getElementById('botoes').setAttribute('class', 'row botoes top' );
-
-            if(!val){
-                $('.teoria').load("/teoria.html");
-                val = true;
-            }
-//            $("#conteud").load("/teoria.html");
-            $('.teoria').css({
-                'display': 'block'
-            });
-
-            $('.exercicios').css({
-                'display': 'none'
-            });
-
-            /*$('body').css({
-             'overflow-x': 'hidden'
-             });*/
-
-
-
-            document.getElementById('btn_exercicio').disabled = false;
-            document.getElementById('btn_teoria').disabled = true;
-        }
-
-        function abrirExercicio() {
-
-            $('.teoria').css({
-                'display': 'none'
-            });
-
-            $('.exercicios').css({
-                'display': 'block'
-            });
-
-            document.getElementById('botoes').setAttribute('class', 'row botoes');
-
-            /*$('body').css({
-             'overflow-x': 'scroll'
-             });*/
-
-            document.getElementById('btn_exercicio').disabled = true;
-            document.getElementById('btn_teoria').disabled = false;
-        }
-        
-        $(document).ready(function () {
-
-            vaiPraProximo();
-
-        });
-    </script>
 
 
     <script>
@@ -366,7 +321,7 @@
             else {
                 envio.setAttribute("class",  'well alert envio-error')
                 content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
-                        " A resposta correcta é: " +resposta;
+                " A resposta correcta é: " +resposta;
                 contErros++;
             }
 
@@ -376,7 +331,8 @@
             document.getElementById("example3").disabled = true;
             document.getElementById("example4").disabled = true;
             document.getElementById("example5").disabled = true;
-            deSeleciona();
+            var classe=document.getElementById('classe');
+            deSeleciona(classe.value);
 //progress bar
             var bar = document.getElementById("progressBar");
             var barMessage = document.getElementById("barMessage");//mensagem no progress bar
@@ -423,17 +379,17 @@
 
                         var mensg = document.getElementById("mensg");
                         mensagemFinal.setAttribute('class', "panel panel-body visible");
-
+                        var percentagemCerto=(contAcertos*100)/nrPerguntas;
 
                         //mensagem com nr de acertos e nr de erros
                         var imagem = document.getElementById("imagem");
-                        if (contAcertos == 0) {
+                        if (percentagemCerto < 50) {
                             imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
                             mensg.innerHTML = "Estude mais e tente de novo!";
                             mensg.setAttribute('class','text-center');
                             mensg.style.color="red";
 
-                        } else if (contErros == 0) {
+                        } else if (percentagemCerto > 75) {
                             imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
                             mensg.innerHTML = "Parabéns, acertaste todas questoes";
                             mensg.style.color="green";
@@ -456,7 +412,6 @@
                     else {
 
                         //  alert(perguntasJson);
-
                         pergunta = JSON.parse(pergunta);
                         var questao = document.getElementById("questao");
                         var op1 = document.getElementById("op1");
@@ -467,6 +422,35 @@
 
 //                               var pergunta;
 //                               pergunta = perguntas.perguntas[2];
+
+                        var div1 = document.getElementById("opcao1");
+                        var div2 = document.getElementById("opcao2");
+                        var div3 = document.getElementById("opcao3");
+                        var div4 = document.getElementById("opcao4");
+                        var div5 = document.getElementById("opcao5");
+                        var classe=document.getElementById('classe');
+
+                        if(pergunta.imagem==true){
+
+                            div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div4.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div5.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+
+                            classe.value='col-lg-2 col-md-2 col-sm-6 col-xs-12 opcaoExercicios';
+
+                        }
+
+                        else{
+                            div1.setAttribute('class','selecionar');
+                            div2.setAttribute('class','selecionar');
+                            div3.setAttribute('class','selecionar');
+                            div4.setAttribute('class','selecionar');
+                            div5.setAttribute('class','selecionar');
+                            classe.value='selecionar';
+
+                        }
 
                         questao.innerHTML = pergunta.questao;
                         op1.innerHTML = pergunta.opcao1;
@@ -516,5 +500,69 @@
         }
 
     </script>
+
+
+
+    <script>
+
+        var val = false;
+
+        function abrirTeoria() {
+
+
+            document.getElementById('botoes').setAttribute('class', 'row botoes top' );
+
+            if(!val){
+                $('.teoria').load("/teoria.html");
+                val = true;
+            }
+//            $("#conteud").load("/teoria.html");
+            $('.teoria').css({
+                'display': 'block'
+            });
+
+            $('.exercicios').css({
+                'display': 'none'
+            });
+
+            /*$('body').css({
+             'overflow-x': 'hidden'
+             });*/
+
+
+
+            document.getElementById('btn_exercicio').disabled = false;
+            document.getElementById('btn_teoria').disabled = true;
+        }
+
+        function abrirExercicio() {
+
+            $('.teoria').css({
+                'display': 'none'
+            });
+
+            $('.exercicios').css({
+                'display': 'block'
+            });
+
+            document.getElementById('botoes').setAttribute('class', 'row botoes');
+
+            /*$('body').css({
+             'overflow-x': 'scroll'
+             });*/
+
+            document.getElementById('btn_exercicio').disabled = true;
+            document.getElementById('btn_teoria').disabled = false;
+        }
+        
+        $(document).ready(function () {
+
+            vaiPraProximo();
+
+        });
+    </script>
+
+
+
 
 @stop
