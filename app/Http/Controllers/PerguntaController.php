@@ -50,8 +50,8 @@ public function registaPerguntas(Request $request){
     $pergunta -> opcaoCorrecta = $request -> input('opcaoCorrecta');
 
     $string1=strstr($pergunta -> opcao1,'<p><img');
-    $pergunta->opcao1 = str_replace("width", " ", $pergunta->opcao1);
-    $pergunta->opcao1 = str_replace("height", " ", $pergunta->opcao1);
+ /*   $pergunta->opcao1 = str_replace("width", " ", $pergunta->opcao1);
+    $pergunta->opcao1 = str_replace("height", " ", $pergunta->opcao1);*/
 
     /*$string4=strstr($pergunta -> opcao4,'<p><img');
     $string5=strstr($pergunta -> opcao5,'<p><img');*/

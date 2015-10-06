@@ -8,13 +8,20 @@
     @parent
     {{--<link rel="stylesheet" href="{{URL::asset('css/marrar.css')}}">--}}
     <link rel="stylesheet" href="{{URL::asset('css/estudar.css')}}">
+    <script src="{{URL::asset("js/progressbar.js")}}"></script>
+    <script src="{{URL::asset("js/progressbar.min.js")}}"></script>
 @stop
 
 
 @section('body')
     <div class="well estudar">
+        <div class="container">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right" style="color: grey">Desistir</p></a></div>
 
-        <div class="row exer-teoria">
+
+        </div>
+        <div >
             <div class="teoria">
                 Teória
             </div>
@@ -61,45 +68,96 @@
 
                 <div  class="content-fluid" id="conteud">
                     <div id="mensagemFinal" class="hidden">
-                        <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
+
                         {{--<div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>--}}
+                        <div class="container">
 
-                        <div class=" row">
-                            <img class="center-block" id="imagem" src=''/>
-
-                            <h1 style="color: green" id="mensg"></h1>
-                            {{--<small> <p  id="nrAcertos"></p>
-                                <p  id="nrErros"></p></small>--}}
+                            <div id="resultadoF" class="row">
 
 
-                            <p class="text-center text-success" id="nrAcertos"></p>
-                            <p  class="text-center text-danger" id="nrErros"></p>
+                                   {{-- <img class="center-block" id="imagem" src=''/>--}}
+                                <div class="row">
+                                    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-3"> </div>
+                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                        <div class="progress-bar"  id="example-percent-container" role="progressbar"
+                                                                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:50% ; background-color:white;">
+                                        </div> </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"> </div>
 
+                                </div>
+
+                                    <h3 style="color: green" id="mensg"></h3>
+
+                                    <p class="text-center text-success" id="nrAcertos"></p>
+                                    <p  class="text-center text-danger" id="nrErros"></p>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="row"><h1></h1></div>
+                        {{--    <div class="col-lg-1 col-md-1 col-sm-1">
+                                <div class="row"><h1></h1></div>
+                                <div class="row"><h1></h1></div>
+                                <div class="row"><h1></h1></div>
+                                <div class="row">
+                                    <button id="seta1" class="seta" onclick="seta()"> → </button>
+                                    <a href="/home">  <button id="seta2" class="seta" style="visibility: hidden">  → </button> </a>
+                                </div>
+                               <div class="row"></div>
+                            </div>--}}
 
                         </div>
+                        <div  class=" ">
+                            <div class="row">
+
+                                <ul class="pager">
+                                    <li class="previous"><button  class="btn btn-success btn-md left" id="cont1" style="margin-left: 5px" onclick="reload()">Refazer</button></li>
+                                    <li class="next"><a style="padding: 0; margin: 5px"  href="/home">
+                                            <button  class="btn btn-primary
+                                            btn-md"  id="cont2">Terminar</button>
+
+                                        </a></li>
+                                </ul>
+
+
+                                   {{-- <div class="left"  style="padding-right: 5px">
+                                        <button  class="btn btn-success btn-lg left" id="cont1" style="margin-left: 5px" onclick="reload()">Refazer</button></div>
+                                    <div class="right" style="padding-left: 5px">
+                                        <a href="/home">
+                                            <button  class="btn btn-primary
+                                            btn-lg"  id="cont2">Terminar</button>
+
+                                        </a>
+                                        </div>
+--}}
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+
+                        {{--<div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
                         <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
-                        <div class="row"><h1></h1></div>
+                        <div class="row"><h1></h1></div>--}}
                     </div>
 
-
-                    <div id="divPrincipal" class="well">
+                    <div id="divPrincipal" >
 
                         <div class="row">
 
                             <div class="col-md-10 col-sm-10 col-xs-8" ><h2 class="text-primary">{!!$caminho!!}</h2>
                             </div>
-                            <div class="col-md-2 col-sm-2 col-xs-4">
-                                <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right text-danger">Desistir</p></a></div>
+
                         </div>
                         @if(!$pergunta)
                             Nao ha exercicio disponivel
@@ -119,7 +177,7 @@
 
 
 
-                                <div class="container">
+                                <div class="row" style="background-color: #ffffff">
 
                                     <div id="opcao1">
 
@@ -224,15 +282,18 @@
             </div>
 
         </div>
+
         <div id="botoes" class="row botoes">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <button id="btn_teoria" class="btn btn-teoria" onclick="abrirTeoria()">Teória</button>
+                <button id="btn_teoria" class=" btn btn-teoria" onclick="abrirTeoria()">Teória</button>
+
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <button id="btn_exercicio" class="btn btn-exer" disabled onclick="abrirExercicio()">Exercicio</button>
-            </div>
-        </div>
 
+            </div>
+
+        </div>
     </div>
 
 
@@ -315,13 +376,13 @@
                 // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
                 envio.setAttribute("class", 'well envio-success');
 
-                content.innerHTML = "<p><strong>Parabens!</strong> acertaste a resposta</p>";
+                content.innerHTML = "<p><strong>Certo!</strong></p>";
                 contAcertos++;
             }
             else {
                 envio.setAttribute("class",  'well alert envio-error')
-                content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
-                " A resposta correcta é: " +resposta;
+                content.innerHTML = "<strong>Errado!</strong>" +
+                " A resposta correcta é:" +resposta;
                 contErros++;
             }
 
@@ -331,8 +392,8 @@
             document.getElementById("example3").disabled = true;
             document.getElementById("example4").disabled = true;
             document.getElementById("example5").disabled = true;
-            var classe=document.getElementById('classe');
-            deSeleciona(classe.value);
+           // var classe=document.getElementById('classe');
+           // deSeleciona(classe.value);
 //progress bar
             var bar = document.getElementById("progressBar");
             var barMessage = document.getElementById("barMessage");//mensagem no progress bar
@@ -343,13 +404,29 @@
             document.getElementById('show').disabled=false;
             document.getElementById("content").style.visibility="none";
 
+
         }
         //metodo ao clicar no botao proximo
 
+        function seta(){
+            //botao de seta continuar
+            var cont1=document.getElementById("cont1");
+            var cont2=document.getElementById("cont2");
+            cont1.style.display="none";
+            cont2.style.display="block";
+
+            var resultadoF=document.getElementById("resultadoF");
+            var refazer=document.getElementById("refazer");
+            refazer.setAttribute('class',' panel-body visible');
+            resultadoF.setAttribute('class','hidden');
+            var ref=document.getElementById("ref");
+
+
+        }
 
         function vaiPraProximo() {
 
-            //  alert('Aqui');
+            //alert('Aqui');
             var content= document.getElementById("content");
             content.innerHTML="";
             content.style.visibility="none";
@@ -371,26 +448,56 @@
 
                     if (pergunta == "vazio") {
                         var mensagemFinal = document.getElementById("mensagemFinal");
+                        var btn_teoria = document.getElementById("btn_teoria");
+                        var btn_exercicio = document.getElementById("btn_exercicio");
 
                         var divPrincipal = document.getElementById("divPrincipal");
                         divPrincipal.setAttribute("class", "hidden");
-                        var divWidth = divPrincipal.clientWidth;
-                        var divHeight = divPrincipal.clientHeight;
+                       btn_exercicio.setAttribute('class','hidden');
+                        btn_teoria.setAttribute('class','hidden');
+
 
                         var mensg = document.getElementById("mensg");
-                        mensagemFinal.setAttribute('class', "panel panel-body visible");
+                        mensagemFinal.setAttribute('class', " panel-body visible");
                         var percentagemCerto=(contAcertos*100)/nrPerguntas;
+//alert(percentagemCerto);
+                        var cor;
+                        if (percentagemCerto < 50) {cor="#ff0000";} else
+                        if (percentagemCerto > 75) {cor="#008000";}
+                        else {cor="#FFA500";}
+                        var circle = new ProgressBar.Circle('#example-percent-container', {
+
+
+                            color: cor,
+                            strokeWidth: 3,
+                            trailWidth: 1,
+                            duration: 1000,
+                            text: {
+                                value: '0'
+                            },
+                            step: function (state, bar) {
+                                bar.setText((bar.value() * 100).toFixed(0)+"%");
+
+                            }
+                        });
+
+
+                        circle.animate(1, function () {
+                            circle.animate(percentagemCerto/100);
+
+                        } );
+
 
                         //mensagem com nr de acertos e nr de erros
                         var imagem = document.getElementById("imagem");
                         if (percentagemCerto < 50) {
-                            imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');
+                           /* imagem.setAttribute('src', '{{URL::asset('img/sad.png')}}');*/
                             mensg.innerHTML = "Estude mais e tente de novo!";
                             mensg.setAttribute('class','text-center');
                             mensg.style.color="red";
 
                         } else if (percentagemCerto > 75) {
-                            imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');
+                           /* imagem.setAttribute('src', '{{URL::asset('img/1437563374_happy.png')}}');*/
                             mensg.innerHTML = "Parabéns, acertaste todas questoes";
                             mensg.style.color="green";
                             mensg.setAttribute('class','text-center');
@@ -405,6 +512,9 @@
                         nrAcertos.innerHTML = "Certas: " + contAcertos ;
                         var nrErros = document.getElementById("nrErros");
                         nrErros.innerHTML = "Erradas: " + contErros ;
+
+
+
 
                         return; //Para não executar o codigo abaixo
                     }
@@ -432,13 +542,13 @@
 
                         if(pergunta.imagem==true){
 
-                            div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div4.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div5.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
+                            div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-6');
+                            div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-6');
+                            div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-6');
+                            div4.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-6');
+                            div5.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-6');
 
-                            classe.value='col-lg-2 col-md-2 col-sm-6 col-xs-12 opcaoExercicios';
+                            classe.value='col-lg-2 col-md-2 col-sm-6 col-xs-6 opcaoExercicios';
 
                         }
 
@@ -554,12 +664,17 @@
             document.getElementById('btn_exercicio').disabled = true;
             document.getElementById('btn_teoria').disabled = false;
         }
-        
+
         $(document).ready(function () {
 
             vaiPraProximo();
 
         });
+
+        function reload(){
+           var uriActual= window.location.pathname;
+            window.location.assign(uriActual);
+        }
     </script>
 
 
