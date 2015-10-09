@@ -22,8 +22,6 @@ Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplin
 Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
 Route::post('editar-disciplina','DisciplinaController@editar');
 
-
-
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');
 Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');

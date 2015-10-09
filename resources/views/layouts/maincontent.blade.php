@@ -88,8 +88,16 @@
                             $fotolink = $estudante->foto;
                         }
                         else {
-                            //Imagem para os que criaram perfil no site
-                            $fotolink = Request::root().$estudante->foto;
+                            if ($estudante->foto == "")
+                            {
+                                //Sem Imagem Definida
+                                $fotolink = Request::root()."img/pessoa.png";
+                            }
+                            else
+                            {
+                                //Imagem para os que criaram perfil no site
+                                $fotolink = Request::root().$estudante->foto;
+                            }
                         }
                         ?>
                         <a><img width="24" height="24" class="img-responsive" src="{{$fotolink}}"/></a>
