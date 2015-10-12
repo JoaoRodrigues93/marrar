@@ -22,8 +22,6 @@ Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplin
 Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
 Route::post('editar-disciplina','DisciplinaController@editar');
 
-
-
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');
 Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');
@@ -76,10 +74,6 @@ Route::get('buscar-exercicios','PerguntaController@buscarExercicios');
 Route::get('exercicio/{idCapitulo}/{tema}','ExercicioController@show');
 
 Route::get('aestudar/{idCapitulo}/{tema}','ExercicioController@show');
-
-Route::get('estudar/{idCapitulo}/{tema}','ExercicioController@show');
-
-Route::get('estudar','ExercicioController@estudar');
 
 Route::get('exercicio/resposta','ExercicioController@respostaCorrecta');
 Route::get('proximo','ExercicioController@respostaProximo');

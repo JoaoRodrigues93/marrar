@@ -1,7 +1,7 @@
 <?php $ranking=true;  ?>
 @extends('layouts.maincontent')
 @section('body')
-    <div class="form-group">
+    <div class="form-group well">
 
         <div class="container">
 
