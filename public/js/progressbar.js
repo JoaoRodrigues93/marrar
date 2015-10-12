@@ -11,6 +11,7 @@
          * By Jeremy Kahn - jeremyckahn@gmail.com
          */
 
+
 // UglifyJS define hack.  Used for unit testing.  Contents of this if are
 // compiled away.
         if (typeof SHIFTY_DEBUG_NOW === 'undefined') {
