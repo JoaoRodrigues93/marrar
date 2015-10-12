@@ -106,12 +106,24 @@ class ExameController extends Controller {
 
         foreach ($exame as $pergunta) {
             $idPergunta = $request->input("pergunta" . $nrPerguntaActual);
-            $repostaEscolhida = $request->input("resposta" . $nrPerguntaActual);
+            $opcaoEscolhida = $request->input("resposta" . $nrPerguntaActual);
             $respostaCorrecta = $pergunta->opcaoCorrecta;
-
-            if ($repostaEscolhida == $respostaCorrecta) {
+            
+            //$nrQuestaoEscolhida = substr($respostaEscolhida,1,1);
+            $nrOpcaoEscolhida = substr($opcaoEscolhida,0,1);
+            $respostaEscolhida ="";
+        switch ($nrOpcaoEscolhida){
+            case 1: $respostaEscolhida = $pergunta->opcao1; break;
+            case 2: $respostaEscolhida = $pergunta->opcao2; break;
+            case 3: $respostaEscolhida = $pergunta->opcao3; break;
+            case 4: $respostaEscolhida = $pergunta->opcao4; break;
+            case 5: $respostaEscolhida = $pergunta->opcao5; break;   
+        }
+            
+            if ($respostaCorrecta == $respostaEscolhida) {
                 $nrRepostasCertas++;
-            } else {
+                
+            } else {   
                 $nrRepostasErradas++;
             }
 

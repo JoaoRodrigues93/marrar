@@ -7,7 +7,7 @@ Marrar: Exame
 
 <script>
     var nrPerguntas = parseInt('{{$nrPerguntas}}');
-            function escolheOpcao(id, nr, respota) {
+            function escolheOpcao(id, nr) {
             deSeleciona(nr);
                     opcaoEscolhida = document.getElementById('opcao' + id);
                     opcaoEscolhida.setAttribute('class', 'bg-primary');
@@ -15,8 +15,7 @@ Marrar: Exame
                     var btn = document.getElementById('nav' + nr);
                     var respostaEscolhida = document.getElementById("resposta" + nr);
                     var divResposta = document.getElementById('alinea'+id);
-                    respostaEscolhida.value = divResposta.innerHTML;
-                    //alert(respostaEscolhida.value);
+                    respostaEscolhida.value = id;
                     btn.style.color = "#fff";
                     btn.style.backgroundColor = "#5cb85c";
                     btn.style.borderColor = "#4cae4c";
@@ -55,7 +54,7 @@ Marrar: Exame
 
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong><div class='alinea' id="alinea1{{$i}}"><?= $pergunta->opcao1 ?></div></label>
+                            <div class="row" for="resposta1{{$i}}"><strong class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-right">A. </strong><div class='alinea col-md-11 col-lg-11 col-sm-11 col-xs-11' id="alinea1{{$i}}"><?= $pergunta->opcao1 ?></div></div>
                     </div>
 
                     <div id="opcao2{{$i}}" class="opcao-exame" onclick="escolheOpcao('2{{$i}}','{{$i}}')">
@@ -63,28 +62,28 @@ Marrar: Exame
 
                             <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong><div class='alinea' id="alinea2{{$i}}"><?= $pergunta->opcao2 ?></div></label>
+                            <div class="row" for="resposta2{{$i}}"><strong class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-right">B. </strong><div class='alinea col-md-11 col-lg-11 col-sm-11 col-xs-11' id="alinea2{{$i}}"><?= $pergunta->opcao2 ?></div></div>
                     </div>
                     <div id="opcao3{{$i}}" class="opcao-exame" onclick="escolheOpcao('3{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong><div class='alinea' id="alinea3{{$i}}"><?= $pergunta->opcao3 ?></div></label>
+                            <div class="row" for="resposta3{{$i}}"><strong class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-right">C. </strong><div class='alinea col-md-11 col-lg-11 col-sm-11 col-xs-11' id="alinea3{{$i}}"><?= $pergunta->opcao3 ?></div></div>
                     </div>
                     <div id="opcao4{{$i}}" class="opcao-exame" onclick="escolheOpcao('4{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong><div class='alinea' id="alinea4{{$i}}"><?= $pergunta->opcao4 ?></div></label>
+                            <div class="row" for="resposta4{{$i}}"><strong class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-right">D. </strong><div class='alinea col-md-11 col-lg-11 col-sm-11 col-xs-11' id="alinea4{{$i}}"><?= $pergunta->opcao4 ?></div></div>
                     </div>
                     <div id="opcao5{{$i}}" class="opcao-exame" onclick="escolheOpcao('5{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong><div class='alinea' id="alinea5{{$i}}"><?= $pergunta->opcao5 ?></div></label>
+                            <div class="row" for="resposta5{{$i}}"><strong class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-right">E. </strong><div class='alinea col-md-11 col-lg-11 col-sm-11 col-xs-11' id="alinea5{{$i}}"><?= $pergunta->opcao5 ?></div></div>
                     </div>
                 </div>
             </div>
