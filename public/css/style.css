@@ -381,3 +381,7 @@ scrollbar
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 15px;}
+
+.bottom {
+    box-shadow: 0 5px 5px -5px #333;
+}
