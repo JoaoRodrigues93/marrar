@@ -4,6 +4,7 @@ Marrar: Exame
 @stop
 @section('body')
 
+
 <script>
     var nrPerguntas = parseInt('{{$nrPerguntas}}');
             function escolheOpcao(id, nr, respota) {
@@ -49,41 +50,41 @@ Marrar: Exame
                 <h4 class="hidden-lg hidden-md hidden-sm"><?=$pergunta->questao?></h4>
 
                 <div>
-                    <div id="opcao1{{$i}}" class="" onclick="escolheOpcao('1{{$i}}','{{$i}}')">
+                    <div id="opcao1{{$i}}" class="opcao-exame" onclick="escolheOpcao('1{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong><div id="alinea1{{$i}}"><?= $pergunta->opcao1 ?></div></label>
+                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong><div class='alinea' id="alinea1{{$i}}"><?= $pergunta->opcao1 ?></div></label>
                     </div>
 
-                    <div id="opcao2{{$i}}" class="" onclick="escolheOpcao('2{{$i}}','{{$i}}')">
+                    <div id="opcao2{{$i}}" class="opcao-exame" onclick="escolheOpcao('2{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong><div id="alinea2{{$i}}"><?= $pergunta->opcao2 ?></div></label>
+                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong><div class='alinea' id="alinea2{{$i}}"><?= $pergunta->opcao2 ?></div></label>
                     </div>
-                    <div id="opcao3{{$i}}" class="" onclick="escolheOpcao('3{{$i}}','{{$i}}')">
+                    <div id="opcao3{{$i}}" class="opcao-exame" onclick="escolheOpcao('3{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong><div id="alinea3{{$i}}"><?= $pergunta->opcao3 ?></div></label>
+                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong><div class='alinea' id="alinea3{{$i}}"><?= $pergunta->opcao3 ?></div></label>
                     </div>
-                    <div id="opcao4{{$i}}" class="" onclick="escolheOpcao('4{{$i}}','{{$i}}')">
+                    <div id="opcao4{{$i}}" class="opcao-exame" onclick="escolheOpcao('4{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong><div id="alinea4{{$i}}"><?= $pergunta->opcao4 ?></div></label>
+                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong><div class='alinea' id="alinea4{{$i}}"><?= $pergunta->opcao4 ?></div></label>
                     </div>
-                    <div id="opcao5{{$i}}" class="" onclick="escolheOpcao('5{{$i}}','{{$i}}')">
+                    <div id="opcao5{{$i}}" class="opcao-exame" onclick="escolheOpcao('5{{$i}}','{{$i}}')">
                         <p class="text-left">
 
                             <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
                                    />
-                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong><div id="alinea5{{$i}}"><?= $pergunta->opcao5 ?></div></label>
+                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong><div class='alinea' id="alinea5{{$i}}"><?= $pergunta->opcao5 ?></div></label>
                     </div>
                 </div>
             </div>
