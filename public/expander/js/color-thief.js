@@ -194,6 +194,9 @@ function styleText(bg, palette, target) {
 
     var colors = inverseColors(bg, palette);
 
-    $('.' + target + ' .primaryColor').css('color', 'rgb(' + colors[0].join(',') + ')');
-    $('.' + target + ' .secondaryColor').css('color', 'rgb(' + colors[1].join(',') + ')');
+   /* $('.' + target + ' .primaryColor').css('color', 'rgb(' + colors[0].join(',') + ')');
+    $('.' + target + ' .secondaryColor').css('color', 'rgb(' + colors[1].join(',') + ')');*/
+
+    $('.' + target + ' .primaryColor').css('color', 'rgb(255,255,255)');
+    $('.' + target + ' .secondaryColor').css('color', 'rgb(255,255,255)');
 }

@@ -3,7 +3,6 @@
 @section('title')
     Marrar:Exercicios
 @stop
-
 @section('body')
     <style>
         body{
@@ -12,41 +11,29 @@
     </style>
 
     <script >
-
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botaoConfirmar = document.getElementById("hide");
             var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
             botaoConfirmar.setAttribute("class", "btn btn-success btn-lg active");
             document.getElementById("hide").disabled=false;
-            var classe=document.getElementById('classe');
-
-            deSeleciona(classe.value);
+            deSeleciona();
             document.getElementById('respostaEscolhida').setAttribute('value', valorDaOpcaoEsc);
             var opcaoEsc=document.getElementById(idEscolhido);
-
-            opcaoEsc.setAttribute('class', 'bg-success '+classe.value);
+            opcaoEsc.setAttribute('class', 'bg-success');
             opcaoEsc.style.borderRadius="5px";
         }
 
-
-        function deSeleciona(classe) {
-
+        function deSeleciona() {
             for (i = 1; i <= 5; i++)
-                document.getElementById('opcao' + i).setAttribute('class', classe);
+                document.getElementById('opcao' + i).setAttribute('class', '');
         }
         function check() {
 
             return confirm('Tem certeza que quer desistir?');
         }
 
-        /*
-        document.onload = function () {
-            var label = document.getElementById('op1');
-            label.style.border = "solid 20px red";
-            alert("funcionou");
-        }
-            */
     </script>
+
 
 
 
@@ -107,7 +94,7 @@
 
 
                         {!!Form::open(array('url' => 'exercicio')) !!}
-                         <h3 > {!! Form::label('questao',"", ['id'=>'questao']) !!} </h3>
+                        <h3 class="text-capitalize"> {!! Form::label('questao',"", ['id'=>'questao']) !!}</h3>
 
 
 
@@ -157,7 +144,6 @@
                                 {!!Form::hidden('respostaEscolhida','',array('id'=>'respostaEscolhida'))!!}
                                 {!!Form::hidden('id',"$pergunta->id",array('id'=>'id'))!!}
                                 {!!Form::hidden('proximo',$nrPerguntas,array('id'=>'proximo'))!!}
-                                {!!Form::hidden('classe','',array('id'=>'classe'))!!}
                                 {{--{!!Form::hidden('respostaCerta',$pergunta->opcaoCorrecta,array('id'=>'respostaCerta'))!!}--}}
 
                             </div>
@@ -317,8 +303,7 @@
             document.getElementById("example3").disabled = true;
             document.getElementById("example4").disabled = true;
             document.getElementById("example5").disabled = true;
-            var classe=document.getElementById('classe');
-            deSeleciona(classe.value);
+            deSeleciona();
 //progress bar
             var bar = document.getElementById("progressBar");
             var barMessage = document.getElementById("barMessage");//mensagem no progress bar
@@ -398,6 +383,7 @@
                     else {
 
                         //  alert(perguntasJson);
+
                          pergunta = JSON.parse(pergunta);
                         var questao = document.getElementById("questao");
                         var op1 = document.getElementById("op1");
@@ -408,35 +394,6 @@
 
 //                               var pergunta;
 //                               pergunta = perguntas.perguntas[2];
-
-                        var div1 = document.getElementById("opcao1");
-                        var div2 = document.getElementById("opcao2");
-                        var div3 = document.getElementById("opcao3");
-                        var div4 = document.getElementById("opcao4");
-                        var div5 = document.getElementById("opcao5");
-                        var classe=document.getElementById('classe');
-
-                        if(pergunta.imagem==true){
-
-                            div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div4.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-                            div5.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
-
-                            classe.value='col-lg-2 col-md-2 col-sm-6 col-xs-12';
-
-                        }
-
-                        else{
-                            div1.setAttribute('class','');
-                            div2.setAttribute('class','');
-                            div3.setAttribute('class','');
-                            div4.setAttribute('class','');
-                            div5.setAttribute('class','');
-                            classe.value='';
-
-                        }
 
                         questao.innerHTML = pergunta.questao;
                         op1.innerHTML = pergunta.opcao1;
@@ -494,7 +451,7 @@
 
         function abrirTeoria(){
 
-           $("#conteud").load("/teoria.html");
+            $("#conteud").load("/teoria.html");
 
             document.getElementById('btn_exercicio').disabled=false;
             document.getElementById('btn_teoria').disabled=true;

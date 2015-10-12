@@ -115,6 +115,33 @@ class ExercicioController extends Controller{
             $testeJson =json_encode($pergunta);
         }
 
+        /*foreach ($perguntas as $pergunta) {
+            if (strlen($testeJson) < 20) {
+                $testeJson .= "{\"questao\":\"$pergunta->questao\"," .
+                    "\"id\":\"$pergunta->id\"" .
+                    ",\"opcao1\":\"$pergunta->opcao1\"" .
+                    ",\"opcao2\":\"$pergunta->opcao2\"" .
+                    ",\"opcao3\":\"$pergunta->opcao3\"" .
+                    ",\"opcao4\":\"$pergunta->opcao4\"" .
+                    ",\"opcao5\":\"$pergunta->opcao5\"".
+                    ",\"opcaoCorrecta\":\"$pergunta->opcaoCorrecta\"}";
+
+            } else if(strlen($testeJson)>20) {
+                $testeJson .= ",{\"questao\":\"$pergunta->questao\"," .
+                    "\"id\":\"$pergunta->id\"" .
+                    ",\"opcao1\":\"$pergunta->opcao1\"" .
+                    ",\"opcao2\":\"$pergunta->opcao2\"" .
+                    ",\"opcao3\":\"$pergunta->opcao3\"" .
+                    ",\"opcao4\":\"$pergunta->opcao4\"" .
+                    ",\"opcao5\":\"$pergunta->opcao5\"".
+                    ",\"opcaoCorrecta\":\"$pergunta->opcaoCorrecta\"}";
+            }
+
+            $nrPerguntas++;
+
+        }*/
+
+        //$testeJson.=" ]";
 
         if($testeJson=="" || $testeJson==null)
             return "vazio";

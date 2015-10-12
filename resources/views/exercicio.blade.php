@@ -91,7 +91,7 @@
 
 
                         {!!Form::open(array('url' => 'exercicio')) !!}
-                        <?php ucfirst ?> <h3> {!! Form::label('questao',$pergunta->questao, ['id'=>'questao']) !!}</h3> ?>
+                        <h3 class="text-capitalize"> {!! Form::label('questao',$pergunta->questao, ['id'=>'questao']) !!}</h3>
 
                         <p>
 
