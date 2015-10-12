@@ -15,7 +15,7 @@
 
 
                         <div class="panel-group"  style="position: fixed ;" >
-                            <div class="panel panel-info" style="border: none">
+                            <div class="panel panel-info" style="border: none;box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;">
                                 <div class="panel panel-heading text-primary" style="background-color:#2c97de; color: #ffffff; border-color: #2c97de; border-bottom-left-radius: 0; border-bottom-right-radius: 0">
                                     {!! Form::label('perguntas',"Perguntas")!!}
                                 </div>
@@ -38,7 +38,7 @@
                         </div>
             {!! Form::hidden("testeValidacao",'false',['id'=>"testeValidacao"]) !!}
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
+            <div class="well col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background-color: #ffffff">
 
                <label> <h2 class="text-primary left text-capitalize col-lg-12 col-md-12 col-sm-12 col-xs-12" > Teste | {{$disciplina}} | {{$capitulo->nome}} </h2></label>
                 <hr width="100%">
@@ -213,7 +213,7 @@
 
                     {!!Form::button('Entregar',['class'=>'btn btn-primary','onclick'=>"processarPergunta()", 'id'=>'btn_entregar']) !!}
                 </div>
-                <hr width="100%">
+                {{--<hr width="100%">--}}
 
 
                 {!! Form::close() !!}
@@ -223,9 +223,9 @@
 
                     <div class="col-lg-2 col-md-2 hidden-sm hidden-xs" style="float :left;">
 
-                        <div class="panel-group" id="pergunta{{$i}}">
+                        <div class="panel-group" style="box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;" id="pergunta{{$i}}">
                             <div class="panel panel-info" style="border: none">
-                                <div class="panel panel-heading text-primary" style="background-color:#2c97de; color: #ffffff; border-color: #2c97de border-bottom-left-radius: 0; border-bottom-right-radius: 0">
+                                <div class="panel panel-heading text-primary" style="background-color: #2C97DE; color: #FFFFFF; border-color: #2C97DE; border-bottom-left-radius: 0; border-bottom-right-radius: 0">
 
                                     {!! Form::label('historico',"Histórico")!!}
                                 </div>

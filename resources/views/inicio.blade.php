@@ -56,7 +56,7 @@ $(document).ready(function () {
                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                             <ul class="nav navbar-nav navbar-right hidden-xs">
                                 <li>
-                                    <button  class="btn btn-default" data-toggle="modal" data-target="#loginModal">Entrar</button>
+                                    <button  class="btn entrar btn-default" data-toggle="modal" data-target="#loginModal">Entrar</button>
                                 </li>
                             </ul>
                         </div>

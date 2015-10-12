@@ -2,13 +2,15 @@
  * Created by Nelson Alexandrino on 23/07/2015.
  */
 
-$(document).ready(function() {
-    $(window).scroll(function() {
+$(document).ready(function () {
+    $(window).scroll(function () {
         var n = $(window).scrollTop();
         n >= 25 ?
-            ($('.headerNav').css({'background' : '#2C97DE' , 'padding-top': '4px', 'opacity': '0.96',
-            'box-shadow':'0 7px 7px -7px #666'})):
-            ($('.headerNav').css({'background' : 'transparent', 'padding-top': '25px', 'box-shadow':'none'}));
+            ($('.headerNav').css({
+                'background': '#2C97DE', 'padding-top': '4px', 'opacity': '0.96',
+                'box-shadow': '0 7px 7px -7px #666'
+            })) :
+            ($('.headerNav').css({'background': 'transparent', 'padding-top': '25px', 'box-shadow': 'none'}));
     });
 
     if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
@@ -30,13 +32,13 @@ $(document).ready(function() {
 
         $('html, body').stop().animate({
             scrollTop: $(window).scrollTop() - (distance * delta)
-        }, time );
+        }, time);
     }
 });
 
 
 $(document).ready(function () {
-    $('a.scrolar').bind('click', function(event) {
+    $('a.scrolar').bind('click', function (event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($anchor.attr('href')).offset().top - 50)
@@ -46,7 +48,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('a.scrolarAprender').bind('click', function(event) {
+    $('a.scrolarAprender').bind('click', function (event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($anchor.attr('href')).offset().top - 200)

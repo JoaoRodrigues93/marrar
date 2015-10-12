@@ -12,8 +12,13 @@
 
 @section('body')
 
+    {{--<style>
+        body{
+            background-color: #f9f8f9;
+        }
+    </style>--}}
 
-    <script>
+    <script >
         function alteraResposta(opcaoEscolhida, idEscolhido) {
             var botaoConfirmar = document.getElementById("hide");
             var valorDaOpcaoEsc = document.getElementById(opcaoEscolhida).innerHTML;
@@ -44,10 +49,11 @@
 
     <div class="well aestudar">
 
-        <div  class="quenomevoudar" onload="inicio()">
+        <div {{--style="background: yellow"--}} class="quenomevoudar" onload="inicio()">
             <div  class="row exercicios" id="conteud">
 
-
+                {{--<div onload="inicio()">--}}
+                    {{--<div  class="content-fluid" id="conteud">--}}
                         <div id="mensagemFinal" class="hidden">
                             <div class="row"><h1></h1></div>
                             <div class="row"><h1></h1></div>
@@ -266,7 +272,7 @@
             var respostaEscolhida = document.getElementById("respostaEscolhida");
 
 
-
+            //  alert(resposta+' '+respostaEscolhida.value);
 
 
             //compara a resposta escolhida com a resposta certa
@@ -275,7 +281,21 @@
             resposta=perguntas.innerHTML;
 
 
+    /*
+                if (resposta == respostaEscolhida.value) {
+                    // alert("Resposta: "+resposta+" resposta escolhida: "+respostaEscolhida.value);
+                    envio.setAttribute("class", 'envio-success');
 
+                    content.innerHTML = "<p><strong>Parabéns!</strong> acertaste a resposta</p>";
+                    contAcertos++;
+                }
+                else {
+                    envio.setAttribute("class",  'alert envio-error')
+                    content.innerHTML = "<p><strong>Que pena!</strong>A resposta escolhida está errada." +
+                            " A resposta correcta é : " +resposta;
+                    contErros++;
+                }
+    */
 
             //desabilita os radios button
             document.getElementById("example1").disabled = true;
@@ -382,7 +402,6 @@
                         var classe=document.getElementById('classe');
 
                        if(pergunta.imagem==true){
-
                             div1.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
                             div2.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');
                             div3.setAttribute('class','col-lg-2 col-md-2 col-sm-6 col-xs-12');

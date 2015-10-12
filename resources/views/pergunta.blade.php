@@ -73,6 +73,15 @@
 
            CKEDITOR.replaceAll();
 
+           CKEDITOR.replace( 'opcaoCorrecta', {
+               allowedContent:
+               'img[!src,alt,width,height]{float};' + // Note no {width,height}
+               'h1 h2 div'
+           } );
+
+
+
+
            //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
             function adicionaCapitulo() {
 
