@@ -5,7 +5,6 @@
 <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
 <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
 
-    <div class="well">
 
     <div class="panel panel-body disciplinaHome">
         <div class="row">
@@ -46,5 +45,5 @@
             @endforeach
         </div>
     </div>
-</div>
+
 
