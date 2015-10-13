@@ -390,3 +390,43 @@ scrollbar
 .dropdown-menu{
     border:none;
 }
+div.voltar{
+    padding-left: 10px;
+}
+div.voltar *{
+    display: inline-block;
+}
+
+div.voltar a{
+    position: absolute;
+    z-index: 1000;
+}
+
+div.voltar svg{
+    padding: 0;
+    margin: -7px 0 0 0;
+}
+
+div.voltar h3{
+    margin: 3.5px 0 0 33px;
+    font-size: 30px;
+    font-family: 'Cooper Black', 'Helvetica Neue', Arial, sans-serif;
+    color: #FFFFFF;
+    letter-spacing: 0.6px;
+    text-shadow: 1px 1px 2px #999;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.3s;
+    transition: opacity 0.5s, transform 0.3s;
+    position: absolute;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    z-index: 0;
+}
+
+div.voltar:hover h3 {
+    opacity: 1;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}

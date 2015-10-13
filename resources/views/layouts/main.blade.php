@@ -47,7 +47,7 @@
 
 @section('footer')
 
-    <p align="center">&copy; Marrar  {{date('Y')}}</p>
+    <p align="center">&copy; Marrar LDA  {{date('Y')}}</p>
     <p align="center">&copy; Todos direitos reservados</p>
 @show
 </body>
