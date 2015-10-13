@@ -18,6 +18,9 @@
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.min.js')}} "></script>
+        <link href="{{URL::asset('favs/m_marrar_32.png')}} " rel="shortcut icon">
+
+
     @show
 </head>
 <body>
@@ -57,13 +60,19 @@
                             @endif
                         </ul>
                     </li>
+                    @if($disciplinaEscolhida)
                     <li id="exames" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Exames<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+
                             <li><a href="/examenormal">Normal</a></li>
                             <li><a href="/examecolectivo">Colectivo</a></li>
+
                         </ul>
                     </li>
+                    @else
+                      <li>   <a href="#" data-toggle="tooltip" data-placement="bottom" title="Escolhe uma disciplina " >Exames</a> </li>
+                    @endif
                     <li id="username" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{$estudante->nome}}
                         @if($estudante->foto)
@@ -85,8 +94,16 @@
                             $fotolink = $estudante->foto;
                         }
                         else {
-                            //Imagem para os que criaram perfil no site
-                            $fotolink = Request::root().$estudante->foto;
+                            if ($estudante->foto == "")
+                            {
+                                //Sem Imagem Definida
+                                $fotolink = Request::root()."img/pessoa.png";
+                            }
+                            else
+                            {
+                                //Imagem para os que criaram perfil no site
+                                $fotolink = Request::root().$estudante->foto;
+                            }
                         }
                         ?>
                         <a><img width="24" height="24" class="img-responsive" src="{{$fotolink}}"/></a>
@@ -133,5 +150,11 @@
 @section('footer')
 
 @show
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>

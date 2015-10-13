@@ -5,7 +5,6 @@
 <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
 <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
 
-    <div class="container">
 
     <div class="panel panel-body disciplinaHome">
         <div class="row">
@@ -14,7 +13,6 @@
 
                 <div  class="col-md-3 col-lg-3 col-sm-4 col-xs-6 disc">
                     <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
-
 
                         <?php
                         $disciplin= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
@@ -46,5 +44,5 @@
             @endforeach
         </div>
     </div>
-</div>
+
 

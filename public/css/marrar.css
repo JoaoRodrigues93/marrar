@@ -10,15 +10,17 @@ body {
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
     margin: 0;
-    height: 100%;
-    background: #F5F5F5;
-
+    /*height: 100%;*/
+    background-color: #e9e9e9;
+    /*background: #F5F5F5;*/
+    padding: 0;
 }
 
 html {
     font-size: 62.5%;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
+    padding: 0;
 }
 
 /* ==========================================================================
@@ -124,10 +126,20 @@ header nav div button.btn {
     border-radius: 3em;
     width: 6em;
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
-    font-weight: 100;
+    /*font-weight: 300;*/
     text-decoration: none;
     line-height: 100%;
-    font-family: Helvetica, sans-serif;
+}
+
+header nav div button.btn:focus,
+header nav div button.btn:active:focus
+    /*.btn.active:focus,*/
+    /*.btn.focus,*/
+    /*.btn:active.focus,*/
+    /*.btn.active.focus*/
+{
+    outline: none;
+    outline-offset: 0;
 }
 
 header nav div button.btn:hover {
@@ -151,10 +163,9 @@ nav.navbar-inverse {
     border-radius: 3em;
     width: 6em;
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
-    font-weight: 100;
+    font-weight: 300;
     text-decoration: none;
     line-height: 100%;
-    font-family: Helvetica, sans-serif;
     transition: all 1.6s;
 }
 
@@ -175,7 +186,7 @@ Hero
     /*background: url(img.png) no-repeat 50% 300px, linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
 
     /*background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url("../img/vamosmarrar2249.png") no-repeat;*/
-    background: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("../img/vamosmarrar2249.png") no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("../img/vamosmarrar2249.jpg") no-repeat;
 
     /*background: linear-gradient(to bottom, rgba(44,151,222,.89),rgba(44,151,222,.2),
     rgba(44,151,222,0),rgba(44,151,222,0),rgba(44,151,222,0), rgba(255, 255, 255,0)),
@@ -193,9 +204,19 @@ Hero
 
 }
 
+.hero h1 {
+    color: white;
+    font-weight: 900;
+}
+
 .hero h1, .hero h3 {
     margin: 0;
     padding: 0;
+}
+
+.hero h3 {
+    color: white;
+    font-weight: 400;
 }
 
 .pub {
@@ -241,7 +262,7 @@ Hero
 }
 
 /* ==========================================================================
-Anima��o
+Animação
 ========================================================================== */
 
 .floating-arrow {
@@ -444,6 +465,8 @@ footer
 footer {
     background: #2C97DE;
     height: 8em;
+    margin: 0;
+    padding: 0;
 }
 
 footer div.row {
@@ -516,7 +539,7 @@ scrollbar
 ::-webkit-scrollbar-button {
     /*visibility: hidden;*/
     /*background: #CCC;*/
-    height: 15px;
+    height: 0;
 }
 
 ::-webkit-scrollbar-button:hover {
@@ -707,7 +730,7 @@ Lab
 }
 
 /* ==========================================================================
-Te�ria
+Teória
 ========================================================================== */
 
 .aestudar {
@@ -745,12 +768,12 @@ Te�ria
     background: #FF530D;
 }
 
-.btn-confirmar{
-   background: #76FF03;
+.btn-confirmar {
+    background: #76FF03;
 }
 
-.btn-continuar{
-   background: #00BCD4;
+.btn-continuar {
+    background: #00BCD4;
 }
 
 .quenomevoudar {
@@ -801,7 +824,7 @@ Te�ria
 
 }
 
-.opcoes{
+.opcoes {
     width: auto;
 }
 

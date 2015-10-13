@@ -29,7 +29,12 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
-                        <h1 id="perfil-header">{!!$perfil->nome!!} {!!$perfil->apelido!!}</h1>
+                        <style>
+                            h1 {
+                                color: #2c97de;
+                            }
+                        </style>
+                        <h1>{!!$perfil->nome!!} {!!$perfil->apelido!!}</h1>
                         {!! Form::hidden('id',$perfil->id,['class'=>'form-control']) !!}
                     </div>
 
