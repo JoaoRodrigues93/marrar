@@ -414,19 +414,19 @@ div.voltar h3{
     color: #FFFFFF;
     letter-spacing: 0.6px;
     text-shadow: 1px 1px 2px #999;
-    opacity: 0;
+    opacity: 1;
     -webkit-transition: opacity 0.5s, -webkit-transform 0.3s;
     transition: opacity 0.5s, transform 0.3s;
     position: absolute;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     z-index: 0;
 }
 
 div.voltar:hover h3 {
-    opacity: 1;
+    opacity: 0;
     -webkit-transition-delay: 0.3s;
     transition-delay: 0.3s;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
 }
