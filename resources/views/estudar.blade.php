@@ -293,7 +293,7 @@
         <div id="botoes" class="row botoes">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <button id="btn_teoria" class=" btn btn-teoria" onclick="abrirTeoria()">Teória</button>
-                <button class=" btn btn-teoria " id="cont1" style="margin-left: 5px; display: none; float: right;"
+                <button class="btn btn-primary " id="cont1" style="margin-left: 5px; display: none; float: right;"
                         onclick="reload()">Refazer
                 </button>
 
@@ -301,7 +301,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <button id="btn_exercicio" class="btn btn-exer" disabled onclick="abrirExercicio()">Exercicio</button>
                 <a id="a" href="/home">
-                    <button class="btn btn-exer " id="cont2" style="display: none">Terminar
+                    <button class="btn btn-success " id="cont2" style="display: none">Terminar
                     </button>
 
                 </a>
@@ -773,6 +773,18 @@
         }
 
 
+        if (document.layers) {
+            document.captureEvents(Event.KEYDOWN);
+        }
+
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+              var  button2 = document.getElementById("show");
+                button2.click();
+            }
+
+        };
 
     </script>
 

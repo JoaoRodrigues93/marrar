@@ -1,4 +1,10 @@
 @extends('layouts.maincontent')
+@section('links')
+    @parent
+    {{--<link rel="stylesheet" href="{{URL::asset('css/marrar.css')}}">--}}
+    <link rel="stylesheet" href="{{URL::asset('css/estudar.css')}}">
+@stop
+
 @section('body')
 <div class="well">
     <h1 class="text-success text-center">Resultado do exame
@@ -34,5 +40,28 @@
     @else
         <p class="alert-danger"><strong>Que pena!</strong> O resultado não é positivo.</p>
     @endif
+
+    <div  class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <button class="btn btn-primary  " style="margin-left: 5px; float: right;"
+                    onclick="reload()">Refazer
+            </button>
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <a id="a" href="/home">
+                <button class="btn btn-success "  >Terminar
+                </button>
+
+            </a>
 </div>
+    </div>
+</div>
+
+    <script>
+        function reload() {
+            var uriActual = window.location.pathname;
+            window.location.assign(uriActual);
+        }
+    </script>
 @stop
