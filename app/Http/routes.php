@@ -132,3 +132,5 @@ Route::get('teoria.html','ExercicioController@teoria');
 
 Route::get('capituloHomeMobile','CapituloController@showHomeMobile');
 Route::get('/capituloHomeMobile/{id}','TemaController@showTemaMobile');
+
+Route::get('/getExame','ExameController@devolveQuestoes');

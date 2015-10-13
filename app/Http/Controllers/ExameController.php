@@ -106,8 +106,9 @@ class ExameController extends Controller {
 
         foreach ($exame as $pergunta) {
             $idPergunta = $request->input("pergunta" . $nrPerguntaActual);
-            $repostaEscolhida = $request->input("resposta" . $nrPerguntaActual);
-            $respostaCorrecta = $pergunta->opcaoCorrecta;
+            $repostaEscolhida = $request->input("resposta".$nrPerguntaActual);
+
+            $respostaCorrecta = $request->input("correcta".$nrPerguntaActual);;
 
             if ($repostaEscolhida == $respostaCorrecta) {
                 $nrRepostasCertas++;
@@ -145,9 +146,20 @@ class ExameController extends Controller {
             $examenormal->dataRealizacao = date_create();
             $examenormal->estudante_id = $estudante->id;
 
-            $examenormal->save();
+            //$examenormal->save();
             return View('exameResultado', ['examenormal' => $examenormal]);
         }
     }
 
+    public function devolveQuestoes(){
+
+    $questoes=$_SESSION["exame"];
+
+        $questoes=json_encode($questoes);
+
+        return $questoes;
+
+    }
 }
+
+

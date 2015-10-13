@@ -6,32 +6,37 @@ Marrar: Exame
 
 <script>
     var nrPerguntas = parseInt('{{$nrPerguntas}}');
-            function escolheOpcao(id, nr, respota) {
-            deSeleciona(nr);
+
+
+    function escolheOpcao(id, nr, respota,classe) {
+            deSeleciona(nr,classe);
                     opcaoEscolhida = document.getElementById('opcao' + id);
-                    opcaoEscolhida.setAttribute('class', 'bg-primary');
+                    opcaoEscolhida.setAttribute('class', 'bg-success '+classe);
                     opcaoEscolhida.style.borderRadius = "5px";
                     var btn = document.getElementById('nav' + nr);
+                    opcao=document.getElementById(respota);
                     var respostaEscolhida = document.getElementById("resposta" + nr);
-                    respostaEscolhida.value = respota;
+                    respostaEscolhida.value = opcao.innerHTML;
                     btn.style.color = "#fff";
                     btn.style.backgroundColor = "#5cb85c";
                     btn.style.borderColor = "#4cae4c";
             }
-    function deSeleciona(nr) {
+    function deSeleciona(nr,classe) {
     for (i = 1; i <= 5; i++)
-            document.getElementById('opcao' + i + '' + nr).setAttribute('class', '');
+            document.getElementById('opcao' + i + '' + nr).setAttribute('class', classe);
     }
 </script>
 <div class="well">
     <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
-    <div class="exame-title">
-        <h2 class="text-primary hidden-xs"><strong>Exame | {{$disciplina->nome}}</strong></h2>
-        <h4 class="text-primary hidden-lg hidden-md hidden-sm">Exame | {{$disciplina->nome}}</h4>
+    <div class="exame-title row">
+        <h2 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9"><strong>Exame | {{$disciplina->nome}}</strong></h2>
+        <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9" >Exame | {{$disciplina->nome}}</h4>
+
+        <div class="exame-time  col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <h4 id="timer" class="text-right text-danger"></h4>
+        </div>
     </div>
-    <div class="exame-time">
-        <h4 id="timer" class="text-right text-danger"></h4>
-    </div>
+
 
     <div class="tab-content">
 
@@ -42,56 +47,113 @@ Marrar: Exame
             $idPerguntas [$i] = $pergunta->id;
             $i++;
             ?>
+
+            @if($pergunta->imagem==true)
+
+
+                <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
+                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                    <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
+
+                    <div class="row">
+                        <div id="opcao1{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                            <p class="text-left">
+
+                                <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
+                                       onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
+                        </div>
+
+                        <div id="opcao2{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                            <p class="text-left">
+
+                                <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
+                                       onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
+                        </div>
+
+                        <div id="opcao3{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                            <p class="text-left">
+
+                                <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
+                                       onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
+                        </div>
+
+                        <div id="opcao4{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                            <p class="text-left">
+
+                                <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
+                                       onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
+                        </div>
+
+                        <div id="opcao5{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                            <p class="text-left">
+                                <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
+                                       onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @else
+
             <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                <h2 class="hidden-xs">{{$pergunta->questao}}</h2>
-                <h4 class="hidden-lg hidden-md hidden-sm">{{$pergunta->questao}}</h4>
+                <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
 
                 <div>
-                    <div id="opcao1{{$i}}" class="">
+                    <div id="opcao1{{$i}}">
                         <p class="text-left">
 
-                            <input type="radio" id="resposta1{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('1{{$i}}','{{$i}}','{{$pergunta->opcao1}}')"/>
-                            <label class="texto-pergunta" for="resposta1{{$i}}"><strong>A. </strong>{{$pergunta->opcao1}}</label>
+                            <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
+                                   onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','')"/>
+                            <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
                     </div>
 
                     <div id="opcao2{{$i}}">
                         <p class="text-left">
 
-                            <input type="radio" id="resposta2{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('2{{$i}}','{{$i}}','{{$pergunta->opcao2}}')"/>
-                            <label class="texto-pergunta" for="resposta2{{$i}}"><strong>B. </strong>{{$pergunta->opcao2}}</label>
+                            <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
+                                   onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','')"/>
+                            <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
                     </div>
 
                     <div id="opcao3{{$i}}">
                         <p class="text-left">
 
-                            <input type="radio" id="resposta3{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('3{{$i}}','{{$i}}','{{$pergunta->opcao3}}')"/>
-                            <label class="texto-pergunta" for="resposta3{{$i}}"><strong>C. </strong>{{$pergunta->opcao3}}</label>
+                            <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
+                                   onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','')"/>
+                            <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
                     </div>
 
                     <div id="opcao4{{$i}}">
                         <p class="text-left">
 
-                            <input type="radio" id="resposta4{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('4{{$i}}','{{$i}}','{{$pergunta->opcao4}}')"/>
-                            <label class="texto-pergunta" for="resposta4{{$i}}"><strong>D. </strong>{{$pergunta->opcao4}}</label>
+                            <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
+                                   onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','')"/>
+                            <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
                     </div>
 
                     <div id="opcao5{{$i}}">
                         <p class="text-left">
-                            <input type="radio" id="resposta5{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('5{{$i}}','{{$i}}','{{$pergunta->opcao5}}')"/>
-                            <label class="texto-pergunta" for="resposta5{{$i}}"><strong>E. </strong>{{$pergunta->opcao5}}</label>
+                            <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
+                                   onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','')"/>
+                            <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
                         </p>
                     </div>
                 </div>
             </div>
+            @endif
         <?php } ?>
     </div>
     {!!Form::open(array("url" => "$action",'onsubmit'=>'return valido()')) !!}
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills col-xs-12 col-lg-12 col-md-12 col-sm-12">
         <?php for ($j = 1; $j <= $i; $j++) {
             ?>
             <li id="nav{{$j}}" class="<?php if ($j == 1) echo "active"; ?>"><a data-toggle="pill"
@@ -103,17 +165,20 @@ Marrar: Exame
                 ?>
             <input type="hidden" id="pergunta{{$j}}" name="pergunta{{$j}}" value="<?php echo $idPerguntas[$k]; ?>">
             <input type="hidden" id="resposta{{$j}}" name="resposta{{$j}}" value="">
+            <input type="hidden" id="correcta{{$j}}" name="correcta{{$j}}" value="">
+            <label id="correcta" style="display: none"></label>
             <?php
             $k++;
         }
         ?>
     </ul>
-    <div>
+    <div class="row">
+
         {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
     </div>
     {!!Form::close()!!}
-    <br>
-    <br>
+
+
 </div>
 <div class="modal fade" id="mensagem" role="dialog">
     <div class="modal-dialog">
@@ -144,7 +209,7 @@ Marrar: Exame
             respostaEscolhidaActual = document.getElementById("resposta" + i);
                     valorEscolhido = respostaEscolhidaActual.value;
                     if (valorEscolhido == "" || valorEscolhido == undefined) {
-            perguntaActualValida = false;
+                    perguntaActualValida = false;
                     valido = false;
             }
             }
@@ -161,6 +226,7 @@ Marrar: Exame
 
             if (confirmacao == true || valido == true) {
             desistirPermitido = false;
+                validaExame();
                     return true;
             }
             else
@@ -171,6 +237,7 @@ Marrar: Exame
     confirmacao = true;
             var btn = document.getElementById('entregar');
             desistirPermitido = false;
+            validaExame()
             btn.click();
             closeModal();
     }
@@ -202,17 +269,86 @@ Marrar: Exame
                     confirmacao = true;
                     closeModal();
                     var btn = document.getElementById('entregar');
+                validaExame();
                     btn.click();
             }
             };
             timer();
     }
+//Inicializa exame
 
+           var perguntasJson;
     window.onload = function () {
-    var Minutes = 60 * 60, display = document.querySelector('#timer');
-            retiraRadioButton ();
-            startTimer(Minutes, display);
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+
+        } else {
+
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+
+
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                perguntasJson = xmlhttp.responseText;
+
+                var perguntas = JSON.parse(perguntasJson);
+                var Minutes = 60 * 60, display = document.querySelector('#timer');
+                startTimer(Minutes, display);
+
+                for(i=0;i<perguntas.length;i++){
+
+                    div1=document.getElementById('op1'+(i+1));
+                    div2=document.getElementById('op2'+(i+1));
+                    div3=document.getElementById('op3'+(i+1));
+                    div4=document.getElementById('op4'+(i+1));
+                    div5=document.getElementById('op5'+(i+1));
+                    var questaoH2=document.getElementById('questaoH2'+(i+1));
+                    var questaoH4=document.getElementById('questaoH4'+(i+1));
+                    questaoH2.innerHTML=(i+1)+". "+perguntas[i].questao;
+                    questaoH4.innerHTML=(i+1)+". "+perguntas[i].questao;
+
+
+                    div1.innerHTML=perguntas[i].opcao1;
+                    div2.innerHTML=perguntas[i].opcao2;
+                    div4.innerHTML=perguntas[i].opcao4;
+                    div3.innerHTML=perguntas[i].opcao3;
+                    div5.innerHTML=perguntas[i].opcao5;
+
+                }
+
+            }
+
+        }
+
+        xmlhttp.open("GET","/getExame",true);
+
+        xmlhttp.send();
+
     };
+
+            function validaExame() {
+
+                var perguntas = JSON.parse(perguntasJson);
+
+                for (i = 0; i < perguntas.length; i++) {
+                    opcaoCorrecta = document.getElementById('correcta' + (i + 1));
+
+                    var pergunta = perguntas[i];
+
+                    label=document.getElementById('correcta');
+                    label.innerHTML=pergunta.opcaoCorrecta;
+
+
+                    opcaoCorrecta.value =label.innerHTML;
+
+                }
+            }
+
+
             function modalAlert(title, message) {
             var titleDiv, messageDiv;
                     titleDiv = document.getElementById("modal-title");
@@ -248,16 +384,6 @@ Marrar: Exame
     closeModal();
     }
 
-    function retiraRadioButton () {
-    var radioButton1;
-            for (i = 1; i <= nrPerguntas; i++){
-    for (j = 1; j <= 5; j++) {
-    radioButton1 = document.getElementById("resposta" + j + "" + i);
-            radioButton1.style.display = "none";
-    }
-    }
-    }
-
 
     window.onkeydown = function (event){
     submeter(event)
@@ -269,6 +395,7 @@ Marrar: Exame
             var button;
             if (code == 13){
     button = document.getElementById("entregar");
+                validaExame();
             button.click();
     }
     }
