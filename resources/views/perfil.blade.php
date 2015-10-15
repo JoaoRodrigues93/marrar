@@ -1,6 +1,15 @@
 <?php $ranking=true;  ?>
 @extends('layouts.maincontent')
 @section('body')
+
+    <style>
+        div.voltar:hover svg{
+            opacity: 1;
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+    </style>
+
     <div class="form-group">
 
         <div class="container">

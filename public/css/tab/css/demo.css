@@ -1,0 +1,12 @@
+.container > section {
+	padding: 5em 0;
+	font-size: 1.25em;
+	min-height: 100%;
+}
+
+@media screen and (max-width: 30em) {
+	.container > section {
+		padding: 3em 0;
+	}
+
+}

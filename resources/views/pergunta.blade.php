@@ -16,11 +16,6 @@
 
         @endif
 
-
-
-
-
-
             {!! Form::open( array('url'=> 'registar-pergunta')) !!}
         <a href="{{URL::to('perguntaview')}}" class="text-right">Clique aqui para ver a lista de perguntas</a>
 
@@ -39,32 +34,83 @@
         <div class="form-group">
 
             {!! Form::label('pergunta','Pergunta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('questao','',['class'=>'form-control', 'placeholder'=>'Introduza a questao aqui','rows'=>'2']) !!}
+            {!! Form::textarea('questao','',['id'=>'questao','class'=>'form-control', 'placeholder'=>'Introduza a questao aqui','rows'=>'2']) !!}
             {!! Form::label('correcto','Resposta correcta',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcaoCorrecta','',['class'=>'form-control', 'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2']) !!}
+            {!! Form::textarea('opcaoCorrecta','',['id'=>'opcaoCorrecta','class'=>'form-control', 'placeholder'=>'Introduza a resposta correcta aqui','rows'=>'2']) !!}
 
             {!! Form::label('erradas','Respostas erradas',['class'=>'text-primary']) !!}
-            {!! Form::textarea('opcao1','',['class'=>'form-control', 'placeholder'=>'Introduza a 1ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao2','',['class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao3','',['class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2']) !!}
-            {!! Form::textarea('opcao4','',['class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::textarea('opcao1','',['id'=>'opcao1','class'=>'form-control', 'placeholder'=>'Introduza a 1ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::textarea('opcao2','',['id'=>'opcao2','class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::textarea('opcao3','',['id'=>'opcao3','class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2']) !!}
+            {!! Form::textarea('opcao4','',['id'=>'opcao4','class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2']) !!}
 
         </div>
         <div class="center-block" align="center">
-
-            {!!Form::submit('Submeter pergunta',['class'=>'btn-primary']) !!}
+            {!!Form::submit('Submeter pergunta',['class'=>'btn-primary','id'=>'submeterPergunta']) !!}
 
         </div>
-
-
         <div class="bottom-right">
-
-
         </div>
         {!! Form::close() !!}
-
-
     </div>
+
+    <script>
+
+        var formSubmitted = false;
+        $("#submeterPergunta").on('click', function(e) {
+            if (formSubmitted === true) {
+                formSubmitted = false;
+                return;
+            }
+
+            e.preventDefault();
+
+            //para a questão
+            var editorQuestao = CKEDITOR.instances.questao;
+            var htmlQuestao = editorQuestao.getData();
+            htmlQuestao.replace("<p>", " ");
+            htmlQuestao.replace("</p>", " ");
+            editorQuestao.setData(htmlQuestao);
+
+            //para a resposta correcta
+            var editorOpcaoCorrecta = CKEDITOR.instances.opcaoCorrecta;
+            var htmlOpcaoCorrecta = editorOpcaoCorrecta.getData();
+            htmlOpcaoCorrecta.replace("<p>", " ");
+            htmlOpcaoCorrecta.replace("</p>", " ");
+            editorOpcaoCorrecta.setData(htmlOpcaoCorrecta);
+
+            //para a opção1
+            var editorOpcao1 = CKEDITOR.instances.opcao1;
+            var htmlOpcao1 = editorOpcao1.getData();
+            htmlOpcao1.replace("<p>", " ");
+            htmlOpcao1.replace("</p>", " ");
+            editorOpcao1.setData(htmlOpcao1);
+
+            //para a opção2
+            var editorOpcao2 = CKEDITOR.instances.opcao2;
+            var htmlOpcao2 = editorOpcao2.getData();
+            htmlOpcao2.replace("<p>", " ");
+            htmlOpcao2.replace("</p>", " ");
+            editorOpcao2.setData(htmlOpcao2);
+
+            //para a opção3
+            var editorOpcao3 = CKEDITOR.instances.opcao3;
+            var htmlOpcao3 = editorOpcao3.getData();
+            htmlOpcao3.replace("<p>", " ");
+            htmlOpcao3.replace("</p>", " ");
+            editorOpcao3.setData(htmlOpcao3);
+
+            //para a opção4
+            var editorOpcao4 = CKEDITOR.instances.opcao4;
+            var htmlOpcao4 = editorOpcao4.getData();
+            htmlOpcao4.replace("<p>", " ");
+            htmlOpcao4.replace("</p>", " ");
+            editorOpcao4.setData(htmlOpcao4);
+
+            formSubmitted = true;
+            $(this).trigger('click');
+        });
+    </script>
 
 
     <script>

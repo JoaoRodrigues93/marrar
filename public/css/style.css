@@ -397,36 +397,52 @@ div.voltar *{
     display: inline-block;
 }
 
-div.voltar a{
+div.voltar a:first-child{
     position: absolute;
-    z-index: 1000;
+    z-index: 0;
 }
 
 div.voltar svg{
     padding: 0;
-    margin: -7px 0 0 0;
+    margin: -3px 0 0 0;
+    -webkit-transform: translateX(70%);
+    transform: translateX(70%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.3s;
+    transition: opacity 0.5s, transform 0.3s;
+}
+
+#voltar{
+    margin-left: -5px;
 }
 
 div.voltar h3{
     margin: 3.5px 0 0 33px;
-    font-size: 30px;
+    font-size: 31px;
     font-family: 'Cooper Black', 'Helvetica Neue', Arial, sans-serif;
-    color: #FFFFFF;
+    cursor: pointer;
     letter-spacing: 0.6px;
     text-shadow: 1px 1px 2px #999;
-    opacity: 1;
-    -webkit-transition: opacity 0.5s, -webkit-transform 0.3s;
-    transition: opacity 0.5s, transform 0.3s;
     position: absolute;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    z-index: 0;
+    z-index: 1000;
 }
 
-div.voltar:hover h3 {
-    opacity: 0;
-    -webkit-transition-delay: 0.3s;
-    transition-delay: 0.3s;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
+div.voltar h3 a{
+    color: rgba(255,255,255,0.95);
+}
+
+div.voltar h3 a:hover,
+div.voltar h3 a:focus,
+div.voltar h3 a:active{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+div.voltar:hover svg{
+    -webkit-transition-delay: 0.126s;
+    transition-delay: 0.126s;
+}
+
+div.voltar:hover h3 a{
+    text-shadow: 1px 1px 3px #999;
 }

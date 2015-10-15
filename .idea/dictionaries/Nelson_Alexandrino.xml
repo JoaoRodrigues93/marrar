@@ -14,14 +14,19 @@
       <w>confirmar</w>
       <w>conteud</w>
       <w>continuar</w>
+      <w>correcta</w>
+      <w>correcto</w>
       <w>diminuir</w>
       <w>disciplina</w>
       <w>dizem</w>
       <w>dizendo</w>
       <w>dropdown</w>
+      <w>editoropcao</w>
+      <w>editorquestao</w>
       <w>entrar</w>
       <w>envio</w>
       <w>ercã</w>
+      <w>erradas</w>
       <w>escolhida</w>
       <w>esconder</w>
       <w>exame</w>
@@ -33,17 +38,23 @@
       <w>fechar</w>
       <w>funciona</w>
       <w>funcionando</w>
+      <w>htmlopcao</w>
+      <w>htmlquestao</w>
       <w>lendo</w>
       <w>maincontent</w>
       <w>marrar</w>
       <w>materia</w>
+      <w>modernizr</w>
       <w>mostrar</w>
       <w>navbar</w>
       <w>noborder</w>
       <w>noframework</w>
       <w>nomargin</w>
+      <w>opcao</w>
       <w>opcoes</w>
+      <w>opção</w>
       <w>outros</w>
+      <w>pergunta</w>
       <w>perguntas</w>
       <w>pessoa</w>
       <w>pode</w>
@@ -51,11 +62,15 @@
       <w>proximo</w>
       <w>quenomevoudar</w>
       <w>questao</w>
+      <w>questão</w>
       <w>resolva</w>
       <w>resposta</w>
+      <w>respostas</w>
       <w>scrolar</w>
       <w>scrollbar</w>
       <w>sombra</w>
+      <w>submeter</w>
+      <w>tabstyles</w>
       <w>tamanhos</w>
       <w>tema</w>
       <w>teoria</w>

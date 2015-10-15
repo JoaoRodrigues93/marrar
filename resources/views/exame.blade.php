@@ -2,7 +2,27 @@
 @section('title')
 Marrar: Exame
 @stop
+
+@section('links')
+    @parent
+    <link rel="stylesheet" type="text/css" href={{URL::asset('css/tab/css/normalize.css')}}/>
+    <link rel="stylesheet" type="text/css" href={{URL::asset('css/tab/css/demo.css')}}/>
+    <link rel="stylesheet" type="text/css" href={{URL::asset('css/tab/css/tabs.css')}} />
+    <link rel="stylesheet" type="text/css" href={{URL::asset('css/tab/css/tabstyles.css')}} />
+
+    <script src={{URL::asset('css/tab/js/modernizr.custom.js')}}></script>
+@stop
 @section('body')
+
+    <style>
+        div.voltar:hover svg{
+            opacity: 1;
+            -webkit-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+    </style>
 
 <script>
     var nrPerguntas = parseInt('{{$nrPerguntas}}');
@@ -26,176 +46,202 @@ Marrar: Exame
             document.getElementById('opcao' + i + '' + nr).setAttribute('class', classe);
     }
 </script>
-<div class="well">
-    <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
-    <div class="exame-title row">
-        <h2 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9"><strong>Exame | {{$disciplina->nome}}</strong></h2>
-        <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9" >Exame | {{$disciplina->nome}}</h4>
 
-        <div class="exame-time  col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <h4 id="timer" class="text-right text-danger"></h4>
-        </div>
-    </div>
+    <section>
+        <div class="tabs tabs-style-flip">
+            <nav>
+                <ul>
+                    <li><a href="#section-flip-5" class="icon icon-plane"><span>Airline</span></a></li>
+                    <li><a href="#section-flip-4" class="icon icon-date"><span>Schedule</span></a></li>
+                    <li><a href="#section-flip-2" class="icon icon-gift"><span>Deals</span></a></li>
+                    <li><a href="#section-flip-3" class="icon icon-coffee"><span>Drinks</span></a></li>
+                    <li><a href="#section-flip-5" class="icon icon-tools"><span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="content-wrap well">
+                <section id="section-flip-1">
 
+                    <div>
+                        <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
+                        <div class="exame-title row">
+                            <h2 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9"><strong>Exame | {{$disciplina->nome}}</strong></h2>
+                            <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9" >Exame | {{$disciplina->nome}}</h4>
 
-    <div class="tab-content">
-
-        <?php
-        $i = 0;
-        $idPerguntas = "";
-        foreach ($perguntas as $pergunta) {
-            $idPerguntas [$i] = $pergunta->id;
-            $i++;
-            ?>
-
-            @if($pergunta->imagem==true)
-
-
-                <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
-                    <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
-
-                    <div class="row">
-                        <div id="opcao1{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                            <p class="text-left">
-
-                                <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
-                                       onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
-                                <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
+                            <div class="exame-time  col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <h4 id="timer" class="text-right text-danger"></h4>
+                            </div>
                         </div>
 
-                        <div id="opcao2{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                            <p class="text-left">
 
-                                <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
-                                       onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
-                                <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
+                        <div class="tab-content">
+
+                            <?php
+                            $i = 0;
+                            $idPerguntas = "";
+                            foreach ($perguntas as $pergunta) {
+                            $idPerguntas [$i] = $pergunta->id;
+                            $i++;
+                            ?>
+
+                            @if($pergunta->imagem==true)
+
+
+                                <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
+                                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                                    <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
+
+                                    <div class="row">
+                                        <div id="opcao1{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                                <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao2{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                                <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao3{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                                <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao4{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                                <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao5{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                                            <p class="text-left">
+                                                <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
+                                                <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            @else
+
+                                <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
+                                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                                    <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
+
+                                    <div>
+                                        <div id="opcao1{{$i}}">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','')"/>
+                                                <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao2{{$i}}">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','')"/>
+                                                <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao3{{$i}}">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','')"/>
+                                                <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao4{{$i}}">
+                                            <p class="text-left">
+
+                                                <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','')"/>
+                                                <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
+                                        </div>
+
+                                        <div id="opcao5{{$i}}">
+                                            <p class="text-left">
+                                                <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
+                                                       onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','')"/>
+                                                <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            <?php } ?>
                         </div>
+                        {!!Form::open(array("url" => "$action",'onsubmit'=>'return valido()')) !!}
+                        <ul class="nav nav-pills col-xs-12 col-lg-12 col-md-12 col-sm-12">
+                            <?php for ($j = 1; $j <= $i; $j++) {
+                            ?>
+                            <li id="nav{{$j}}" class="<?php if ($j == 1) echo "active"; ?>"><a data-toggle="pill"
+                                                                                               href="#pergunta{{$j}}">{{$j}}</a></li>
+                            <?php } ?>
+                            <?php
+                            $k = 0;
+                            for ($j = 1; $j <= $i; $j++) {
+                            ?>
+                            <input type="hidden" id="pergunta{{$j}}" name="pergunta{{$j}}" value="<?php echo $idPerguntas[$k]; ?>">
+                            <input type="hidden" id="resposta{{$j}}" name="resposta{{$j}}" value="">
+                            <input type="hidden" id="correcta{{$j}}" name="correcta{{$j}}" value="">
+                            <label id="correcta" style="display: none"></label>
+                            <?php
+                            $k++;
+                            }
+                            ?>
+                        </ul>
+                        <div class="row">
 
-                        <div id="opcao3{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                            <p class="text-left">
-
-                                <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
-                                       onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
-                                <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
+                            {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
                         </div>
+                        {!!Form::close()!!}
 
-                        <div id="opcao4{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                            <p class="text-left">
 
-                                <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
-                                       onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
-                                <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
+                    </div>
+                    <div class="modal fade" id="mensagem" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 id="modal-title" class="modal-title">Modal Header</h4>
+                                </div>
+                                <div id="modal-body" class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                </div>
+                            </div>
+
                         </div>
-
-                        <div id="opcao5{{$i}}" class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                            <p class="text-left">
-                                <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
-                                       onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','col-lg-2 col-md-2 col-sm-4 col-xs-6')"/>
-                                <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
-                            </p>
-                        </div>
                     </div>
-                </div>
+                </section>
+                <section id="section-flip-2"><p>2</p></section>
+                <section id="section-flip-3"><p>3</p></section>
+                <section id="section-flip-4"><p>4</p></section>
+                <section id="section-flip-5"><p>5</p></section>
+            </div><!-- /content -->
+        </div><!-- /tabs -->
+    </section>
 
 
 
-
-                @else
-
-            <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
-                <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
-
-                <div>
-                    <div id="opcao1{{$i}}">
-                        <p class="text-left">
-
-                            <input type="radio" style="display: none" id="resposta1{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('1{{$i}}','{{$i}}','op1{{$i}}','')"/>
-                            <strong>A. </strong><label class="texto-pergunta" for="resposta1{{$i}}" id="op1{{$i}}"></label>
-                    </div>
-
-                    <div id="opcao2{{$i}}">
-                        <p class="text-left">
-
-                            <input type="radio" style="display: none" id="resposta2{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('2{{$i}}','{{$i}}','op2{{$i}}','')"/>
-                            <strong>B. </strong><label class="texto-pergunta" for="resposta2{{$i}}" id="op2{{$i}}"></label>
-                    </div>
-
-                    <div id="opcao3{{$i}}">
-                        <p class="text-left">
-
-                            <input type="radio" style="display: none" id="resposta3{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('3{{$i}}','{{$i}}','op3{{$i}}','')"/>
-                            <strong>C. </strong><label class="texto-pergunta" for="resposta3{{$i}}" id="op3{{$i}}"></label>
-                    </div>
-
-                    <div id="opcao4{{$i}}">
-                        <p class="text-left">
-
-                            <input type="radio" style="display: none" id="resposta4{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('4{{$i}}','{{$i}}','op4{{$i}}','')"/>
-                            <strong>D. </strong><label class="texto-pergunta" for="resposta4{{$i}}" id="op4{{$i}}"></label>
-                    </div>
-
-                    <div id="opcao5{{$i}}">
-                        <p class="text-left">
-                            <input type="radio" style="display: none" id="resposta5{{$i}}" name="resposta{{$i}}"
-                                   onclick="escolheOpcao('5{{$i}}','{{$i}}','op5{{$i}}','')"/>
-                            <strong>E. </strong><label class="texto-pergunta" for="resposta5{{$i}}" id="op5{{$i}}"></label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            @endif
-        <?php } ?>
-    </div>
-    {!!Form::open(array("url" => "$action",'onsubmit'=>'return valido()')) !!}
-    <ul class="nav nav-pills col-xs-12 col-lg-12 col-md-12 col-sm-12">
-        <?php for ($j = 1; $j <= $i; $j++) {
-            ?>
-            <li id="nav{{$j}}" class="<?php if ($j == 1) echo "active"; ?>"><a data-toggle="pill"
-                                                                               href="#pergunta{{$j}}">{{$j}}</a></li>
-            <?php } ?>
-            <?php
-            $k = 0;
-            for ($j = 1; $j <= $i; $j++) {
-                ?>
-            <input type="hidden" id="pergunta{{$j}}" name="pergunta{{$j}}" value="<?php echo $idPerguntas[$k]; ?>">
-            <input type="hidden" id="resposta{{$j}}" name="resposta{{$j}}" value="">
-            <input type="hidden" id="correcta{{$j}}" name="correcta{{$j}}" value="">
-            <label id="correcta" style="display: none"></label>
-            <?php
-            $k++;
-        }
-        ?>
-    </ul>
-    <div class="row">
-
-        {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
-    </div>
-    {!!Form::close()!!}
-
-
-</div>
-<div class="modal fade" id="mensagem" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 id="modal-title" class="modal-title">Modal Header</h4>
-            </div>
-            <div id="modal-body" class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-        </div>
-
-    </div>
-</div>
 <script>
             var confirmacao;
             var desistirPermitido = true;
@@ -402,4 +448,15 @@ Marrar: Exame
     window.onbeforeunload = function() {
     if (desistirPermitido) return 'Estás prestes a abandonar está pagina. Se abandonares a página vais perder todo o progresso.'; };
 </script>
+
+    <script src={{URL::asset('css/tab/js/cbpFWTabs.js')}}></script>
+    <script>
+        (function() {
+
+            [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                new CBPFWTabs( el );
+            });
+
+        })();
+    </script>
 @stop

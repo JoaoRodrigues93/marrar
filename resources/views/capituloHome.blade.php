@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
 @stop
 @section('body')
+
+    <style>
+        div.voltar:hover svg{
+            opacity: 1;
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+    </style>
+
     <div class="well">
         <div align="center">
             <script>!function (d, s, id) {
