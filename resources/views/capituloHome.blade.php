@@ -28,17 +28,6 @@
                         fjs.parentNode.insertBefore(js, fjs);
                     }
                 }(document, "script", "twitter-wjs");</script>
-            <script type="text/javascript">
-                (function () {
-                    var ga = document.createElement('script');
-                    ga.type = 'text/javascript';
-                    ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(ga, s);
-                })();
-
-            </script>
 
             <h2 class="text-primary">{{$disciplina->nome}}</h2>
             {!! Form::hidden('id',$disciplina->id,['id'=>' _id']) !!}
