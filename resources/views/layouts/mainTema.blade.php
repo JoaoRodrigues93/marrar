@@ -35,6 +35,8 @@
                     <li><a href="/capitulo">Capitulos</a></li>
                     <li><a href="/tema">Temas</a></li>
                     <li><a href="/pergunta">Perguntas</a></li>
+                    <li><a href="/texto">Texto(Português)</a></li>
+                    <li><a href="/PerguntaTexto">Perguntas/Texto</a></li>
                 </ul>
             </div>
         </div>

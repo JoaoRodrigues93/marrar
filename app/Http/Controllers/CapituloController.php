@@ -154,6 +154,19 @@ public function showCapituloHome($id){
 public function showHome(){
 
     $disciplina=$_SESSION['disciplina'];
+
+    $nome= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
+    $nome=strtolower($nome);
+    if($nome=='portugues'){
+
+        $tema=Tema::where('nome','PerguntaTexto')->first();
+        if(!$tema)
+        $_SESSION['tema']=false;
+
+        else {
+            $_SESSION['tema']=$tema;
+            }
+    }
     //Guarda dados da disciplina escolhida
     $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
     $estudante = Auth::user();

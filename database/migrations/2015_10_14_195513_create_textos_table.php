@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExameColectivosTable extends Migration {
+class CreateTextosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateExameColectivosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('exame_colectivos', function(Blueprint $table)
+		Schema::create('textos', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->date('dataCriacao');
-            $table->integer('tempoRealizacao')->unsigned();
-            $table->smallInteger('nrPerguntas')->unsigned();
-            $table->integer('texto_id');
+            $table->string('titulo');
+            $table->longText('texto');
             $table->softDeletes();
 			$table->timestamps();
 		});
@@ -31,7 +29,7 @@ class CreateExameColectivosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('exame_colectivos');
+		Schema::drop('textos');
 	}
 
 }

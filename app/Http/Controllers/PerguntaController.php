@@ -234,17 +234,53 @@ Session::flash('message','Dados gravados com sucesso');
        // $capitulo='trigonometria';
      //   $tema='cossenos';
 
+
+        if($_SESSION['tema']==false)
+        {
         $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
             ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
             ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
             ->where('temas.id','=',$tema)
             ->select('perguntas.*');
 
+        }
+        else{
+            $temaTexto=$_SESSION['tema'];
+            $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+                ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+                ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+                ->where('temas.id','=',$tema)
+                ->where('perguntas.tema_id','!=',$temaTexto->id)
+                ->select('perguntas.*');
+
+        }
+
+
+
         $perguntas=$perguntas->orderByRaw("RAND()");
         if($perguntas->count()>$quantidade){
             $perguntas=$perguntas->take($quantidade);
         }
 
+
+        return $this->randomize($perguntas->get());
+    }
+
+
+    public function buscarPerguntasTexto($texto){
+        //metodo que retorna o array de perguntas exercicios baseando se na discipina,capitulo e tema
+        // $disciplina='matematica';//esses dois atributos devem ser parametros
+        // $capitulo='trigonometria';
+        //   $tema='cossenos';
+
+        $perguntas = Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->join('pergunta_textos','pergunta_textos.pergunta_id','=','perguntas.id')
+            ->where('pergunta_textos.texto_id','=',$texto)
+            ->select('perguntas.*');
+
+        $perguntas=$perguntas->orderByRaw("RAND()");
 
         return $this->randomize($perguntas->get());
     }

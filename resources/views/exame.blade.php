@@ -51,11 +51,12 @@ Marrar: Exame
         <div class="tabs tabs-style-flip">
             <nav>
                 <ul>
-                    <li><a href="#section-flip-5" class="icon icon-plane"><span>Airline</span></a></li>
-                    <li><a href="#section-flip-4" class="icon icon-date"><span>Schedule</span></a></li>
-                    <li><a href="#section-flip-2" class="icon icon-gift"><span>Deals</span></a></li>
-                    <li><a href="#section-flip-3" class="icon icon-coffee"><span>Drinks</span></a></li>
-                    <li><a href="#section-flip-5" class="icon icon-tools"><span>Settings</span></a></li>
+                    <li><a href="#section-flip-1" class="icon icon-plane"><span>Exame</span></a></li>
+
+                    @if($texto)
+                    <li><a href="#section-flip-2" class="icon icon-date"><span>Texto</span></a></li>
+
+                        @endif
                 </ul>
             </nav>
             <div class="content-wrap well">
@@ -232,10 +233,11 @@ Marrar: Exame
                         </div>
                     </div>
                 </section>
-                <section id="section-flip-2"><p>2</p></section>
-                <section id="section-flip-3"><p>3</p></section>
-                <section id="section-flip-4"><p>4</p></section>
-                <section id="section-flip-5"><p>5</p></section>
+                @if($texto)
+
+                <section id="section-flip-2"><p>{{$texto->texto}}</p></section>
+
+                    @endif
             </div><!-- /content -->
         </div><!-- /tabs -->
     </section>

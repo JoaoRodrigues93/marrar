@@ -28,18 +28,18 @@ Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');
 Route::get('/capitulo_list/editar/{id}','CapituloController@editarCapitulo');
 Route::get('/capitulo_list/remover/{id}','CapituloController@deleteCapitulo');
 Route::post('editar-capitulo','CapituloController@editar');
-Route::get('tema','TemaController@inicializaTema');
-Route::post('tema','TemaController@createTema');
-Route::get('tema_list','TemaController@inicializaTema_list');
+Route::get('/tema','TemaController@inicializaTema');
+Route::post('/tema','TemaController@createTema');
+Route::get('/tema_list','TemaController@inicializaTema_list');
 Route::get('/tema_list/editar/{id}','TemaController@editarTema');
 Route::get('/tema_list/remover/{id}','TemaController@deleteTema');
-Route::post('editar-tema','TemaController@editar');
-Route::get('pergunta', 'PerguntaController@InicializaPergunta');
+Route::post('/editar-tema','TemaController@editar');
+Route::get('/pergunta', 'PerguntaController@InicializaPergunta');
 Route::post('registar-pergunta','PerguntaController@registaPerguntas');
-Route::get('perguntaview', 'PerguntaController@InicializaPerguntaView');
+Route::get('/perguntaview', 'PerguntaController@InicializaPerguntaView');
 Route::get('/perguntaview/remover/{id}', 'PerguntaController@RemoverPergunta');
 Route::get('/perguntaview/editar/{id}', 'PerguntaController@Editar');
-Route::post('editar-pergunta','PerguntaController@EditarPergunta');
+Route::post('/editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('/teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');Route::post('editar-pergunta','PerguntaController@EditarPergunta');
 Route::get('examenormal','ExameController@show');
 Route::post('examenormal','ExameController@corrigeExame');
@@ -135,3 +135,9 @@ Route::get('capituloHomeMobile','CapituloController@showHomeMobile');
 Route::get('/capituloHomeMobile/{id}','TemaController@showTemaMobile');
 
 Route::get('/getExame','ExameController@devolveQuestoes');
+
+Route::get('texto','TextoController@inicializaTexto');
+Route::post('texto','TextoController@GravarTexto');
+
+Route::get('/PerguntaTexto', 'PerguntaTextoController@InicializaPerguntaTexto');
+Route::post('/PerguntaTexto', 'PerguntaTextoController@GravarPerguntaTexto');

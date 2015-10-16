@@ -8,6 +8,7 @@ use App\ExameColectivo;
 use App\ExameNormal;
 use App\GestorRanking;
 use App\Http\Controllers\PerguntaController;
+use App\Texto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -21,13 +22,40 @@ class ExameController extends Controller {
     }
 
     public function showExameNormal($disciplina) {
+
         $perguntaController = new PerguntaController();
-        $perguntas = $perguntaController->buscarExame($disciplina->id);
-        $nrPerguntas = collect($perguntas)->count();
-        $_SESSION["exame"] = $perguntas;
+
+        $nome= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
+        $nome=strtolower($nome);
+
+        if($nome=='portugues') {
+
+            $texto = Texto::orderByRaw("RAND()")->first();
+            $perguntasTexto = $perguntaController->buscarPerguntasTexto($texto->id);
+            if($perguntasTexto->count()==0)
+            {
+                $texto=false;
+            }
+            $perguntas = $perguntaController->buscarExame($disciplina->id);
+
+            for ($i = 0; $i < collect($perguntas)->count(); $i++) {
+
+                $perguntasTexto[$perguntasTexto->count()] = $perguntas[$i];
+            }
+            $perguntas=$perguntasTexto;
+        }
+
+        else{
+            $texto=false;
+            $perguntas = $perguntaController->buscarExame($disciplina->id);
+
+        }
 
         $action = 'examenormal';
-        return View('exame')->with(array("action" => $action, "perguntas" => $perguntas, "disciplina" => $disciplina, "nrPerguntas" => $nrPerguntas));
+        $nrPerguntas = collect($perguntas)->count();
+        $_SESSION["exame"] = $perguntas;
+        return View('exame')->with(array("action" => $action,"texto"=>$texto, "perguntas" => $perguntas, "disciplina" => $disciplina, "nrPerguntas" => $nrPerguntas));
+
     }
 
     public function showNormal() {
@@ -53,6 +81,9 @@ class ExameController extends Controller {
         $data = $ano . "-" . $mes . "-" . $dia;
         $examecolectivo = ExameColectivo::all()->where('dataCriacao', $data, true)->first();
 
+        $nome= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplinaActual->nome ) );
+        $nome=strtolower($nome);
+
 
         if ($examecolectivo) {
             $estudantes = $examecolectivo->estudantes()->getResults();
@@ -61,24 +92,71 @@ class ExameController extends Controller {
                     $already = true;
                 }
             }
+
+
+
             $perguntas = $examecolectivo->perguntas()->getResults();
+            if($nome=='portugues'){
+
+            $texto=Texto::find($examecolectivo->texto_id);
+
+            }
+
+
             $nrPerguntas = $perguntas->count();
             if ($already == true)
                 return View('exameRealizado');
         }
         else {
 
-            $perguntas = $perguntaController->buscarExame($disciplinaActual->id);
-            $nrPerguntas = count($perguntas);
+
+
+            if($nome=='portugues') {
+
+                $texto = Texto::orderByRaw("RAND()")->first();
+                $perguntasTexto = $perguntaController->buscarPerguntasTexto($texto->id);
+                if($perguntasTexto->count()==0)
+                {
+                    $texto=false;
+                }
+                $perguntas = $perguntaController->buscarExame($disciplinaActual->id);
+
+                for ($i = 0; $i < collect($perguntas)->count(); $i++) {
+
+                    $perguntasTexto[$perguntasTexto->count()] = $perguntas[$i];
+                }
+                $perguntas=$perguntasTexto;
+            }
+
+            else{
+                $texto=false;
+                $perguntas = $perguntaController->buscarExame($disciplinaActual->id);
+
+            }
+
+             $nrPerguntas = count($perguntas);
             $examecolectivo = new ExameColectivo();
             $examecolectivo->dataCriacao = date_create();
             $examecolectivo->tempoRealizacao = 60;
             $examecolectivo->nrPerguntas = $nrPerguntas;
+
+            if($nome=='portugues'){
+                $examecolectivo->texto_id = $texto->id;
+            }
+
+            else{
+
+                $examecolectivo->texto_id = 0;
+            }
+
             $examecolectivo->save();
 
             foreach ($perguntas as $pergunta) {
                 $examecolectivo->perguntas()->save($pergunta);
             }
+
+
+
         }
 
         $action = 'examecolectivo';
@@ -86,7 +164,9 @@ class ExameController extends Controller {
 
         $_SESSION["exame"] = $perguntas;
         $_SESSION['examecolectivo'] = $examecolectivo;
-        return View('exame')->with(array("action" => $action, "perguntas" => $perguntas, "disciplina" => $disciplinaActual, "nrPerguntas" => $nrPerguntas));
+
+
+       return View('exame')->with(array("action" => $action, 'texto'=>$texto,"perguntas" => $perguntas, "disciplina" => $disciplinaActual, "nrPerguntas" => $nrPerguntas));
     }
 
     public function corrigeExame(Request $request) {

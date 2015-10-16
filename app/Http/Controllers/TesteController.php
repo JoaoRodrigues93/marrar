@@ -1,10 +1,6 @@
 <?php namespace App\Http\Controllers;
 use App\Capitulo;
-use App\Disciplina;
-use App\Estudante;
 use App\GestorTesteFeito;
-use App\Pergunta;
-use App\Tema;
 use App\Teste;
 use Request;
 use Input;

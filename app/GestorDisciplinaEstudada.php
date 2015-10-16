@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Auth;
 class GestorDisciplinaEstudada {
     public function guardaDisciplinaEstudada($estudante_id,$disciplina_id,$disciplina){
 
-        $disciplinaEstudadas = DisciplinaEstudada::all()->where('estudante_id',$estudante_id)->all();
-        $jaEstudada = false;
-        foreach ($disciplinaEstudadas as $disciplinaActual){
-            if($disciplinaActual->disciplina_id == $disciplina_id && $disciplinaActual->estudante_id==$estudante_id)
-                $jaEstudada = true;
-        }
+            $disciplinaEstudadas = DisciplinaEstudada::all()->where('estudante_id',$estudante_id)->all();
+            $jaEstudada = false;
+            foreach ($disciplinaEstudadas as $disciplinaActual){
+                if($disciplinaActual->disciplina_id == $disciplina_id && $disciplinaActual->estudante_id==$estudante_id)
+                    $jaEstudada = true;
+            }
 
         if(!$jaEstudada) {
             $dateTime = getdate();
