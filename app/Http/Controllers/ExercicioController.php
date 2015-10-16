@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Capitulo;
+use App\GestorTemaEstudada;
 use App\Pergunta;
 use App\Tema;
 use App\Disciplina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -23,32 +25,32 @@ class ExercicioController extends Controller{
             ->select('perguntas.*')
             ->get();*/
 
-     $nrPerguntas=$perguntas->count();
+        $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
         $_SESSION['perguntas'] = $perguntas;
         return view('exercicio1')->with(array('caminho'=>$tema->nome,'pergunta'=>$pergunta,"perguntas"=>$perguntas,'nrPerguntas'=>$nrPerguntas));
 
     }
 
-  /*  public function doPergunta (Request $request){
-        $respostaCerta =$request-> input('respostaCerta');
-        $respostaEscolhida = $request->input('respostaEscolhida');
+    /*  public function doPergunta (Request $request){
+          $respostaCerta =$request-> input('respostaCerta');
+          $respostaEscolhida = $request->input('respostaEscolhida');
 
-        if($respostaEscolhida==$respostaCerta)
-            return "Parabens: Acertaste a pergunta.";
-        else
-            return "Infelizmente a resposta está errada. A resposta certa é: $respostaCerta";
+          if($respostaEscolhida==$respostaCerta)
+              return "Parabens: Acertaste a pergunta.";
+          else
+              return "Infelizmente a resposta está errada. A resposta certa é: $respostaCerta";
 
-    }*/
+      }*/
 
     public function showExercicio($disciplina,$capitulo,$tema)
     {
         $perguntaController = new PerguntaController();
 
         $temaActual=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
-                        ->where('capitulos.id','=',$capitulo->id)
-                        ->where('temas.nome','=',$tema)
-                        ->Select('temas.*')->get()->first();
+            ->where('capitulos.id','=',$capitulo->id)
+            ->where('temas.nome','=',$tema)
+            ->Select('temas.*')->get()->first();
         $temaId=$temaActual->id;
         $quantidade=10;
         $perguntas = $perguntaController->buscarExercicios($temaId,10);
@@ -75,16 +77,29 @@ class ExercicioController extends Controller{
     }
 
     public function show($idCapitulo,$tema){
+
+        //Guardando o tema estudado a BD.
+        $gestorTemaEstudada = new GestorTemaEstudada();
+        $estudante = Auth::user();
+
+
         $tema = str_replace("%20", " ", $tema);
+
 
 
         $capitulo=Capitulo::find($idCapitulo);
 
-       // $tema=$capitulo->tema()->where('temas.nome',$tema)->first();
+        // $tema=$capitulo->tema()->where('temas.nome',$tema)->first();
 
-       $disciplina=$capitulo->disciplina()->first();
+        $disciplina=$capitulo->disciplina()->first();
 
-       return $this->showExercicio($disciplina,$capitulo,$tema);
+
+        $tema_id = Tema::where("temas.nome", $tema)->first();
+        //$gestorTemaEstudada->
+        //$gestorTemaEstudada->guardaTemaEstudada($estudante->id, $tema->id, )
+        $gestorTemaEstudada->guardaTemaEstudada($estudante->id,$disciplina->id,$tema_id->id, $tema);
+
+        return $this->showExercicio($disciplina,$capitulo,$tema);
     }
 
     public  function  respostaCorrecta(){
@@ -145,8 +160,8 @@ class ExercicioController extends Controller{
 
         if($testeJson=="" || $testeJson==null)
             return "vazio";
-            else
-        return $testeJson;
+        else
+            return $testeJson;
     }
 
 }

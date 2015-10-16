@@ -16,6 +16,7 @@ class PerfilController extends Controller {
 
     public function buscarPerfil() {
         $perfil = Auth::user();
+
         return view('perfil')->with(array('perfil'=>$perfil));
 
     }
