@@ -49,24 +49,21 @@ public function registaPerguntas(Request $request){
 
     $pergunta -> opcaoCorrecta = $request -> input('opcaoCorrecta');
 
-    $string1=strstr($pergunta -> opcao1,'<p><img');
-
-    /*$string4=strstr($pergunta -> opcao4,'<p><img');
-    $string5=strstr($pergunta -> opcao5,'<p><img');*/
+    $string1=strstr($pergunta -> opcao1,'<img');
 
     if($string1!=false)
     {
         $pergunta -> imagem=true;
     }
     else {
-        $string2=strstr($pergunta -> opcao2,'<p><img');
+        $string2=strstr($pergunta -> opcao2,'<img');
         if($string2!=false){
             $pergunta -> imagem=true;
 
         }
 
         else{
-            $string3=strstr($pergunta -> opcao3,'<p><img');
+            $string3=strstr($pergunta -> opcao3,'<img');
             if($string3!=false){
                 $pergunta -> imagem=true;
 

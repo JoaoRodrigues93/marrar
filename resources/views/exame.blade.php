@@ -97,7 +97,7 @@ Marrar: Exame
 
 
                                 <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                                    <h3 class="hidden-xs" id="questaoH2{{$i}}"></h3>
                                     <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
 
                                     <div class="row">
