@@ -137,7 +137,7 @@ $(document).ready(function () {
                                 <div class="col-md-12 text-center">
                                     <h3 class="light white">Aprender.</h3>
 
-                                    <h1 class="white typed">Nunca foi t&atilde;o fac&iacute;l!</h1>
+                                    <h1 class="white typed">Nunca foi t&atilde;o f&#225;cil!</h1>
                                 </div>
                             </div>
                         </div>
@@ -155,14 +155,14 @@ $(document).ready(function () {
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <h2 class="text-center">o que pode aprender?</h2>
+                        <h2 class="text-center">O que pode aprender?</h2>
                         <p class="text-faded"><b>Aprenda </b>
                             Matem&#225;tica, Portugu&#234;s,
                             F&#237;sica, Qu&#237;mica, Biologia,
                             Geografia, Hist&#243;ria, Ingl&#234;s,
                             Franc&#234;s e prepare-se
                             para seu exame de admiss&atilde;o
-                            <b>gratuitamente</b>...onde e quando quiser.</p>
+                            <b>gratuitamente</b>... Onde e Quando Quiser.</p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -175,7 +175,7 @@ $(document).ready(function () {
 
         <div class="mainComoFunciona">
             <div class="comoFunciona text-center container">
-                <h2>como funciona?</h2>
+                <h2>Como funciona?</h2>
 
                 <div class="funcionando row">
                     <div class="col-lg-3 col-md-6 col-sm-6 nam animated zoomIn">
@@ -213,13 +213,13 @@ $(document).ready(function () {
 
         <div class="mainQueDizem">
             <div class="queDizem text-center container">
-                <h2>o que os outros dizem</h2>
+                <h2>O que os outros dizem</h2>
                 <div class="row dizendo">
                     <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.3s">
                         <img src="{{URL::asset('img/dizem/severino.jpg')}}" height="145" width="145">
 
                         <p class="text-center">&ldquo;Todos passamos pela fase de prepara&ccedil;&atilde;o
-                            aos exames de admiss&atilde;o...criamos uma plataforma que pudesse ajudar os
+                            aos exames de admiss&atilde;o... Criamos uma plataforma que pudesse ajudar os
                             que est&atilde;o nesta fase.  Boa sorte a todos!&rdquo;
                         </p>
                         <h6 class="text-right">Severino Mateus</h6>
@@ -228,8 +228,8 @@ $(document).ready(function () {
                     <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam delay-05s animated fadeInUp" data-wow-delay="0.5s">
                         <img src="{{URL::asset('img/dizem/patricio.jpg')}}" height="145" width="145">
 
-                        <p class="text-center">&ldquo;Est&atilde;o de Parab&eacute;ns gostei
-                            [da vossa plataforma, a simplicidade aplicada &eacute; incr&iacute;vel]...ir&iacute;a ajudar muitos Estudantes...&rdquo;
+                        <p class="text-center">&ldquo;Est&atilde;o de Parab&eacute;ns, gostei
+                            da vossa plataforma. A simplicidade aplicada &eacute; incr&iacute;vel, e ir&#225; ajudar muitos Estudantes...&rdquo;
                         </p>
                         <h6 class="text-right">PaTricio Sweez Jr.</h6>
                     </div>
@@ -237,10 +237,9 @@ $(document).ready(function () {
                     <div class="pessoa col-lg-4 col-md-4 col-sm-4 nam animated fadeInUp" data-wow-delay="0.7s">
                         <img src="{{URL::asset('img/dizem/valdo.jpg')}}" height="145" width="145">
 
-                        <p class="text-center">&ldquo;Dando suporte a um dos passos mais importantes da caminhada
-                            ...dos que pretendem chegar &agrave; Universidade:
+                        <p class="text-center">&ldquo;Dando suporte a um dos passos mais importantes da caminhada... Dos que pretendem chegar &agrave; Universidade:
                             "A PREPARA&Ccedil;&Atilde;O PARA O EXAME DE ADMISS&Atilde;O"...
-                            AVANTE MARRAR&rdquo;
+                            AVANTE MARRAR!!!&rdquo;
                         </p>
                         <h6 class="text-right">Valdo Chuquela</h6>
                     </div>
@@ -300,7 +299,7 @@ $(document).ready(function () {
                                        placeholder='e-mail ou nome de utilizaor' required="true" /><br/>
                                 <input type='password' name='login-password' id='login-password' class='form-control'
                                        placeholder='password' required="true"/></br>
-                                <button type='submit' class='btn btn-success form-control'>entrar</button>
+                                <button type='submit' class='btn btn-success form-control'>Entrar</button>
                             </form>
                             <div class='text-center'><b>Ou</b></div>
                             <a class='btn btn-default form-control' onclick="closePopover()" data-toggle='modal'

@@ -86,20 +86,8 @@
                     @else
                       <li>   <a href="#" data-toggle="tooltip" data-placement="bottom" title="Escolhe uma disciplina " >Exames</a> </li>
                     @endif
-                    <li id="username" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{$estudante->nome}}
-                        @if($estudante->foto)
 
-                        @else
-                            <span class="glyphicon glyphicon-user"></span>
-                            @endif
-                            </a>
-                            <ul class="dropdown-menu" >
-                                <li><a href="/perfil">Perfil</a></li>
-                                <li><a href="/auth/logout">Sair</a></li>
-                            </ul>
-                    <li>
-                        <!-- Validacao de Redes Sociais Comexa aki -->
+                            <!-- Validacao de Redes Sociais Comexa aki -->
                         <?php
                         if (starts_with($estudante->foto, 'http'))
                         {
@@ -110,7 +98,7 @@
                             if ($estudante->foto == "")
                             {
                                 //Sem Imagem Definida
-                                $fotolink = Request::root()."img/pessoa.png";
+                                $fotolink = Request::root()."/img/pessoa.png";
                             }
                             else
                             {
@@ -119,6 +107,21 @@
                             }
                         }
                         ?>
+
+
+                    <li id="username" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{$estudante->nome}}
+                        {{--@if($estudante->foto)--}}
+
+                        {{--@else--}}
+                            {{--<span class="glyphicon glyphicon-user"></span>--}}
+                            {{--@endif--}}
+                            </a>
+                            <ul class="dropdown-menu" >
+                                <li><a href="/perfil">Perfil</a></li>
+                                <li><a href="/auth/logout">Sair</a></li>
+                            </ul>
+                    <li>
                         <a><img width="24" height="24" class="img-responsive" src="{{$fotolink}}"/></a>
                         </li>
                     </li>

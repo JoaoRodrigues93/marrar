@@ -29,7 +29,10 @@ class GestorTesteFeito {
 
     public function testesFeitos (){
         $estudante = Auth::user();
-        $testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id)->sortByDesc('id');
+        //$testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id)->sortByDesc('id')->max('nota');
+        $testesFeitos = TesteFeito::orderBy('id', 'desc')
+            //->max('nota')
+            ->get();
         return $testesFeitos;
     }
 }

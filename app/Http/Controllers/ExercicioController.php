@@ -85,8 +85,6 @@ class ExercicioController extends Controller{
 
         $tema = str_replace("%20", " ", $tema);
 
-
-
         $capitulo=Capitulo::find($idCapitulo);
 
         // $tema=$capitulo->tema()->where('temas.nome',$tema)->first();
@@ -95,8 +93,6 @@ class ExercicioController extends Controller{
 
 
         $tema_id = Tema::where("temas.nome", $tema)->first();
-        //$gestorTemaEstudada->
-        //$gestorTemaEstudada->guardaTemaEstudada($estudante->id, $tema->id, )
         $gestorTemaEstudada->guardaTemaEstudada($estudante->id,$disciplina->id,$tema_id->id, $tema);
 
         return $this->showExercicio($disciplina,$capitulo,$tema);
@@ -108,7 +104,6 @@ class ExercicioController extends Controller{
         $perguntas = $_SESSION['perguntas'];
         $pergunta = $perguntas[$perguntaActual];
         return "$pergunta->opcaoCorrecta";
-
     }
 
     public function estudar(){

@@ -18,7 +18,7 @@ class CreateTemasEstudadas extends Migration {
 			$table->string('tema');
 			$table->integer('tema_id')->unsigned();
 			$table->integer('disciplina_id')->unsigned();
-			$table->date('ultimo_dia_de_estudo');
+			$table->integer('numeroVezesClickado');
 			$table->integer('estudante_id')->unsigned();
 			$table->softDeletes();
 			$table->timestamps();
