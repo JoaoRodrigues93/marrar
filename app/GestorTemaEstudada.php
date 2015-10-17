@@ -8,36 +8,23 @@ class GestorTemaEstudada {
         $temaEstudadas = TemasEstudadas::all()->where('estudante_id',$estudante_id)->all();
         $jaEstudada = false;
         foreach ($temaEstudadas as $temaActual){
-            if($temaActual->tema_id == $tema_id && $temaActual->estudante_id == $estudante_id)
+            if($temaActual->tema_id == $tema_id && $temaActual->estudante_id == $estudante_id) {
                 $jaEstudada = true;
+                $disc = TemasEstudadas::increment('numeroVezesClickado');
+            }
+
         }
 
         if(!$jaEstudada) {
-            $dateTime = getdate();
-            $dia = $dateTime['mday'];
-            $mes = $dateTime['mon'];
-            $ano = $dateTime['year'];
-
-            $dia = ($dia > 9) ? $dia : "0" . $dia;
-            $mes = ($mes > 9) ? $mes : "0" . $mes;
-
-            $dataRealizacao = $ano . "-" . $mes . "-" . $dia;
-
             $disciplinaEstudada = \App\TemasEstudadas::firstOrCreate(['estudante_id' => $estudante_id,
-                'disciplina_id' => $disciplina_id, 'tema_id' => $tema_id, 'tema' => $tema, 'ultimo_dia_de_estudo' => $dataRealizacao]);
-
-            $disciplinaEstudada->ultimo_dia_de_estudo = $dataRealizacao;
+                'disciplina_id' => $disciplina_id, 'tema_id' => $tema_id, 'tema' => $tema, 'numeroVezesClickado' => 1]);
             $disciplinaEstudada->save();
         }
     }
 
     public function temaEstudadas(){
         $estudante = Auth::user();
-        $temaEstudadas = TemasEstudadas::all()->where('estudante_id',$estudante->id)
-              ->all();
-//            ->orderBy('R.cr_id', 'asc')
-//            ->take(3);
-
+        $temaEstudadas = TemasEstudadas::orderBy('updated_at', 'desc')->take(3)->get();
         return $temaEstudadas;
     }
 
