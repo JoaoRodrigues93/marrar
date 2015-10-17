@@ -218,8 +218,10 @@
                 </div>
                 <div style="float: right">
 
+                    @if($count!=0)
 
                     {!!Form::button('Entregar',['class'=>'btn btn-primary','onclick'=>"processarPergunta()", 'id'=>'btn_entregar']) !!}
+                        @endif
                 </div>
                 {{--<hr width="100%">--}}
 
@@ -365,11 +367,6 @@
         <script>
 
             var vazio = document.getElementById('vazio');
-            if(vazio.value==0){
-
-                document.getElementById('btn_entregar').style.display="none";
-
-            }
 
             function processarPergunta() {
 
@@ -600,9 +597,20 @@
             }
 
 
+            nr=0;
 
             window.onbeforeunload = function() {
-                return 'Estás prestes a abandonar esta página. Se abandonares a página vais perder o teste.'; };
+
+
+
+                if(nr != '{{$count}}' && !document.getElementById('btn_entregar').disabled){
+
+                    return 'Estás prestes a abandonar esta página. Se abandonares da página vais perder o teste.';
+                }
+
+
+
+            };
         </script>
 
 

@@ -40,7 +40,7 @@ class PerguntaTextoController extends Controller {
             $capitulo=new Capitulo();
             $capitulo->nome = "PerguntaTexto";
             $capitulo->disciplina_id = $disciplina->id;
-            $capitulo->save;
+            $capitulo->save();
 
             $tema=new Tema();
             $tema->nome = "PerguntaTexto";

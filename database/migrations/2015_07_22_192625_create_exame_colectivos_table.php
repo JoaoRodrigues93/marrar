@@ -18,6 +18,7 @@ class CreateExameColectivosTable extends Migration {
             $table->date('dataCriacao');
             $table->integer('tempoRealizacao')->unsigned();
             $table->smallInteger('nrPerguntas')->unsigned();
+            $table->integer('disciplina_id')->unsigned();
             $table->integer('texto_id');
             $table->softDeletes();
 			$table->timestamps();

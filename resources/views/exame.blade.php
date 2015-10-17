@@ -60,10 +60,19 @@ Marrar: Exame
                 </ul>
             </nav>
             <div class="content-wrap well">
+
                 <section id="section-flip-1">
 
+                    @if($nrPerguntas==0)
+                        <div align="center">
+
+                            <h3 class="alert alert-warning">Lamentamos mas infelizmente não poder realizar o exame agora.Tente outra hora!</h3>
+
+                        </div>
+
+                    @else
                     <div>
-                        <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
+                       <div class="col-xs-offset-10 col-sm-offset-10 col-md-offset-11 col-xs-offset-11"> <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a></div>
                         <div class="exame-title row">
                             <h2 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9"><strong>Exame | {{$disciplina->nome}}</strong></h2>
                             <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9" >Exame | {{$disciplina->nome}}</h4>
@@ -210,12 +219,15 @@ Marrar: Exame
                         </ul>
                         <div class="row">
 
+
                             {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
+
                         </div>
                         {!!Form::close()!!}
 
 
                     </div>
+                    @endif
                     <div class="modal fade" id="mensagem" role="dialog">
                         <div class="modal-dialog">
 
@@ -327,6 +339,9 @@ Marrar: Exame
 
            var perguntasJson;
     window.onload = function () {
+        var nr=0;
+        if(nr!='{{$nrPerguntas}}'){
+
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -376,7 +391,7 @@ Marrar: Exame
 
         xmlhttp.send();
 
-    };
+    };}
 
             function validaExame() {
 
