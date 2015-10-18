@@ -16,11 +16,11 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('disciplina','DisciplinaController@showDisciplina');
-Route::post('gravar-disciplina','DisciplinaController@createDisciplina');
+Route::post('disciplina','DisciplinaController@createDisciplina');
 Route::get('disciplina_list','DisciplinaController@inicializaDisciplina_list');
 Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplina');
 Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
-Route::post('editar-disciplina','DisciplinaController@editar');
+Route::post('/disciplina_list/editar/{id}','DisciplinaController@editar');
 
 Route::get('capitulo','CapituloController@inicializaCapitulo');
 Route::post('capitulo','CapituloController@createCapitulo');

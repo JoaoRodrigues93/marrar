@@ -1,5 +1,5 @@
-@extends('layouts.maincontent');
-@section('body');
+@extends('layouts.maincontent')
+
 <?php
         $nota = $dadosExame['nota'];
         $respostasCertas = $dadosExame['respostasCertas'];
@@ -48,6 +48,17 @@
     @else
         <p class="alert-danger"><strong>Que pena!</strong> O resultado não é positivo.</p>
     @endif
+
+    <div  class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <a id="a" href="/home">
+                <button class="btn btn-success "  >Terminar
+                </button>
+
+            </a>
+        </div>
+    </div>
 
  </div>
 

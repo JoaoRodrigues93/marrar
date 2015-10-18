@@ -4,9 +4,9 @@ use App\Disciplina;
 use App\Http\Requests\CreateDisciplinaRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
 use Illuminate\Support\Facades\Session;
-
+use Request;
 
 /**
  * Created by PhpStorm.
@@ -31,7 +31,7 @@ class DisciplinaController extends Controller
         return view('disciplina_list')->with('disciplinas', $disciplinas);
     }
 
-    public function createDisciplina()
+  /*  public function createDisciplina()
     {
 
         $disciplina = new Disciplina();
@@ -39,6 +39,21 @@ class DisciplinaController extends Controller
         $disciplina->save();
         Session::flash('message', 'Dados gravados com sucesso');
         return Redirect('disciplina');
+
+    }*/
+
+    public function createDisciplina()
+    {
+
+        $disciplina = new Disciplina();
+        $data = Input::all();
+
+        if(Request::ajax()) {
+            $disciplina->nome=$data['nome'];
+            $disciplina->save();
+            Session::flash('message', 'Dados gravados com sucesso');
+        }
+
 
     }
 
@@ -56,7 +71,7 @@ class DisciplinaController extends Controller
         return view('disciplina_editar')->with(array('disciplinas' => $disciplinas));
     }
 
-    public function editar(Request $request)
+/*    public function editar(Request $request)
     {
         $id = $request->input('id');
         $disciplinas = Disciplina::find($id);
@@ -65,8 +80,21 @@ class DisciplinaController extends Controller
         Session::flash('message', 'Dados alterados com sucesso');
         return Redirect('disciplina_list');
 
-    }
+    }*/
 
+    public function editar()
+    { $data = Input::all();
+        $id = $data->input('id');
+        $disciplinas = Disciplina::find($id);
+
+        if(Request::ajax()){
+
+        $disciplinas->nome=$data['nome'];
+        $disciplinas->save();
+     //   Session::flash('message', 'Dados alterados com sucesso');
+       // return Redirect('disciplina_list');
+
+    }}
 
     /* public function store(CreateDisciplinaRequest $request){
        Disciplina::create($request->all());
