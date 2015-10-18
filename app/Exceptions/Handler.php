@@ -24,6 +24,7 @@ class Handler extends ExceptionHandler {
 	 */
 	public function report(Exception $e)
 	{
+
 		return parent::report($e);
 	}
 
@@ -38,12 +39,13 @@ class Handler extends ExceptionHandler {
 	{
 		if ($this->isHttpException($e))
 		{
+			if($e instanceof NotFoundHttpException)
+			{
+				return response()->view('404', [], 404);
+			}
 			return $this->renderHttpException($e);
 		}
-		else
-		{
-			return parent::render($request, $e);
-		}
+		return parent::render($request, $e);
 	}
 
 }

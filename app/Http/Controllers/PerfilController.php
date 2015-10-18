@@ -4,6 +4,7 @@ session_start();
 use App\Estudante;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -17,10 +18,10 @@ use Illuminate\Http\Request;
 class PerfilController extends Controller {
 
     public function buscarPerfil() {
+        //App::abort(404);
         $perfil = Auth::user();
 
         return view('perfil')->with(array('perfil'=>$perfil));
-
     }
 
     public function buscarEditPerfil() {
