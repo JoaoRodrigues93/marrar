@@ -1,7 +1,7 @@
 <?php $ranking=true;  ?>
 @extends('layouts.maincontent')
 @section('body')
-    <div class="form-group">
+    <div class="form-group well">
 
         <div class="container">
 
@@ -15,7 +15,8 @@
                 @else
                     <img class="perfil-foto img-responsive img-rounded" src="{{Request::root().'/img/pessoa.png'}}">
                 @endif
-                    <input type="file" id="image" name="image" />
+                    {!! Form::file('image') !!}
+                    {{--<input type="file" id="image" name="image" />--}}
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
@@ -36,8 +37,12 @@
                     </div>
                 </div>
             </div>
+            @if(session('message'))
+                <div class="alert alert-danger">
+                    {{Session::get('message')}}
+                </div>
 
-            <!-- Ta ai Nelson-->
+            @endif
             <div class="row">
                 <br/>
                 <br/>

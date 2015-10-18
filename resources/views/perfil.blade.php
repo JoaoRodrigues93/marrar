@@ -44,7 +44,11 @@
                     </div>
                 </div>
             </div>
-
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
+            </div>
+        @endif
             <div class="row perDesc">
                 <br/>
                 <br/>
