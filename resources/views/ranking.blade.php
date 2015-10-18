@@ -33,7 +33,7 @@ $disciplina = $_SESSION['disciplina'];
             <ul>
                 @foreach($temasEstudadas as $tema)
                     @if($tema->disciplina_id == $disciplina->id)
-                        <li>{{$tema->tema}}</li>
+                        <li><a href="estudar/{{$disciplina->id}}/{{$tema->tema}}">{{$tema->tema}}</a></li>
                     @endif
                 @endforeach
             </ul>
@@ -68,10 +68,13 @@ $disciplina = $_SESSION['disciplina'];
 
     </div>
     <div id="ultimosTestes" class="well">
+        {{--@foreach($testesFeitos as $teste)--}}
+        {{--<li>{!!$teste->capitulo!!} : {!!$teste->nota!!} valores</li>--}}
+        {{--@endforeach--}}
+
         <?php $utCont = false; ?>
         @foreach($testesFeitos as $teste)
-                @if ($teste->nota != null)
-<!-- Ele aqui está a devolver todos os testes feitos pelo usuário.. tenho que mudar para todos os testes mais recentes com sua maior nota! -->
+                @if ($teste->disicplina_id == $disciplina->id)
                     <?php $utCont = true; ?>
                 @endif
         @endforeach
@@ -80,11 +83,13 @@ $disciplina = $_SESSION['disciplina'];
                 <h4>Últimos testes realizados:</h4>
                 <ul>
                     @foreach($testesFeitos as $teste)
-                        <li>{{$teste->capitulo}} : {{$teste->nota}} valores</li>
+                        @if ($teste->disicplina_id == $disciplina->id)
+                            <li>{{$teste->capitulo}} : {{$teste->nota}} valores</li>
+                        @endif
                     @endforeach
                 </ul>
         @else
-                <p>Até agora não fez nenhum teste. Faça um teste para entrar na lista!</p>
+            <p>Até agora não fez nenhum teste. Escolha um Capítulo e comece a fazer.</p>
         @endif
     </div>
 </div>

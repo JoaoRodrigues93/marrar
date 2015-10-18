@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class GestorTesteFeito {
     public function guardaTesteFeito ($disciplina_id,$estudante_id,$nota,$nomeEstudante,$nomeDisciplina,
@@ -29,10 +30,13 @@ class GestorTesteFeito {
 
     public function testesFeitos (){
         $estudante = Auth::user();
-        //$testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id)->sortByDesc('id')->max('nota');
-        $testesFeitos = TesteFeito::orderBy('id', 'desc')
-            //->max('nota')
-            ->get();
+        $testesFeitos = TesteFeito::all()->where('estudante_id',$estudante->id);
+//        $testesFeitos = TesteFeito::orderBy('id', 'desc')
+
+        //$testesFeitos = TesteFeito::groupBy('capitulo')
+//            ->where('estudante_id',$estudante->id);
+//            //->max('nota')
+//
         return $testesFeitos;
     }
 }

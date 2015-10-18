@@ -1,4 +1,4 @@
-<!-- Serviço Indisponivel Exception -->
+<!--Internal Server Error Exception -->
 <html>
 <head>
     <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
@@ -46,7 +46,7 @@
 <div class="container">
     <div class="content">
         <div class="title">marrar</div>
-        <div class="message">Serviço Indisponível :(</div>
+        <div class="message">Erro Interno - Tente Mais Tarde, por favor :)</div>
     </div>
 </div>
 </body>
