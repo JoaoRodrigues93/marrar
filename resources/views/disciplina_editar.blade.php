@@ -38,7 +38,7 @@
                 method: 'POST',
                 success: function (data) {
 
-                    alert('Dados gravados com sucesso');
+                    alert('Dados alterados com sucesso');
                     var nome= document.getElementById('nome');
 
 

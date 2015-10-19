@@ -21,6 +21,7 @@ $disciplina = $_SESSION['disciplina'];
 
 <div class="container-fluid">
     <div id="disciplinasEstudadas" class="well">
+        <h4>Temas Estudadas:</h4>
         <?php $temaCont = false; ?>
         @foreach($temasEstudadas as $tema)
             @if($tema->disciplina_id == $disciplina->id)
@@ -29,11 +30,10 @@ $disciplina = $_SESSION['disciplina'];
         @endforeach
 
         @if($temaCont)
-            <h4>Temas Estudadas:</h4>
             <ul>
                 @foreach($temasEstudadas as $tema)
                     @if($tema->disciplina_id == $disciplina->id)
-                        <li><a href="estudar/{{$disciplina->id}}/{{$tema->tema}}">{{$tema->tema}}</a></li>
+                        <li><a href="estudar/{{$tema->disciplina_id}}/{{$tema->tema}}">{{$tema->tema}}</a></li>
                     @endif
                 @endforeach
             </ul>
@@ -42,6 +42,7 @@ $disciplina = $_SESSION['disciplina'];
         @endif
     </div>
     <div id="ranking" class="well">
+        <h4>Classificação: {{$_SESSION['disciplinaActual']->nome}}</h4>
             <?php $rankCont = false; ?>
             @foreach($rankingArray as $ranking)
                 @if ($ranking->estudante != null)
@@ -50,7 +51,6 @@ $disciplina = $_SESSION['disciplina'];
             @endforeach
 
             @if($rankCont)
-                <h4>Classificação: {{$_SESSION['disciplinaActual']->nome}}</h4>
                 <ol>
                     @foreach($rankingArray as $ranking)
                         <li>

@@ -59,8 +59,8 @@
         document.onkeydown = function (evt) {
             var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
             if (keyCode == 13) {
-                var  button2 = document.getElementById("gravar");
-                button2.click();
+                gravarDisc();
+                evt.preventDefault();
             }
 
         };
