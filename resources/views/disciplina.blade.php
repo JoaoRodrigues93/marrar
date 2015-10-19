@@ -43,7 +43,7 @@
                 method: 'POST',
                 success: function (data) {
 
-                  //  alert('Dados gravados com sucesso');
+                   alert('Dados gravados com sucesso');
                     var nome= document.getElementById('nome');
 
 
