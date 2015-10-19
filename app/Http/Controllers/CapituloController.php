@@ -207,6 +207,7 @@ public function showHome() {
 
         }
 
+
         //Guarda dados da disciplina escolhida
         $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
         $estudante = Auth::user();
