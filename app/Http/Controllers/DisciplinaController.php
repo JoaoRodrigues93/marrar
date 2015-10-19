@@ -84,11 +84,13 @@ class DisciplinaController extends Controller
 
     public function editar()
     { $data = Input::all();
-        $id = $data->input('id');
-        $disciplinas = Disciplina::find($id);
+
+
 
         if(Request::ajax()){
 
+            $id = $data['id'];
+            $disciplinas = Disciplina::find($id);
         $disciplinas->nome=$data['nome'];
         $disciplinas->save();
      //   Session::flash('message', 'Dados alterados com sucesso');
