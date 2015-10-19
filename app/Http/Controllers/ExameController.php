@@ -261,6 +261,13 @@ class ExameController extends Controller {
         return $questoes;
 
     }
+
+    public function showTimeStamp() {
+        //App::abort(404);
+        $perfil = Auth::user();
+
+        return view('tempexamecolectivo');
+    }
 }
 
 

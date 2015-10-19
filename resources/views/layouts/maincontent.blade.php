@@ -111,19 +111,13 @@
 
                     <li id="username" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{$estudante->nome}}
-                        {{--@if($estudante->foto)--}}
-
-                        {{--@else--}}
-                            {{--<span class="glyphicon glyphicon-user"></span>--}}
-                            {{--@endif--}}
+                            <span class="glyphicon"> <img width="14" height="14" class="img-responsive" src="{{$fotolink}}"/></span>
+                            <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" >
                                 <li><a href="/perfil">Perfil</a></li>
                                 <li><a href="/auth/logout">Sair</a></li>
                             </ul>
-                    <li>
-                        <a><img width="24" height="24" class="img-responsive" src="{{$fotolink}}"/></a>
-                        </li>
                     </li>
                 </ul>
             </div>
