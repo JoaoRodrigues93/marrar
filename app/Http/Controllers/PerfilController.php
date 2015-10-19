@@ -84,7 +84,7 @@ class PerfilController extends Controller {
                     $image = Input::file('image');
                     $path = public_path('images\perfil\img-' . $fileName);
 
-                    Image::make($image->getRealPath())->resize(512, 512)->save($path);
+                    Image::make($image->getRealPath())->resize(512, 512, true)->save($path);
                     //Image::make(sprintf('public/images/catalog/%s', $fileName))->resize(200, 200)->save();
 
                     $perfil->foto = "/images/perfil/img-" . $fileName;

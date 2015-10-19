@@ -158,6 +158,7 @@ public function showHome() {
     $nome= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
     $nome=strtolower($nome);
 
+    $_SESSION['tema']=false;
     if($nome=='portugues'){
 
         $tema=Tema::where('nome','PerguntaTexto')->first();
@@ -169,6 +170,10 @@ public function showHome() {
             }
 
     }
+
+
+
+
     //Guarda dados da disciplina escolhida
     $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
     $estudante = Auth::user();
@@ -187,6 +192,21 @@ public function showHome() {
     public function showHomeMobile(){
 
         $disciplina=$_SESSION['disciplina'];
+        $nome= preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $disciplina->nome ) );
+        $nome=strtolower($nome);
+        $_SESSION['tema']=false;
+        if($nome=='portugues'){
+
+            $tema=Tema::where('nome','PerguntaTexto')->first();
+            if(!$tema){
+                $_SESSION['tema']=false;}
+
+            else {
+                $_SESSION['tema']=$tema;
+            }
+
+        }
+
         //Guarda dados da disciplina escolhida
         $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
         $estudante = Auth::user();
