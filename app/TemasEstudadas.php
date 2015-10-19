@@ -10,6 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TemasEstudadas extends Model {
 
-    protected $fillable = ['tema','estudante_id','disciplina_id','tema_id','ultimo_dia_de_estudo'];
+    protected $fillable = ['tema','estudante_id','disciplina_id','capitulo_id', 'tema_id','ultimo_dia_de_estudo', 'numeroVezesClickado'];
 
 }

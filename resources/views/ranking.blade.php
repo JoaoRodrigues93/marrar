@@ -21,7 +21,7 @@ $disciplina = $_SESSION['disciplina'];
 
 <div class="container-fluid">
     <div id="disciplinasEstudadas" class="well">
-        <h4>Temas Estudadas:</h4>
+        <h4>Temas Estudados:</h4>
         <?php $temaCont = false; ?>
         @foreach($temasEstudadas as $tema)
             @if($tema->disciplina_id == $disciplina->id)
@@ -33,7 +33,7 @@ $disciplina = $_SESSION['disciplina'];
             <ul>
                 @foreach($temasEstudadas as $tema)
                     @if($tema->disciplina_id == $disciplina->id)
-                        <li><a href="estudar/{{$tema->disciplina_id}}/{{$tema->tema}}">{{$tema->tema}}</a></li>
+                        <li><a href="estudar/{{$tema->capitulo_id}}/{{$tema->tema}}">{{$tema->tema}}</a></li>
                     @endif
                 @endforeach
             </ul>

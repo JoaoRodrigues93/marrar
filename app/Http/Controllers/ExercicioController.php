@@ -93,7 +93,9 @@ class ExercicioController extends Controller{
 
 
         $tema_id = Tema::where("temas.nome", $tema)->first();
-        $gestorTemaEstudada->guardaTemaEstudada($estudante->id,$disciplina->id,$tema_id->id, $tema);
+        $gestorTemaEstudada->guardaTemaEstudada($estudante->id,$disciplina->id,
+            $idCapitulo,
+            $tema_id->id, $tema);
 
         return $this->showExercicio($disciplina,$capitulo,$tema);
     }
