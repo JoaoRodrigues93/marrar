@@ -16,7 +16,7 @@ class CreateTemasTable extends Migration {
 		{
 			$table->increments('id');
             $table->text('conteudo');
-            $table->string('nome')->unique();
+            $table->string('nome');
             $table->smallInteger('numero_questoes');
             $table->integer('capitulo_id')->unsigned();
             $table->softDeletes();

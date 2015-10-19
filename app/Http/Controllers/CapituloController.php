@@ -80,17 +80,23 @@ class CapituloController extends Controller
         return view('capitulo_editar')->with(array('idDisc'=>$idDisc->id,'capitulos' => $capitulo, 'disciplinas' => $disciplinas));
     }
 
-    public function editar(Request $request)
-    {
-        $id = $request->input('id');
-        $disciplinas = Disciplina::find($request->input('disciplinas'));
-        $capitulos = Capitulo::find($id);
-        $capitulos->nome = $request->input('nome');
-        $capitulos = $disciplinas->capitulos()->save($capitulos);
-        Session::flash('message', 'Dados alterados com sucesso');
-        return Redirect('capitulo_list');
-    }
 
+
+    public function editar()
+    {
+        $data = Input::all();
+
+
+        if (Request::ajax()) {
+
+            $id = $data['id'];
+            $disciplinas = Disciplina::find($data['disciplinas']);
+            $capitulos = Capitulo::find($id);
+            $capitulos->nome = $data['nome'];
+            $capitulos = $disciplinas->capitulos()->save($capitulos);
+
+        }
+    }
 
 public function buscarCapituloDisciplina($id){
 

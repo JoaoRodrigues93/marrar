@@ -9,7 +9,7 @@
             <h2 class="text-center">Disciplina</h2>
 
             {!!  Form::open(['editarDisciplina']) !!}
-
+            <a href="{{URL::to('disciplina_list')}}" class="">Clique aqui para ver a lista de disciplinas</a>
             <div class="form-group">
                 {!! Form::label('nome','Introduza a disciplina:',['class'=>'text-primary']) !!}
                 {!! Form::text('nome',$disciplinas->nome,['class'=>'form-control','id'=>'nome','rows'=>'1']) !!}
@@ -39,19 +39,26 @@
                 success: function (data) {
 
                     alert('Dados alterados com sucesso');
-                    var nome= document.getElementById('nome');
 
 
 
 
-                    nome.value='';
+
+
 
                 }
 
             });
         }
 
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+                gravarDisc();
+                evt.preventDefault();
+            }
 
+        };
 
     </script>
 @stop

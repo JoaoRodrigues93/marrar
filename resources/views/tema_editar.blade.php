@@ -9,6 +9,7 @@
         <h2 class="text-center">Tema</h2>
 
         {!! Form::open( array('url'=> 'editar-tema')) !!}
+        <a href="{{URL::to('tema_list')}}" class="">Clique aqui para ver a lista dos temas</a>
 
 
         <div class="jumbotron">

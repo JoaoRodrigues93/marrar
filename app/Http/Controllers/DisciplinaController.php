@@ -93,10 +93,9 @@ class DisciplinaController extends Controller
             $disciplinas = Disciplina::find($id);
         $disciplinas->nome=$data['nome'];
         $disciplinas->save();
-     //   Session::flash('message', 'Dados alterados com sucesso');
-       // return Redirect('disciplina_list');
 
-    }}
+
+    } return Redirect('disciplina_list');}
 
     /* public function store(CreateDisciplinaRequest $request){
        Disciplina::create($request->all());

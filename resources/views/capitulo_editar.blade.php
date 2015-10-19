@@ -10,8 +10,8 @@
     <div class="container">
         <div class="jumbotron">
             <h2 class="text-center">Capitulo</h2>
-            {!! Form::open( array('url'=> 'editar-capitulo')) !!}
-
+            {!!  Form::open(['gravarCapitulo']) !!}
+            <a href="{{URL::to('capitulo_list')}}" class="">Clique aqui para ver a lista dos capitulos</a>
             <div class="form-group">
 
                 {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
@@ -21,13 +21,13 @@
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::text('nome',$capitulos->nome,['class'=>'form-control', 'rows'=>'1']) !!}
-                {!! Form::hidden('id',$capitulos->id,['class'=>'form-control']) !!}
+                {!! Form::text('nome',$capitulos->nome,['class'=>'form-control', 'rows'=>'1','id'=>'nome']) !!}
+                {!! Form::hidden('id',$capitulos->id,['class'=>'form-control','id'=>'id']) !!}
 
             </div>
 
             <div>
-                <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
+                <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarCapitulo()">Gravar</button>
                 {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
             </div>
 
@@ -51,6 +51,33 @@
                 i++;
 
             }
+            function gravarCapitulo(){
+
+                var form = $('form[gravarCapitulo]');
+                var url = form.prop('action');
+
+                $.ajax({
+                    url: url,
+                    data: form.serialize(),
+                    method: 'POST',
+                    success: function (data) {
+
+                        alert('Dados alterados com sucesso');
+
+
+                    }
+
+                });
+            }
+
+            document.onkeydown = function (evt) {
+                var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+                if (keyCode == 13) {
+                    gravarCapitulo();
+                    evt.preventDefault();
+                }
+
+            };
 
         </script>
     </div>
