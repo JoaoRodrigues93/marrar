@@ -61,6 +61,7 @@
 
                     {{--<div>--}}
                         {{--<a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>--}}
+                    <a class="desistir btn btn-default right" onclick="desistir()" href="#">Desistir</a>
 
                         <div class="exame-title row">
                             <h3 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9">
@@ -154,7 +155,7 @@
                             @else
 
                                 <div id="pergunta{{$i}}" class="tab-pane fade <?php if ($i == 1) echo "in active"; ?>">
-                                    <h2 class="hidden-xs" id="questaoH2{{$i}}"></h2>
+                                    <h3 class="hidden-xs" id="questaoH2{{$i}}"></h3>
                                     <h4 class="hidden-lg hidden-md hidden-sm" id="questaoH4{{$i}}"></h4>
 
                                     <div>
@@ -236,7 +237,7 @@
                         </ul>
                         <div class="row">
 
-                            <a class="desistir btn btn-default right" onclick="desistir()" href="#">Desistir</a>
+                            {{--<a class="desistir btn btn-default right" onclick="desistir()" href="#">Desistir</a>--}}
                             {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
 
                         </div>
@@ -263,7 +264,7 @@
                 </section>
                 @if($texto)
 
-                    <section id="section-flip-2"><p>{{$texto->texto}}</p></section>
+                    <section class="texto" id="section-flip-2"><p>{{$texto->texto}}</p></section>
 
                 @endif
             </div>

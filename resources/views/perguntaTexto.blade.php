@@ -3,7 +3,10 @@
 @section('title')
     Registo de Perguntas
 @stop
-
+@section('links')
+    @parent
+    <script src="{{URL::asset('ckeditorstardard/ckeditor/ckeditor.js')}}"></script>
+@stop
 
 @section('body')
 

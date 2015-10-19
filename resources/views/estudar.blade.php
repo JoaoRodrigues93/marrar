@@ -21,7 +21,6 @@
                                                                                   style="color: grey">Desistir</p></a>
             </div>
 
-
         </div>
         <div>
             <div class="teoria">

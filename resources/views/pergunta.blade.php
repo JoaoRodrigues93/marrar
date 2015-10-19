@@ -4,6 +4,11 @@
     Registo de Perguntas
 @stop
 
+@section('links')
+  @parent
+  <script src="{{URL::asset('ckeditorstardard/ckeditor/ckeditor.js')}}"></script>
+@stop
+
 
 @section('body')
     <h3 class="text-center"> Registo de perguntas</h3>
@@ -16,11 +21,11 @@
 
         @endif
 
-            {!! Form::open( array('url'=> 'registar-pergunta')) !!}
+        {!! Form::open( array('url'=> 'registar-pergunta')) !!}
         <a href="{{URL::to('perguntaview')}}" class="text-right">Clique aqui para ver a lista de perguntas</a>
 
         <div class="jumbotron">
-            <div class="form-group" >
+            <div class="form-group">
 
                 {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
                 {!! Form::select('disciplinas', $disciplinas , null, ['class' => 'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"])
@@ -57,7 +62,7 @@
     <script>
 
         var formSubmitted = false;
-        $("#submeterPergunta").on('click', function(e) {
+        $("#submeterPergunta").on('click', function (e) {
             if (formSubmitted === true) {
                 formSubmitted = false;
                 return;
@@ -115,77 +120,75 @@
 
     <script>
 
-           document.getElementById('disciplinas').selectedIndex=-1;
+        document.getElementById('disciplinas').selectedIndex = -1;
 
-           CKEDITOR.replaceAll();
+        CKEDITOR.replaceAll();
 
-           /*CKEDITOR.replace( 'opcaoCorrecta', {
-               allowedContent:
-               'img[!src,alt,width,height]{float};' + // Note no {width,height}
-               'h1 h2 div'
-           } );*/
+        /*CKEDITOR.replace( 'opcaoCorrecta', {
+         allowedContent:
+         'img[!src,alt,width,height]{float};' + // Note no {width,height}
+         'h1 h2 div'
+         } );*/
 
-           //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
-            function adicionaCapitulo() {
+        //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
+        function adicionaCapitulo() {
 
-                var  disciplina = document.getElementById('disciplinas');
-                var  capitulos = document.getElementById('capitulos');
-                var  temas = document.getElementById('temas');
+            var disciplina = document.getElementById('disciplinas');
+            var capitulos = document.getElementById('capitulos');
+            var temas = document.getElementById('temas');
 
-                var disciplinaSelecionada = disciplina.options[disciplina.selectedIndex].value;
+            var disciplinaSelecionada = disciplina.options[disciplina.selectedIndex].value;
 
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
 
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xmlhttp.onreadystatechange = function() {
-
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                var listaCapitulos = xmlhttp.responseText;
-                var capituloJson = JSON.parse(listaCapitulos);
-                var capitulo;
-
-
-                for(k=capitulos.options.length-1;k>=0;k--)
-                {
-                    capitulos.remove(k);
-                }
-
-                for(j=temas.options.length-1;j>=0;j--)
-                {
-                    temas.remove(j);
-                }
-
-                for (var i = 0; i < capituloJson.capitulos.length; i++) {
-                    var option = document.createElement("option");
-                    capitulo = capituloJson.capitulos[i];
-                    option.text = capitulo.nome;
-                    capitulos.add(option);
-                    capitulos.options[i].value=capitulo.id;
-
-                }
-
-                capitulos.selectedIndex=-1;
-                temas.selectedIndex=-1;
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
+            xmlhttp.onreadystatechange = function () {
+
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    var listaCapitulos = xmlhttp.responseText;
+                    var capituloJson = JSON.parse(listaCapitulos);
+                    var capitulo;
+
+
+                    for (k = capitulos.options.length - 1; k >= 0; k--) {
+                        capitulos.remove(k);
+                    }
+
+                    for (j = temas.options.length - 1; j >= 0; j--) {
+                        temas.remove(j);
+                    }
+
+                    for (var i = 0; i < capituloJson.capitulos.length; i++) {
+                        var option = document.createElement("option");
+                        capitulo = capituloJson.capitulos[i];
+                        option.text = capitulo.nome;
+                        capitulos.add(option);
+                        capitulos.options[i].value = capitulo.id;
+
+                    }
+
+                    capitulos.selectedIndex = -1;
+                    temas.selectedIndex = -1;
+                }
+
+            }
+            xmlhttp.open("GET", "capitulo-combobox/" + disciplinaSelecionada, true);
+
+            xmlhttp.send();
         }
-        xmlhttp.open("GET","capitulo-combobox/"+disciplinaSelecionada,true);
 
-        xmlhttp.send();
-        }
+        //Funcao  que busca os temas do capitulo escolhido e adiciona a combobox temas
+        function adicionaTema() {
 
-           //Funcao  que busca os temas do capitulo escolhido e adiciona a combobox temas
-        function adicionaTema(){
-
-            var  temas = document.getElementById('temas');
-            var  capitulos = document.getElementById('capitulos');
+            var temas = document.getElementById('temas');
+            var capitulos = document.getElementById('capitulos');
 
 
             var capituloSelecionado = capitulos.options[capitulos.selectedIndex].value;
@@ -199,7 +202,7 @@
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
 
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
@@ -209,8 +212,7 @@
                     var tema;
 
 
-                    for(k=temas.options.length-1;k>=0;k--)
-                    {
+                    for (k = temas.options.length - 1; k >= 0; k--) {
                         temas.remove(k);
                     }
 
@@ -219,22 +221,20 @@
                         tema = temaJson.temas[i];
                         option.text = tema.nome;
                         temas.add(option);
-                        temas.options[i].value=tema.id;
+                        temas.options[i].value = tema.id;
 
                     }
 
-                    temas.selectedIndex=-1;
+                    temas.selectedIndex = -1;
                 }
 
             }
-            xmlhttp.open("GET","tema-combobox/"+capituloSelecionado,true);
+            xmlhttp.open("GET", "tema-combobox/" + capituloSelecionado, true);
 
             xmlhttp.send();
 
 
-
         }
-
 
 
     </script>
