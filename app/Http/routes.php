@@ -22,9 +22,9 @@ Route::get('/disciplina_list/editar/{id}','DisciplinaController@editarDisiciplin
 Route::get('/disciplina_list/remover/{id}','DisciplinaController@deleteDisciplina');
 Route::post('/disciplina_list/editar/{id}','DisciplinaController@editar');
 
-Route::get('capitulo','CapituloController@inicializaCapitulo');
-Route::post('capitulo','CapituloController@createCapitulo');
-Route::get('capitulo_list','CapituloController@inicializaCapitulo_list');
+Route::get('/capitulo','CapituloController@inicializaCapitulo');
+Route::post('/capitulo','CapituloController@createCapitulo');
+Route::get('/capitulo_list','CapituloController@inicializaCapitulo_list');
 Route::get('/capitulo_list/editar/{id}','CapituloController@editarCapitulo');
 Route::get('/capitulo_list/remover/{id}','CapituloController@deleteCapitulo');
 Route::post('editar-capitulo','CapituloController@editar');

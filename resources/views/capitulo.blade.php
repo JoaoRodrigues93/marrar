@@ -14,26 +14,65 @@
                 </div>
 
             @endif
-            {!! Form::open( array('url'=> 'capitulo')) !!}
+            {!!  Form::open(['gravarDisciplina']) !!}
             <a href="{{URL::to('capitulo_list')}}" class="">Clique aqui para ver a lista dos capitulos</a>
 
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', array('default'=>'')+$disciplinas , null,['class'=>'form-control']) !!}
+                {!! Form::select('disciplinas', array('default'=>'')+$disciplinas , null,['class'=>'form-control','id'=>'disciplinas']) !!}
             </div>
 
             <div class="form-group">
                 {!! Form::label('nome','Introduza o nome do capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::text('nome','',['class'=>'form-control','rows'=>'1']) !!}
+                {!! Form::text('nome','',['class'=>'form-control','id'=>'nome','rows'=>'1']) !!}
 
             </div>
 
             <div>
-                <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
+                <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarDisc()">Gravar</button>
             </div>
 
 
             {!! Form::close() !!}
         </div>
     </div>
+
+    <script>
+
+        function gravarDisc(){
+
+            var form = $('form[gravarDisciplina]');
+            var url = form.prop('action');
+
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                method: 'POST',
+                success: function (data) {
+
+                    alert('Dados gravados com sucesso');
+                    var nome= document.getElementById('nome');
+
+
+                    nome.value='';
+
+
+
+                }
+
+            });
+        }
+
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+                var  button2 = document.getElementById("gravar");
+                button2.click();
+            }
+
+        };
+
+    </script>
+
+
 @stop

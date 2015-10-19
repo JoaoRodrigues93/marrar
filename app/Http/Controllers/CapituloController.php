@@ -5,10 +5,12 @@ use App\Dado;
 use App\Disciplina;
 use App\GestorDisciplinaEstudada;
 use App\Tema;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Request;
+use Input;
 include 'Mobile_Detect.php';
 
 session_start();
@@ -33,7 +35,7 @@ class CapituloController extends Controller
         return view('capitulo')->with(array('disciplinas' => $disciplinas));
     }
 
-    public function createCapitulo(Request $request)
+/*    public function createCapitulo(Request $request)
     {
         $capitulo = new Capitulo();
         $capitulo->nome = $request->input('nome');
@@ -41,7 +43,21 @@ class CapituloController extends Controller
         $capitulo = $disciplinas->capitulos()->save($capitulo);
         Session::flash('message', 'Dados gravados com sucesso');
         return Redirect('capitulo');
-    }
+    }*/
+    public function createCapitulo()
+    {
+        $capitulo = new Capitulo();
+        $data = Input::all();
+        if(Request::ajax()){
+        $disciplinas = Disciplina::find($data['disciplinas']);
+            $capitulo->nome = $data['nome'];
+        $capitulo = $disciplinas->capitulos()->save($capitulo);
+
+
+    }}
+
+
+
 
     public function inicializaCapitulo_list()
     {
@@ -206,6 +222,7 @@ public function showHome() {
             }
 
         }
+
 
         //Guarda dados da disciplina escolhida
         $gestorDisciplinaEstudada = new GestorDisciplinaEstudada();
