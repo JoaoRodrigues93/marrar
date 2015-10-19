@@ -85,7 +85,7 @@
 .content-wrap section {
 	display: none;
 	margin: 0 auto;
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 	max-width: 1200px;
 }
 

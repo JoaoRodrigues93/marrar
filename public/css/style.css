@@ -467,3 +467,9 @@ div.voltar:hover h3 a{
     text-shadow: 1px 1px 3px #999;
 }
 
+.desistir{
+    border: none;
+    margin-left: 4px;
+    font-size: 12px;
+    margin-top: 2px;
+}

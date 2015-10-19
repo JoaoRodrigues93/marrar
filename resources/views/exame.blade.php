@@ -58,14 +58,18 @@
             <div id="well" class="content-wrap well">
                 <section id="section-flip-1">
 
-                    <div>
-                        <a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>
+                    {{--<div>--}}
+                        {{--<a class="link" onclick="desistir()" href="#"><p class="text-right">Desistir</p></a>--}}
 
                         <div class="exame-title row">
-                            <h2 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9"><strong>Exame
-                                    | {{$disciplina->nome}}</strong></h2>
-                            <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9">Exame
-                                | {{$disciplina->nome}}</h4>
+                            <h3 class="text-primary hidden-xs col-lg-9 col-md-9 col-sm-9">
+                                <strong>
+                                    {{$disciplina->nome}}
+                                </strong>
+                            </h3>
+                            <h4 class="text-primary hidden-lg hidden-md hidden-sm  col-xs-9">
+                                {{$disciplina->nome}}
+                            </h4>
 
                             <div class="exame-time  col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                 <h4 id="timer" class="text-right text-danger"></h4>
@@ -231,12 +235,14 @@
                         </ul>
                         <div class="row">
 
+                            <a class="desistir btn btn-default right" onclick="desistir()" href="#">Desistir</a>
                             {!!Form::submit('Entregar',['class'=>'btn btn-primary right', 'id'=>'entregar']) !!}
+
                         </div>
                         {!!Form::close()!!}
 
 
-                    </div>
+                    {{--</div>--}}
                     <div class="modal fade" id="mensagem" role="dialog">
                         <div class="modal-dialog">
 
