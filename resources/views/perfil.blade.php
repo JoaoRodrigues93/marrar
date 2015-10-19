@@ -2,14 +2,16 @@
 @extends('layouts.maincontent')
 @section('body')
 
+
     <style>
-        div.voltar:hover svg{
-            opacity: 1;
-            -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+        div.voltar:hover h3 a{
+            opacity: 0;
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
         }
     </style>
-
     <div class="form-group well">
 
 
