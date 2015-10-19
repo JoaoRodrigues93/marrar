@@ -15,7 +15,7 @@ class CreateCapitulosTable extends Migration {
 		Schema::create('capitulos', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('nome')->unique();
+            $table->string('nome');
             $table->integer('disciplina_id')->unsigned();
             $table->softDeletes();
             $table->foreign('disciplina_id')->references('id')->on('disciplinas')->onDelete('cascade');

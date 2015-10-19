@@ -3,7 +3,8 @@
 use App\Tema;
 use App\Capitulo;
 use App\Disciplina;
-use Illuminate\Http\Request;
+use Request;
+use Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 session_start();
@@ -35,12 +36,14 @@ class TemaController extends Controller
         return view('tema_list')->with(array('temas' => $tema, 'capitulos' => $capitulos));
     }
 
-    public function createTema(Request $request)
-    {
 
-        $disciplina = $request->input('disciplinas');
-        $capitulo = $request->input('capitulos');
-        $nome = $request->input('nome');
+
+    public function createTema()
+    { $data = Input::all();
+
+        $disciplina = $data['disciplinas'];
+        $capitulo = $data['capitulos'];
+        $nome = $data['nome'];
 
         $path = "teoria/$disciplina/$capitulo";
 
@@ -52,23 +55,23 @@ class TemaController extends Controller
 
         $pathFinal = "$path/$nome.html";
         $myfile = fopen($pathFinal, "w") or die("Unable to open file");
-        $conteudo = $request->input('conteudo');
+        $conteudo = $data['conteudo'];
         fwrite($myfile, $conteudo);
         fclose($myfile);
+        $tema = new Tema();
+        if(Request::ajax()){
 
-
-         $tema = new Tema();
-         $tema->nome = $request->input('nome');
-         $tema->numero_questoes = $request->input('questoes');
+         $tema->nome = $data['nome'];
+         $tema->numero_questoes = $data['questoes'];
          $tema->conteudo = $pathFinal;
-         $capitulos = Capitulo::find($request->input('capitulos'));
+         $capitulos = Capitulo::find($data['capitulos']);
          $tema = $capitulos->temas()->save($tema);
-         Session::flash('message', 'Dados gravados com sucesso');
+
 
          return Redirect::to('tema');
 
 
-    }
+    }}
 
     public function deleteTema($id)
     {

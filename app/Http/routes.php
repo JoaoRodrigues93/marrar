@@ -27,7 +27,7 @@ Route::post('/capitulo','CapituloController@createCapitulo');
 Route::get('/capitulo_list','CapituloController@inicializaCapitulo_list');
 Route::get('/capitulo_list/editar/{id}','CapituloController@editarCapitulo');
 Route::get('/capitulo_list/remover/{id}','CapituloController@deleteCapitulo');
-Route::post('editar-capitulo','CapituloController@editar');
+Route::post('/capitulo_list/editar/{id}','CapituloController@editar');
 Route::get('/tema','TemaController@inicializaTema');
 Route::post('/tema','TemaController@createTema');
 Route::get('/tema_list','TemaController@inicializaTema_list');
