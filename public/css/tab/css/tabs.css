@@ -38,9 +38,6 @@
 	-moz-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-
-
-
 }
 
 .tabs nav a {
@@ -94,22 +91,6 @@
 
 .content-wrap section.content-current {
 	display: block;
-}
-
-/* Fallback */
-.no-js .content-wrap section {
-	display: block;
-	padding-bottom: 2em;
-	border-bottom: 1px solid rgba(255,255,255,0.6);
-}
-
-.no-flexbox nav ul {
-	display: block;
-}
-
-.no-flexbox nav ul li {
-	min-width: 15%;
-	display: inline-block;
 }
 
 @media screen and (max-width: 58em) {
