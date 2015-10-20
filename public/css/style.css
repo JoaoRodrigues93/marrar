@@ -488,15 +488,14 @@ div.voltar:hover h3 a {
     margin-top: 2px;
 }
 
-
-div.voltar:hover h3 a{
-     opacity: 0;
-     -webkit-transition-delay: 0.2s;
-     transition-delay: 0.2s;
-     -webkit-transform: translateX(-100%);
-     transform: translateX(-100%);
- }
-
 .texto{
     overflow-x: scroll;
+}
+
+.menugestao{
+    border-radius: 0;
+}
+
+.menugestao li:hover{
+    background-color: #2c85de;
 }

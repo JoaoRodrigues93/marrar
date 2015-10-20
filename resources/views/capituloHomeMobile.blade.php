@@ -4,6 +4,13 @@
     Marrar:Capitulos
 @stop
 
+
+<style>
+    div.voltar svg{
+        opacity: 0;
+    }
+</style>
+
 @section('body')
 
     <div class="panel panel-body">
