@@ -3,7 +3,8 @@ use App\Capitulo;
 use App\Disciplina;
 use App\Pergunta;
 use App\Tema;
-use Illuminate\Http\Request;
+use Request;
+use Input;
 use Illuminate\Support\Facades\Session;
 
 
@@ -37,17 +38,19 @@ class PerguntaController extends Controller {
         return view('perguntaview')->with(array('disciplinas'=>$disciplinas,'perguntas'=>$perguntas));
     }
 
-public function registaPerguntas(Request $request){
+public function registaPerguntas(){
     $pergunta =new Pergunta();
 
-    $pergunta -> questao = $request -> input('questao');
-    $pergunta -> opcao1  = $request -> input('opcao1');
-    $pergunta -> opcao2  = $request -> input('opcao2');
-    $pergunta -> opcao3  = $request -> input('opcao3');
-    $pergunta -> opcao4  = $request -> input('opcao4');
-    $pergunta -> opcao5  = $request -> input('opcaoCorrecta');
+    $data = Input::all();
 
-    $pergunta -> opcaoCorrecta = $request -> input('opcaoCorrecta');
+    if(Request::ajax()) {
+        $pergunta->questao = $data['questao'];
+        $pergunta->opcao1 = $data['opcao1'];
+        $pergunta->opcao2 = $data['opcao2'];
+        $pergunta->opcao3 = $data['opcao3'];
+        $pergunta->opcao4 = $data['opcao4'];
+        $pergunta->opcao5 = $data['opcaoCorrecta'];
+        $pergunta->opcaoCorrecta = $data['opcaoCorrecta'];
 
     $string1=strstr($pergunta -> opcao1,'<img');
 
@@ -78,14 +81,15 @@ public function registaPerguntas(Request $request){
     }
 
 
-   $tema = Tema::find($request -> input('tema'));
-$pergunta = $tema->perguntas()->save($pergunta);
-Session::flash('message','Dados gravados com sucesso');
+   $tema = Tema::find($data['tema']);
 
-    return redirect('/pergunta');
+        $pergunta = $tema->perguntas()->save($pergunta);
 
 
-}
+
+
+
+}}
 
     public function RemoverPergunta($id){
 
@@ -117,25 +121,25 @@ Session::flash('message','Dados gravados com sucesso');
 
 
 
-    public function EditarPergunta(Request $request){
-
-        $id= $request->input('id');
+    public function EditarPergunta(){
+        $data = Input::all();
+        if(Request::ajax()) {
+        $id= $data['id'];
         $pergunta=Pergunta::find($id);
-        $pergunta -> questao = $request -> input('questao');
-        $pergunta -> opcao1  = $request -> input('opcao1');
-        $pergunta -> opcao2  = $request -> input('opcao2');
-        $pergunta -> opcao3  = $request -> input('opcao3');
-        $pergunta -> opcao4  = $request -> input('opcao4');
-        $pergunta -> opcao5  = $request -> input('opcaoCorrecta');
-        $pergunta -> opcaoCorrecta = $request -> input('opcaoCorrecta');
-        $tema = Tema::find($request -> input('tema'));
+        $pergunta -> questao = $data['questao'];
+        $pergunta -> opcao1  = $data['opcao1'];
+        $pergunta -> opcao2  = $data['opcao2'];
+        $pergunta -> opcao3  = $data['opcao3'];
+        $pergunta -> opcao4  = $data['opcao4'];
+        $pergunta -> opcao5  = $data['opcaoCorrecta'];
+        $pergunta -> opcaoCorrecta = $data['opcaoCorrecta'];
+        $tema = Tema::find($data['tema']);
 
         $pergunta = $tema->perguntas()->save($pergunta);
 
-        return redirect('perguntaview');
 
 
-    }
+    }}
 
     public function showPerguntaPorDisc($id){
 

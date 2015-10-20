@@ -21,6 +21,7 @@
 
         @endif
 
+            {!!  Form::open(['gravarPergunt']) !!}
         {!! Form::open( array('url'=> 'registar-pergunta')) !!}
         <a href="{{URL::to('perguntaview')}}" class="text-right">Clique aqui para ver a lista de perguntas</a>
 
@@ -51,7 +52,8 @@
 
         </div>
         <div class="center-block" align="center">
-            {!!Form::submit('Submeter pergunta',['class'=>'btn-primary','id'=>'submeterPergunta']) !!}
+
+            <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarPergunta()">Gravar</button>
 
         </div>
         <div class="bottom-right">
@@ -236,6 +238,49 @@
 
         }
 
+
+           function gravarPergunta(){
+
+               var form = $('form[gravarPergunt]');
+               var url = form.prop('action');
+
+               $.ajax({
+                   url: url,
+                   data: form.serialize(),
+                   method: 'POST',
+                   success: function (data) {
+
+                       alert('Dados gravados com sucesso');
+                       var opcao1= document.getElementById('opcao1');
+                       var opcao2= document.getElementById('opcao2');
+                       var opcao3= document.getElementById('opcao3');
+                       var opcao4= document.getElementById('opcao4');
+                       var opcaoCorrecta= document.getElementById('opcaoCorrecta');
+                       var questao =document.getElementById('questao');
+
+
+                       questao.value='';
+
+//limpa campos
+                       CKEDITOR.instances['opcao1'].setData('');
+                       CKEDITOR.instances['opcao2'].setData('');
+                       CKEDITOR.instances['opcao3'].setData('');
+                       CKEDITOR.instances['opcao4'].setData('');
+                       CKEDITOR.instances['opcaoCorrecta'].setData('');
+                       CKEDITOR.instances['questao'].setData('');
+                   }
+
+               });
+           }
+
+           document.onkeydown = function (evt) {
+               var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+               if (keyCode == 13) {
+                   gravarPergunta();
+                   evt.preventDefault();
+               }
+
+           };
 
     </script>
 

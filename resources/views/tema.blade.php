@@ -135,6 +135,12 @@
                 method: 'POST',
                 success: function (data) {
 
+                   alert('Dados gravados com sucesso');
+                   var nome= document.getElementById('nome');
+                    var questoes =document.getElementById('questoes');
+                   var conteudo =document.getElementById('conteudo');
+                   nome.value='';
+                    questoes.value='';
                     alert('Dados gravados com sucesso');
                     var nome = document.getElementById('nome');
                     var questoes = document.getElementById('questoes');
@@ -143,6 +149,8 @@
                     questoes.value = '';
                     conteudo.innerHTML = '';
 
+//limpa campo de conteudo
+                   CKEDITOR.instances['conteudo'].setData('');
                     CKEDITOR.getChild(conteudo).clean();
 
                 }

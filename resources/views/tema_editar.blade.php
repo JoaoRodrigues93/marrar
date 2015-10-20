@@ -8,13 +8,12 @@
     <div class="container">
         <h2 class="text-center">Tema</h2>
 
-        {!! Form::open( array('url'=> 'editar-tema')) !!}
+        {!!  Form::open(['gravarTem']) !!}
         <a href="{{URL::to('tema_list')}}" class="">Clique aqui para ver a lista dos temas</a>
 
 
         <div class="jumbotron">
-            {!! Form::hidden('id',$tema->id,['class'=>'form-control', 'placeholder'=>'Introduza o nome do
-            tema','rows'=>'1']) !!}
+
 
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina:',['class'=>'text-primary']) !!}
@@ -23,7 +22,7 @@
 
             </div>
             <div class="form-group">
-                {!! Form::label('capitulo','Escolhe o capitulo:',['class'=>'text-primary']) !!}
+                {!! Form::label('capitulos','Escolhe o capitulo:',['class'=>'text-primary']) !!}
                 {!! Form::select('capitulos', array('default'=>$capitulo)+[],null,['class' => 'form-control','id'=>'capitulos'] ) !!}
             </div>
 
@@ -31,14 +30,14 @@
 
         <div class="form-group">
             {!! Form::label('nome','Introduza o nome do tema',['class'=>'text-primary']) !!}
-            {!! Form::text('nome',$tema->nome,['class'=>'form-control', 'rows'=>'1']) !!}
+            {!! Form::text('nome',$tema->nome,['class'=>'form-control', 'rows'=>'1','id'=>'nome']) !!}
 
         </div>
 
         <div class="form-group">
             {!! Form::label('questoes','Numero de questoes:',['class'=>'text-primary']) !!}
             {!! Form::text('questoes',$tema->numero_questoes,['class'=>'form-control',
-            'placeholder'=>'10','rows'=>'1']) !!}
+            'placeholder'=>'10','rows'=>'1', 'id'=>'questoes']) !!}
 
             {{--<input type="number" name="tema" class="form-control" placeholder="10">--}}
         </div>
@@ -46,13 +45,14 @@
 
         <div class="form-group">
             {!! Form::label('conteudo','Conteudo',['class'=>'text-primary']) !!}
-            {!! Form::textarea('conteudo',$tema->conteudo,['class'=>'form-control','rows'=>'20']) !!}
+            {!! Form::textarea('conteudo',$tema->conteudo,['class'=>'form-control','rows'=>'20', 'id'=>'conteudo']) !!}
+            {!! Form::hidden('id',$tema->id,['class'=>'form-control','id'=>'id']) !!}
 
 
         </div>
 
-        <button type="submit" name="Gravar" class="btn btn-primary">Gravar</button>
 
+        <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarTema()">Gravar</button>
 
         {!! Form::close() !!}
     </div>
@@ -115,6 +115,37 @@ alert("oll");
 
             xmlhttp.send();
         }
+
+        function gravarTema(){
+
+            var form = $('form[gravarTem]');
+            var url = form.prop('action');
+/*var id=document.getElementById("id");
+            alert(id);*/
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                method: 'POST',
+                success: function (data) {
+
+                    alert('Dados alterados com sucesso');
+
+
+                }
+
+            });
+        }
+
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+                gravarTema();
+                evt.preventDefault();
+            }
+
+        };
+
+
 
     </script>
 @stop
