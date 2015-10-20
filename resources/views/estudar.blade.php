@@ -12,6 +12,15 @@
     <script src="{{URL::asset("js/progressbar.min.js")}}"></script>
 @stop
 
+<style>
+    div.voltar:hover h3 a{
+        opacity: 0;
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+</style>
 
 @section('body')
     <div class="well estudar">

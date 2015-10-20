@@ -1,7 +1,12 @@
-@extends('layouts.mainTema')
+@extends('layouts.main')
 
 @section('title')
     Tema
+@stop
+
+@section('links')
+    @parent
+    <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
 @stop
 @section('body')
 
@@ -39,7 +44,7 @@
         <div class="form-group">
             {!! Form::label('questoes','Numero de questoes:',['class'=>'text-primary']) !!}
             {!! Form::text('questoes','',['class'=>'form-control','type'=>'number', 'placeholder'=>'10','rows'=>'1','id'=>'questoes']) !!}
-          
+
             {{--<input type="number" name="tema" class="form-control" placeholder="10">--}}
         </div>
 
@@ -59,16 +64,16 @@
 
     <script>
 
-       //para comecar o select box com vazio
-       document.getElementById('disciplinas').selectedIndex=-1;
+        //para comecar o select box com vazio
+        document.getElementById('disciplinas').selectedIndex = -1;
 
-       CKEDITOR.replace('conteudo');
+        CKEDITOR.replace('conteudo');
 
         //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
         function adicionaCapitulo() {
 
-            var  disciplina = document.getElementById('disciplinas');
-            var  capitulos = document.getElementById('capitulos');
+            var disciplina = document.getElementById('disciplinas');
+            var capitulos = document.getElementById('capitulos');
 
 
             var disciplinaSelecionada = disciplina.options[disciplina.selectedIndex].value;
@@ -82,7 +87,7 @@
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
 
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
@@ -91,68 +96,68 @@
                     var capitulo;
 
 
-                    for(k=capitulos.options.length-1;k>=0;k--)
-                    {
+                    for (k = capitulos.options.length - 1; k >= 0; k--) {
                         capitulos.remove(k);
                     }
-if(capituloJson.capitulos.length<1){
-    capitulos.innerHTML="<option>Nenhuma Opção</option>";
-}else{
+                    if (capituloJson.capitulos.length < 1) {
+                        capitulos.innerHTML = "<option>Nenhuma Opção</option>";
+                    } else {
 
-                    for (var i = 0; i < capituloJson.capitulos.length; i++) {
-                        var option = document.createElement("option");
-                        capitulo = capituloJson.capitulos[i];
-                        option.text = capitulo.nome;
-                        capitulos.add(option);
-                        capitulos.options[i].value=capitulo.id;
+                        for (var i = 0; i < capituloJson.capitulos.length; i++) {
+                            var option = document.createElement("option");
+                            capitulo = capituloJson.capitulos[i];
+                            option.text = capitulo.nome;
+                            capitulos.add(option);
+                            capitulos.options[i].value = capitulo.id;
+
+                        }
+
+                        capitulos.selectedIndex = -1;
 
                     }
-
-                    capitulos.selectedIndex=-1;
-
-                }}
+                }
 
             }
-            xmlhttp.open("GET","capitulo-combobox/"+disciplinaSelecionada,true);
+            xmlhttp.open("GET", "capitulo-combobox/" + disciplinaSelecionada, true);
 
             xmlhttp.send();
         }
 
 
-       function gravarTema(){
+        function gravarTema() {
 
-           var form = $('form[gravarTem]');
-           var url = form.prop('action');
+            var form = $('form[gravarTem]');
+            var url = form.prop('action');
 
-           $.ajax({
-               url: url,
-               data: form.serialize(),
-               method: 'POST',
-               success: function (data) {
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                method: 'POST',
+                success: function (data) {
 
-                   alert('Dados gravados com sucesso');
-                   var nome= document.getElementById('nome');
-                    var questoes =document.getElementById('questoes');
-                   var conteudo =document.getElementById('conteudo');
-                   nome.value='';
-                    questoes.value='';
-                   conteudo.innerHTML='';
+                    alert('Dados gravados com sucesso');
+                    var nome = document.getElementById('nome');
+                    var questoes = document.getElementById('questoes');
+                    var conteudo = document.getElementById('conteudo');
+                    nome.value = '';
+                    questoes.value = '';
+                    conteudo.innerHTML = '';
 
-                   CKEDITOR.getChild(conteudo).clean();
+                    CKEDITOR.getChild(conteudo).clean();
 
-               }
+                }
 
-           });
-       }
+            });
+        }
 
-       document.onkeydown = function (evt) {
-           var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
-           if (keyCode == 13) {
-               gravarTema();
-               evt.preventDefault();
-           }
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+                gravarTema();
+                evt.preventDefault();
+            }
 
-       };
+        };
 
 
     </script>
