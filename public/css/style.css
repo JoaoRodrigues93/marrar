@@ -3,6 +3,7 @@ body {
     background-color: #f9f8f9;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    font-family: 'Roboto',  'Helvetica Neue', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
 .well, .disciplinaHome {
