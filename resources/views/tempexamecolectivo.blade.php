@@ -1,5 +1,6 @@
 <!--Temp Exame Colectivo -->
-
+<?php $ranking=false;  ?>
+@extends('layouts.maincontent')
 <?php
     $mytime = Carbon\Carbon::now();
 ?>
@@ -45,6 +46,7 @@
         .message {
             font-size: 31px;
             font-weight: bold;
+            color: #808080;
         }
     </style>
 </head>

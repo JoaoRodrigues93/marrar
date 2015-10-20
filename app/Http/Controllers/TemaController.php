@@ -68,9 +68,6 @@ class TemaController extends Controller
          $tema = $capitulos->temas()->save($tema);
 
 
-         return Redirect::to('tema');
-
-
     }}
 
     public function deleteTema($id)
@@ -91,18 +88,23 @@ class TemaController extends Controller
 
     }
 
-    public function editar(Request $request)
+    public function editar()
     {
-        $id = $request->input('id');
-        $tema = Tema::find($id);
-        $tema->nome = $request->input('nome');
-        $tema->numero_questoes = $request->input('questoes');
-        $tema->conteudo = $request->input('conteudo');
-        $capitulos = Capitulo::find($request->input('capitulos'));
-        $tema = $capitulos->temas()->save($tema);
-        Session::flash('message', 'Dados alterados com sucesso');
-        return Redirect('tema_list');
 
+        $data = Input::all();
+
+
+        if (Request::ajax()) {
+
+            $id = $data['id'];
+            $tema = Tema::find($id);
+            $tema->nome = $data['nome'];
+            $tema->numero_questoes = $data['questoes'];
+            $tema->conteudo = $data['conteudo'];
+            $capitulos = Capitulo::find($data['capitulos']);
+            $tema = $capitulos->temas()->save($tema);
+
+        }
 
     }
 
