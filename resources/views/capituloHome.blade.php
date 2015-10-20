@@ -10,12 +10,12 @@
 @section('body')
 
     <style>
-        div.voltar:hover h3 a{
+        div.voltar svg{
             opacity: 0;
-            -webkit-transition-delay: 0.2s;
+            /*-webkit-transition-delay: 0.2s;
             transition-delay: 0.2s;
             -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+            transform: translateX(-100%);*/
         }
     </style>
 

@@ -23,21 +23,25 @@
             <h4 class="text-primary">Registo de Perguntas</h4>
 
             <p></p>
+
             <p></p>
+
             <p></p>
-            <div class="form-group text-primary" >
+
+            <div class="form-group text-primary">
                 @if(!$titulos)
 
                     <div align="center">
 
-                        <h3 class="alert alert-warning">Infelizmente nenhum Texto foi registado.Registe e tente novamente!</h3>
+                        <h3 class="alert alert-warning">Infelizmente nenhum Texto foi registado.Registe e tente
+                            novamente!</h3>
 
                     </div>
-                    @else
+                @else
 
                     <label class="text-primary">Seleccione o título do texto </label>
-                {!! Form::select('titulos',array('default'=>'')+$titulos,null,['class' => 'form-control','id'=>'titulos'] ) !!}
-                    @endif
+                    {!! Form::select('titulos',array('default'=>'')+$titulos,null,['class' => 'form-control','id'=>'titulos'] ) !!}
+                @endif
             </div>
 
         </div>
@@ -58,10 +62,12 @@
         </div>
         <div class="center-block" align="center">
 
-            <button type="button" name="Gravar"  class="btn btn-primary left" style="width: 30%" onclick="gravarPerguntaTexto()" >Gravar</button>
+            <button type="button" name="Gravar" class="btn btn-primary left" style="width: 30%"
+                    onclick="gravarPerguntaTexto()">Gravar
+            </button>
 
             <br>
-        <hr width="100%">
+            <hr width="100%">
         </div>
 
 
@@ -71,33 +77,37 @@
         <br>
 
     </div>
-<script>
+    <script>
 
-    function gravarPerguntaTexto(){
+        CKEDITOR.replaceAll();
+        CKEDITOR.addCss().marginBottom = '14px';
 
-        titulo=document.getElementById('titulos');
-        if(titulo.selectedIndex<=0){
-        alert('Seleccione o título do texto');
+        function gravarPerguntaTexto() {
+
+            titulo = document.getElementById('titulos');
+            if (titulo.selectedIndex <= 0) {
+                alert('Seleccione o título do texto');
+            }
+
+            else {
+                var form = $('form[perguntaTexto]');
+                var url = form.prop('action');
+
+                $.ajax({
+                    url: url,
+                    data: form.serialize(),
+                    method: 'POST',
+                    success: function (data) {
+
+                        alert('Dados gravados com sucesso');
+
+
+                    }
+
+                });
+            }
         }
 
-        else{
-    var form = $('form[perguntaTexto]');
-    var url = form.prop('action');
 
-    $.ajax({
-        url: url,
-        data: form.serialize(),
-        method: 'POST',
-        success: function (data) {
-
-            alert('Dados gravados com sucesso');
-
-
-        }
-
-    });}
-    }
-
-
-</script>
+    </script>
 @stop
