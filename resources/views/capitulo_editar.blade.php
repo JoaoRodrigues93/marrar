@@ -28,7 +28,7 @@
 
             <div>
                 <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarCapitulo()">Gravar</button>
-                {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
+              {{--  {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}--}}
             </div>
 
 
@@ -55,7 +55,8 @@
 
                 var form = $('form[gravarCapitulo]');
                 var url = form.prop('action');
-
+                var id=document.getElementById('id');
+                alert('id');
                 $.ajax({
                     url: url,
                     data: form.serialize(),

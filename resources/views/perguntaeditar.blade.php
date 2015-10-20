@@ -10,7 +10,9 @@
     <div class="container">
 
 
-        {!! Form::open( array('url'=> 'editar-pergunta')) !!}
+        {!!  Form::open(['gravarPergunt']) !!}
+        <a href="{{URL::to('perguntaview')}}" class="text-right">Clique aqui para ver a lista de perguntas</a>
+
 
         <div class="jumbotron">
             <div class="form-group" >
@@ -21,7 +23,7 @@
                 {!! Form::label('capitulo','Selecione o capitulo',['class'=>'text-primary']) !!}
                 {!! Form::select('capitulos',$capitulos,null,['class' => 'form-control','id'=>'capitulos','onchange'=>"adicionaTema()"] ) !!}
                 {!! Form::label('tema','Selecione o tema',['class'=>'text-primary']) !!}
-                {!! Form::select('tema',$tema, null, ['class' => 'form-control', 'id'=>'temas1']) !!}
+                {!! Form::select('tema',$tema, null, ['class' => 'form-control', 'id'=>'temas']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -46,7 +48,7 @@
         </div>
         <div class="center-block" align="center">
 
-            {!!Form::submit('Submeter pergunta') !!}
+            <button type="button" name="Gravar" id="gravar" class="btn btn-primary" onclick="gravarPergunta()">Gravar</button>
             {!! Form::hidden('idTema',$idTema, ['id'=>'idTema']) !!}
             {!! Form::hidden('idCap',$idCap, ['id'=>'idCap']) !!}
             {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
@@ -232,6 +234,34 @@
 
         }
 
+        function gravarPergunta(){
+
+            var form = $('form[gravarPergunt]');
+            var url = form.prop('action');
+
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                method: 'POST',
+                success: function (data) {
+
+                    alert('Dados alterados com sucesso');
+
+//limpa campos
+
+                }
+
+            });
+        }
+
+        document.onkeydown = function (evt) {
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if (keyCode == 13) {
+                gravarPergunta();
+                evt.preventDefault();
+            }
+
+        };
 
 
     </script>

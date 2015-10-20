@@ -136,9 +136,9 @@ if(capituloJson.capitulos.length<1){
                    var conteudo =document.getElementById('conteudo');
                    nome.value='';
                     questoes.value='';
-                   conteudo.innerHTML='';
 
-                   CKEDITOR.getChild(conteudo).clean();
+//limpa campo de conteudo
+                   CKEDITOR.instances['conteudo'].setData('');
 
                }
 
