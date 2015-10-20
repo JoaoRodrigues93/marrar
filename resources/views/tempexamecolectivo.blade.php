@@ -46,7 +46,7 @@
         .message {
             font-size: 31px;
             font-weight: bold;
-
+            color: #808080;
         }
     </style>
 </head>
