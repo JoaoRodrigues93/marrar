@@ -24,7 +24,7 @@
 
 @section('body')
     <div class="well estudar">
-        <div class="">
+        <div class="bottom">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right"
                                                                                   style="color: grey">Desistir</p></a>
@@ -716,12 +716,13 @@
             }
 //            $("#conteud").load("/teoria.html");
             $('.teoria').css({
-                'display': 'block'
+                'display': 'inline-block'
             });
 
             $('.exercicios').css({
                 'display': 'none'
             });
+
 
             /*$('body').css({
              'overflow-x': 'hidden'

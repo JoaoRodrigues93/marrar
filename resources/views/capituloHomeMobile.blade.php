@@ -13,7 +13,7 @@
 
 @section('body')
 
-    <div class="panel panel-body">
+    <div class="well">
         <div align="center">
             <label>  <h2 class="text-primary" >{{$disciplina->nome}}</h2></label>
             <hr width="100%">
@@ -49,6 +49,9 @@
     </div>
 <script>
 
+screenWidth= window.innerWidth;
+screenHei= window.innerHeight;
+    alert(screenWidth+  " - "+ screenHei)
 
 </script>
 

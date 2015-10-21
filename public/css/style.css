@@ -6,6 +6,12 @@ body {
     font-family: 'Roboto',  'Helvetica Neue', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
+@font-face {
+    font-family: 'Cooper Black';
+    src: url('../fonts/COOPBL.TTF');
+url('../fonts/COOPBL.TTF') format('TTF');
+}
+
 .well, .disciplinaHome {
     background-color: #ffffff;
     border: none;

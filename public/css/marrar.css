@@ -1,6 +1,12 @@
 /*@import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(http://ufonts.com/downloads/25386!632814225);*/
 
+@font-face {
+    font-family: 'Cooper Black';
+    src: url('../fonts/COOPBL.TTF');
+    url('../fonts/COOPBL.TTF') format('TTF');
+}
+
 body {
     font-family: 'Roboto',  'Helvetica Neue', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
     /*font-size: 14px;*/
