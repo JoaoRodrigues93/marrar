@@ -41,40 +41,45 @@ class HomeController extends Controller
         $estudante = Auth::user();
         $disciplinas = Disciplina::all();
         $dado = $estudante->dados()->first();
-        $disciplinaActual=null;
-        $disciplinasNovas=[];
+        $disciplinaActual = null;
+        $disciplinasNovas = [];
         $idActual = -1;
-        $i=0;
+        $i = 0;
 
-        if($dado)
+        if ($dado)
             $idActual = $dado->id_ultima_disciplina;
 
-        foreach ($disciplinas as $disciplina){
-            if($idActual == $disciplina->id)
+        foreach ($disciplinas as $disciplina) {
+            if ($idActual == $disciplina->id)
                 $disciplinaActual = $disciplina;
             else {
                 $disciplinasNovas[$i] = $disciplina;
                 $i++;
-               }
+            }
         }
 
         $_SESSION ['disciplinas'] = $disciplinasNovas;
         $_SESSION ['disciplinaActual'] = $disciplinaActual;
         $_SESSION ['estudante'] = $estudante;
-        $_SESSION ['ranking'] =true;
+        $_SESSION ['ranking'] = true;
 
         $uri = $request->path();
 
-        if($uri=="home/maisDisciplinas") {
-          return view('home', ['disciplinas' => $disciplinas]);
+        if ($uri == "home/maisDisciplinas") {
+            return view('home', ['disciplinas' => $disciplinas]);
         }
 
-        if ($dado) {
+        if ($estudante->type == 'E') {
+            if ($dado) {
 
-            return redirect("disciplinaHome/$dado->id_ultima_disciplina");
+                return redirect("disciplinaHome/$dado->id_ultima_disciplina");
+            } else
+                return view('home', ['disciplinas' => $disciplinas]);
+        } else {
+            return redirect('/disciplina');
+
+
         }
-        else
-            return view('home',['disciplinas'=>$disciplinas]);
+
     }
-
 }

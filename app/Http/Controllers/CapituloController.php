@@ -76,8 +76,9 @@ class CapituloController extends Controller
     {
         $capitulo = Capitulo::find($id);
         $idDisc=$capitulo->disciplina()->first();
+        $disciplina = $capitulo->disciplina->nome;
         $disciplinas = Disciplina::lists('nome', 'id');
-        return view('capitulo_editar')->with(array('idDisc'=>$idDisc->id,'capitulos' => $capitulo, 'disciplinas' => $disciplinas));
+        return view('capitulo_editar')->with(array('idDisc'=>$idDisc->id,'capitulos' => $capitulo, 'disciplinas' => $disciplinas,'disciplina' => $disciplina));
     }
 
 

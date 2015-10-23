@@ -79,12 +79,14 @@ class TemaController extends Controller
 
     public function editarTema($id)
     {
-        $t = new Tema();
-        $tema = $t->find($id);
+        $tema = Tema::find($id);
+        $idCapitulo=$tema->capitulo()->first();
+        $idDisc=$idCapitulo->disciplina()->first();
         $capitulo = $tema->capitulo->nome;
         $disciplina = $tema->capitulo->disciplina->nome;
         $disciplinas = Disciplina::lists('nome', 'id');
-        return view('tema_editar')->with(array('tema' => $tema, 'disciplinas' => $disciplinas, 'capitulo' => $capitulo, 'disciplina' => $disciplina));
+        $capitulos=Capitulo::where('disciplina_id',$idDisc->id)->get()->lists('nome','id');;
+        return view('tema_editar')->with(array('tema' => $tema, 'disciplinas' => $disciplinas, 'capitulo' => $capitulo, 'disciplina' => $disciplina,'capitulos' => $capitulos,));
 
     }
 

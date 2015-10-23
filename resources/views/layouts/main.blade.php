@@ -33,8 +33,13 @@
                     <li><a href="/pergunta">Perguntas</a></li>
                     <li><a href="/texto">Texto(Português)</a></li>
                     <li><a href="/PerguntaTexto">Perguntas/Texto</a></li>
+                    <li><a href="/auth/logout">Sair</a></li>
                 </ul>
+
+
+
             </div>
+
         </div>
     </nav>
 

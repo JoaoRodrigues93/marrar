@@ -38,6 +38,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password],true) ||
 
             Auth::attempt(['username'=>$email,'password'=>$password],true)) {
+
             // Authentication passed...
             return redirect()->intended('/home');
         }
@@ -69,6 +70,7 @@ class AuthController extends Controller
         $estudante->username = $username;
         $estudante->email = $email;
         $estudante->password = $password;
+        $estudante->type="E";
         $estudante->save();
 
         Auth::login($estudante,true);

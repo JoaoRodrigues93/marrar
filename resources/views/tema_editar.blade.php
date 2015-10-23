@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('capitulos','Escolhe o capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::select('capitulos', array('default'=>$capitulo)+[],null,['class' => 'form-control','id'=>'capitulos'] ) !!}
+                {!! Form::select('capitulos', $capitulos,null,['class' => 'form-control','id'=>'capitulos'] ) !!}
             </div>
 
         </div>
@@ -57,6 +57,40 @@
         {!! Form::close() !!}
     </div>
     <script>
+
+
+        var disciplinas = document.getElementById('disciplinas');
+        var idDisciplina = document.getElementById('idDisc');
+        encontrado = false;
+
+
+        while (encontrado == false && i < disciplinas.length) {
+            if (disciplinas[i].value == idDisciplina.value) {
+                encontrado = true;
+                disciplinas.selectedIndex = i;
+                i = 0;
+            }
+            i++;
+
+        }
+
+        var capitulos = document.getElementById('capitulos');
+        var idCapitulos = document.getElementById('idCap');
+        encontrado = false;
+
+
+        while (encontrado == false && i < capitulos.length) {
+            if (capitulos[i].value == idCapitulos.value) {
+                encontrado = true;
+                capitulos.selectedIndex = i;
+                i = 0;
+            }
+            i++;
+        }
+
+
+
+
 
         //para comecar o select box com vazio
         // document.getElementById('disciplinas').selectedIndex=-1;
