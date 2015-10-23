@@ -65,10 +65,9 @@
 
                     alert('Dados gravados com sucesso');
                     var titulo = document.getElementById('titulo');
-                    var texto = document.getElementById('textoCompleto');
 
                     titulo.value = '';
-                    texto.value = '';
+                    CKEDITOR.instances['textoCompleto'].setData('');
 
 
                 }

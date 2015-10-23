@@ -49,9 +49,6 @@
     </div>
 <script>
 
-screenWidth= window.innerWidth;
-screenHei= window.innerHeight;
-    alert(screenWidth+  " - "+ screenHei)
 
 </script>
 

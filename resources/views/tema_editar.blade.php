@@ -3,6 +3,11 @@
 @section('title')
     Editar Tema
 @stop
+
+@section('links')
+    @parent
+    <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
+@stop
 @section('body')
 
     <div class="container">
@@ -17,13 +22,13 @@
 
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina:',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', array('default'=>$disciplina)+$disciplinas,null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
+                {!! Form::select('disciplinas',$disciplinas,null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
                {{-- array('default'=>$disciplina)+--}}
 
             </div>
             <div class="form-group">
                 {!! Form::label('capitulos','Escolhe o capitulo:',['class'=>'text-primary']) !!}
-                {!! Form::select('capitulos', array('default'=>$capitulo)+[],null,['class' => 'form-control','id'=>'capitulos'] ) !!}
+                {!! Form::select('capitulos', $capitulos,null,['class' => 'form-control','id'=>'capitulos'] ) !!}
             </div>
 
         </div>
@@ -44,9 +49,11 @@
 
 
         <div class="form-group">
-            {!! Form::label('conteudo','Conteudo',['class'=>'text-primary']) !!}
-            {!! Form::textarea('conteudo',$tema->conteudo,['class'=>'form-control','rows'=>'20', 'id'=>'conteudo']) !!}
+            {!! Form::label('conteudoLabel','Conteudo',['class'=>'text-primary']) !!}
+            {!! Form::textarea('conteudo','',['class'=>'form-control','rows'=>'20', 'id'=>'conteudo']) !!}
             {!! Form::hidden('id',$tema->id,['class'=>'form-control','id'=>'id']) !!}
+            {!! Form::hidden('idCap',$idCap, ['id'=>'idCap']) !!}
+            {!! Form::hidden('idDisc',$idDisc, ['id'=>'idDisc']) !!}
 
 
         </div>
@@ -58,6 +65,49 @@
     </div>
     <script>
 
+        var disciplinas = document.getElementById('disciplinas');
+        var idDisciplina = document.getElementById('idDisc');
+        encontrado = false;
+        var i=0;
+
+
+        while (encontrado == false && i < disciplinas.length) {
+            if (disciplinas[i].value == idDisciplina.value) {
+                encontrado = true;
+                disciplinas.selectedIndex = i;
+                i = 0;
+            }
+            i++;
+
+        }
+
+        var capitulos = document.getElementById('capitulos');
+        var idCapitulos = document.getElementById('idCap');
+        encontrado = false;
+
+
+        while (encontrado == false && i < capitulos.length) {
+            if (capitulos[i].value == idCapitulos.value) {
+                encontrado = true;
+                capitulos.selectedIndex = i;
+                i = 0;
+            }
+            i++;
+        }
+
+
+        CKEDITOR.replace('conteudo');
+
+        //$('.teoria').load("/teoria.html");
+        $.get("/teoria.html",function(data){
+           CKEDITOR.instances['conteudo'].setData(data);
+        });
+
+
+
+
+
+        //CKEDITOR.instances['conteudo'].setData('{{$tema->conteudo}}');
         //para comecar o select box com vazio
         // document.getElementById('disciplinas').selectedIndex=-1;
 
@@ -83,7 +133,7 @@
             xmlhttp.onreadystatechange = function() {
 
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-alert("oll");
+
                     var listaCapitulos = xmlhttp.responseText;
                     var capituloJson = JSON.parse(listaCapitulos);
                     var capitulo;
@@ -117,6 +167,8 @@ alert("oll");
         }
 
         function gravarTema(){
+            var cnt=document.getElementById('conteudo');
+            cnt.value=CKEDITOR.instances['conteudo'].getData();
 
             var form = $('form[gravarTem]');
             var url = form.prop('action');
