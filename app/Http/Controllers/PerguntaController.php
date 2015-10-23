@@ -102,15 +102,14 @@ public function registaPerguntas(){
     public function Editar($id){
 
         $pergunta=Pergunta::find($id);
-        $idTema=$pergunta->tema()->get()->first();
-        $idCapitulo=$idTema->capitulo()->first();
-        $idDisc=$idCapitulo->disciplina()->first();
+        $idTema=$pergunta->tema;
+        $idCapitulo=$idTema->capitulo;
+        $idDisc=$idCapitulo->disciplina;
 
 
-        $tema=Tema::where('capitulo_id',$idCapitulo->id)->get()->lists('nome','id');;
+        $tema=$idCapitulo->temas->lists('nome','id');;
 
-
-        $capitulos=Capitulo::where('disciplina_id',$idDisc->id)->get()->lists('nome','id');;
+        $capitulos=$idDisc->capitulos->lists('nome','id');;
 
         $pergunta->tema->capitulo->lists('nome','id');
         $disciplinas = $pergunta->tema->capitulo->disciplina->lists('nome','id');

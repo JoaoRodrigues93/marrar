@@ -1,14 +1,18 @@
 <!--Temp Exame Colectivo -->
-<?php $ranking=false;  ?>
 @extends('layouts.maincontent')
-<?php
-    $mytime = Carbon\Carbon::now();
-?>
-<html>
-<head>
+@section('links')
+    @parent
     <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
     <script src={{URL::asset('js/countdown.js')}}></script>
     <script src="/"></script>
+<script src="js/countdown.js"></script>
+    @stop
+
+@section('body')
+<?php
+$mytime = Carbon\Carbon::now();
+?>
+
 
     <style>
         body {
@@ -49,10 +53,8 @@
             color: #808080;
         }
     </style>
-</head>
-<body>
 
-<script src="js/countdown.js"></script>
+
 <script>
     var callbackfuction = function() {
         console.log('Finished');
@@ -78,7 +80,4 @@
     </div>
 </div>
 
-
-</body>
-
-</html>
+@stop

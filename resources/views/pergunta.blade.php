@@ -29,7 +29,7 @@
             <div class="form-group">
 
                 {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
-                {!! Form::select('disciplinas', $disciplinas , null, ['class' => 'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"])
+                {!! Form::select('disciplinas',array('default'=>'')+$disciplinas , null, ['class' => 'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"])
                 !!}
                 {!! Form::label('capitulo','Selecione o capitulo',['class'=>'text-primary']) !!}
                 {!! Form::select('capitulos',[],null,['class' => 'form-control','id'=>'capitulos','onchange'=>"adicionaTema()"] ) !!}
@@ -122,7 +122,6 @@
 
     <script>
 
-        document.getElementById('disciplinas').selectedIndex = -1;
 
         CKEDITOR.replaceAll();
 
@@ -241,6 +240,22 @@
 
            function gravarPergunta(){
 
+               var opcao1= document.getElementById('opcao1');
+               var opcao2= document.getElementById('opcao2');
+               var opcao3= document.getElementById('opcao3');
+               var opcao4= document.getElementById('opcao4');
+               var opcaoCorrecta= document.getElementById('opcaoCorrecta');
+               var questao =document.getElementById('questao');
+
+               opcao1.value=CKEDITOR.instances['opcao1'].getData();
+               opcao2.value=CKEDITOR.instances['opcao2'].getData();
+               opcao3.value=CKEDITOR.instances['opcao3'].getData();
+               opcao4.value=CKEDITOR.instances['opcao4'].getData();
+               opcaoCorrecta.value=CKEDITOR.instances['opcaoCorrecta'].getData();
+               questao.value=CKEDITOR.instances['questao'].getData();
+
+
+
                var form = $('form[gravarPergunt]');
                var url = form.prop('action');
 
@@ -251,15 +266,6 @@
                    success: function (data) {
 
                        alert('Dados gravados com sucesso');
-                       var opcao1= document.getElementById('opcao1');
-                       var opcao2= document.getElementById('opcao2');
-                       var opcao3= document.getElementById('opcao3');
-                       var opcao4= document.getElementById('opcao4');
-                       var opcaoCorrecta= document.getElementById('opcaoCorrecta');
-                       var questao =document.getElementById('questao');
-
-
-                       questao.value='';
 
 //limpa campos
                        CKEDITOR.instances['opcao1'].setData('');

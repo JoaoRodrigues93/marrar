@@ -24,7 +24,7 @@
         <div class="jumbotron">
             <div class="form-group">
                 {!! Form::label('disciplinas','Escolha a disciplina:',['class'=>'text-primary']) !!}
-                {!! Form::select('disciplinas', $disciplinas , null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
+                {!! Form::select('disciplinas', array('default'=>'')+$disciplinas , null,['class'=>'form-control','id'=>'disciplinas','onchange'=>"adicionaCapitulo()"]) !!}
 
 
             </div>
@@ -126,8 +126,11 @@
 
         function gravarTema() {
 
+            var cnt=document.getElementById('conteudo');
+            cnt.value=CKEDITOR.instances['conteudo'].getData();
             var form = $('form[gravarTem]');
             var url = form.prop('action');
+
 
             $.ajax({
                 url: url,
@@ -141,8 +144,7 @@
                    var conteudo =document.getElementById('conteudo');
                    nome.value='';
                     questoes.value='';
-                    alert('Dados gravados com sucesso');
-                    var nome = document.getElementById('nome');
+                    nome = document.getElementById('nome');
                     var questoes = document.getElementById('questoes');
                     var conteudo = document.getElementById('conteudo');
                     nome.value = '';
@@ -151,7 +153,7 @@
 
 //limpa campo de conteudo
                    CKEDITOR.instances['conteudo'].setData('');
-                    CKEDITOR.getChild(conteudo).clean();
+                   // CKEDITOR.getChild(conteudo).clean();
 
                 }
 

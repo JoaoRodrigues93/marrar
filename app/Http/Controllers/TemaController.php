@@ -79,14 +79,16 @@ class TemaController extends Controller
 
     public function editarTema($id)
     {
+
         $tema = Tema::find($id);
-        $idCapitulo=$tema->capitulo()->first();
-        $idDisc=$idCapitulo->disciplina()->first();
-        $capitulo = $tema->capitulo->nome;
-        $disciplina = $tema->capitulo->disciplina->nome;
-        $disciplinas = Disciplina::lists('nome', 'id');
-        $capitulos=Capitulo::where('disciplina_id',$idDisc->id)->get()->lists('nome','id');;
-        return view('tema_editar')->with(array('tema' => $tema, 'disciplinas' => $disciplinas, 'capitulo' => $capitulo, 'disciplina' => $disciplina,'capitulos' => $capitulos,));
+        $capitulo = $tema->capitulo;
+        $disciplina = $capitulo->disciplina;
+        $capitulos=$disciplina->capitulos->lists('nome', 'id');;
+
+        $disciplinas = Disciplina::all()->lists('nome', 'id');
+        $_SESSION['caminho']=$tema->conteudo;
+
+        return view('tema_editar')->with(array('tema' => $tema, 'capitulos'=>$capitulos,'disciplinas' => $disciplinas, 'idCap' => $capitulo->id,'idDisc' => $disciplina->id));
 
     }
 
@@ -94,6 +96,10 @@ class TemaController extends Controller
     {
 
         $data = Input::all();
+        $disciplina=$data['idDisc'];
+        $capitulo=$data['idCap'];
+
+
 
 
         if (Request::ajax()) {
@@ -102,11 +108,31 @@ class TemaController extends Controller
             $tema = Tema::find($id);
             $tema->nome = $data['nome'];
             $tema->numero_questoes = $data['questoes'];
-            $tema->conteudo = $data['conteudo'];
+
+
+            if (file_exists($_SESSION['caminho'])) {
+                unlink($_SESSION['caminho']);
+
+            }
+
+                $path = "teoria/$disciplina/$capitulo";
+
+                if (!file_exists($path)) {
+                    mkdir($path, 0777, true);
+                }
+            }
+
+
+                $pathFinal = "$path/$tema->nome.html";
+                $myfile = fopen($pathFinal, "w") or die("Unable to open file");
+                $conteudo = $data['conteudo'];
+                fwrite($myfile, $conteudo);
+                fclose($myfile);
+
+            $tema->conteudo = $pathFinal;
             $capitulos = Capitulo::find($data['capitulos']);
             $tema = $capitulos->temas()->save($tema);
 
-        }
 
     }
 

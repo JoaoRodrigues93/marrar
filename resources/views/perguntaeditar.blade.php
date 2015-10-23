@@ -236,6 +236,20 @@
 
         function gravarPergunta(){
 
+            var opcao1= document.getElementById('opcao1');
+            var opcao2= document.getElementById('opcao2');
+            var opcao3= document.getElementById('opcao3');
+            var opcao4= document.getElementById('opcao4');
+            var opcaoCorrecta= document.getElementById('opcaoCorrecta');
+            var questao =document.getElementById('questao');
+
+            opcao1.value=CKEDITOR.instances['opcao1'].getData();
+            opcao2.value=CKEDITOR.instances['opcao2'].getData();
+            opcao3.value=CKEDITOR.instances['opcao3'].getData();
+            opcao4.value=CKEDITOR.instances['opcao4'].getData();
+            opcaoCorrecta.value=CKEDITOR.instances['opcaoCorrecta'].getData();
+            questao.value=CKEDITOR.instances['questao'].getData();
+
             var form = $('form[gravarPergunt]');
             var url = form.prop('action');
 
@@ -247,7 +261,14 @@
 
                     alert('Dados alterados com sucesso');
 
-//limpa campos
+                    //limpa campos
+                    CKEDITOR.instances['opcao1'].setData('');
+                    CKEDITOR.instances['opcao2'].setData('');
+                    CKEDITOR.instances['opcao3'].setData('');
+                    CKEDITOR.instances['opcao4'].setData('');
+                    CKEDITOR.instances['opcaoCorrecta'].setData('');
+                    CKEDITOR.instances['questao'].setData('');
+
 
                 }
 
