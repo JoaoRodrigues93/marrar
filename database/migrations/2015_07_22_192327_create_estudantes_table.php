@@ -30,7 +30,8 @@ class CreateEstudantesTable extends Migration {
             $table->string('type');
             $table->rememberToken();
             $table->softDeletes();
-			$table->timestamps();;
+			$table->timestamps();
+
 		});
 	}
 
