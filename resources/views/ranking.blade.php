@@ -1,15 +1,13 @@
 <?php
 $gestorTemaEstudada = new \App\GestorTemaEstudada();
 $gestorTesteFeito = new \App\GestorTesteFeito();
-if($gestorTemaEstudada)
+if ($gestorTemaEstudada)
     $temasEstudadas = $gestorTemaEstudada->temaEstudadas();
-if($gestorTesteFeito)
+if ($gestorTesteFeito)
     $testesFeitos = $gestorTesteFeito->testesFeitos();
-$estudante  = Auth::user();
-
+$estudante = Auth::user();
 $disciplina = $_SESSION['disciplina'];
 ?>
-
 <div class="container-fluid">
     <div id="disciplinasEstudadas" class="well">
         <h4>Temas Estudados:</h4>
@@ -19,7 +17,6 @@ $disciplina = $_SESSION['disciplina'];
                 <?php $temaCont = true; ?>
             @endif
         @endforeach
-
         @if($temaCont)
             <ul>
                 @foreach($temasEstudadas as $tema)
@@ -36,20 +33,18 @@ $disciplina = $_SESSION['disciplina'];
         <h4>Últimos testes realizados:</h4>
         <?php $utCont = false; ?>
         @foreach($testesFeitos as $teste)
-                @if ($teste->disciplina_id == $disciplina->id)
-                    <?php $utCont = true; ?>
-                @endif
+            @if ($teste->disciplina_id == $disciplina->id)
+                <?php $utCont = true; ?>
+            @endif
         @endforeach
-
         @if($utCont)
-
-                <ul>
-                    @foreach($testesFeitos as $teste)
+            <ul>
+                @foreach($testesFeitos as $teste)
                     @if ($teste->disciplina_id == $disciplina->id)
                         <li>{{$teste->capitulo}} : {{$teste->nota}} valores</li>
                     @endif
-                    @endforeach
-                </ul>
+                @endforeach
+            </ul>
         @else
             <p>Até agora não fez nenhum teste. Escolha um Capítulo e comece a fazer.</p>
         @endif
