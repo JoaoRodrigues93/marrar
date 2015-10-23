@@ -91,11 +91,6 @@ Route::get('capitulo-validacao/{id}',"CapituloController@capituloTemaJason");
 
 
 
-
-Route::get('aestudar', 'AestudarController@aEstudarTeoria');
-
-
-
 Route::post('/teste/{cap}/{id}',"TesteController@gravaTeste");
 
 Route::get('/examenormal','ExameController@showNormal');
