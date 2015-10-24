@@ -5,22 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Marrar</title>
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+        <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/animate.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
         <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/marrar.css')}}" rel="stylesheet">
-
+        <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
         <script src="{{URL::asset('js/marrar.js')}}"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <script src="{{URL::asset('js/WOW.min.js')}}"></script>
-
+        <script src="{{URL::asset('js/bootstrap.js')}} "></script>
 
         <script>
         var errorMobile;

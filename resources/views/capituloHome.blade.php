@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
 @stop
 @section('body')
+
     <style>
-        div.voltar svg {
+        div.voltar svg{
             opacity: 0;
             /*-webkit-transition-delay: 0.2s;
             transition-delay: 0.2s;
@@ -17,6 +18,7 @@
             transform: translateX(-100%);*/
         }
     </style>
+
     <div class="well">
         <div align="center">
             <script>!function (d, s, id) {
@@ -28,25 +30,38 @@
                         fjs.parentNode.insertBefore(js, fjs);
                     }
                 }(document, "script", "twitter-wjs");</script>
+
             <h2 class="text-primary">{{$disciplina->nome}}</h2>
             {!! Form::hidden('id',$disciplina->id,['id'=>' _id']) !!}
+
         </div>
         <script type="text/javascript">
+
             $(document).ready(function () {
+
                 $.ajax({
+
                     success: function () {
+
                         if (window.XMLHttpRequest) {
                             // code for IE7+, Firefox, Chrome, Opera, Safari
                             xmlhttp = new XMLHttpRequest();
+
                         } else {
+
                             // code for IE6, IE5
                             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                         }
                         xmlhttp.onreadystatechange = function () {
+                            //
+
                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
                                 var albums = Mustache.to_html($('#capitulos').html(), JSON.parse(xmlhttp.responseText));
+
                                 var details = Mustache.to_html($('#temas').html(), JSON.parse(xmlhttp.responseText));
                                 $('.app-folders-container').html(albums + details);
+
                                 $('.app-folders-container').appFolders({
                                     opacity: 1,                 // Opacity of non-selected items
                                     marginTopAdjust: true,            // Adjust the margin-top for the folder area based on row selected?
@@ -57,26 +72,38 @@
                                     URLbase: "./",            // If URL rewrite is enabled, the URL base of the page where used. Example (include double-quotes): "/services/"
                                     internalLinkSelector: ".jaf-internal a"   // a jQuery selector containing links to content within a jQuery App Folder
                                 });
+
                                 // For each image:
                                 // Once image is loaded, get dominant color and palette and display them.
                                 $('.app-icon').bind('load', function (event) {
                                     var image = event.target;
                                     var $image = $(image);
                                     var imageSection = $image.closest('.imageSection');
+
                                     var colors = getColors(image);
                                     styleBackground(colors[1], $image.parent().parent().attr('id'));
                                     styleText(colors[1], colors[0], $image.parent().parent().attr('id'));
                                 });
+
                             }
+
+
                         }
+
                         var screenResolution = 4;
+
+
                         xmlhttp.open("GET", "capitulo-validacao/" + screenResolution, true);
+
                         xmlhttp.send();
+
                     }
                 });
             });
+
         </script>
         <div class='app-icon' style="background-color: #000000;width: 20px;"></div>
+
         <div class="app-folders-container">
             <script id="capitulos" type="text/x-mustache">
       @{{#data}}
@@ -97,6 +124,7 @@
                 </div>
 
             </script>
+
             <script id="temas" type="text/x-mustache">
       @{{#data}}
                 <div class='folderContent @{{id}}'>
@@ -131,4 +159,5 @@
     <script src="expander/js/jquery.app-folders.js"></script>
     <script src="expander/js/quantize.js"></script>
     <script src="expander/js/color-thief.js"></script>
+
 @stop

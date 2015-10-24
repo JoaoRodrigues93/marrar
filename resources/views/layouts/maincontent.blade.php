@@ -4,6 +4,7 @@
     $estudante = $_SESSION['estudante'];
     $nrDisciplinas = count($outrasDisciplinas);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -13,15 +14,10 @@
         @yield('title')
     </title>
     @section('links')
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
-
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
-
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+        <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+        <script src="{{URL::asset('js/bootstrap.min.js')}} "></script>
         <link href="{{URL::asset('favs/m_marrar_32.png')}} " rel="shortcut icon">
 
 

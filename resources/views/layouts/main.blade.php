@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title>
         @yield('title')
+
     </title>
     @section('links')
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+        <script src="{{URL::asset('js/bootstrap.js')}} "></script>
     @show
+
+
 </head>
 <body>
+
+
 @section('header')
     <nav class="navbar navbar-default menugestao">
         <div class="container-fluid">
@@ -37,10 +42,15 @@
 
         </div>
     </nav>
+
 @show
+
 @yield('body')
+
 @yield('script')
+
 @section('footer')
+
     <p align="center">&copy; Marrar LDA {{date('Y')}}</p>
     <p align="center">&copy; Todos direitos reservados</p>
 @show

@@ -3,6 +3,7 @@
 @stop
 <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
 <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
+
 <style>
     div.voltar svg {
         opacity: 0;
@@ -12,16 +13,20 @@
         transform: translateX(-100%);*/
     }
 </style>
+
 <div class="panel panel-body disciplinaHome">
     <div class="row">
         <?php $path = "";?>
         @foreach($disciplinas as $disciplina)
+
             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6 disc">
                 <a href="{{URL::to('/disciplinaHome/'.$disciplina->id)}}">
+
                     <?php
                     $disciplin = preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $disciplina->nome));
                     $disciplin = strtolower($disciplin);
                     switch ($disciplin) {
+
                         case "biologia":
                             $path = 'biologia.png';
                             break;
@@ -54,6 +59,8 @@
                     <object id="imagem" data="{{URL::asset('img/livros/'.$path)}}" type="image/png">
                         <img class="img-responsive " src="{{URL::asset('img/livros/default.png')}} ">
                     </object>
+
+
                     <h4 class="text-center">
                         {{$disciplina->nome}}
                     </h4>
@@ -62,3 +69,5 @@
         @endforeach
     </div>
 </div>
+
+
