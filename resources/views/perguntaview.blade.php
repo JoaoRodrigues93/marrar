@@ -46,7 +46,7 @@
 
                 <div class="col-lg-4 col-md-4">
                     {!! Form::label('tema','Selecione o tema',['class'=>'text-primary']) !!}
-                    {!! Form::select('tema',[], null, ['class' => 'form-control', 'id'=>'temas']) !!}
+                    {!! Form::select('tema',[], null, ['class' => 'form-control', 'id'=>'temas','onchange'=>"procuraTema()"]) !!}
                 </div>
 
 </div>
@@ -164,6 +164,9 @@
 
                     capitulos.selectedIndex=-1;
                     temas.selectedIndex=-1;
+
+
+                    if(disciplina.selectedIndex!=-1)
                     devolveDados(disciplinaSelecionada,0,0);
 
                 }
@@ -217,6 +220,9 @@
                     }
 
                     temas.selectedIndex=-1;
+
+                    if(capitulos.selectedIndex!=-1)
+                    devolveDados(0,capituloSelecionado,0);
                 }
 
             }
@@ -228,6 +234,15 @@
 
         }
 
+        function procuraTema(){
+
+            var  temas = document.getElementById('temas');
+
+            var temaSelecionado = temas.options[temas.selectedIndex].value;
+            if(temas.selectedIndex!=-1)
+            devolveDados(0,0,temaSelecionado);
+
+        }
 
 
         function devolveDados( disciplina, capitulo,  tema){
@@ -245,7 +260,6 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
 
-
                     var perguntas = JSON.parse(xmlhttp.responseText);
                     preencheTabela(perguntas);
 
@@ -255,7 +269,8 @@
 
             }
             if(capitulo==0 && tema==0)
-                xmlhttp.open("GET","/devolveDadosDisc/"+disciplina,true);
+            {
+                xmlhttp.open("GET","/devolveDadosDisc/"+disciplina,true);}
             else
             if(tema==0)
                 xmlhttp.open("GET","/devolveDadosCapi/"+capitulo,true);

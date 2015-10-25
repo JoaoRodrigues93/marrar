@@ -146,5 +146,8 @@ Route::get('/getExame','ExameController@devolveQuestoes');
       Route::get('texto','TextoController@inicializaTexto');
       Route::post('texto','TextoController@GravarTexto');
 
+    Route::get('/devolveDadosDisc/{id}','PerguntaController@devolvePerguntaDisciplina');
+      Route::get('/devolveDadosCapi/{id}','PerguntaController@devolvePerguntaCapitulo');
+      Route::get('/devolveDadosTema/{id}','PerguntaController@devolvePerguntaTema');
 
   });

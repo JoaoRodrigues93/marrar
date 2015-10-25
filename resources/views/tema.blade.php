@@ -49,7 +49,6 @@
         </div>
 
 
-
         <div class="form-group">
             {!! Form::label('conteudo','Conteudo',['class'=>'text-primary']) !!}
             {!! Form::textarea('conteudo','',['class'=>'form-control','rows'=>'20', 'id'=>'conteudo']) !!}
