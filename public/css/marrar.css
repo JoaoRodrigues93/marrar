@@ -826,11 +826,13 @@ Teória
     padding: 50px;
 }
 
-#conteud {
-
-}
-
 .opcoes {
     width: auto;
 }
 
+.btn:focus,
+.btn:active,
+button{
+    outline: none;
+    outline-offset: 0;
+}

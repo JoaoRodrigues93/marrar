@@ -34,8 +34,8 @@ body {
 
 .estudar {
     padding: 0;
-    overflow: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    /*overflow-x: hidden;*/
     margin: 0;
 }
 

@@ -39,6 +39,8 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('/','Auth\AuthController@post');
 Route::get('auth/logout','Auth\AuthController@logout');
 
+
+
 Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/teste/{capitulo}/{idCapitulo}','TesteController@inicializaTeste');
@@ -115,6 +117,10 @@ Route::get('/getExame','ExameController@devolveQuestoes');
 
 
   Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+
+    Route::get('abcxyz', function(){
+      return view('abcxyz');
+    });
 
     Route::get('disciplina','DisciplinaController@showDisciplina');
     Route::post('disciplina','DisciplinaController@createDisciplina');

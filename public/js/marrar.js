@@ -27,7 +27,7 @@ $(document).ready(function () {
     }
 
     function handle(delta) {
-        var time = 400;
+        var time = 600;
         var distance = 532;
 
         $('html, body').stop().animate({
