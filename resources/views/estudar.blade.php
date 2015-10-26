@@ -24,7 +24,7 @@
 
 @section('body')
     <div class="well estudar">
-        <div class="bottom">
+        <div class="">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right"
                                                                                   style="color: grey">Desistir</p></a>
@@ -93,7 +93,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
                                         <div class="progress-bar" id="example-percent-container" role="progressbar"
                                              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-                                             style="width:50% ; background-color:white;">
+                                             style="width:50% ; background-color:white; height: auto">
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
@@ -716,13 +716,12 @@
             }
 //            $("#conteud").load("/teoria.html");
             $('.teoria').css({
-                'display': 'inline-block'
+                'display': 'block'
             });
 
             $('.exercicios').css({
                 'display': 'none'
             });
-
 
             /*$('body').css({
              'overflow-x': 'hidden'
@@ -794,8 +793,6 @@
             }
 
         };
-
-
 
     </script>
 

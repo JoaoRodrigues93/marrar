@@ -69,17 +69,17 @@ class HomeController extends Controller
             return view('home', ['disciplinas' => $disciplinas]);
         }
 
-        if ($estudante->type == 'E') {
+        /*if ($estudante->type == 'E') {*/
             if ($dado) {
 
                 return redirect("disciplinaHome/$dado->id_ultima_disciplina");
             } else
                 return view('home', ['disciplinas' => $disciplinas]);
-        } else {
-            return redirect('/disciplina');
+       /* } else {
+            return redirect('/disciplina');*/
 
 
-        }
+        //}
 
     }
 }
