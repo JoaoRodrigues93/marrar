@@ -101,7 +101,7 @@ class CapituloController extends Controller
 
 public function buscarCapituloDisciplina($id){
 
-    $capitulos=Capitulo::where('disciplina_id',$id)->get();
+    $capitulos=Capitulo::where('disciplina_id',$id)->where('capitulos.nome','!=',"PerguntaTexto")->get();
 
 
     $capituloJson = "{\"capitulos\":[ ";

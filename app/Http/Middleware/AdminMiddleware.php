@@ -16,6 +16,10 @@ class AdminMiddleware {
 	public function handle($request, Closure $next)
 	{
 
+        if(!$request->user())
+        {
+            return redirect('/');}
+        else
 
         if ($request->user()->type != 'A')
         {

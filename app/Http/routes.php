@@ -91,11 +91,6 @@ Route::get('capitulo-validacao/{id}',"CapituloController@capituloTemaJason");
 
 
 
-
-Route::get('aestudar', 'AestudarController@aEstudarTeoria');
-
-
-
 Route::post('/teste/{cap}/{id}',"TesteController@gravaTeste");
 
 Route::get('/examenormal','ExameController@showNormal');
@@ -151,5 +146,8 @@ Route::get('/getExame','ExameController@devolveQuestoes');
       Route::get('texto','TextoController@inicializaTexto');
       Route::post('texto','TextoController@GravarTexto');
 
+    Route::get('/devolveDadosDisc/{id}','PerguntaController@devolvePerguntaDisciplina');
+      Route::get('/devolveDadosCapi/{id}','PerguntaController@devolvePerguntaCapitulo');
+      Route::get('/devolveDadosTema/{id}','PerguntaController@devolvePerguntaTema');
 
   });

@@ -336,4 +336,43 @@ public function registaPerguntas(){
         }
         return $opcao;
     }
+
+
+    public function devolvePerguntaDisciplina($id){
+
+        $perguntas=Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('temas.nome','!=',"PerguntaTexto")
+            ->where('disciplinas.id','=',$id)
+            ->select('perguntas.*')->get();
+
+
+        return $perguntas;
+    }
+    public function devolvePerguntaCapitulo($id){
+
+        $perguntas=Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('temas.nome','!=',"PerguntaTexto")
+            ->where('capitulos.id','=',$id)
+            ->select('perguntas.*')->get();
+
+
+        return $perguntas;
+    }
+    public function devolvePerguntaTema($id){
+
+        $perguntas=Pergunta::join('temas', 'temas.id', '=', 'perguntas.tema_id')
+            ->join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('temas.nome','!=',"PerguntaTexto")
+            ->where('temas.id','=',$id)
+            ->select('perguntas.*')->get();
+
+
+        return $perguntas;
+    }
+
 }

@@ -139,7 +139,7 @@ class TemaController extends Controller
     public function buscarTemaCapitulo($id)
     {
 
-        $temas = Tema::where('capitulo_id', $id)->get();
+        $temas = Tema::where('capitulo_id', $id)->where('temas.nome','!=',"PerguntaTexto")->get();
 
 
         $temaJson = "{\"temas\":[ ";
