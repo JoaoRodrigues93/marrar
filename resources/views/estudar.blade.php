@@ -465,7 +465,7 @@
             else {
                 envio.setAttribute("class", 'well alert envio-error')
                 content.innerHTML = "<strong>Errado!</strong>" +
-                " A resposta correcta é:" + resposta;
+                " A resposta correcta é: " + resposta;
                 contErros++;
             }
 
@@ -589,7 +589,7 @@
                         } else if (percentagemCerto > 75) {
                             /* imagem.setAttribute('src', '
                             {{URL::asset('img/1437563374_happy.png')}}');*/
-                            mensg.innerHTML = "Parabéns, acertaste todas questoes";
+                            mensg.innerHTML = "Parabéns, acertaste todas questões";
                             mensg.style.color = "green";
                             mensg.setAttribute('class', 'text-center');
                         }
