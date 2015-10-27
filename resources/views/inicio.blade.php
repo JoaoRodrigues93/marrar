@@ -166,7 +166,7 @@ $(document).ready(function () {
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <img class="image nam animated swing img-responsive" data-wow-delay="0.36s"
+                        <img class="image nam animated swing img-responsive" data-wow-delay="1s"
                              src="{{URL::asset('img/aprender/aprender-1646.png')}}">
                     </div>
                 </div>

@@ -31,7 +31,7 @@
             font-size: 7rem;
             margin-bottom: 40px;
             font-family: 'Cooper Black';
-            color: #349BDF;
+            color: #2C97DE;
             letter-spacing: 0.6px;
             text-shadow: 1px 1px 2px #999;
         }

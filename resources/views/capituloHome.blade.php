@@ -5,7 +5,7 @@
 @stop
 @section('links')
     @parent
-    <link rel="stylesheet" href="{{URL::asset('expander/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('expander/css/style.css')}}">
 @stop
 @section('body')
 
