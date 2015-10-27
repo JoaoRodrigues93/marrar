@@ -3,8 +3,10 @@
 @section('title')
     Editar pergunta
 @stop
-
-
+@section('links')
+    @parent
+    <script src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
+@stop
 @section('body')
     <h3 class="text-center"> Editar pergunta</h3>
     <div class="container">
@@ -14,7 +16,7 @@
         <a href="{{URL::to('perguntaview')}}" class="text-right">Clique aqui para ver a lista de perguntas</a>
 
 
-        <div class="jumbotron">
+        <div class="container">
             <div class="form-group" >
 
                 {!! Form::label('disciplina','Selecione a disciplina',['class'=>'text-primary' ]) !!}
@@ -65,8 +67,68 @@
     </div>
 
 
+
+
     <script>
 
+        var formSubmitted = false;
+        $("#submeterPergunta").on('click', function (e) {
+            if (formSubmitted === true) {
+                formSubmitted = false;
+                return;
+            }
+
+            e.preventDefault();
+
+            //para a questão
+            var editorQuestao = CKEDITOR.instances.questao;
+            var htmlQuestao = editorQuestao.getData();
+            htmlQuestao.replace("<p>", " ");
+            htmlQuestao.replace("</p>", " ");
+            editorQuestao.setData(htmlQuestao);
+
+            //para a resposta correcta
+            var editorOpcaoCorrecta = CKEDITOR.instances.opcaoCorrecta;
+            var htmlOpcaoCorrecta = editorOpcaoCorrecta.getData();
+            htmlOpcaoCorrecta.replace("<p>", " ");
+            htmlOpcaoCorrecta.replace("</p>", " ");
+            editorOpcaoCorrecta.setData(htmlOpcaoCorrecta);
+
+            //para a opção1
+            var editorOpcao1 = CKEDITOR.instances.opcao1;
+            var htmlOpcao1 = editorOpcao1.getData();
+            htmlOpcao1.replace("<p>", " ");
+            htmlOpcao1.replace("</p>", " ");
+            editorOpcao1.setData(htmlOpcao1);
+
+            //para a opção2
+            var editorOpcao2 = CKEDITOR.instances.opcao2;
+            var htmlOpcao2 = editorOpcao2.getData();
+            htmlOpcao2.replace("<p>", " ");
+            htmlOpcao2.replace("</p>", " ");
+            editorOpcao2.setData(htmlOpcao2);
+
+            //para a opção3
+            var editorOpcao3 = CKEDITOR.instances.opcao3;
+            var htmlOpcao3 = editorOpcao3.getData();
+            htmlOpcao3.replace("<p>", " ");
+            htmlOpcao3.replace("</p>", " ");
+            editorOpcao3.setData(htmlOpcao3);
+
+            //para a opção4
+            var editorOpcao4 = CKEDITOR.instances.opcao4;
+            var htmlOpcao4 = editorOpcao4.getData();
+            htmlOpcao4.replace("<p>", " ");
+            htmlOpcao4.replace("</p>", " ");
+            editorOpcao4.setData(htmlOpcao4);
+
+            formSubmitted = true;
+            $(this).trigger('click');
+        });
+    </script>
+
+    <script>
+        CKEDITOR.replaceAll();
 
             var temas = document.getElementById('temas1');
             var idTema = document.getElementById('idTema');

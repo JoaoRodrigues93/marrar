@@ -150,4 +150,9 @@ Route::get('/getExame','ExameController@devolveQuestoes');
       Route::get('/devolveDadosCapi/{id}','PerguntaController@devolvePerguntaCapitulo');
       Route::get('/devolveDadosTema/{id}','PerguntaController@devolvePerguntaTema');
 
+      Route::get('/devolveTemasDisc/{id}','TemaController@devolveTemasDisciplina');
+      Route::get('/devolveTemasCapi/{id}','TemaController@devolveTemasCapitulo');
+
+      Route::get('/devolveCapitulosDisc/{id}','CapituloController@devolveCapitulosDisciplina');
+
   });

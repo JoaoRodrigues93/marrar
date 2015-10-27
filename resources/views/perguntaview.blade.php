@@ -3,6 +3,9 @@
 @section('title')
     Lista de perguntas
 @stop
+
+
+
 @section('body')
 
     <script>
@@ -13,6 +16,7 @@
 
     </script>
 
+
     <div class="container">
 
         <h3 class="text-center">Lista de Perguntas</h3>
@@ -22,7 +26,6 @@
             <div class="col-lg-3 col-md-5 col-md-offset-7 col-lg-offset-9" style="float: right">
 
                 {!! Form::text('search','',['class'=>'form-control','id'=>'search' ,'placeholder'=>'Procurar Pergunta']) !!}
-                {!!Form::hidden('perguntas',"$perguntas",array('id'=>'id'))!!}
 
             </div>
 
@@ -80,26 +83,7 @@
 
                 <tbody>
 
-                <?php $i=0;?>
-                @foreach($perguntas as $pergunta)
 
-                    <tr>
-
-                        <?php $i++; ?>
-                        <th scope="row">{{$i}}</th>
-                        <td> {{$pergunta->questao}}</td>
-                        <td>{{$pergunta->opcaoCorrecta}}</td>
-                        <td> {{$pergunta->opcao1}}</td>
-                        <td> {{$pergunta->opcao2}}</td>
-                        <td> {{$pergunta->opcao3}}</td>
-                        <td> {{$pergunta->opcao4}}</td>
-
-                        <td><a href="{{URL::to('/perguntaview/editar/'.$pergunta->id)}}">Editar</a> | <a
-                                    onclick="return check()" href="{{URL::to('/perguntaview/remover/'.$pergunta->id)}}">Remover</a>
-                        </td>
-                    </tr>
-
-                @endforeach
                 </tbody>
 
 
@@ -113,8 +97,12 @@
 
     <script>
 
-        document.getElementById('disciplinas').selectedIndex=-1;
 
+        disciplinas=document.getElementById('disciplinas');
+        if(disciplinas.length>0) {
+            disciplinas.selectedIndex = 0;
+            adicionaCapitulo();
+        }
 
         //Funcao  que busca os capitulos da disciplina escolhida e adiciona a combobox capitulos
         function adicionaCapitulo() {

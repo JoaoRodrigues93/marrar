@@ -32,8 +32,9 @@ class TemaController extends Controller
     {
         $temas = new Tema();
         $capitulos = $temas->capitulo();
+        $disciplinas=Disciplina::all()->lists('nome', 'id');;
         $tema = Tema::all();
-        return view('tema_list')->with(array('temas' => $tema, 'capitulos' => $capitulos));
+        return view('tema_list')->with(array('temas' => $tema, 'capitulos' => $capitulos,'disciplinas'=>$disciplinas));
     }
 
 
@@ -171,5 +172,31 @@ class TemaController extends Controller
         return view('temaMobile')->with(array('capitulo'=>$capitulo,'temas'=>$temas,'disciplina'=>$disciplina));
 
     }
+
+
+    public function devolveTemasDisciplina($id){
+
+        $temas=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('temas.nome','!=',"PerguntaTexto")
+            ->where('disciplinas.id','=',$id)
+            ->select('temas.*')->get();
+        return $temas;
+
+    }
+
+    public function devolveTemasCapitulo($id){
+
+        $temas=Tema::join('capitulos', 'capitulos.id', '=', 'temas.capitulo_id')
+            ->join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('temas.nome','!=',"PerguntaTexto")
+            ->where('capitulos.id','=',$id)
+            ->select('temas.*')->get();
+
+        return $temas;
+
+    }
+
+
 
 }

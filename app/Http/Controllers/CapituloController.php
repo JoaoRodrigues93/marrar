@@ -61,8 +61,9 @@ class CapituloController extends Controller
 
     public function inicializaCapitulo_list()
     {
-        $capitulos = Capitulo::all();
-        return view('capitulo_list')->with('capitulos', $capitulos);
+
+        $disciplinas=Disciplina::lists('nome', 'id');
+        return view('capitulo_list')->with('disciplinas', $disciplinas);
     }
 
     public function deleteCapitulo($id)
@@ -356,4 +357,14 @@ public  function capituloTemaJason($screen) {
 
 }
 
+
+    public function devolveCapitulosDisciplina($id){
+
+        $capitulos=Capitulo::join('disciplinas', 'disciplinas.id', '=', 'capitulos.disciplina_id')
+            ->where('capitulos.nome','!=',"PerguntaTexto")
+            ->where('disciplinas.id','=',$id)
+            ->select('capitulos.*')->get();
+
+        return $capitulos;
+    }
 }

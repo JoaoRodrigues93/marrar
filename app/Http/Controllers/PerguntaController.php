@@ -26,16 +26,11 @@ class PerguntaController extends Controller {
     return view('pergunta')->with(array('disciplinas'=>$disciplinas));
 }
 
-    public function InicializaPergunta2(){
-        $disciplinas = Disciplina::lists('nome', 'id');
-        return view('perguntaBackup')->with(array('disciplinas'=>$disciplinas));
-    }
 
     public function InicializaPerguntaView(){
 
-        $perguntas=Pergunta::all();
         $disciplinas = Disciplina::lists('nome', 'id');
-        return view('perguntaview')->with(array('disciplinas'=>$disciplinas,'perguntas'=>$perguntas));
+        return view('perguntaview')->with(array('disciplinas'=>$disciplinas));
     }
 
 public function registaPerguntas(){
