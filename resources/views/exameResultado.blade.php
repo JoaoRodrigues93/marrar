@@ -10,11 +10,11 @@
     <h1 class="text-success text-center">Resultado do exame
         <small>Disciplina de {{$_SESSION['disciplinaActual']->nome}}</small>
     </h1>
-    <p>Nota:@if($examenormal->nota >= 10) <strong class="text-success">{{$examenormal->nota}}</strong>
+    <h3>Nota:@if($examenormal->nota >= 10) <strong class="text-success">{{$examenormal->nota}}</strong>
         @else
             <strong class="text-danger">{{$examenormal->nota}}</strong>
         @endif
-    </p>
+    </h3>
 
     <p>Respostas correctas:@if($examenormal->respostasCertas > $examenormal->respostasErradas) <strong
                 class="text-success">{{$examenormal->respostasCertas}}</strong>

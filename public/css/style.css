@@ -222,6 +222,42 @@ body {
     border: 0;
     vertical-align: middle;
 }
+/*
+#imagem:hover img{
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+*/
+#wrap > div > div > div > div > div > div > a > h4{
+    margin-top: -5px;
+}
+
+@media (min-width: 1200px) {
+
+    #imagem{
+        max-width: 85%;
+        margin-left: 5%;
+    }
+
+    .disc h4{
+
+    }
+}
+
+@media (max-width: 767px) {
+
+    #imagem{
+        max-width: 85%;
+        margin-left: 5%;
+    }
+
+    .disc{
+
+    }
+
+}
 
 /*Blade exercicio */
 .envio {
