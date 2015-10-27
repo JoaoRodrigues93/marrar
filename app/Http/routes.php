@@ -141,8 +141,13 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
     Route::get('texto', 'TextoController@inicializaTexto');
     Route::post('texto', 'TextoController@GravarTexto');
 
-    Route::get('/devolveDadosDisc/{id}', 'PerguntaController@devolvePerguntaDisciplina');
-    Route::get('/devolveDadosCapi/{id}', 'PerguntaController@devolvePerguntaCapitulo');
-    Route::get('/devolveDadosTema/{id}', 'PerguntaController@devolvePerguntaTema');
+    Route::get('/devolveDadosDisc/{id}','PerguntaController@devolvePerguntaDisciplina');
+    Route::get('/devolveDadosCapi/{id}','PerguntaController@devolvePerguntaCapitulo');
+    Route::get('/devolveDadosTema/{id}','PerguntaController@devolvePerguntaTema');
+
+    Route::get('/devolveTemasDisc/{id}','TemaController@devolveTemasDisciplina');
+    Route::get('/devolveTemasCapi/{id}','TemaController@devolveTemasCapitulo');
+
+    Route::get('/devolveCapitulosDisc/{id}','CapituloController@devolveCapitulosDisciplina');
 
 });
