@@ -619,6 +619,20 @@
 document.getElementById('btn_entregar').click();
 
 
+window.onkeydown = function (event) {
+    submeter(event)
+}
+
+function submeter(event) {
+    var code = event.keyCode ? event.keyCode : event.which;
+    var button;
+    if (code == 13) {
+        button = document.getElementById("btn_entregar");
+        processarPergunta();
+        button.click();
+    }
+}
+
     </script>
 
 

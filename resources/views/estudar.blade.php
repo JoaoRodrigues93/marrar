@@ -26,8 +26,9 @@
     <div class="well estudar">
         <div class="">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <a onclick="return check()" href="{{URL::to('capituloHome')}}"><p class="text-right"
-                                                                                  style="color: grey">Desistir</p></a>
+              {{--  <a onclick="desistir()" href="{{URL::to('capituloHome')}}"><p class="text-right"
+                                                                                  style="color: grey">Desistir</p></a>--}}
+                <a class="desistir btn btn-default right" onclick="desistir()" href="#">Desistir</a>
             </div>
 
         </div>
@@ -66,15 +67,55 @@
                     for (i = 1; i <= 5; i++)
                         document.getElementById('opcao' + i).setAttribute('class', classe);
                 }
-                function check() {
 
-                    return confirm('Tem certeza que quer desistir?');
+                function modalAlert(title, message) {
+                    var titleDiv, messageDiv;
+                    titleDiv = document.getElementById("modal-title");
+                    messageDiv = document.getElementById("modal-body")
+                    titleDiv.innerHTML = "" + title;
+                    messageDiv.innerHTML = "<p>" + message + "</p>";
+                    $("#texto").modal();
+                }
+
+                function closeModal() {
+                    $("#texto").modal("hide");
+                }
+                var texto = document.getElementById("texto");
+                function desistir() {
+                    texto = "<p>Deseja realmente abandonar o exercicio? Vais perder todo progresso até aqui.</p>"
+                    + "<button name='confirmar' class='btn btn-success' id='confirmarEnvio' onclick='confirmarDesistencia ()'>Confirmar</button>"
+                    + "    <button name='cancelar' class='btn btn-danger' id='cancelarEnvio' onclick='cancelarDesistencia ()'>Cancelar</button>";
+                    modalAlert("Exercicio", texto);
+                }
+                function cancelarDesistencia() {
+                    closeModal();
+                }
+                function confirmarDesistencia() {
+                    window.location = "/home";
+                    closeModal();
                 }
 
             </script>
 
 
             <div class="exercicios" onload="inicio()">
+
+                <div class="modal fade" id="texto" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 id="modal-title" class="modal-title">Modal Header</h4>
+                            </div>
+                            <div id="modal-body" class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="content-fluid" id="conteud">
                     <div id="mensagemFinal" class="hidden">
