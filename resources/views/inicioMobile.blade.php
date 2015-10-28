@@ -11,12 +11,12 @@
         <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
         <link href="{{URL::asset('css/initial.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/marrar.css')}}" rel="stylesheet">
-        <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>
+{{--        <script src="{{URL::asset('js/jquery.min.js')}}" rel="script"></script>--}}
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <script src="{{URL::asset('js/WOW.min.js')}}"></script>
-        <script src="{{URL::asset('js/bootstrap.js')}} "></script>
+{{--        <script src="{{URL::asset('js/WOW.min.js')}}"></script>--}}
+{{--        <script src="{{URL::asset('js/bootstrap.js')}} "></script>--}}
 
-        <script src="{{URL::asset('js/marrar.js')}}"></script>
+{{--        <script src="{{URL::asset('js/marrar.js')}}"></script>--}}
 
         <script>
         var errorMobile;
@@ -86,6 +86,73 @@ $(document).ready(function () {
             <div class="down-arrow floating-arrow"><a class="scrolarAprender" href="#podeAprender"><i class="fa fa-angle-down"></i></a></div>
 
         </header>
+
+        <div class="hidden-lg hidden-md hidden-sm">
+
+            <!-- Login -->
+
+            <div id="login-registo-mobile" class="hidden-lg hidden-md hidden-sm container-fluid">
+                <div class="col-xs-12" id="login-mobile">
+                    <h3>Entrar</h3>
+                    <div>
+                        <form method="post" url="login">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                            <input type='hidden' name='opLogin' id='opLogin' value='1'/>
+                            <input type='hidden' name='mobile' id='opLogin' value='1'/>
+                            <input type="text" name="login-email" id="username-mobile" class="form-control" placeholder='e-mail ou nome de utilizaor' required="true" />
+                            <input type="password" name="login-password" id="password-mobile" class="form-control" placeholder="password" required="true" />
+
+
+                            @if(isset($errorMobile))
+                                <label><strong>E-mail ou nome de utilizador e password não confere. Tente de novo</strong></label>
+                            @endif
+                            <button type="submit" class="btn btn-success form-control">Entrar</button>
+                            <label class="text-center ">Ou entre usando:</label>
+                            <div class="col-xs-12">
+                                <a class="btn btn-primary col-xs-6" id="login-facebook" href='login/facebook'>facebook</a>
+                                <a class="btn btn-primary col-xs-6" id="login-google" href='login/google'>google+</a>
+                            </div>
+                            <br>
+                            <a href="#" onclick="abreRegistoMobile()" class="text-center">Registe-se</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-12 hidden-xs" id="registo-mobile">
+                    <h3>Registe-se</h3>
+                    <div>
+                        <form method="post" url="/">
+                            <input type='hidden' name='opRegisto' id='opRegisto' value='1'/>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type='hidden' name='mobile' id='opLogin' value='1'/>
+                            <input type="text" id="nome-mobile" name="nome" class="form-control" placeholder="nome" required="true"/>
+
+                            <input type="text" id="apelido-mobile" name="apelido" class="form-control" placeholder="apelido" required="true"/>
+
+                            <input type="text" id="username-mobile" name="username" class="form-control" placeholder="nome de utilizador" required="true"/>
+
+                            <input type="email" id="email-mobile" name="email" class="form-control"
+                                   placeholder="exemplo@provedor.co.mz" required="true"/>
+
+                            <input type="password" id="password-mobile" name="password" class="form-control"
+                                   placeholder="password" required="true"/>
+
+                            <div>
+                                <div class="col-lg-6 col-md6 col-sm">
+                                    <label for="termos"><input type="checkbox" name="termos" id="termos" required="true"/>Aceitos os termos e condições</label>
+                                </div>
+                                <div class="col-lg-6 col-md6 col-sm-6">
+                                    <button type="submit" class="btn btn-success form-control">Registar</button>
+                                    <a href="#" onclick="abreLoginMobile()" >Estás registado? Entre</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fim de Login e Registo Mobile -->
+
+        </div>
 
 
         <div class="mainPodeAprender">
@@ -185,75 +252,6 @@ $(document).ready(function () {
 
             </div>
         </div>
-
-        <div class="hidden-lg hidden-md hidden-sm">
-
-            <!-- Login -->
-
-
-            <div id="login-registo-mobile" class="hidden-lg hidden-md hidden-sm container-fluid">
-                <div class="col-xs-12" id="login-mobile">
-                    <h3>Entrar</h3>
-                    <div>
-                        <form method="post" url="login">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                            <input type='hidden' name='opLogin' id='opLogin' value='1'/>
-                            <input type='hidden' name='mobile' id='opLogin' value='1'/>
-                            <input type="text" name="login-email" id="username-mobile" class="form-control" placeholder='e-mail ou nome de utilizaor' required="true" />
-                            <input type="password" name="login-password" id="password-mobile" class="form-control" placeholder="password" required="true" />
-
-
-                            @if(isset($errorMobile))
-                                <label><strong>E-mail ou nome de utilizador e password não confere. Tente de novo</strong></label>
-                            @endif
-                            <button type="submit" class="btn btn-success form-control">Entrar</button>
-                            <label class="text-center ">Ou entre usando:</label>
-                            <div class="col-xs-12">
-                                <a class="btn btn-primary col-xs-6" id="login-facebook" href='login/facebook'>facebook</a>
-                                <a class="btn btn-primary col-xs-6" id="login-google" href='login/google'>google+</a>
-                            </div>
-                            <br>
-                            <a href="#" onclick="abreRegistoMobile()" class="text-center">Registe-se</a>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-xs-12 hidden-xs" id="registo-mobile">
-                    <h3>Registe-se</h3>
-                    <div>
-                        <form method="post" url="/">
-                            <input type='hidden' name='opRegisto' id='opRegisto' value='1'/>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type='hidden' name='mobile' id='opLogin' value='1'/>
-                            <input type="text" id="nome-mobile" name="nome" class="form-control" placeholder="nome" required="true"/>
-
-                            <input type="text" id="apelido-mobile" name="apelido" class="form-control" placeholder="apelido" required="true"/>
-
-                            <input type="text" id="username-mobile" name="username" class="form-control" placeholder="nome de utilizador" required="true"/>
-
-                            <input type="email" id="email-mobile" name="email" class="form-control"
-                                   placeholder="exemplo@provedor.co.mz" required="true"/>
-
-                            <input type="password" id="password-mobile" name="password" class="form-control"
-                                   placeholder="password" required="true"/>
-
-                            <div>
-                                <div class="col-lg-6 col-md6 col-sm">
-                                    <label for="termos"><input type="checkbox" name="termos" id="termos" required="true"/>Aceitos os termos e condições</label>
-                                </div>
-                                <div class="col-lg-6 col-md6 col-sm-6">
-                                    <button type="submit" class="btn btn-success form-control">Registar</button>
-                                    <a href="#" onclick="abreLoginMobile()" >Estás registado? Entre</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fim de Login e Registro Mobile -->
-
-        </div>
-
 
         <footer>
 
@@ -390,8 +388,8 @@ $(document).ready(function () {
                     <br>
                     <br>
 
-                    {{--<div class="modal-footer">
-                    </div>--}}
+                    <div class="modal-footer">
+                    </div>
                 </div>
 
             </div>

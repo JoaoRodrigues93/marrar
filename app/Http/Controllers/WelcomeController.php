@@ -4,6 +4,7 @@ use App\Capitulo;
 use App\Disciplina;
 use App\Tema;
 use App\Pergunta;
+include 'Mobile_Detect.php';
 
 class WelcomeController extends Controller
 {
@@ -36,11 +37,18 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('inicio');
+        /*$detect = new \Mobile_Detect();
+        if ($detect->isMobile()){
+            return view('inicioMobile');
+        }else{*/
+            return view('inicio');
+//        }
+
     }
 
-    public  function editar_inicial() {
-          return view('editar_inicial');
+    public function editar_inicial()
+    {
+        return view('editar_inicial');
     }
 
 }
