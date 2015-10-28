@@ -4,11 +4,11 @@
 @font-face {
     font-family: 'Cooper Black';
     src: url('../fonts/COOPBL.TTF');
-    url('../fonts/COOPBL.TTF') format('TTF');
+url('../fonts/COOPBL.TTF') format('TTF');
 }
 
 body {
-    font-family: 'Roboto',  'Helvetica Neue', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
     /*font-size: 14px;*/
     overflow-x: hidden;
     color: #2a3237;
@@ -95,13 +95,8 @@ Nav, Logo e Button entrar
 .headerNav div div a {
     font-family: 'Cooper Black', 'Helvetica Neue', Arial, sans-serif;
     font-size: 7rem;
-    /*font-size: 66px;*/
     text-shadow: 1px 1px 2px #999;
-    /*box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);*/
-
-    color: #fff;
-    /*line-height: 8rem;*/
-
+    color: #FFFFFF;
     text-align: center;
 }
 
@@ -115,8 +110,6 @@ Nav, Logo e Button entrar
 }
 
 nav.headerNav {
-    /*background: #2C97DE;
-    height: 5em;*/
     transition: all 800ms;
     margin: 0;
     padding: 25px 0 25px 0;
@@ -132,18 +125,12 @@ header nav div button.btn {
     border-radius: 3em;
     width: 6em;
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
-    /*font-weight: 300;*/
     text-decoration: none;
     line-height: 100%;
 }
 
 header nav div button.btn:focus,
-header nav div button.btn:active:focus
-    /*.btn.active:focus,*/
-    /*.btn.focus,*/
-    /*.btn:active.focus,*/
-    /*.btn.active.focus*/
-{
+header nav div button.btn:active:focus {
     outline: none;
     outline-offset: 0;
 }
@@ -832,7 +819,7 @@ Teória
 
 .btn:focus,
 .btn:active,
-button{
+button {
     outline: none;
     outline-offset: 0;
 }

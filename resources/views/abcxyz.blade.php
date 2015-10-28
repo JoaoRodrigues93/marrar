@@ -7,7 +7,7 @@
 
     <div class="abc container well" style="background: #FFFFFF; font-size: 36px">
            <h1>
-               Bem vindo ao sistema de Gestão de conteudo do <span>Marrar</span>
+               Bem vindo ao sistema de Gestão de conteúdo do <span>Marrar</span>
            </h1>
     </div>
 
@@ -18,6 +18,7 @@
         .abc{
             min-height: 400px;
             text-align: center;
+            margin-top: 46px;
         }
 
         .abc h1{
