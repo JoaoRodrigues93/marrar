@@ -27,6 +27,18 @@ class AuthController extends Controller
 
     }
 
+    public function recuperaPassword(Request $request)
+    {
+
+        if ($request->has('opLogin')) {
+            return $this->authenticate($request);
+        } elseif ($request->has('opRegisto')) {
+
+            return $this->registar($request);
+        }
+
+    }
+
     public function loginValido(Request $request){
 
     }

@@ -46,7 +46,7 @@
 <div class="container">
     <div class="content">
         <div class="title">marrar</div>
-        <div class="message">Acesso Negado :/</div>
+        <div class="message">Acesso Negado</div>
     </div>
 </div>
 </body>

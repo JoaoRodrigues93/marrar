@@ -46,7 +46,7 @@
 <div class="container">
     <div class="content">
         <div class="title">marrar</div>
-        <div class="message">Erro Interno - Tente Mais Tarde, por favor :)</div>
+        <div class="message">Erro Interno - Tente Mais Tarde.</div>
     </div>
 </div>
 </body>

@@ -37,7 +37,7 @@ return [
     'facebook'=> [
         'client_id' =>'873662779355317',
         'client_secret'=>'0541bebdbf58c9f4e69c0f44b5a3908c',
-        'redirect'=>'http://localhost:8000/login/done/facebook',
+        'redirect'=>'http://marrar.eu2.frbit.net/login/done/facebook',
     ],
 
     'google'=>[

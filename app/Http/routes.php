@@ -11,9 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Mail;
+
+Route::controllers([
+    'password' => 'Auth\PasswordController',
+]);
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+
+
 
 
 Route::get('registar', function () {
@@ -23,6 +31,23 @@ Route::get('registar', function () {
 
 Route::get('welcome', function () {
     return View('inicio');
+});
+
+Route::get('reset', function () {
+    return View::make('reset');
+});
+
+Route::get('app', function () {
+    return View::make('auth/login');
+});
+
+Route::get('email', function() {
+
+    Mail::send('emails.test', ['name' => 'Yola'], function($message) {
+        $message->to('manuazevedo2@gmail.com', 'Puto Az')->subject('Olá Laravel');
+    });
+
+    return View::make('auth/login');
 });
 
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
@@ -36,8 +61,12 @@ Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 
 
 Route::post('/', 'Auth\AuthController@post');
-Route::get('auth/logout', 'Auth\AuthController@logout');
+//Route::post('/password/email', 'Auth\AuthController@postEmail');
+//Route::get('/password/email','Auth\PasswordController@getEmail');
+//Route::get('/password/reset/{token}','Auth\PasswordController@getReset');
+//Route::post('/password/reset','Auth\PasswordController@postReset');
 
+Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -46,11 +75,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('examenormal', 'ExameController@show');
     Route::post('examenormal', 'ExameController@corrigeExame');
 
-
     Route::get('perfil', function () {
         return View::make('perfil');
     });
 
+    //Nelson - Mudar isto dpx
     Route::get('perfil', 'PerfilController@buscarPerfil');
     Route::get('editar-perfil', 'PerfilController@buscarEditPerfil');
     Route::post('edito-perfil', 'PerfilController@HabilitarEditarPerfil');

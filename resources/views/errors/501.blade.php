@@ -46,7 +46,7 @@
 <div class="container">
     <div class="content">
         <div class="title">marrar</div>
-        <div class="message">Brevemente estará disponível :)(</div>
+        <div class="message">Brevemente estará disponível.(</div>
     </div>
 </div>
 </body>

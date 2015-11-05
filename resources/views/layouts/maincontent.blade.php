@@ -12,15 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @yield('title')
+
     </title>
     @section('links')
         <link href="{{URL::asset('css/bootstrap.min.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.min.js')}} "></script>
-        <link href="{{URL::asset('favs/m_marrar_32.png')}} " rel="shortcut icon">
-
-
     @show
 </head>
 <body>

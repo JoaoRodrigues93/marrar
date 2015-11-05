@@ -1,7 +1,9 @@
 <?php namespace App\Exceptions;
-
+session_start();
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler {
 
@@ -10,9 +12,6 @@ class Handler extends ExceptionHandler {
 	 *
 	 * @var array
 	 */
-	protected $dontReport = [
-		'Symfony\Component\HttpKernel\Exception\HttpException'
-	];
 
 	/**
 	 * Report or log an exception.
@@ -37,15 +36,17 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		if ($this->isHttpException($e))
-		{
-			if($e instanceof NotFoundHttpException)
-			{
-				return response()->view('404', [], 404);
-			}
-			return $this->renderHttpException($e);
-		}
-		return parent::render($request, $e);
+
+        if($e instanceof NotFoundHttpException)
+        {
+            //Verificar se ta online ou nao...
+            if (Auth::user())
+                return response()->view('404');
+            else
+                return redirect('/');
+
+        }
+        return parent::render($request, $e);
 	}
 
 }

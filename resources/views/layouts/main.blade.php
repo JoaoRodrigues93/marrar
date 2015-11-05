@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>
         @yield('title')
-
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
     </title>
     @section('links')
         <link href="{{URL::asset('css/bootstrap.css')}} " rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}} " rel="stylesheet">
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('js/bootstrap.js')}} "></script>
+
     @show
 
 

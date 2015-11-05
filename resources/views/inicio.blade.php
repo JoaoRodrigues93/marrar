@@ -87,6 +87,7 @@ $(document).ready(function () {
 
         </header>
 
+        @yield('content')
 
         <div class="mainPodeAprender">
             <div id="podeAprender" class="podeAprender container">
@@ -312,7 +313,8 @@ $(document).ready(function () {
                             <a class='btn btn-default form-control' onclick="closePopover()" data-toggle='modal'
                                data-target='#registoModal'>Registe-se</a>
 
-                            <p class='text-center link'><a href='#'>Esqueceu Senha?</a></p>
+                            <p><a class='btn form-control' onclick="closePopover()" data-toggle='modal'
+                               data-target='#esqueceModal'>Esqueceu Senha?</a></p>
                         </div>
                     </div>
 
@@ -373,7 +375,7 @@ $(document).ready(function () {
                             <p><input type="email" id="email" name="email" class="form-control"
                                       placeholder="exemplo@provedor.co.mz" required="true"/>
 
-                            <p><input type="password" id="password" name="password" class="form-control"
+                            <p><input type="password" id="password" name="password" c521lass="form-control"
                                       placeholder="password" required="true"/>
                             </p>
 
@@ -393,7 +395,54 @@ $(document).ready(function () {
                     {{--<div class="modal-footer">
                     </div>--}}
                 </div>
+            </div>
+        </div>
 
+        <!-- Esqueceu Senha -->
+        <div id="esqueceModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Trocar Senha</h4>
+                    </div>
+                    <div class="modal-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                            <p><input type="email" id="email" name="email" class="form-control"
+                                      placeholder="Introduza o seu email" required="true"/>
+                            </p>
+                            <div>
+                                <div class="col-lg-6 col-md6 col-sm-12 col-lg-offset-3 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success form-control">Redefinir a Senha</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    <br>
+
+                    {{--<div class="modal-footer">
+                    </div>--}}
+                </div>
             </div>
         </div>
 

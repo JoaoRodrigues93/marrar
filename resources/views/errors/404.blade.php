@@ -20,6 +20,7 @@
             text-align: center;
             display: table-cell;
             vertical-align: middle;
+            horiz-align: center;
         }
 
         .content {

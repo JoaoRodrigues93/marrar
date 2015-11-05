@@ -1,7 +1,11 @@
 <!-- Serviço Indisponivel Exception -->
 <html>
 <head>
+    <title>
+        Serviço Indisponivel - Marrar
+    </title>
     <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
 
     <style>
         body {
@@ -46,7 +50,7 @@
 <div class="container">
     <div class="content">
         <div class="title">marrar</div>
-        <div class="message">Serviço Indisponível :(</div>
+        <div class="message">Voltaremos Brevemente .</div>
     </div>
 </div>
 </body>

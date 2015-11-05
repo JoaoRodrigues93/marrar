@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier {
     
          protected $except = [
         '',
+             '/password/email',
         'home',
         '/tema',
         '/perfil',

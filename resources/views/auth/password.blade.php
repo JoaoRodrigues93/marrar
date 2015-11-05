@@ -1,6 +1,8 @@
-@extends('app')
-
-@section('content')
+<html>
+<head>
+    <link href="{{URL::asset('css/app.css')}} " rel="stylesheet">
+</head>
+<body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -24,12 +26,11 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="/password/email">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">E-Mail Address</label>
-
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                 </div>
@@ -48,4 +49,5 @@
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>

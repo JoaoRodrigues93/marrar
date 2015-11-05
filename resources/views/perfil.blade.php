@@ -1,4 +1,4 @@
-<?php $ranking = true;  ?>
+<?php $ranking = false;  ?>
 @extends('layouts.maincontent')
 
 @section('links')
