@@ -43,7 +43,7 @@ return [
     'google'=>[
         'client_id' =>'68582577746-91q66jb77chnqsia0uuoelf6nb7uvn35.apps.googleusercontent.com',
         'client_secret'=>'5Dcj2-SjVpyTSczDANDMidow',
-        'redirect'=>'http://localhost:8000/login/done/google',
+        'redirect'=>'http://marrar.eu2.frbit.net/login/done/google',
     ],
 
 ];
