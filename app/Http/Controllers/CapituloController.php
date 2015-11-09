@@ -292,7 +292,7 @@ public  function capituloTemaJason($screen) {
         $tem.="]";
 
 
-        $imagem=$capitulo->nome;
+        $imagem=strtolower($capitulo->nome);
 
 
         if (strlen($testeJson) < 20) {

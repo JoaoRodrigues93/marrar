@@ -112,7 +112,7 @@
                 @{{/first}}
                 <div class='folder' id='@{{id}}'>
             <a href='#'>
-              <img class='app-icon' src='expander/images/@{{image}}'>
+              <img class='app-icon' src='/expander/images/@{{image}}'>
               <p style="margin-top: 6px" class='album-name'>@{{nome}}</p>
               </a>
           </div>
