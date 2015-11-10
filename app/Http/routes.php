@@ -53,8 +53,8 @@ Route::get('email', function() {
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login', 'Auth\AuthController@post');
 
-Route::get('login/{provider}', 'Auth\AuthController@redirectToProvider');
-Route::get('login/done/{provider}', 'Auth\AuthController@handleProviderCallback');
+Route::get('/login/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('/login/done/{provider}', 'Auth\AuthController@handleProviderCallback');
 
 //Funciona?
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
@@ -117,8 +117,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/teste/{cap}/{id}', "TesteController@gravaTeste");
 
     Route::get('/examenormal', 'ExameController@showNormal');
-    Route::get('/examecolectivo', 'ExameController@showTimeStamp');
-    Route::get('/examecolectivo1', 'ExameController@showColectivo');
+//    Route::get('/examecolectivo', 'ExameController@showTimeStamp');
+    Route::get('/examecolectivo', 'ExameController@showColectivo');
     Route::post('examenormal', 'ExameController@corrigeExame');
     Route::post('examecolectivo', 'ExameController@corrigeExame');
     Route::get('home/maisDisciplinas', 'HomeController@index');
