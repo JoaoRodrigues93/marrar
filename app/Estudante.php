@@ -10,7 +10,7 @@ class Estudante extends Model implements AuthenticatableContract, CanResetPasswo
 
     use Authenticatable, CanResetPassword;
 
-    protected $fillable = ['nome','apelido','sexo','username','foto','sexo'];
+    protected $fillable = ['nome','apelido','username','email','password'];
 
     public function nivel () {
         return $this->hasOne('App\Nivel');
@@ -36,6 +36,8 @@ class Estudante extends Model implements AuthenticatableContract, CanResetPasswo
     public function dados (){
         return $this->hasMany('App\Dado');
     }
+
+    protected $table = 'estudantes';
 
     protected $hidden = ['password', 'remember_token'];
 }

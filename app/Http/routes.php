@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Mail;
 
 Route::controllers([
-    'password' => 'Auth\PasswordController',
+    'password' => '\App\Http\Controllers\Auth\PasswordController',
 ]);
 
 Route::get('/', 'WelcomeController@index');
@@ -43,8 +43,8 @@ Route::get('app', function () {
 
 Route::get('email', function() {
 
-    Mail::send('emails.test', ['name' => 'Yola'], function($message) {
-        $message->to('manuazevedo2@gmail.com', 'Puto Az')->subject('Olá Laravel');
+    Mail::send('emails.test', ['name' => 'Sevas'], function($message) {
+        $message->to('severmateus@gmail.com', 'Haha')->subject('Olá Laravel');
     });
 
     return View::make('auth/login');
