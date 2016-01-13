@@ -54,10 +54,14 @@
 
         function gravarTexto() {
 
+            var texto =document.getElementById('textoCompleto');
+             
+            texto.value=CKEDITOR.instances['textoCompleto'].getData();
+
             var form = $('form[entregarTeste]');
             var url = form.prop('action');
 
-            $.ajax({
+           $.ajax({
                 url: url,
                 data: form.serialize(),
                 method: 'POST',

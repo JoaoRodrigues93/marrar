@@ -24,7 +24,8 @@ class GestorTemaEstudada {
 
     public function temaEstudadas(){
         $estudante = Auth::user();
-        $temaEstudadas = TemasEstudadas::orderBy('updated_at', 'desc')->take(3)->get();
+        $disciplina=$_SESSION ['disciplinaActual'];
+        $temaEstudadas = TemasEstudadas::orderBy('updated_at', 'desc')->where('disciplina_id',$disciplina->id)->take(3)->get();
         return $temaEstudadas;
     }
 

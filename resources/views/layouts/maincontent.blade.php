@@ -65,7 +65,7 @@
                             @for($i=0;$i<$nrDisciplinas && $i<4;$i++)
                                 <li><a href="/disciplinaHome/{{$outrasDisciplinas[$i]->id}}">{{$outrasDisciplinas[$i]->nome}}</a></li>
                             @endfor
-                            @if($nrDisciplinas >4)
+                            @if($nrDisciplinas >=4)
                                 <li>
                                     <a href="/home/maisDisciplinas">Mais Disciplinas</a>
                                 </li>
@@ -78,7 +78,7 @@
                         <ul class="dropdown-menu">
 
                             <li><a href="/examenormal">Normal</a></li>
-                            <li><a href="/examecolectivo">Colectivo</a></li>
+                            <li><a href="/examecolectivo1">Colectivo</a></li>
 
                         </ul>
                     </li>

@@ -276,9 +276,15 @@
                 </section>
                 @if($texto)
 
-                    <section class="texto" id="section-flip-2"><p>{{$texto->texto}}</p></section>
+                    <section class="texto" id="section-flip-2"> <p> <strong>{{$texto->titulo}}</strong></p>  <p>{{$texto->texto}}</p></section>
+
+                    @else
+
+                    <input type="hidden" id="section-flip-2">
 
                 @endif
+
+
             </div>
             <!-- /content -->
         </div>
@@ -286,6 +292,8 @@
     </section>
 
     <script>
+
+
         var confirmacao;
         var desistirPermitido = true;
         function valido() {
@@ -387,6 +395,7 @@
                     var perguntas = JSON.parse(perguntasJson);
                     var Minutes = 60 * 60, display = document.querySelector('#timer');
                     startTimer(Minutes, display);
+
 
                     for (i = 0; i < perguntas.length; i++) {
 

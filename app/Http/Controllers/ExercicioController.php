@@ -52,8 +52,8 @@ class ExercicioController extends Controller{
             ->where('temas.nome','=',$tema)
             ->Select('temas.*')->get()->first();
         $temaId=$temaActual->id;
-        $quantidade=10;
-        $perguntas = $perguntaController->buscarExercicios($temaId,10);
+        $quantidade=4;
+        $perguntas = $perguntaController->buscarExercicios($temaId,$quantidade);
         $nrPerguntas=$perguntas->count();
         $pergunta = $perguntas->first();
         $perguntaActual =-1;

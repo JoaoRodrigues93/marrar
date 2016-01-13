@@ -375,7 +375,7 @@ $(document).ready(function () {
                             <p><input type="email" id="email" name="email" class="form-control"
                                       placeholder="exemplo@provedor.co.mz" required="true"/>
 
-                            <p><input type="password" id="password" name="password" c521lass="form-control"
+                            <p><input type="password" id="password" name="password" class="form-control"
                                       placeholder="password" required="true"/>
                             </p>
 

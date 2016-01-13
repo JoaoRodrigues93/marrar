@@ -30,7 +30,9 @@ class GestorTesteFeito {
 
     public function testesFeitos (){
         $estudante = Auth::user();
-        $testesFeitos = TesteFeito::orderBy('updated_at', 'desc')->take(5)->get();
+
+        $disciplina=$_SESSION ['disciplinaActual'];
+        $testesFeitos = TesteFeito::orderBy('updated_at', 'desc')->where ('disciplina_id',$disciplina->id)->where('estudante_id',$estudante->id)->take(4)->get();
 //        $testesFeitos = TesteFeito::orderBy('id', 'desc')
 
         //$testesFeitos = TesteFeito::groupBy('capitulo')

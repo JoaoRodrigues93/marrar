@@ -131,7 +131,8 @@ class PerguntaTextoController extends Controller {
 
 
             $tema= $_SESSION['tema'];
-            $pergunta = $tema->perguntas()->save($pergunta);
+
+           $pergunta = $tema->perguntas()->save($pergunta);
             $perguntaTexto= PerguntaTexto::firstOrCreate(['texto_id'=>$data['titulos'],'pergunta_id'=>$pergunta->id]);
             $perguntaTexto->save();
 
