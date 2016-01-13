@@ -61,6 +61,7 @@
             var form = $('form[entregarTeste]');
             var url = form.prop('action');
 
+
            $.ajax({
                 url: url,
                 data: form.serialize(),
