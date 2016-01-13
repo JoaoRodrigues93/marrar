@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Mail;
 
 Route::controllers([
-    'password' => 'Auth\PasswordController',
+    'password' => '\App\Http\Controllers\Auth\PasswordController',
 ]);
 
 Route::get('/', 'WelcomeController@index');
@@ -43,8 +43,8 @@ Route::get('app', function () {
 
 Route::get('email', function() {
 
-    Mail::send('emails.test', ['name' => 'Yola'], function($message) {
-        $message->to('manuazevedo2@gmail.com', 'Puto Az')->subject('Olá Laravel');
+    Mail::send('emails.test', ['name' => 'Sevas'], function($message) {
+        $message->to('severmateus@gmail.com', 'Haha')->subject('Olá Laravel');
     });
 
     return View::make('auth/login');
@@ -53,8 +53,8 @@ Route::get('email', function() {
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
 Route::post('login', 'Auth\AuthController@post');
 
-Route::get('login/{provider}', 'Auth\AuthController@redirectToProvider');
-Route::get('login/done/{provider}', 'Auth\AuthController@handleProviderCallback');
+Route::get('/login/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('/login/done/{provider}', 'Auth\AuthController@handleProviderCallback');
 
 //Funciona?
 Route::get('editar_inicial', 'WelcomeController@editar_inicial');
@@ -117,8 +117,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/teste/{cap}/{id}', "TesteController@gravaTeste");
 
     Route::get('/examenormal', 'ExameController@showNormal');
-    Route::get('/examecolectivo', 'ExameController@showTimeStamp');
-    Route::get('/examecolectivo1', 'ExameController@showColectivo');
+//    Route::get('/examecolectivo', 'ExameController@showTimeStamp');
+    Route::get('/examecolectivo', 'ExameController@showColectivo');
     Route::post('examenormal', 'ExameController@corrigeExame');
     Route::post('examecolectivo', 'ExameController@corrigeExame');
     Route::get('home/maisDisciplinas', 'HomeController@index');
