@@ -95,7 +95,7 @@ return [
 	|
 	*/
 
-	'log' => env('APP_LOG', 'single'),
+	'log' => 'daily',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -124,10 +124,10 @@ return [
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Foundation\Providers\FoundationServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Shpasser\GaeSupportL5\Mail\MailServiceProvider',
+		'Illuminate\Mail\MailServiceProvider',
 		'Illuminate\Pagination\PaginationServiceProvider',
 		'Illuminate\Pipeline\PipelineServiceProvider',
-		'Shpasser\GaeSupportL5\Queue\QueueServiceProvider',
+		'Illuminate\Queue\QueueServiceProvider',
 		'Illuminate\Redis\RedisServiceProvider',
 		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
@@ -138,7 +138,6 @@ return [
         'Illuminate\Broadcasting\BroadcastServiceProvider',
       //  'Illuminate\Foundation\Providers\FormRequestServiceProvider',
         'Shpasser\GaeSupportL5\GaeSupportServiceProvider',
-        'Shpasser\GaeSupportL5\GaeArtisanConsoleServiceProvider'
 
 
 

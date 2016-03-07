@@ -21,9 +21,6 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-
-
-
 Route::get('registar', function () {
     return View::make('registar');
 });

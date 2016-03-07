@@ -23,7 +23,8 @@ class VerifyCsrfToken extends BaseVerifier {
         '/editar-perfil',
         '/edita-perfil',
         '/examenormal',
-        '/examecolectivo',     
+        '/examecolectivo',
+         
     ];
          
     public function handle($request, Closure $next)
