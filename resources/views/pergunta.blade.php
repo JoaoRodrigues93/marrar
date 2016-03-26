@@ -49,7 +49,8 @@
             {!! Form::textarea('opcao2','',['id'=>'opcao2','class'=>'form-control', 'placeholder'=>'Introduza a 2ª resposta errada aqui','rows'=>'2']) !!}
             {!! Form::textarea('opcao3','',['id'=>'opcao3','class'=>'form-control', 'placeholder'=>'Introduza a 3ª resposta errada aqui','rows'=>'2']) !!}
             {!! Form::textarea('opcao4','',['id'=>'opcao4','class'=>'form-control', 'placeholder'=>'Introduza a 4ª resposta errada aqui','rows'=>'2']) !!}
-
+            {!! Form::label('dica','Dica',['class'=>'text-primary']) !!}
+            {!! Form::textarea('dica','',['id'=>'dica','class'=>'form-control', 'placeholder'=>'Introduza a dica aqui','rows'=>'2']) !!}
         </div>
         <div class="center-block" align="center">
 
@@ -113,6 +114,13 @@
             htmlOpcao4.replace("<p>", " ");
             htmlOpcao4.replace("</p>", " ");
             editorOpcao4.setData(htmlOpcao4);
+
+            //para a dica
+            var editorDica = CKEDITOR.instances.dica;
+            var htmlDica = editorDica.getData();
+            htmlDica.replace("<p>", " ");
+            htmlDica.replace("</p>", " ");
+            editorDica.setData(htmlDica);
 
             formSubmitted = true;
             $(this).trigger('click');
@@ -244,6 +252,7 @@
                var opcao2= document.getElementById('opcao2');
                var opcao3= document.getElementById('opcao3');
                var opcao4= document.getElementById('opcao4');
+               var dica= document.getElementById('dica');
                var opcaoCorrecta= document.getElementById('opcaoCorrecta');
                var questao =document.getElementById('questao');
 
@@ -251,6 +260,7 @@
                opcao2.value=CKEDITOR.instances['opcao2'].getData();
                opcao3.value=CKEDITOR.instances['opcao3'].getData();
                opcao4.value=CKEDITOR.instances['opcao4'].getData();
+               dica.value=CKEDITOR.instances['dica'].getData();
                opcaoCorrecta.value=CKEDITOR.instances['opcaoCorrecta'].getData();
                questao.value=CKEDITOR.instances['questao'].getData();
 
@@ -272,6 +282,7 @@
                        CKEDITOR.instances['opcao2'].setData('');
                        CKEDITOR.instances['opcao3'].setData('');
                        CKEDITOR.instances['opcao4'].setData('');
+                       CKEDITOR.instances['dica'].setData('');
                        CKEDITOR.instances['opcaoCorrecta'].setData('');
                        CKEDITOR.instances['questao'].setData('');
                    }
