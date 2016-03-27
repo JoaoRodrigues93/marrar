@@ -273,6 +273,34 @@
 
                         </div>
                     </div>
+
+                    <div id="intro" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Como fazer o exame Normal?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>1. Navegue pelos números repondendo as questões</p>
+                                    <p>
+                                        2. O número da questão actual estará pintado a azul</p>
+                                    <p>3. Os números das questões que já tiverem sido respondidas estarão pintados a verde</p>
+                                    <p>4. Certifique-se que respondeu todas questões antes de clicar em entregar</p>
+                                    <p>5. Terá uma (1) hora para concluir o exame</p>
+                                    <p>6. Clique em começar exame ou na tela para iniciar o exame</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="iniciarTempo()">Começar exame</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                 </section>
                 @if($texto)
 
@@ -372,6 +400,14 @@
             };
             timer();
         }
+
+        //inicar a contagem apos clicar no botao comecar
+        function iniciarTempo() {
+            var Minutes = 60 * 60, display = document.querySelector('#timer');
+            startTimer(Minutes, display);
+        }
+
+
         //Inicializa exame
 
         var perguntasJson;
@@ -393,8 +429,7 @@
                     perguntasJson = xmlhttp.responseText;
 
                     var perguntas = JSON.parse(perguntasJson);
-                    var Minutes = 60 * 60, display = document.querySelector('#timer');
-                    startTimer(Minutes, display);
+
 
 
                     for (i = 0; i < perguntas.length; i++) {
@@ -487,6 +522,12 @@
             submeter(event)
         }
 
+        $(document).ready(function () {
+
+            $('#intro').modal('show');
+
+
+        });
 
         function submeter(event) {
             var code = event.keyCode ? event.keyCode : event.which;
