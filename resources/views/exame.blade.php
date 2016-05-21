@@ -276,7 +276,7 @@
                 </section>
                 @if($texto)
 
-                    <section class="texto" id="section-flip-2"> <p> <strong>{{$texto->titulo}}</strong></p>  <p>{{$texto->texto}}</p></section>
+                    <section class="texto" id="section-flip-2"><div id="titulo" align="center"></div><p><div id="texto"></div> </section>
 
                     @else
 
@@ -393,6 +393,45 @@
                     perguntasJson = xmlhttp.responseText;
 
                     var perguntas = JSON.parse(perguntasJson);
+
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+
+                    } else {
+
+                        // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+
+
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                            textoJson = xmlhttp.responseText;
+
+                            if(textoJson!=null)
+                            {
+                            var texto = JSON.parse(textoJson);
+                                divTitulo=document.getElementById("titulo");
+                                divTexto=document.getElementById("texto");
+                                titulo=texto.titulo;
+                                textoh=texto.texto;
+                                divTitulo.innerHTML="<strong>"+titulo+"</strong>";
+                                divTexto.innerHTML=textoh;
+
+                            }
+
+                        }
+
+                    }
+
+                    xmlhttp.open("GET", "/getTexto", true);
+
+                    xmlhttp.send();
+
+
+
                     var Minutes = 60 * 60, display = document.querySelector('#timer');
                     startTimer(Minutes, display);
 

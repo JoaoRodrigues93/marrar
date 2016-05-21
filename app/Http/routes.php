@@ -129,6 +129,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/capituloHomeMobile/{id}', 'TemaController@showTemaMobile');
 
     Route::get('/getExame', 'ExameController@devolveQuestoes');
+    Route::get('/getTexto', 'ExameController@devolveTexto');
 
 
 });
@@ -178,5 +179,11 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
     Route::get('/devolveTemasCapi/{id}','TemaController@devolveTemasCapitulo');
 
     Route::get('/devolveCapitulosDisc/{id}','CapituloController@devolveCapitulosDisciplina');
+
+    Route::get('texto_list', 'TextoController@inicializaTexto_list');
+    Route::get('/texto_list/editar/{id}', 'TextoController@editarTexto');
+    Route::get('/texto_list/remover/{id}', 'TextoController@deleteTexto');
+    Route::post('/texto_list/editar/{id}', 'TextoController@editar');
+
 
 });

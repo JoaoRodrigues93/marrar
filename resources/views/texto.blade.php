@@ -15,9 +15,10 @@
 
         {!! Form::open(['entregarTeste']) !!}
         <div class="jumbotron">
-            <h2 class="text-primary">Disciplina de Português</h2>
+            <h2 class="text-primary text-center">Disciplina de Português</h2>
             <hr width="100%">
-            <h4 class="text-primary">Registo de Texto</h4>
+            <h4 class="text-primary text-center">Registo de Texto</h4>
+            <a href="{{URL::to('texto_list')}}" class="">Clique aqui para ver a lista de Textos</a>
 
 
             <p></p>
@@ -34,7 +35,7 @@
         </div>
 
         <div class="form-group text-primary">
-            {!! Form::label('texto','Introduza todo texto (inclusive o título)',['class'=>'text-primary']) !!}
+            {!! Form::label('texto','Introduza todo texto',['class'=>'text-primary']) !!}
             {!! Form::textarea('textoCompleto','',['class'=>'form-control','id'=>'textoCompleto', 'placeholder'=>'Introduza o texto aqui','rows'=>'20']) !!}
 
         </div>

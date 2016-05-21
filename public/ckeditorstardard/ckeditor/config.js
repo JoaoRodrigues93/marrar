@@ -35,4 +35,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.autoParagraph = false;
 	config.removeAttribute = 'style';
+
 };

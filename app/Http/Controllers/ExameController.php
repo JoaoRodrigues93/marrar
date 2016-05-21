@@ -63,6 +63,7 @@ class ExameController extends Controller {
         $action = 'examenormal';
         $nrPerguntas = collect($perguntas)->count();
         $_SESSION["exame"] = $perguntas;
+        $_SESSION["texto"] = $texto;
         return View('exame')->with(array("action" => $action,"texto"=>$texto, "perguntas" => $perguntas, "disciplina" => $disciplina, "nrPerguntas" => $nrPerguntas));
 
     }
@@ -183,7 +184,7 @@ class ExameController extends Controller {
 
         $_SESSION["exame"] = $perguntas;
         $_SESSION['examecolectivo'] = $examecolectivo;
-
+        $_SESSION["texto"] = $texto;
 
 
 
@@ -259,6 +260,21 @@ class ExameController extends Controller {
         $questoes=json_encode($questoes);
 
         return $questoes;
+
+    }
+
+    public function devolveTexto(){
+
+        $texto=$_SESSION["texto"];
+
+        if(!$texto)
+        {
+            return null;
+
+        }
+        $texto=json_encode($texto);
+
+        return $texto;
 
     }
 
