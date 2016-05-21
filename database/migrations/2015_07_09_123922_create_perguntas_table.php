@@ -22,6 +22,7 @@ class CreatePerguntasTable extends Migration {
             $table->longText('opcao3');
             $table->longText('opcao4');
             $table->longText('opcao5');
+            $table->longText('dica');
             $table->integer('tema_id')->unsigned();
             $table->softDeletes();
             $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');

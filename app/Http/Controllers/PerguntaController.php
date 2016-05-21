@@ -46,6 +46,7 @@ public function registaPerguntas(){
         $pergunta->opcao4 = $data['opcao4'];
         $pergunta->opcao5 = $data['opcaoCorrecta'];
         $pergunta->opcaoCorrecta = $data['opcaoCorrecta'];
+        $pergunta->dica=$data['dica'];
 
     $string1=strstr($pergunta -> opcao1,'<img');
 
@@ -127,6 +128,7 @@ public function registaPerguntas(){
         $pergunta -> opcao4  = $data['opcao4'];
         $pergunta -> opcao5  = $data['opcaoCorrecta'];
         $pergunta -> opcaoCorrecta = $data['opcaoCorrecta'];
+            $pergunta -> dica  = $data['dica'];
         $tema = Tema::find($data['tema']);
 
         $pergunta = $tema->perguntas()->save($pergunta);

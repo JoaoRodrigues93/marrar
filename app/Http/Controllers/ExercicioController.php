@@ -106,11 +106,20 @@ class ExercicioController extends Controller{
         $perguntas = $_SESSION['perguntas'];
         $pergunta = $perguntas[$perguntaActual];
         return "$pergunta->opcaoCorrecta";
+
     }
 
     public function estudar(){
         return view('estudar');
     }
+    public  function  dica(){
+        //$pergunta = Pergunta::find($id);
+        $perguntaActual = $_SESSION['perguntaActual'];
+        $perguntas = $_SESSION['perguntas'];
+        $pergunta = $perguntas[$perguntaActual];
+        return "$pergunta->dica";
+    }
+
 
 
     public  function  respostaProximo(){

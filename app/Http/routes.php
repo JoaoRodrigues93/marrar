@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('estudar/{idCapitulo}/{tema}', 'ExercicioController@show');
 
     Route::get('exercicio/resposta', 'ExercicioController@respostaCorrecta');
+    Route::get('exercicio/dica', 'ExercicioController@dica');
     Route::get('proximo', 'ExercicioController@respostaProximo');
 
     Route::get('teste-validacao', 'TesteController@validaTeste');

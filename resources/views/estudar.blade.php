@@ -435,7 +435,7 @@
         var contErros = 0;
         var perguntas;
         var perguntaActual = 0;
-
+var dica;
         function inicio() {
 
             var content = document.getElementById("content");
@@ -461,7 +461,8 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     resposta = xmlhttp.responseText;
 
-                    esconder();
+dicas();
+
 
                 }
             }
@@ -472,9 +473,41 @@
 
         }
 
+
+        function dicas() {
+            //progressBar
+
+            var respostaCorrecta, id, idResposta;
+            idResposta = document.getElementById("id");
+            id = idResposta.value;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    dica=xmlhttp.responseText;
+
+                    esconder();
+
+                }
+            }
+
+            xmlhttp.open("GET", "/exercicio/dica", true);
+            xmlhttp.send();
+
+
+        }
+
+
         //para esconder o botao confirmar e mostrar o botao proximo
-        function
-        esconder() {
+        function esconder() {
+
+
             var content = document.getElementById("content");
             content.style.visibility = 'visible';
             var hide = document.getElementById("hide");//pega o elemento com id=hide
@@ -506,7 +539,7 @@
             else {
                 envio.setAttribute("class", 'well alert envio-error')
                 content.innerHTML = "<strong>Errado!</strong>" +
-                " A resposta correcta é: " + resposta;
+                " A resposta correcta é: " + resposta +" </p > <strong >Dica</strong> "+ dica;
                 contErros++;
             }
 
