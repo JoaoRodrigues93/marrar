@@ -78,7 +78,7 @@
                         <ul class="dropdown-menu">
 
                             <li><a href="/examenormal">Normal</a></li>
-                            <li><a href="/examecolectivo1">Colectivo</a></li>
+                            <li><a href="/examecolectivo">Colectivo</a></li>
 
                         </ul>
                     </li>
